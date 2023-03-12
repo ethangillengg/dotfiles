@@ -30,9 +30,22 @@
 
   programs = {
     home-manager.enable = true;
-    git.enable = true;
   };
 
+
+  home.packages = with pkgs; [
+    firefox
+    neovim
+    osu-lazer
+    youtube-music
+    discord
+    webcord
+    ripgrep
+    cargo
+    btop
+    nvtop
+    nerdfonts
+  ];
 
   # colorscheme = lib.mkDefault colorSchemes.dracula;
   # wallpaper =
