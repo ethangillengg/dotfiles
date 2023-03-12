@@ -11,6 +11,20 @@
     # ./features/games
   ];
 
+  home.packages = with pkgs; [
+    firefox
+    neovim
+    osu-lazer
+    youtube-music
+    discord
+    webcord
+    ripgrep
+    cargo
+    btop
+    nvtop
+    nerdfonts
+  ];
+
   # wallpaper = (import ./wallpapers).aenami-lunar;
   # colorscheme = inputs.nix-colors.colorschemes.paraiso;
 

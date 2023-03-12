@@ -11,5 +11,6 @@
     ./lf.nix
     ./bat.nix
     ./gitui.nix
+    ./git.nix
   ];
 }

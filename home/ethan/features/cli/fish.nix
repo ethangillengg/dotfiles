@@ -2,29 +2,6 @@
   programs.fish = {
     enable = true;
     shellAbbrs = {
-      # ls = "exa";
-      #
-      # jqless = "jq -C | less -r";
-      #
-      # n = "nix";
-      # nd = "nix develop -c $SHELL";
-      # ns = "nix shell";
-      # nsn = "nix shell nixpkgs#";
-      # nb = "nix build";
-      # nbn = "nix build nixpkgs#";
-      # nf = "nix flake";
-      #
-      # nr = "nixos-rebuild --flake .";
-      # nrs = "nixos-rebuild --flake . switch";
-      # snr = "sudo nixos-rebuild --flake .";
-      # snrs = "sudo nixos-rebuild --flake . switch";
-      # hm = "home-manager --flake .";
-      # hms = "home-manager --flake . switch";
-      # hm = "home-manger --flake .";
-      # v = "nvim";
-      # vi = "nvim";
-      # vim = "nvim";
-      # hom = "home-manager --flake .";
     };
     functions = {
       fish_greeting = "";
@@ -56,13 +33,13 @@
       #   set --prepend fish_complete_path "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_completions.d"
       # '' +
       # Use vim bindings and cursors
-      # ''
-      #   fish_vi_key_bindings
-      #   set fish_cursor_default     block      blink
-      #   set fish_cursor_insert      line       blink
-      #   set fish_cursor_replace_one underscore blink
-      #   set fish_cursor_visual      block
-      # '' +
+      ''
+        fish_vi_key_bindings
+        set fish_cursor_default     block      blink
+        set fish_cursor_insert      line       blink
+        set fish_cursor_replace_one underscore blink
+        set fish_cursor_visual      block
+      '' +
       # Use terminal colors
       ''
         set -U fish_color_autosuggestion      brblack
