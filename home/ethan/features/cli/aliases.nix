@@ -4,6 +4,7 @@
     ll = "lsd -l";
     lt = "lsd -l --tree --depth=4";
     la = "lsd -lA";
+    lz = "lsd -l --total-size";
 
     v = "nvim";
     vi = "nvim";
