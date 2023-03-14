@@ -20,5 +20,8 @@
     mr = "feh -FZ --cache-size 2048 --on-last-slide hold --font \"yudit/40\" --scroll-step 50 --info \"echo %u/%l\" $argv; ";
 
     lsblk = "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINTS,UUID";
+
+    #Man home config in nvim
+    hmc = "nvim \"+Man home-configuration.nix | only\"";
   };
 }
