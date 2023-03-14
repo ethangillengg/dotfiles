@@ -44,6 +44,12 @@
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/nixtop ];
         };
+
+        # Surface
+        surface = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/surface ];
+        };
       };
 
       homeConfigurations = {
@@ -56,6 +62,13 @@
 
         # Laptop
         "ethan@nixtop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/ethan/nixtop.nix ];
+        };
+
+        # Surface
+        "ethan@surface" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/ethan/nixtop.nix ];
