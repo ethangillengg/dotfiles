@@ -9,6 +9,7 @@
     # ./features/productivity
     # ./features/pass
     # ./features/games
+    ./../common
   ];
 
   home.packages = with pkgs; [
