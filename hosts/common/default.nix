@@ -1,3 +1,3 @@
 {
-    imports = [./openssh.nix];
-  }
+    imports = [./gnome.nix];
+}
