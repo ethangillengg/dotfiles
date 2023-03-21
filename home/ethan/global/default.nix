@@ -4,6 +4,7 @@
 #   # inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) colorschemeFromPicture nixWallpaperFromScheme;
 # in
 {
+  imports = [ ./gnome.nix];
   home = {
     username = "ethan";
     homeDirectory = "/home/${config.home.username}";
