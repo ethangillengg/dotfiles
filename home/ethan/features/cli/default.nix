@@ -12,5 +12,6 @@
     ./bat.nix
     ./gitui.nix
     ./git.nix
+    ./bottom.nix
   ];
 }

@@ -24,6 +24,7 @@
     btop
     nvtop
     nerdfonts
+    battop
   ];
 
   # wallpaper = (import ./wallpapers).aenami-lunar;
