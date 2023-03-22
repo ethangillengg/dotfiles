@@ -9,7 +9,6 @@
     # ./features/productivity
     # ./features/pass
     # ./features/games
-    ./../common
   ];
 
   home.packages = with pkgs; [
@@ -24,7 +23,6 @@
     btop
     nvtop
     nerdfonts
-    battop
   ];
 
   # wallpaper = (import ./wallpapers).aenami-lunar;
