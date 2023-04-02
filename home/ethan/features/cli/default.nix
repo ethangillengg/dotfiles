@@ -13,5 +13,6 @@
     ./gitui.nix
     ./git.nix
     ./bottom.nix
+    ./trashy.nix
   ];
 }

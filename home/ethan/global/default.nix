@@ -4,7 +4,7 @@
 #   # inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) colorschemeFromPicture nixWallpaperFromScheme;
 # in
 {
-  imports = [ ./gnome.nix];
+  imports = [ ./gnome.nix ];
   home = {
     username = "ethan";
     homeDirectory = "/home/${config.home.username}";
@@ -37,14 +37,14 @@
   home.packages = with pkgs; [
     firefox
     neovim
-    #osu-lazer
+    osu-lazer
     youtube-music
     #discord
     webcord
     ripgrep
     cargo
     btop
-#    nvtop
+    #    nvtop
     nerdfonts
   ];
 
