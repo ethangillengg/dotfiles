@@ -19,7 +19,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "thinkpad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -83,9 +83,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wl-clipboard
     neovim
-    asusctl
     pciutils
-    supergfxctl
     #  wget
   ];
 
@@ -99,10 +97,6 @@
   # };
 
   # List services that you want to enable:
-
-  #For switching to dGpu
-  services.supergfxd.enable = true;
-  services.asusd.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
