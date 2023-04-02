@@ -1,4 +1,5 @@
 {
+  imports = [ ../trashy.nix ];
   programs.lf = {
     enable = true;
 
@@ -6,6 +7,19 @@
 
       "mkdir" = "%mkdir \"$@\"";
       "touch" = "%touch \"$@\"";
+
+      "open" = "nvim $fx";
+
+      # ''
+      #   ''${{
+      #       case ''$(file --mime-type -Lb $f) in
+      #           text/*) nvim $fx;;
+      #           *) for f in $fx; do setsid mimeopen $f > /dev/null 2> /dev/null & done;;
+      #       esac
+      #   }}
+      # '';
+
+      "trash" = "%trash put $fx";
     };
 
     keybindings = {
@@ -16,8 +30,9 @@
       "A" = "push :mkdir<space>";
       "a" = "push :touch<space>";
 
-      # map A push :mkdir<space>
-      # map a push :touch<space>
+      "H" = ":set hidden!";
+
+      "<delete>" = "trash";
     };
 
     extraConfig = ''
@@ -38,3 +53,4 @@
   xdg.configFile."lf/icons".source = ./icons;
   xdg.configFile."lf/colors".source = ./colors;
 }
+
