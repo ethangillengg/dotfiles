@@ -8,7 +8,7 @@
     ./starship.nix
     ./exa.nix
     ./lsd.nix
-    ./lf.nix
+    ./lf
     ./bat.nix
     ./gitui.nix
     ./git.nix
