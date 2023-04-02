@@ -1,23 +1,53 @@
+{ pkgs, ... }:
 {
-  imports = [ ../trashy.nix ];
+  home.packages = with pkgs; [
+    trashy
+    file
+    perl536Packages.FileMimeInfo # for mime-type open
+  ];
   programs.lf = {
     enable = true;
 
-    commands = {
+    extraConfig = ''
+      set drawbox
+      set ratios 2:5:5
+      set info size
+      set incfilter
+      set incsearch
+      set scrolloff 10 # leave some space at the top and the bottom of the screen
+      set shellopts '-eu'
+      set ifs "\n"
+    '';
 
+    keybindings = {
+      "<enter>" = ":open";
+
+      "<esc>" = ":setfilter";
+      "f" = ":filter";
+      "A" = "push :mkdir<space>";
+      "a" = "push :touch<space>";
+
+      "H" = ":set hidden!";
+
+      "<delete>" = "trash";
+      "R" = ":bulk-rename";
+    };
+
+    commands = {
       "mkdir" = "%mkdir \"$@\"";
       "touch" = "%touch \"$@\"";
 
-      "open" = "nvim $fx";
-
+      "open" = "$nvim $fx";
+      # "open" =
+      #   ''
+      #     cmd open ''${{
+      #         case $(file --mime-type -Lb $f) in
+      #             text/*) nvim $fx;;
+      #             *) for f in $fx; do mimeopen $f > /dev/null 2> /dev/null & done;;
+      #         esac
+      #     }}
+      #   '';
       # ''
-      #   ''${{
-      #       case ''$(file --mime-type -Lb $f) in
-      #           text/*) nvim $fx;;
-      #           *) for f in $fx; do setsid mimeopen $f > /dev/null 2> /dev/null & done;;
-      #       esac
-      #   }}
-      # '';
       "bulk-rename" = ''
         ''${{
             old="$(mktemp)"
@@ -47,29 +77,6 @@
       "trash" = "%trash put $fx";
     };
 
-    keybindings = {
-      "<enter>" = ":open";
-
-      "<esc>" = ":setfilter";
-      "f" = ":filter";
-      "A" = "push :mkdir<space>";
-      "a" = "push :touch<space>";
-
-      "H" = ":set hidden!";
-
-      "<delete>" = "trash";
-      "R" = ":bulk-rename";
-    };
-
-    extraConfig = ''
-      set drawbox
-      set ratios 2:5:5
-      set info size
-      set incfilter
-      set incsearch
-      set scrolloff 10 # leave some space at the top and the bottom of the screen
-    '';
-    cmdKeybindings = { };
     settings = {
       drawbox = true;
       icons = true;
