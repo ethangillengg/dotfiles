@@ -37,14 +37,14 @@
   home.packages = with pkgs; [
     firefox
     neovim
-    osu-lazer
+    #osu-lazer
     youtube-music
-    discord
+    #discord
     webcord
     ripgrep
     cargo
     btop
-    nvtop
+#    nvtop
     nerdfonts
   ];
 

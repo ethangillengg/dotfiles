@@ -39,10 +39,10 @@
           modules = [ ./hosts/nzxt ];
         };
 
-        # Surface
-        surface = nixpkgs.lib.nixosSystem {
+        # Thinkpad
+        thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/surface ];
+          modules = [ ./hosts/thinkpad ];
         };
       };
 
@@ -54,41 +54,12 @@
           modules = [ ./home/ethan/nzxt.nix ];
         };
 
-        # Surface
-        "ethan@surface" = home-manager.lib.homeManagerConfiguration {
+        # Thinkpad
+        "ethan@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home/ethan/surface.nix ];
+          modules = [ ./home/ethan/thinkpad.nix ];
         };
       };
     };
 }
-
-#   outputs = { nixpkgs, home-manager, hyprland, ... }@inputs: {
-#     # NixOS configuration entrypoint
-#     # Available through 'nixos-rebuild --flake .#your-hostname'
-#     nixosConfigurations = {
-#       # HOSTNAME
-#       nixos = nixpkgs.lib.nixosSystem {
-#         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-#         modules = [
-#           ./nixos/configuration.nix
-#         ];
-#       };
-#     };
-#
-#     # Standalone home-manager configuration entrypoint
-#     # Available through 'home-manager --flake .#your-username@your-hostname'
-#     homeConfigurations = {
-#       # FIXME replace with your username@hostname
-#       nixos = home-manager.lib.homeManagerConfiguration {
-#         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-#         modules = [
-#           ./modules/_index.nix
-#           hyprland.homeManagerModules.default
-#           { wayland.windowManager.hyprland.enable = true; }
-#         ];
-#       };
-#     };
-#   };
-# }

@@ -13,8 +13,8 @@
     ga = "git add .";
     lg = "gitui";
 
-    hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@surface";
-    nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#surface";
+    hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad";
+    nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#thinkpad";
 
     #manga reader
     mr = "feh -FZ --cache-size 2048 --on-last-slide hold --font \"yudit/40\" --scroll-step 50 --info \"echo %u/%l\" $argv; ";
