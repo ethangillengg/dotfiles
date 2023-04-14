@@ -14,7 +14,7 @@
   home.packages = with pkgs; [
     firefox
     neovim
-    osu-lazer
+    # osu-lazer
     youtube-music
     discord
     webcord

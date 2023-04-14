@@ -2,8 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, stdenv, meta, inputs, ... }:
 
+let
+  # osu-overlay = (import ./osu-overlay.nix { inherit pkgs; });
+in
 {
   imports =
     [
@@ -12,22 +15,42 @@
       ./../common
     ];
 
+  #enable fingerprint sensors
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = inputs.nixos-06cb-009a-fingerprint-sensor.lib.libfprint-2-tod1-vfs0090-bingch {
+        calib-data-file = ./calib-data.bin; #fingerprint data from python-validity
+      };
+    };
+  };
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.enableAllFirmware = true;
+  hardware.trackpoint.enable = true;
+  # services.fprintd.enable = true; #fingerprint scanner
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "thinkpad"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
+  networking.hostName = "thinkpad"; # Define your hostname.
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
+  networking.enableIPv6 = false;
+  # networking.networkmanager.enable = true;
+  # powerManagement.enable = false;
+  networking.networkmanager.wifi.backend = "iwd";
 
   # Set your time zone.
   time.timeZone = "America/Edmonton";
@@ -64,7 +87,7 @@
   users.users.ethan = {
     isNormalUser = true;
     description = "ethan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     shell = pkgs.fish;
     # shell = "fish";
   };
@@ -84,7 +107,11 @@
     wl-clipboard
     neovim
     pciutils
+    wirelesstools
+
     #  wget
+    # osu-lazer-bin
+    # osu-overlay.osu-lazer-bin
   ];
 
 
@@ -111,6 +138,8 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
+
+  # nixpkgs.overlays = [ osu-overlay ];
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

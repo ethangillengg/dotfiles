@@ -4,47 +4,38 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    hyprland.url = "github:hyprwm/Hyprland"; # Hyprland (https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/)
+    sops-nix.url = "github:mic92/sops-nix"; # Secret management
 
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Hyprland (https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/)
-    hyprland.url = "github:hyprwm/Hyprland";
-
+    # fingerprint sensor for thinkpad
+    nixos-06cb-009a-fingerprint-sensor = {
+      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-06cb-009a-fingerprint-sensor, ... }@inputs:
     let
       inherit (self) outputs;
       forEachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
-      forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+      forEachPkgs = f: forEachSystem (system: f nixpkgs.legacyPackages.${system}); # NO OVERLAYS
     in
     {
+      # packages = forEachPkgs (pkgs: (import ./pkgs { inherit pkgs; }));
+      # overlays = import ./overlays { inherit inputs outputs; };
+
       # see https://m7.rs/git/nix-config/tree/modules 
       # for when i want to configure these
       # nixosModules = import ./modules/nixos;
       # homeManagerModules = import ./modules/home-manager;
-
-
-      nixosConfigurations = {
-        # Desktop
-        nzxt = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/nzxt ];
-        };
-
-        # Thinkpad
-        thinkpad = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/thinkpad ];
-        };
-      };
 
       homeConfigurations = {
         # Desktop
@@ -59,6 +50,20 @@
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/ethan/thinkpad.nix ];
+        };
+      };
+
+      nixosConfigurations = {
+        # Desktop
+        nzxt = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/nzxt ];
+        };
+
+        # Thinkpad
+        thinkpad = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/thinkpad ];
         };
       };
     };
