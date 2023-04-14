@@ -13,7 +13,7 @@
     ga = "git add .";
     lg = "gitui";
 
-    hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad";
+    hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad -j 4";
     nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#thinkpad";
 
     #manga reader
