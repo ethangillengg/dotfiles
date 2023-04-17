@@ -4,7 +4,7 @@
     extraConfig = ''
       return {
         color_scheme = "Ayu Mirage",
-        hide_cursor_when_typing = false,
+        hide_mouse_cursor_when_typing = false,
         enable_tab_bar = false,
         font_size = 14.0,
         window_close_confirmation = "NeverPrompt",

@@ -8,6 +8,7 @@
     ./kitty.nix
     ./wezterm.nix
     ./feh.nix
+    ./wofi.nix
     ./hyprland
   ];
 }

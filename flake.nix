@@ -22,7 +22,7 @@
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
-  outputs = { self, nixpkgs, home-manager, nixos-06cb-009a-fingerprint-sensor, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
     let
       inherit (self) outputs;
       forEachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
@@ -63,7 +63,11 @@
         # Thinkpad
         thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/thinkpad ];
+          modules = [
+            hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
+            ./hosts/thinkpad
+          ];
         };
       };
     };

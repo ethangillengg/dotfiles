@@ -4,11 +4,26 @@
     trashy
     file
     perl536Packages.FileMimeInfo # for mime-type open
+    ctpv
+    pistol
+    chafa
   ];
+
+
+  xdg.configFile."lf/icons".source = ./icons;
+  xdg.configFile."lf/colors".source = ./colors;
+  # See https://github.com/gokcehan/lf/wiki/Previews#with-kitty-and-pistol
+  xdg.configFile."lf/preview".source = ./preview.sh;
+  xdg.configFile."lf/clean".source = ./clean.sh;
+  # xdg.configFile."ctpv/config".source = ./cptv;
+
   programs.lf = {
     enable = true;
 
     extraConfig = ''
+      set previewer ~/.config/lf/preview
+      set cleaner ~/.config/lf/clean
+
       set drawbox
       set ratios 2:5:5
       set info size
@@ -82,8 +97,5 @@
       icons = true;
     };
   };
-
-  xdg.configFile."lf/icons".source = ./icons;
-  xdg.configFile."lf/colors".source = ./colors;
 }
 

@@ -5,7 +5,7 @@
     layout = "us";
     xkbVariant = "";
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;  
+    desktopManager.gnome.enable = true;
   };
 
 

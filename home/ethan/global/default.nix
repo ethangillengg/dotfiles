@@ -53,6 +53,12 @@
     mpv
     gnome-network-displays
     nerdfonts
+    duf
+    dua
+    xh
+    jqp
+    jq
+    fzf
   ];
 
   # colorscheme = lib.mkDefault colorSchemes.dracula;
