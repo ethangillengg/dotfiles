@@ -30,6 +30,7 @@ in
   hardware.enableAllFirmware = true;
   hardware.trackpoint.enable = true;
   # services.fprintd.enable = true; #fingerprint scanner
+  programs.fish.enable = true;
 
 
   # Bootloader.
