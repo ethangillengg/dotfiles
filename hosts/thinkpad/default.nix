@@ -4,15 +4,12 @@
 
 { config, pkgs, stdenv, meta, inputs, ... }:
 
-let
-  # osu-overlay = (import ./osu-overlay.nix { inherit pkgs; });
-in
 {
   imports =
     [
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./../common
+      ./../common/optional/distributedBuilds.nix
     ];
 
   #enable fingerprint sensors

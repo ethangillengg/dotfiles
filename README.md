@@ -11,5 +11,5 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 
 # TODO
 
-- [ ] Lots...
+- [ ] Hyprland keybinding for [Super + Shit + Bracket]
 
