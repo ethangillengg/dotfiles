@@ -15,6 +15,7 @@
 
     hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad -j 4";
     nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#thinkpad";
+    nrd = "nixos-rebuild switch --flake /home/ethan/.dotfiles#nzxt --target-host ethan@nzxt --use-remote-sudo";
 
     #manga reader
     mr = "feh -FZ --cache-size 2048 --on-last-slide hold --font \"yudit/40\" --scroll-step 50 --info \"echo %u/%l\" $argv; ";

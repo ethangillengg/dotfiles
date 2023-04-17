@@ -7,9 +7,7 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./../common
     ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -19,23 +17,11 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.hostName = "nzxt"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  networking.hostName = "nzxt";
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Edmonton";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
-
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
@@ -47,12 +33,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
 
@@ -61,9 +41,16 @@
     isNormalUser = true;
     description = "ethan";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-    # shell = "fish";
+    openssh.authorizedKeys.keys = [
+      #thinkpad
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDE0haeLHMxd2Q40l9P5Aj63CDOZ5ntbBQXvHRyrMy9SJ8HC737LZC6zIAsXabEify5j4vBu1K6eafMvUbRmI34EtzRCeNKd8SoeH6up4o5lTB5bJGj5uRL2tk8kQyzXt/mpzdyM7i+nvpcEDmOIBTnfQ7NiYvM228i7P1ktT7INw8FwalpwxrMlGO0hH86rr7jKodOt//3xCioGxT3BmSufPnBljXjfLw4DmcRqL4rZBxnlk8VxpavwYCohMRzZ5w2Q5w2eybCfhtRWrXj4uEuv6YTFlh7r04ZUPTfzOrLUZyM9J1zUBmvuXRWY6+W4DVFAZ849mJOFFTFafSLx8ubmxwS+rfbX5nsF5MjAhm28N2JLnIjQtNqpIP9gkd5krBzVrYYj4SPrgxOjPc78IoB5T5SAEYP5gLw701JUgaTMrBfGEAtiVvfwv4dtmdRM7eIjoaVnD5DrBpl0DCl3I8biRC8B9fiKL32d06wOrUjBfHiA5peFSYQEoiKKewYgQ8= ethan"
+    ];
+  };
 
+  users.users.guest = {
+    isNormalUser = true;
+    description = "guest";
+    extraGroups = [ "networkmanager" ];
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -74,28 +61,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gcc
-    gnumake
     git
     vim
     wl-clipboard
-    neovim
     pciutils
-    ntfs3g
+    btop
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    # require public key authentication for better security
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "yes";
+    };
+  };
+  nix.settings.trusted-users = [ "root" "ethan" ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

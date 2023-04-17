@@ -2,42 +2,30 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/780e71cd-81f3-4216-958f-75ead9d1503e";
+    {
+      device = "/dev/disk/by-uuid/e8638e15-0774-4f3a-ba54-f093f4f74376";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/7579-6E9C";
+    {
+      device = "/dev/disk/by-uuid/E8BD-954B";
       fsType = "vfat";
     };
 
-  fileSystems."/home/ethan/Drives/Arch" =
-    { device = "/dev/disk/by-uuid/5e251812-09b2-4f56-baba-67a1d60cdb9b";
-      fsType = "ext4";
-    };
-
-
-  fileSystems."/home/ethan/Drives/Windows" =
-    { device = "/dev/disk/by-uuid/54FC53F4FC53CF3C";
-      fsType = "ntfs"; 
-      options = [ "rw" "uid=1000"];
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/cf3cf789-0271-403f-bd64-89d4e2c102c3"; }
-    ];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -51,6 +39,4 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
 }
-
