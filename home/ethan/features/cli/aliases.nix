@@ -23,5 +23,6 @@
 
     #Man home config in nvim
     hmc = "nvim \"+Man home-configuration.nix | only\"";
+    hmp = "home-manager packages | fzf";
   };
 }
