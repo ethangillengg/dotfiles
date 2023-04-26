@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Server Home</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #2c213b;
+        color: #f9ecee;
+      }
+
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        background-color: #2c213b;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .title {
+        font-size: 48px;
+        margin: 20px;
+        text-align: center;
+        color: #f9ecee;
+      }
+
+      .subtitle {
+        font-size: 28px;
+        margin: 10px;
+        text-align: center;
+        color: #f9ecee;
+        margin-bottom: 40px;
+      }
+
+      .link {
+        font-size: 32px;
+        width: 350px;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #e34c8a;
+        color: #f9ecee;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .link:hover {
+        background-color: #f9ecee;
+        color: #2c213b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Media Server</h1>
+      <p class="subtitle">Welcome to our media server, where buffering is banned and smooth streaming is our only mission. Sit back, relax, and enjoy the show!</p>
+      <a href="/media" class="link">Jellyfin Server</a>
+      <a href="/arr" class="link">qBittorrent WebUI</a>
+    </div>
+  </body>
+</html>

@@ -1,23 +1,32 @@
 { inputs, lib, pkgs, config, outputs, ... }:
-# let
-#   # inherit (inputs.nix-colors) colorSchemes;
-#   # inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) colorschemeFromPicture nixWallpaperFromScheme;
-# in
+let
+  inherit (inputs.nix-colors) colorSchemes;
+  # inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) colorschemeFromPicture nixWallpaperFromScheme;
+in
 {
   imports = [
+    inputs.nix-colors.homeManagerModule
     ./gnome.nix
-  ];
+    ./fonts.nix
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
+
+  programs.home-manager.enable = true;
+
   home = {
     username = "ethan";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "22.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   };
 
+  # home-manager = {
+  #   useUserPackages = true;
+  #   extraSpecialArgs = { inherit inputs outputs; };
+  # };
+
   nixpkgs = {
-    # overlays = builtins.attrValues outputs.overlays;
+    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
     };
   };
 
@@ -31,37 +40,7 @@
 
   systemd.user.startServices = "sd-switch";
 
-  programs = {
-    home-manager.enable = true;
-  };
 
-
-
-
-  home.packages = with pkgs; [
-    firefox
-    neovim
-    osu-lazer
-    youtube-music
-    #discord
-    webcord
-    ripgrep
-    cargo
-    btop
-    #    nvtop
-    qbittorrent
-    mpv
-    gnome-network-displays
-    nerdfonts
-    duf
-    dua
-    xh
-    jqp
-    jq
-    fzf
-  ];
-
-  # colorscheme = lib.mkDefault colorSchemes.dracula;
   # wallpaper =
   #   let
   #     largest = f: xs: builtins.head (builtins.sort (a: b: a > b) (map f xs));

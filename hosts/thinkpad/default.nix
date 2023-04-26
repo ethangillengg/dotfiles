@@ -2,25 +2,46 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, stdenv, meta, inputs, ... }:
+{ config, pkgs, stdenv, meta, inputs, outputs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./../common
-      ./../common/optional/distributedBuilds.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./../common
+    ./../common/optional/distributed-builds.nix
+    # ./../common/optional/greetd.nix
+  ];
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
 
   #enable fingerprint sensors
   services.fprintd = {
-    enable = true;
+    enable = false;
     tod = {
-      enable = true;
+      enable = false;
       driver = inputs.nixos-06cb-009a-fingerprint-sensor.lib.libfprint-2-tod1-vfs0090-bingch {
         calib-data-file = ./calib-data.bin; #fingerprint data from python-validity
       };
     };
+  };
+
+  powerManagement.powertop.enable = true;
+  programs = {
+    light.enable = true;
+    adb.enable = true;
+    dconf.enable = true;
+    kdeconnect.enable = true;
+  };
+
+  # Lid settings
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "lock";
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -33,22 +54,17 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Enable networking
   networking.hostName = "thinkpad"; # Define your hostname.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
-  networking.enableIPv6 = false;
+  # networking.enableIPv6 = false;
   # networking.networkmanager.enable = true;
   # powerManagement.enable = false;
-  networking.networkmanager.wifi.backend = "iwd";
+  # networking.networkmanager.wifi.backend = "iwd";
 
   # Set your time zone.
   time.timeZone = "America/Edmonton";
@@ -73,19 +89,12 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ethan = {
     isNormalUser = true;
     description = "ethan";
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.fish;
     # shell = "fish";
   };
@@ -94,23 +103,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    gcc
-    gnumake
-    git
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wl-clipboard
-    neovim
-    pciutils
-    wirelesstools
-
-    #  wget
-    # osu-lazer-bin
-    # osu-overlay.osu-lazer-bin
-  ];
 
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -127,7 +119,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -136,8 +128,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
-  # nixpkgs.overlays = [ osu-overlay ];
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
