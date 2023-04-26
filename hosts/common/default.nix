@@ -58,6 +58,7 @@
   environment = {
     variables = {
       MANPAGER = "sh -c 'col -bx | bat -p -lman --theme base16'";
+      EDITOR = "nvim";
     };
   };
 }
