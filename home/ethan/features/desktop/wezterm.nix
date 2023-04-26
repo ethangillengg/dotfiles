@@ -39,6 +39,7 @@ in
     #   };
     # };
     # color_scheme = "${colorscheme.slug}",
+    # color_scheme = "GruvboxDarkHard",
     extraConfig = ''
       return {
         font_size = 14.0,

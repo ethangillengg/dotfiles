@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, stdenv, meta, inputs, outputs, ... }:
 
 {
@@ -9,7 +5,9 @@
     ./hardware-configuration.nix
     ./../common
     ./../common/optional/distributed-builds.nix
-    # ./../common/optional/greetd.nix
+    ./../common/optional/x11-no-suspend.nix
+
+    ./../common/optional/greetd.nix
   ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
