@@ -97,26 +97,6 @@
         "type": "github"
       }
     },
-    "nixos-06cb-009a-fingerprint-sensor": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1682181155,
-        "narHash": "sha256-1OrcdcXDGTa0K2KpPSRCv37ebEiVIL+Gmiz5UcR2C4U=",
-        "owner": "ahbnr",
-        "repo": "nixos-06cb-009a-fingerprint-sensor",
-        "rev": "c0631e08f3680b008f6b0713566f590ee9aa0de4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ahbnr",
-        "repo": "nixos-06cb-009a-fingerprint-sensor",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1681920287,
@@ -148,22 +128,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1682173319,
-        "narHash": "sha256-tPhOpJJ+wrWIusvGgIB2+x6ILfDkEgQMX0BTtM5vd/4=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ee7ec1c71adc47d2e3c2d5eb0d6b8fbbd42a8d1c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "release-22.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1682453498,
@@ -180,49 +144,12 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1682109806,
-        "narHash": "sha256-d9g7RKNShMLboTWwukM+RObDWWpHKaqTYXB48clBWXI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "2362848adf8def2866fabbffc50462e929d7fffb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nix-colors": "nix-colors",
-        "nixos-06cb-009a-fingerprint-sensor": "nixos-06cb-009a-fingerprint-sensor",
-        "nixpkgs": "nixpkgs_2",
-        "sops-nix": "sops-nix"
-      }
-    },
-    "sops-nix": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3",
-        "nixpkgs-stable": "nixpkgs-stable"
-      },
-      "locked": {
-        "lastModified": 1682338428,
-        "narHash": "sha256-T7AL/Us6ecxowjMAlO77GETTQO2SO+1XX2+Y/OSfHk8=",
-        "owner": "mic92",
-        "repo": "sops-nix",
-        "rev": "7c8e9727a2ecf9994d4a63d577ad5327e933b6a4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mic92",
-        "repo": "sops-nix",
-        "type": "github"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "wlroots": {

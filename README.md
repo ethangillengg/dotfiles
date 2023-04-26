@@ -10,8 +10,11 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 ```
 
 # TODO
-
-- [ ] Opt-in persistence
+## General
 - [ ] Factor out generic host settings
-- [ ] Hyprland keybinding for [Super + Shit + Bracket]
 
+## Thinkpad
+- [x] Encrypted drive
+- [ ] Fix Qt being slow
+- [ ] Opt-in persistence
+- [ ] Hyprland keybinding for [Super + Shit + Bracket]
