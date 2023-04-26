@@ -15,6 +15,7 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 
 ## Thinkpad
 - [x] Encrypted drive
-- [ ] Fix Qt being slow
+- [x] Fix Qt being slow
+- [ ] Fix discord screensharing
 - [ ] Opt-in persistence
 - [ ] Hyprland keybinding for [Super + Shit + Bracket]

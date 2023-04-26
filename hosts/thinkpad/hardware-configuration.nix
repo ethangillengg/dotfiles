@@ -95,6 +95,8 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
+
+  networking.enableIPv6 = false;
   services.throttled.enable = true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
