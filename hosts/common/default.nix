@@ -2,7 +2,6 @@
 { config, pkgs, stdenv, meta, inputs, outputs, ... }:
 {
   imports = [
-    ./gnome.nix
     ./openssh.nix
     ./hyprland.nix
   ] ++ (builtins.attrValues outputs.nixosModules);

@@ -1,7 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, inputs, system, ... }:
 let
   user = "ethan";
-  greetd = "${pkgs.greetd.greetd}/bin/greetd";
   gtkgreet = "${pkgs.greetd.gtkgreet}/bin/gtkgreet";
 
   sway-kiosk = command: "${pkgs.sway}/bin/sway --config ${pkgs.writeText "kiosk.config" ''
@@ -15,13 +14,16 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = sway-kiosk "${gtkgreet} -l -c '$SHELL -l'";
-        inherit user;
-      };
-      initial_session = {
-        command = "$SHELL -l";
+        command = sway-kiosk "${gtkgreet} -l -c Hyprland";
         inherit user;
       };
     };
   };
+
+  services. xserver.displayManager = {
+    sddm.enable = lib.mkForce false;
+    lightdm.enable = lib.mkForce false;
+    gdm.enable = lib.mkForce false;
+  };
 }
+
