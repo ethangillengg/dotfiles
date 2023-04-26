@@ -61,7 +61,6 @@
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
-  # networking.enableIPv6 = false;
   # networking.networkmanager.enable = true;
   # powerManagement.enable = false;
   # networking.networkmanager.wifi.backend = "iwd";
