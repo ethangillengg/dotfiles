@@ -1,4 +1,10 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }:
+
+let
+  colorscheme = config.colorscheme;
+  wallpaper = config.wallpaper;
+in
+{
   imports = [
     inputs.hyprland.homeManagerModules.default
   ];
@@ -6,13 +12,52 @@
   home.packages = with pkgs; [
     swaybg
     swayidle
-    swaylock
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
-      monitor=eDP-1,1920x1080@60,0x0,1
+      monitor=,highres,auto,1
+
+      general {
+        gaps_in=5
+        gaps_out=10
+        border_size=2.7
+        col.active_border=0xff${colorscheme.colors.base0C}
+        col.inactive_border=0xff${colorscheme.colors.base02}
+        col.group_border_active=0xff${colorscheme.colors.base0B}
+        col.group_border=0xff${colorscheme.colors.base04}
+        cursor_inactive_timeout=4
+      }
+      
+      decoration {
+        active_opacity=0.94
+        inactive_opacity=0.84
+        fullscreen_opacity=1.0
+        rounding=2
+        blur=true
+        blur_size=5
+        blur_passes=3
+        blur_new_optimizations=true
+        blur_ignore_opacity=true
+        drop_shadow=true
+        shadow_range=12
+        shadow_offset=3 3
+        col.shadow=0x44000000
+        col.shadow_inactive=0x66000000
+      }
+
+      animations {
+          enabled = yes
+          bezier = myBezierOld, 0.05, 0.9, 0.1, 1.05
+          bezier = myBezier,0.22, 1, 0.36, 1,
+          animation = windows, 1, 5, myBezier
+          animation = windowsOut, 1, 4, default, popin 80%
+          animation = border, 1, 8, default
+          animation = fade, 1, 2, default
+          animation = workspaces, 1, 4, default
+      }
+
 
       bind = SUPER, Return, exec, wezterm
       bind = SUPER, Space, exec, wofi -S drun -W 40% -H 60% 
@@ -20,7 +65,7 @@
       bind = SUPER, W, killactive, 
       bind = SUPER, V, togglefloating, 
       bind = SUPER, R, togglesplit, # dwindle
-      bind = SUPER, M, exec, swaylock
+      bind = SUPER, M, exec, swaylock -S --clock
       bind = SUPER_SHIFT, M, exit, 
 
       # Move focus with SUPER + arrow keys
@@ -74,38 +119,18 @@
       bindm = SUPER, mouse:272, movewindow
       bindm = SUPER, mouse:273, resizewindow
 
-      general {
-          gaps_in = 5
-          gaps_out = 10
-          border_size = 2
-          col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-          col.inactive_border = rgba(595959aa)
-          layout = dwindle
-      }
+      # Keyboard controls (brightness, media, sound, etc)
+      bind=,XF86MonBrightnessUp,exec,sudo light -A 10
+      bind=,XF86MonBrightnessDown,exec,sudo light -U 10
 
-      decoration {
-          rounding = 10
-          blur = yes
-          blur_size = 3
-          blur_passes = 1
-          blur_new_optimizations = on
+      blurls=waybar
+      blurls=firefox
 
-          drop_shadow = yes
-          shadow_range = 4
-          shadow_render_power = 3
-          col.shadow = rgba(1a1a1aee)
-      }
-
-      animations {
-          enabled = yes
-          bezier = myBezierOld, 0.05, 0.9, 0.1, 1.05
-          bezier = myBezier,0.22, 1, 0.36, 1,
-          animation = windows, 1, 5, myBezier
-          animation = windowsOut, 1, 4, default, popin 80%
-          animation = border, 1, 8, default
-          animation = fade, 1, 2, default
-          animation = workspaces, 1, 4, default
-      }
+      # Startup
+      exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec=swaybg -i ${wallpaper} --mode fill
+      exec-once=mako
+      exec-once=waybar
     '';
   };
 }

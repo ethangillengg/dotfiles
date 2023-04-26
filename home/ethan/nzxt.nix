@@ -10,13 +10,5 @@
     # ./features/pass
     # ./features/games
   ];
-
-  home.packages = with pkgs; [
-    firefox
-    neovim
-    cargo
-    btop
-    nvtop
-  ];
 }
 
