@@ -12,14 +12,19 @@
     vim
     fzf
     wl-clipboard
-    pciutils
     btop
     duf
+    dua
+    python3
+    python3Packages.virtualenv
+    python3Packages.pip
     termscp
     qbittorrent-nox
+    pciutils
+    nvtop
   ];
 
-
+  nixpkgs.config.allowUnfree = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Bootloader.
@@ -80,10 +85,10 @@
   nix.settings.trusted-users = [ "root" "ethan" ];
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 9090 5000 ]; #temp for invoke ai
+  networking.firewall.allowedUDPPorts = [ 9090 5000 ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

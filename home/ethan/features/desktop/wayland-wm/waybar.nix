@@ -89,19 +89,41 @@ in
         ];
 
         modules-right = [
-          # "custom/gamemode"
           "network"
           # "custom/tailscale-ping"
           "battery#bat0"
           "battery#bat1"
-          # "tray"
+          "tray"
+          "custom/power"
         ];
 
         clock = {
           format = "{:%d/%m %H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
-            <tt><small>{calendar}</small></tt>'';
+            <tt><small>{calendar}</small></tt>
+          '';
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+            actions = {
+              on-click-right = "mode";
+              on-click-forward = "tz_up";
+              on-click-backward = "tz_down";
+              on-scroll-up = "shift_up";
+              on-scroll-down = "shift_down";
+            };
+          };
           # on-click = calendar;
         };
 
@@ -158,12 +180,17 @@ in
           on-click = "";
         };
 
+        "custom/power" = {
+          exec = "echo '󰐥'";
+          on-click = "poweroff";
+        };
 
         "custom/hostname" = {
           exec = "echo $USER@$(hostname)";
           on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
           tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
         };
+
 
         "custom/menu" = {
           return-type = "json";
@@ -189,7 +216,7 @@ in
       }
     
       .modules-right {
-        margin-left: -30px;
+        margin-right: -30px;
       }
     
       .modules-left {
@@ -253,6 +280,14 @@ in
         color: #${colors.base00};
         padding-right: 18px;
         padding-left: 0px;
+        /* border-radius: 0 4px 4px 0;  */
+      }
+
+      #custom-power {
+        font-size: 24px;
+        background-color: #${colors.base0C};
+        color: #${colors.base00};
+        padding: 0 18px;
         /* border-radius: 0 4px 4px 0;  */
       }
     

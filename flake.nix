@@ -14,12 +14,6 @@
     hyprland.url = "github:hyprwm/Hyprland"; # Hyprland (https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/)
     # sops-nix.url = "github:mic92/sops-nix"; # Secret management
 
-    # # fingerprint sensor for thinkpad
-    # nixos-06cb-009a-fingerprint-sensor = {
-    #   url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     nix-colors.url = "github:misterio77/nix-colors";
   };
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
