@@ -24,6 +24,9 @@
 
     vim
     neovim
+    python3Packages.virtualenv
+    vscodium-fhs
+    python39
     pfetch
     wl-clipboard
     pciutils

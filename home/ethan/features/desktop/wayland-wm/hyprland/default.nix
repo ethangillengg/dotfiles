@@ -20,8 +20,8 @@ in
       monitor=,highres,auto,1
 
       general {
-        gaps_in=5
-        gaps_out=10
+        gaps_in=2
+        gaps_out=4
         border_size=2.7
         col.active_border=0xff${colorscheme.colors.base0C}
         col.inactive_border=0xff${colorscheme.colors.base02}
@@ -123,8 +123,13 @@ in
       bind=,XF86MonBrightnessUp,exec,sudo light -A 10
       bind=,XF86MonBrightnessDown,exec,sudo light -U 10
 
+      bind=,XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%
+      bind=,XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%
+      bind=,XF86AudioMute,exec,pactl set-sink-mute @DEFAULT_SINK@ toggle
+
       blurls=waybar
       blurls=firefox
+      layerrule = unset, waybar
 
       # Startup
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
