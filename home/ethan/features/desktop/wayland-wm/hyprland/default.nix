@@ -1,6 +1,7 @@
 { inputs, lib, config, pkgs, ... }:
 
 let
+  pactl = "${pkgs.pulseaudio}/bin/pactl";
   colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
 in
@@ -21,7 +22,7 @@ in
 
       general {
         gaps_in=2
-        gaps_out=4
+        gaps_out=2
         border_size=2.7
         col.active_border=0xff${colorscheme.colors.base0C}
         col.inactive_border=0xff${colorscheme.colors.base02}
@@ -32,7 +33,7 @@ in
       
       decoration {
         active_opacity=0.94
-        inactive_opacity=0.84
+        inactive_opacity=0.94
         fullscreen_opacity=1.0
         rounding=2
         blur=true
@@ -123,9 +124,9 @@ in
       bind=,XF86MonBrightnessUp,exec,sudo light -A 10
       bind=,XF86MonBrightnessDown,exec,sudo light -U 10
 
-      bind=,XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%
-      bind=,XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%
-      bind=,XF86AudioMute,exec,pactl set-sink-mute @DEFAULT_SINK@ toggle
+      bind=,XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%
+      bind=,XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%
+      bind=,XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle
 
       blurls=waybar
       blurls=firefox

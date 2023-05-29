@@ -1,5 +1,5 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ config, pkgs, stdenv, meta, inputs, outputs, ... }:
+{ config, pkgs, lib, stdenv, meta, inputs, outputs, ... }:
 {
   imports = [
     ./openssh.nix
@@ -21,9 +21,17 @@
     cargo
     gnumake
     git
+    wget
 
+    rust-analyzer
+    nil
+    rustup
+    rustfmt
+    nodejs
+    sshfs
     vim
     neovim
+    xfce.thunar
     python3Packages.virtualenv
     vscodium-fhs
     python39
@@ -52,9 +60,15 @@
     pavucontrol
     yt-music
     qbittorrent
+    mpv
+    pass-wayland
   ];
 
 
+  services.gvfs = {
+    enable = true;
+    package = lib.mkForce pkgs.gnome3.gvfs;
+  };
 
   documentation.man.man-db.enable = false;
   environment = {

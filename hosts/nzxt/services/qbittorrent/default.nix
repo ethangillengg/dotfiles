@@ -1,20 +1,36 @@
-{ config, pkgs, outputs, ... }:
+{ ... } @args:
 
 let
-  qbittorrent-port = 6969;
+  domain = args.domain;
+  port = args.port;
+
+  user = args.user;
+  group = args.group;
 in
 {
   services.qbittorrent-nox = {
     enable = true;
-    user = "media";
-    group = "media";
-    port = qbittorrent-port;
+    inherit user;
+    inherit group;
+    inherit port;
+  };
+
+
+  services.nginx.virtualHosts.${domain} = {
+    enableACME = true;
+    forceSSL = true; # redirect http to https
+    locations = {
+      "/" = {
+        proxyWebsockets = true;
+        recommendedProxySettings = true;
+        proxyPass = "http://localhost:${toString port}";
+      };
+    };
   };
 
 
   services.wgnord = {
     enable = true;
-    token = "MY_TOKEN";
     country = "canada";
     template = ''
       [Interface]
@@ -32,5 +48,4 @@ in
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [ qbittorrent-port ];
 }

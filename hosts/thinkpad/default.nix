@@ -11,7 +11,6 @@
     ./../common/optional/power-management.nix
   ];
   networking.hostName = "thinkpad";
-
   powerManagement.powertop.enable = true;
   programs = {
     light.enable = true;
@@ -19,6 +18,7 @@
     dconf.enable = true;
     kdeconnect.enable = true;
   };
+  services.blueman.enable = true;
 
   # Lid settings
   services.logind = {

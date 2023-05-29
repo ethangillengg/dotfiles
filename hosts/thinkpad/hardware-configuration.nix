@@ -18,6 +18,7 @@
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
   hardware = {
+    bluetooth.enable = true;
     opengl = {
       enable = true;
       extraPackages = with pkgs; [
