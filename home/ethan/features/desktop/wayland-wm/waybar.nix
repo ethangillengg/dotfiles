@@ -1,25 +1,26 @@
-{ outputs, config, lib, pkgs, ... }:
+{  config,  pkgs, ... }:
 
 let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
-  xml = "${pkgs.xmlstarlet}/bin/xml";
+  # xml = "${pkgs.xmlstarlet}/bin/xml";
   # gamemoded = "${pkgs.gamemode}/bin/gamemoded";
-  systemctl = "${pkgs.systemd}/bin/systemctl";
-  journalctl = "${pkgs.systemd}/bin/journalctl";
+  # systemctl = "${pkgs.systemd}/bin/systemctl";
+  # journalctl = "${pkgs.systemd}/bin/journalctl";
   # playerctl = "${pkgs.playerctl}/bin/playerctl";
   # playerctld = "${pkgs.playerctl}/bin/playerctld";
   # neomutt = "${pkgs.neomutt}/bin/neomutt";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
   wofi = "${pkgs.wofi}/bin/wofi";
-  # ikhal = "${pkgs.khal}/bin/ikhal";
+  nmtui = "${pkgs.networkmanager}/bin/nmtui";
 
   terminal = "${pkgs.wezterm}/bin/wezterm";
   terminal-spawn = cmd: "${terminal} -e $SHELL -i -c ${cmd}";
 
   # calendar = terminal-spawn ikhal;
   systemMonitor = terminal-spawn btop;
+  networkManager = terminal-spawn nmtui;
   # mail = terminal-spawn neomutt;
 
   # Function to simplify making waybar outputs
@@ -65,7 +66,7 @@ in
         position = "top";
         height = 40;
         # margin = "4 10 10 0";
-        margin = "0";
+        margin = "2";
         output = [
           "eDP-1"
           "DP-2"
@@ -128,12 +129,13 @@ in
         };
 
         cpu = {
-          format = "   {usage}%";
+          format = " {usage}%";
           on-click = systemMonitor;
         };
 
         memory = {
-          format = "  {}%";
+          # format = "  {}%";
+          format = " {}%";
           interval = 5;
           on-click = systemMonitor;
         };
@@ -141,23 +143,24 @@ in
         "battery#bat0" = {
           bat = "BAT0";
           interval = 10;
-          format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-          format = "{icon} {capacity}%";
-          format-plugged = " {capacity}%";
+          # format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+          format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
+          format = "{icon}{capacity}%";
+          format-plugged = "󱊦{capacity}%";
           tooltip-format = "Battery 0";
         };
         "battery#bat1" = {
           bat = "BAT1";
           interval = 10;
-          format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-          format = "{icon} {capacity}%";
-          format-plugged = " {capacity}%";
+          format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
+          format = "{icon}{capacity}%";
+          format-plugged = "󱊦 {capacity}%";
           tooltip-format = "Battery 1";
         };
 
         pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = "   0%";
+          format = "{icon} {volume}%";
+          format-muted = "󰝟 0%";
           format-icons = {
             headphone = "";
             headset = "";
@@ -169,7 +172,7 @@ in
 
         network = {
           interval = 3;
-          format-wifi = "   {essid}";
+          format-wifi = " {essid}";
           format-ethernet = " Connected";
           format-disconnected = "";
           tooltip-format = ''
@@ -177,7 +180,7 @@ in
             {ipaddr}/{cidr}
             Up: {bandwidthUpBits}
             Down: {bandwidthDownBits}'';
-          on-click = "";
+          on-click = networkManager;
         };
 
         "custom/power" = {
@@ -209,9 +212,9 @@ in
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
     style = let inherit (config.colorscheme) colors; in /* css */ ''
-       * {
-        font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
+      * {
         font-size: 20px;
+        font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
         padding: 0px 16px;
       }
     
@@ -227,13 +230,12 @@ in
         opacity: 0.95;
         padding: 0;
         background-color: #${colors.base00};
-        /* border: 2px solid #${colors.base0C};  */
-        /* border-radius: 4px; */
+        border: 2px solid #${colors.base0C};
+        border-radius: 4px;
       }
       window#waybar.bottom {
         opacity: 0.90;
         background-color: #${colors.base00};
-        border: 0px solid #${colors.base0C};
         border-radius: 4px;
       }
     
@@ -263,7 +265,7 @@ in
         padding-right: 15px;
         margin-top: 0;
         margin-bottom: 0;
-        /* border-radius: 4px; */
+        border-radius: 4px;
       }
     
       #custom-menu {
@@ -272,7 +274,7 @@ in
         color: #${colors.base00};
         padding-right: 8px;
         padding-left: 6px;
-        /* border-radius: 4px 0 0 4px;  */
+        border-radius: 4px 0 0 4px;
       }
     
       #custom-hostname {
@@ -280,7 +282,6 @@ in
         color: #${colors.base00};
         padding-right: 18px;
         padding-left: 0px;
-        /* border-radius: 0 4px 4px 0;  */
       }
 
       #custom-power {
@@ -288,7 +289,7 @@ in
         background-color: #${colors.base0C};
         color: #${colors.base00};
         padding: 0 18px;
-        /* border-radius: 0 4px 4px 0;  */
+        border-radius: 0 4px 4px 0;
       }
     
       #tray {

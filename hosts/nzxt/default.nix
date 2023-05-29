@@ -3,26 +3,26 @@
   imports = [
     ./hardware-configuration.nix
     ./services
+
+    ./../common
   ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    fzf
-    wl-clipboard
-    btop
-    duf
-    dua
-    python3
-    python3Packages.virtualenv
-    python3Packages.pip
-    termscp
-    qbittorrent-nox
-    pciutils
-    nvtop
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   git
+  #   vim
+  #   fzf
+  #   wl-clipboard
+  #   btop
+  #   duf
+  #   dua
+  #   termscp
+  #   qbittorrent-nox
+  #   pciutils
+  #   nvtop
+  #   speedtest-cli
+  # ];
 
   nixpkgs.config.allowUnfree = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -52,21 +52,21 @@
   };
 
 
+  programs.fish.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ethan = {
     isNormalUser = true;
     description = "ethan";
     extraGroups = [ "networkmanager" "wheel" "mediaserver" ];
+    shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       #thinkpad
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDE0haeLHMxd2Q40l9P5Aj63CDOZ5ntbBQXvHRyrMy9SJ8HC737LZC6zIAsXabEify5j4vBu1K6eafMvUbRmI34EtzRCeNKd8SoeH6up4o5lTB5bJGj5uRL2tk8kQyzXt/mpzdyM7i+nvpcEDmOIBTnfQ7NiYvM228i7P1ktT7INw8FwalpwxrMlGO0hH86rr7jKodOt//3xCioGxT3BmSufPnBljXjfLw4DmcRqL4rZBxnlk8VxpavwYCohMRzZ5w2Q5w2eybCfhtRWrXj4uEuv6YTFlh7r04ZUPTfzOrLUZyM9J1zUBmvuXRWY6+W4DVFAZ849mJOFFTFafSLx8ubmxwS+rfbX5nsF5MjAhm28N2JLnIjQtNqpIP9gkd5krBzVrYYj4SPrgxOjPc78IoB5T5SAEYP5gLw701JUgaTMrBfGEAtiVvfwv4dtmdRM7eIjoaVnD5DrBpl0DCl3I8biRC8B9fiKL32d06wOrUjBfHiA5peFSYQEoiKKewYgQ8= ethan"
     ];
   };
 
-  users.users.guest = {
+  users.users.media = {
     isNormalUser = true;
-    description = "guest";
-    extraGroups = [ "networkmanager" ];
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -84,10 +84,6 @@
   };
   nix.settings.trusted-users = [ "root" "ethan" ];
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 9090 5000 ]; #temp for invoke ai
-  networking.firewall.allowedUDPPorts = [ 9090 5000 ];
-  # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default

@@ -7,6 +7,21 @@ in
 {
   programs.wezterm = {
     enable = true;
+    extraConfig = ''
+            return {
+              font_size = 14.0,
+              font = wezterm.font("${config.fontProfiles.monospace.family}"),
+              hide_tab_bar_if_only_one_tab = true,
+              color_scheme = "Catppuccin Mocha",
+              enable_tab_bar = false,
+              window_close_confirmation = "NeverPrompt",
+              hide_mouse_cursor_when_typing = false,
+              window_close_confirmation = "NeverPrompt",
+              initial_cols = 120,
+              initial_rows = 32
+            }
+    '';
+  };
     # colorSchemes = {
     #   "${colorscheme.slug}" = {
     #     foreground = "#${colors.base05}";
@@ -39,20 +54,6 @@ in
     #   };
     # };
     # color_scheme = "${colorscheme.slug}",
+    # color_scheme = "Material Darker (base16)",
     # color_scheme = "GruvboxDarkHard",
-    extraConfig = ''
-      return {
-        font_size = 14.0,
-        font = wezterm.font("${config.fontProfiles.monospace.family}"),
-        color_scheme = "GruvboxDarkHard",
-        hide_tab_bar_if_only_one_tab = true,
-        enable_tab_bar = false,
-        window_close_confirmation = "NeverPrompt",
-        hide_mouse_cursor_when_typing = false,
-        window_close_confirmation = "NeverPrompt",
-        initial_cols = 120,
-        initial_rows = 32
-      }
-    '';
-  };
 }

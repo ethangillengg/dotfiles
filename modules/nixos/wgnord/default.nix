@@ -22,11 +22,11 @@ in
     services.wgnord = {
       enable = mkEnableOption "Enable wgnord";
       # NOT WORKNG SINCE IT REQUIRES THE TOKEN IN THE NIXOS STORE
-      token = mkOption {
-        type = types.nullOr types.str;
-        default = null;
-        description = "Path to a file containing your NordVPN authentication token";
-      };
+      # token = mkOption {
+      #   type = types.path;
+      #   default = null;
+      #   description = "Path to a file containing your NordVPN authentication token";
+      # };
       country = mkOption {
         type = types.str;
         default = "United States";
@@ -51,7 +51,8 @@ in
         Type = "oneshot";
         RemainAfterExit = "yes";
         # ExecStartPre = "-${wgnord-latest}/bin/wgnord login \"$(<${cfg.authTokenFile})\"";
-        ExecStartPre = "-${wgnord-latest}/bin/wgnord login \"${cfg.token}\"";
+        # ExecStartPre = "-${wgnord-latest}/bin/wgnord login \"\$(cat ${cfg.token})\"";
+        ExecStartPre = "-${wgnord-latest}/bin/wgnord login \"\$(cat '/root/.wgnord-token')\"";
         ExecStart = "${wgnord-latest}/bin/wgnord connect \"${cfg.country}\"";
         ExecStop = "-${wgnord-latest}/bin/wgnord disconnect";
         User = "root";

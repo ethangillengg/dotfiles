@@ -55,7 +55,6 @@ in
 
     users.groups.${cfg.group} = { };
     users.extraUsers.${cfg.user} = {
-      isSystemUser = true;
       group = cfg.group;
     };
   };
