@@ -139,6 +139,13 @@ in {
 
         cpu = {
           format = " {usage}%";
+          interval = 3;
+          on-click = systemMonitor;
+        };
+
+        memory = {
+          format = " {}%";
+          interval = 3;
           on-click = systemMonitor;
         };
 
@@ -163,13 +170,6 @@ in {
           # actions= {
           #            on-click-right= "mode"
           #            }
-        };
-
-        memory = {
-          # format = "  {}%";
-          format = " {}%";
-          interval = 5;
-          on-click = systemMonitor;
         };
 
         "battery#bat0" = {
