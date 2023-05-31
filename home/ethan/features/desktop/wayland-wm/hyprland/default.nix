@@ -2,6 +2,9 @@
 
 let
   pactl = "${pkgs.pulseaudio}/bin/pactl";
+  grim = "${pkgs.grim}/bin/grim";
+  slurp = "${pkgs.slurp}/bin/slurp";
+
   colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
 in
@@ -127,6 +130,9 @@ in
       bind=,XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%
       bind=,XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%
       bind=,XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle
+
+      # Screenshot
+      bind = SUPER, s, exec, ${grim} -g "$(${slurp})" - | wl-copy -t image/png
 
       blurls=waybar
       blurls=firefox
