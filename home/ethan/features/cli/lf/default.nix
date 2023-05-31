@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     trashy
     file
@@ -8,7 +7,6 @@
     pistol
     chafa
   ];
-
 
   xdg.configFile."lf/icons".source = ./icons;
   xdg.configFile."lf/colors".source = ./colors;
@@ -98,4 +96,3 @@
     };
   };
 }
-

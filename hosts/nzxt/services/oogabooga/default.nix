@@ -1,9 +1,7 @@
-{ pkgs, ... }@args:
-let
+{pkgs, ...} @ args: let
   domain = args.domain;
   port = args.port;
-in
-{
+in {
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
@@ -12,14 +10,13 @@ in
     enable = true;
     enableNvidia = true;
   };
-  users.users."ethan".extraGroups = [ "docker" ];
+  users.users."ethan".extraGroups = ["docker"];
 
   services.nginx.virtualHosts.${domain} = {
     enableACME = true;
     forceSSL = true; # redirect http to https
 
     locations = {
-
       "/" = {
         proxyWebsockets = true;
         recommendedProxySettings = true;
@@ -27,7 +24,6 @@ in
       };
     };
   };
-
 
   environment.systemPackages = with pkgs; [
     python3

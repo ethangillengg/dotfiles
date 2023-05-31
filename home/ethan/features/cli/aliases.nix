@@ -17,7 +17,6 @@
     nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#thinkpad";
     nrd = "nixos-rebuild switch --flake /home/ethan/.dotfiles#nzxt --target-host ethan@nzxt --use-remote-sudo";
 
-
     #My ip
     me = "xh -j ipinfo.io";
 

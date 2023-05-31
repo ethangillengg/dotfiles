@@ -1,9 +1,7 @@
 {
   # not working due to https://github.com/ajeetdsouza/zoxide/issues/66 :((
   programs.ion = {
-
     enable = false;
-
 
     initExtra = ''
       fn _z_cd argv:[str]
@@ -38,4 +36,3 @@
     # };
   };
 }
-

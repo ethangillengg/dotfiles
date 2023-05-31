@@ -1,16 +1,11 @@
-{ ... } @args:
-
-let
+{...} @ args: let
   domain = args.domain;
   port = args.port;
   url = args.url;
 
   user = args.user;
   group = args.group;
-in
-{
-
-
+in {
   services = {
     jellyfin = {
       enable = true;
@@ -18,7 +13,6 @@ in
       inherit user;
       inherit group;
     };
-
 
     nginx.virtualHosts.${domain} = {
       enableACME = true;
@@ -46,21 +40,18 @@ in
     #         proxyWebsockets = true;
     #         recommendedProxySettings = true;
     #         proxyPass = "http://localhost:${toString port}";
-    #         extraConfig = "rewrite ^/${url}/(.*) /$1 break;"; # proxy to jellyfin without the /media/ 
+    #         extraConfig = "rewrite ^/${url}/(.*) /$1 break;"; # proxy to jellyfin without the /media/
     #       };
     #     };
     #   };
     # };
-
   };
 
   users = {
-    groups.${group} = { };
+    groups.${group} = {};
     users.${user} = {
       description = "Media services";
       group = group;
     };
   };
 }
-
-

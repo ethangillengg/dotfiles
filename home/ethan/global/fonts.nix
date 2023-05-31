@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   fontProfiles = {
     enable = true;
     # monospace = {
@@ -11,16 +11,16 @@
     # };
 
     monospace = {
-    #   family = "FiraCode Nerd Font";
+      #   family = "FiraCode Nerd Font";
       family = "JetBrainsMono Nerd Font";
-      package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; };
+      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode"];};
       # package = pkgs.nerdfonts;
     };
     regular = {
       # family = "JetBrainsMono Nerd Font";
       family = "JetBrainsMono Nerd Font";
       # package = pkgs.jetbrains-mono;
-      package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; };
+      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode"];};
     };
   };
 }

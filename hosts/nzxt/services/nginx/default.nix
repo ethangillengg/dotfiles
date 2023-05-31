@@ -1,10 +1,7 @@
-{ pkgs, ... } @args:
-
-let
+{pkgs, ...} @ args: let
   domain = args.domain;
   url = args.url;
   email = args.email;
-
 
   # Get the path to index.html
   indexPath = builtins.path {
@@ -13,14 +10,11 @@ let
   };
 
   # Define directory in the nix store with the index.html file
-  indexDir = pkgs.runCommandLocal "nginx-index-directory" { } ''
+  indexDir = pkgs.runCommandLocal "nginx-index-directory" {} ''
     mkdir -p $out
     cp ${indexPath} $out/index.html
   '';
-in
-{
-
-
+in {
   services = {
     nginx = {
       enable = true;
@@ -47,7 +41,6 @@ in
         };
       };
     };
-
   };
 
   # Http + Https
@@ -58,8 +51,6 @@ in
 
   security.acme = {
     acceptTerms = true;
-    defaults = { inherit email; };
+    defaults = {inherit email;};
   };
 }
-
-

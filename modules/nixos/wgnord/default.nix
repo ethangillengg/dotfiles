@@ -1,9 +1,12 @@
 # provides wgnord and makes configuration files
-{ config, lib, pkgs, ... }:
-with lib;
-
-let
-  wgnord-latest = pkgs.callPackage ../../../pkgs/wgnord-latest { };
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  wgnord-latest = pkgs.callPackage ../../../pkgs/wgnord-latest {};
 
   openresolv = pkgs.openresolv;
   coreutils = pkgs.coreutils;
@@ -15,9 +18,7 @@ let
   wireguard-tools = pkgs.wireguard-tools;
 
   cfg = config.services.wgnord;
-in
-{
-
+in {
   options = {
     services.wgnord = {
       enable = mkEnableOption "Enable wgnord";
@@ -44,9 +45,9 @@ in
     # Configure the systemd service
     systemd.services.wgnord = {
       description = "wgnord vpn service";
-      after = [ "network.target" ];
-      wants = [ "network.target" ];
-      wantedBy = [ "multi-user.target" ];
+      after = ["network.target"];
+      wants = ["network.target"];
+      wantedBy = ["multi-user.target"];
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = "yes";
@@ -69,7 +70,6 @@ in
     #   user = "root";
     #   mode = "0600";
     # };
-
 
     systemd.tmpfiles.rules = [
       "d /etc/wireguard/ 755 root root"

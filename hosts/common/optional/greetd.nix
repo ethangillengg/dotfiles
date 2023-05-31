@@ -1,5 +1,10 @@
-{ pkgs, lib, inputs, system, ... }:
-let
+{
+  pkgs,
+  lib,
+  inputs,
+  system,
+  ...
+}: let
   user = "ethan";
   gtkgreet = "${pkgs.greetd.gtkgreet}/bin/gtkgreet";
 
@@ -8,8 +13,7 @@ let
     exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
     exec "${command}; ${pkgs.sway}/bin/swaymsg exit"
   ''}";
-in
-{
+in {
   services.greetd = {
     enable = true;
     settings = {
@@ -26,4 +30,3 @@ in
     gdm.enable = lib.mkForce false;
   };
 }
-

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 # let
 #   # wofi = pkgs.wofi.overrideAttrs (oa: {
 #   #   patches = (oa.patches or [ ]) ++ [
@@ -11,7 +16,7 @@
 #   pass-wofi = pkgs.pass-wofi.override { inherit pass; };
 # in
 {
-  home.packages = [ pkgs.wofi ];
+  home.packages = [pkgs.wofi];
   # ++
   #   (lib.optional passEnabled pass-wofi);
 

@@ -1,19 +1,16 @@
-{ pkgs }:
-
-{
+{pkgs}: {
   services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
 
   services.samba = {
     enable = false;
     securityType = "user";
 
-
     # This adds to the [global] section:
     extraConfig = ''
       workgroup = WORKGROUP
       server string = smbnix
       netbios name = smbnix
-      security = user 
+      security = user
       #use sendfile = yes
       # hosts allow = 192.168.0. 127.0.0.1 localhost
       # hosts deny = 0.0.0.0/0
@@ -24,28 +21,23 @@
     # securityType = "none";
     shares = {
       media = {
-        path = "/mnt/mediaserver/media";
+        path = "/mnt/ethanpc";
         browseable = "yes";
         "writeable" = "yes";
         "null passwords" = "yes";
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "media";
-        "force group" = "media";
+        "force user" = "ethan";
+        "force group" = "users";
       };
     };
   };
 
-
-
   # Curiously, `services.samba` does not automatically open
   # the needed ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 445 139 5357 ];
-  networking.firewall.allowedUDPPorts = [ 137 138 3702 ];
-
-
-
+  networking.firewall.allowedTCPPorts = [445 139 5357];
+  networking.firewall.allowedUDPPorts = [137 138 3702];
 
   # To make SMB mounting easier on the command line
   environment.systemPackages = with pkgs; [
@@ -78,4 +70,3 @@
     };
   };
 }
-

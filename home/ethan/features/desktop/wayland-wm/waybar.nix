@@ -1,6 +1,8 @@
-{  config,  pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
   # xml = "${pkgs.xmlstarlet}/bin/xml";
@@ -25,7 +27,14 @@ let
   # mail = terminal-spawn neomutt;
 
   # Function to simplify making waybar outputs
-  jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
+  jsonOutput = name: {
+    pre ? "",
+    text ? "",
+    tooltip ? "",
+    alt ? "",
+    class ? "",
+    percentage ? "",
+  }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
     set -euo pipefail
     ${pre}
     ${jq} -cn \
@@ -36,12 +45,10 @@ let
       --arg percentage "${percentage}" \
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
-in
-{
+in {
   programs.waybar = {
     enable = true;
     settings = {
-
       # secondary = {
       #   mode = "dock";
       #   layer = "top";
@@ -135,27 +142,27 @@ in
           on-click = systemMonitor;
         };
 
-        cava ={
-        # cava_config= "$XDG_CONFIG_HOME/cava/cava.conf",
-         framerate= 60;
-          autosens= 1;
-          sensitivity= 100;
-          bars= 14;
-          lower_cutoff_freq= 50;
-          higher_cutoff_freq= 10000;
-          method= "pulse";
-          source= "auto";
-          stereo= true;
-          reverse= false;
-          bar_delimiter= 0;
-          monstercat= false;
-          waves= false;
-          noise_reduction= 0.77;
-          input_delay= 2;
-          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
-        # actions= {
-        #            on-click-right= "mode"
-        #            }
+        cava = {
+          # cava_config= "$XDG_CONFIG_HOME/cava/cava.conf",
+          framerate = 60;
+          autosens = 1;
+          sensitivity = 100;
+          bars = 14;
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          method = "pulse";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          noise_reduction = 0.77;
+          input_delay = 2;
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+          # actions= {
+          #            on-click-right= "mode"
+          #            }
         };
 
         memory = {
@@ -170,7 +177,7 @@ in
           interval = 10;
           # format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
           # format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
-          format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           format = "{icon}{capacity}%";
           format-plugged = "󰂄{capacity}%";
           tooltip-format = "Battery 0";
@@ -178,7 +185,7 @@ in
         "battery#bat1" = {
           bat = "BAT1";
           interval = 10;
-          format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           format = "{icon}{capacity}%";
           format-plugged = "󰂄{capacity}%";
           tooltip-format = "Battery 1";
@@ -191,7 +198,7 @@ in
             headphone = "󰋋";
             headset = "󰋎";
             portable = "";
-            default = [ "" "" "" ];
+            default = ["" "" ""];
           };
           on-click = pavucontrol;
         };
@@ -220,7 +227,6 @@ in
           tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
         };
 
-
         "custom/menu" = {
           return-type = "json";
           exec = jsonOutput "menu" {
@@ -237,91 +243,96 @@ in
     # x y -> vertical, horizontal
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
-    style = let inherit (config.colorscheme) colors; in /* css */ ''
-      * {
-        font-size: 20px;
-        font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
-        padding: 0px 16px;
-      }
-    
-      .modules-right {
-        margin-right: -30px;
-      }
-    
-      .modules-left {
-        margin-left: -30px;
-      }
-    
-      window#waybar.top {
-        opacity: 0.95;
-        padding: 0;
-        background-color: #${colors.base00};
-        border: 2px solid #${colors.base0C};
-        border-radius: 4px;
-      }
-      window#waybar.bottom {
-        opacity: 0.90;
-        background-color: #${colors.base00};
-        border-radius: 4px;
-      }
-    
-      window#waybar {
-        color: #${colors.base05};
-      }
-    
-      #workspaces button {
-        background-color: #${colors.base01};
-        color: #${colors.base05};
-        margin: 4px;
-      }
-      #workspaces button.hidden {
-        background-color: #${colors.base00};
-        color: #${colors.base04};
-      }
-      #workspaces button.focused,
-      #workspaces button.active {
-        background-color: #${colors.base0A};
-        color: #${colors.base00};
-      }
-    
-      #clock {
-        background-color: #${colors.base0C};
-        color: #${colors.base00};
-        padding-left: 15px;
-        padding-right: 15px;
-        margin-top: 0;
-        margin-bottom: 0;
-        border-radius: 4px;
-      }
-    
-      #custom-menu {
-        font-size: 28px;
-        background-color: #${colors.base0C};
-        color: #${colors.base00};
-        padding-right: 8px;
-        padding-left: 6px;
-        border-radius: 4px 0 0 4px;
-      }
-    
-      #custom-hostname {
-        background-color: #${colors.base0C};
-        color: #${colors.base00};
-        padding-right: 18px;
-        padding-left: 0px;
-      }
+    style = let
+      inherit (config.colorscheme) colors;
+    in
+      /*
+      css
+      */
+      ''
+        * {
+          font-size: 20px;
+          font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
+          padding: 0px 16px;
+        }
 
-      #custom-power {
-        font-size: 24px;
-        background-color: #${colors.base0C};
-        color: #${colors.base00};
-        padding: 0 18px;
-        border-radius: 0 4px 4px 0;
-      }
-    
-      #tray {
-        color: #${colors.base05};
-      } 
-    '';
+        .modules-right {
+          margin-right: -30px;
+        }
+
+        .modules-left {
+          margin-left: -30px;
+        }
+
+        window#waybar.top {
+          opacity: 0.95;
+          padding: 0;
+          background-color: #${colors.base00};
+          border: 2px solid #${colors.base0C};
+          border-radius: 4px;
+        }
+        window#waybar.bottom {
+          opacity: 0.90;
+          background-color: #${colors.base00};
+          border-radius: 4px;
+        }
+
+        window#waybar {
+          color: #${colors.base05};
+        }
+
+        #workspaces button {
+          background-color: #${colors.base01};
+          color: #${colors.base05};
+          margin: 4px;
+        }
+        #workspaces button.hidden {
+          background-color: #${colors.base00};
+          color: #${colors.base04};
+        }
+        #workspaces button.focused,
+        #workspaces button.active {
+          background-color: #${colors.base0A};
+          color: #${colors.base00};
+        }
+
+        #clock {
+          background-color: #${colors.base0C};
+          color: #${colors.base00};
+          padding-left: 15px;
+          padding-right: 15px;
+          margin-top: 0;
+          margin-bottom: 0;
+          border-radius: 4px;
+        }
+
+        #custom-menu {
+          font-size: 28px;
+          background-color: #${colors.base0C};
+          color: #${colors.base00};
+          padding-right: 8px;
+          padding-left: 6px;
+          border-radius: 4px 0 0 4px;
+        }
+
+        #custom-hostname {
+          background-color: #${colors.base0C};
+          color: #${colors.base00};
+          padding-right: 18px;
+          padding-left: 0px;
+        }
+
+        #custom-power {
+          font-size: 24px;
+          background-color: #${colors.base0C};
+          color: #${colors.base00};
+          padding: 0 18px;
+          border-radius: 0 4px 4px 0;
+        }
+
+        #tray {
+          color: #${colors.base05};
+        }
+      '';
   };
-
 }

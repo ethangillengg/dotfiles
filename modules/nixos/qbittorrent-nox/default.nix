@@ -1,11 +1,13 @@
-{ config, pkgs, lib, ... }:
-with lib;
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.services.qbittorrent-nox;
   qbittorrentConfigDir = "/var/lib/qbittorrent";
-in
-{
+in {
   options.services.qbittorrent-nox = {
     enable = mkOption {
       type = types.bool;
@@ -30,12 +32,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.qbittorrent-nox ];
+    environment.systemPackages = [pkgs.qbittorrent-nox];
 
     systemd.services.qbittorrent-nox = {
       description = "qBittorrent webui";
-      after = [ "network.target" ];
-      wantedBy = [ "multi-user.target" ];
+      after = ["network.target"];
+      wantedBy = ["multi-user.target"];
 
       serviceConfig = {
         # Type = "oneshot";
@@ -52,12 +54,9 @@ in
       "d ${qbittorrentConfigDir} 0755 ${cfg.user} ${cfg.group} -"
     ];
 
-
-    users.groups.${cfg.group} = { };
+    users.groups.${cfg.group} = {};
     users.extraUsers.${cfg.user} = {
       group = cfg.group;
     };
   };
-
 }
-

@@ -1,5 +1,8 @@
-{ outputs, pkgs, ... }:
-let
+{
+  outputs,
+  pkgs,
+  ...
+}: let
   domain = "gillwire.duckdns.org";
   mediaUser = "media";
   email = "ethan.gill@ucalgary.ca";
@@ -9,7 +12,6 @@ let
     inherit domain;
     inherit email;
   };
-
 
   mediaserver = import ./jellyfin {
     domain = "media.${domain}";
@@ -49,9 +51,7 @@ let
   samba = import ./samba {
     inherit pkgs;
   };
-
-in
-{
+in {
   imports = [
     nginx
     mediaserver
@@ -62,7 +62,6 @@ in
   ];
   # ] ++ (builtins.attrValues outputs.nixosModules);
 
-  # open (custom) port for ssh 
-  networking.firewall.allowedTCPPorts = [ 420 ];
+  # open (custom) port for ssh
+  networking.firewall.allowedTCPPorts = [420];
 }
-

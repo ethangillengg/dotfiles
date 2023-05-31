@@ -1,13 +1,23 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ config, pkgs, lib, stdenv, meta, inputs, outputs, ... }: {
-  imports = [ ./openssh.nix ./hyprland.nix ]
+{
+  config,
+  pkgs,
+  lib,
+  stdenv,
+  meta,
+  inputs,
+  outputs,
+  ...
+}: {
+  imports =
+    [./openssh.nix ./hyprland.nix]
     ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 

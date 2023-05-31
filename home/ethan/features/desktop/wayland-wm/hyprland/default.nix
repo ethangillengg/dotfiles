@@ -1,14 +1,17 @@
-{ inputs, lib, config, pkgs, ... }:
-
-let
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
 
   colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
-in
-{
+in {
   imports = [
     inputs.hyprland.homeManagerModules.default
   ];
@@ -33,7 +36,7 @@ in
         col.group_border=0xff${colorscheme.colors.base04}
         cursor_inactive_timeout=4
       }
-      
+
       decoration {
         active_opacity=0.94
         inactive_opacity=0.84
@@ -65,13 +68,13 @@ in
 
 
       bind = SUPER, Return, exec, wezterm
-      bind = SUPER, Space, exec, wofi -S drun -W 40% -H 60% 
+      bind = SUPER, Space, exec, wofi -S drun -W 40% -H 60%
       bind = SUPER, F, fullscreen
-      bind = SUPER, W, killactive, 
-      bind = SUPER, V, togglefloating, 
+      bind = SUPER, W, killactive,
+      bind = SUPER, V, togglefloating,
       bind = SUPER, R, togglesplit, # dwindle
       bind = SUPER, M, exec, swaylock -S --clock
-      bind = SUPER_SHIFT, M, exit, 
+      bind = SUPER_SHIFT, M, exit,
 
       # Move focus with SUPER + arrow keys
       bind = SUPER, left, movefocus, l
@@ -147,4 +150,3 @@ in
     '';
   };
 }
-
