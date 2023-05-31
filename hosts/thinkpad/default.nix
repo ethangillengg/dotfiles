@@ -1,6 +1,12 @@
-{ config, pkgs, stdenv, meta, inputs, outputs, ... }:
-
 {
+  config,
+  pkgs,
+  stdenv,
+  meta,
+  inputs,
+  outputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -37,7 +43,6 @@
   hardware.trackpoint.enable = true;
   programs.fish.enable = true;
 
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -63,7 +68,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -78,7 +82,7 @@
   users.users.ethan = {
     isNormalUser = true;
     description = "ethan";
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = ["wheel" "networkmanager" "docker"];
     shell = pkgs.fish;
     # shell = "fish";
   };
@@ -96,5 +100,5 @@
   system.stateVersion = "22.11"; # Did you read the comment?
 
   # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 }

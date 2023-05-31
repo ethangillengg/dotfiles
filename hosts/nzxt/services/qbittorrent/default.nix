@@ -1,20 +1,16 @@
-{ ... } @args:
-
-let
+{...} @ args: let
   domain = args.domain;
   port = args.port;
 
   user = args.user;
   group = args.group;
-in
-{
+in {
   services.qbittorrent-nox = {
     enable = true;
     inherit user;
     inherit group;
     inherit port;
   };
-
 
   services.nginx.virtualHosts.${domain} = {
     enableACME = true;
@@ -27,7 +23,6 @@ in
       };
     };
   };
-
 
   services.wgnord = {
     enable = true;
@@ -47,5 +42,4 @@ in
       PersistentKeepalive = 25
     '';
   };
-
 }

@@ -1,12 +1,8 @@
-{ ... } @args:
-
-let
+{...} @ args: let
   domain = args.domain;
 
   port = args.port;
-in
-{
-
+in {
   services.vaultwarden = {
     enable = true;
     config = {
@@ -27,6 +23,4 @@ in
       };
     };
   };
-
 }
-

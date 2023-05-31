@@ -1,7 +1,7 @@
 {
   programs.fish = {
     enable = true;
-    shellAbbrs = { };
+    shellAbbrs = {};
     functions = {
       fish_greeting = "pfetch";
       lfcd = ''
@@ -23,7 +23,8 @@
       # Open command buffer in vim when alt+e is pressed
       ''
         bind \ee edit_command_buffer
-      '' +
+      ''
+      +
       # kitty integration
       # ''
       #   set --global KITTY_INSTALLATION_DIR "${pkgs.kitty}/lib/kitty"

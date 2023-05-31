@@ -1,13 +1,9 @@
-{ pkgs, ... } @args:
-
-let
+{pkgs, ...} @ args: let
   domain = args.domain;
   port = args.port;
-
   # user = args.user;
   # group = args.group;
-in
-{
+in {
   services = {
     nextcloud = {
       enable = true;
@@ -47,5 +43,5 @@ in
     };
   };
 
-  users.users.nextcloud.extraGroups = [ "mediaserver" ];
+  users.users.nextcloud.extraGroups = ["mediaserver"];
 }

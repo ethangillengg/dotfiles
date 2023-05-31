@@ -1,16 +1,19 @@
-{ config, lib, inputs, pkgs, ... }:
-let
-  inherit (inputs.nix-colors) colorSchemes;
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) colorschemeFromPicture nixWallpaperFromScheme;
-in
 {
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (inputs.nix-colors) colorSchemes;
+  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) colorschemeFromPicture nixWallpaperFromScheme;
+in {
   imports = [
     ./global
     ./features/cli
     ./features/desktop
     ./features/coding
   ];
-
 
   #Favs:
   # colorscheme = inputs.nix-colors.colorschemes.catppuccin-macchiato;
@@ -23,12 +26,11 @@ in
   # colorscheme = inputs.nix-colors.colorschemes.rose-pine-moon;
 
   # wallpaper = (import ./wallpapers).aenami-lunar;
-  wallpaper =
-    let
-      largest = f: xs: builtins.head (builtins.sort (a: b: a > b) (map f xs));
-      # largestWidth = largest (x: x.width) config.monitors;
-      # largestHeight = largest (x: x.height) config.monitors;
-    in
+  wallpaper = let
+    largest = f: xs: builtins.head (builtins.sort (a: b: a > b) (map f xs));
+    # largestWidth = largest (x: x.width) config.monitors;
+    # largestHeight = largest (x: x.height) config.monitors;
+  in
     lib.mkDefault (nixWallpaperFromScheme
       {
         scheme = config.colorscheme;
@@ -38,7 +40,6 @@ in
       });
   home.file.".colorscheme".text = config.colorscheme.slug;
 
-
   # monitors = [{
   #   name = "eDP-1";
   #   width = 1920;
@@ -47,4 +48,3 @@ in
   #   workspace = "1";
   # }];
 }
-
