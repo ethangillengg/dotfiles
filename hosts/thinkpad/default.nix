@@ -9,6 +9,7 @@
     ./../common/optional/x11-no-suspend.nix
     ./../common/optional/greetd.nix
     ./../common/optional/power-management.nix
+    ./../common/optional/quietboot.nix
   ];
   networking.hostName = "thinkpad";
   powerManagement.powertop.enable = true;
