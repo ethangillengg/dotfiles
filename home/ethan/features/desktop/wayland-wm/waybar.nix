@@ -143,18 +143,17 @@ in
         "battery#bat0" = {
           bat = "BAT0";
           interval = 10;
-          # format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-          format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
+          format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           format = "{icon}{capacity}%";
-          format-plugged = "󱊦 {capacity}%";
+          format-plugged = "󰂄{capacity}%";
           tooltip-format = "Battery 0";
         };
         "battery#bat1" = {
           bat = "BAT1";
           interval = 10;
-          format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
+          format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           format = "{icon}{capacity}%";
-          format-plugged = "󱊦 {capacity}%";
+          format-plugged = "󰂄{capacity}%";
           tooltip-format = "Battery 1";
         };
 
@@ -162,8 +161,8 @@ in
           format = "{icon} {volume}%";
           format-muted = "󰝟 0%";
           format-icons = {
-            headphone = "";
-            headset = "";
+            headphone = "󰋋";
+            headset = "󰋎";
             portable = "";
             default = [ "" "" "" ];
           };
