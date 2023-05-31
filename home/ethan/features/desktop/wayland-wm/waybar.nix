@@ -146,7 +146,7 @@ in
           # format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
           format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
           format = "{icon}{capacity}%";
-          format-plugged = "󱊦{capacity}%";
+          format-plugged = "󱊦 {capacity}%";
           tooltip-format = "Battery 0";
         };
         "battery#bat1" = {
