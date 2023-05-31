@@ -70,14 +70,13 @@
       ];
       toggle_aliasing = "r";
       # I only hit these accidentally
-      save_image = [ ];
-      save_filelist = [ ];
+      save_image = [];
+      save_filelist = [];
     };
     buttons = {
-      zoom_in = [ 4 1 ];
+      zoom_in = [4 1];
       zoom_out = 5;
       next_img = 3;
-
     };
   };
 }

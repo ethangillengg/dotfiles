@@ -1,13 +1,20 @@
-{ inputs, pkgs, ... }:
 {
-
-  home.packages = with pkgs; [
-    gimp
-  ];
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./kitty.nix
     ./wezterm.nix
     ./feh.nix
-    ./hyprland
+    ./wofi.nix
+    ./wayland-wm
+
+    ./common/qt.nix
+    ./common/gtk.nix
+  ];
+
+  home.packages = with pkgs; [
+    gimp
   ];
 }

@@ -10,6 +10,12 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 ```
 
 # TODO
+## General
+- [ ] Factor out generic host settings
 
-- [ ] Lots...
-
+## Thinkpad
+- [x] Encrypted drive
+- [x] Fix Qt being slow
+- [ ] Fix discord screensharing
+- [ ] Opt-in persistence
+- [ ] Hyprland keybinding for [Super + Shit + Bracket]

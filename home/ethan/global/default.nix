@@ -1,54 +1,52 @@
-{ inputs, lib, pkgs, config, outputs, ... }:
-# let
-#   # inherit (inputs.nix-colors) colorSchemes;
-#   # inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) colorschemeFromPicture nixWallpaperFromScheme;
-# in
 {
-  imports = [ ./gnome.nix];
+  inputs,
+  lib,
+  pkgs,
+  config,
+  outputs,
+  ...
+}: let
+  inherit (inputs.nix-colors) colorSchemes;
+  # inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) colorschemeFromPicture nixWallpaperFromScheme;
+in {
+  imports =
+    [
+      inputs.nix-colors.homeManagerModule
+      ./gnome.nix
+      ./fonts.nix
+    ]
+    ++ (builtins.attrValues outputs.homeManagerModules);
+
+  programs.home-manager.enable = true;
+
   home = {
     username = "ethan";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "22.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   };
 
+  # home-manager = {
+  #   useUserPackages = true;
+  #   extraSpecialArgs = { inherit inputs outputs; };
+  # };
+
   nixpkgs = {
-    # overlays = builtins.attrValues outputs.overlays;
+    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
     };
   };
 
   nix = {
     package = pkgs.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
     };
   };
 
   systemd.user.startServices = "sd-switch";
 
-  programs = {
-    home-manager.enable = true;
-  };
-
-
-  home.packages = with pkgs; [
-    firefox
-    neovim
-    osu-lazer
-    youtube-music
-    discord
-    webcord
-    ripgrep
-    cargo
-    btop
-    nvtop
-    nerdfonts
-  ];
-
-  # colorscheme = lib.mkDefault colorSchemes.dracula;
   # wallpaper =
   #   let
   #     largest = f: xs: builtins.head (builtins.sort (a: b: a > b) (map f xs));
