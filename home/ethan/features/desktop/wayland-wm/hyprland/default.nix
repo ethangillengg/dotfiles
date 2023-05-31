@@ -24,8 +24,8 @@ in
       monitor=,highres,auto,1
 
       general {
-        gaps_in=2
-        gaps_out=2
+        gaps_in=4
+        gaps_out=4
         border_size=2.7
         col.active_border=0xff${colorscheme.colors.base0C}
         col.inactive_border=0xff${colorscheme.colors.base02}
@@ -36,7 +36,7 @@ in
       
       decoration {
         active_opacity=0.94
-        inactive_opacity=0.94
+        inactive_opacity=0.84
         fullscreen_opacity=1.0
         rounding=2
         blur=true
@@ -55,7 +55,8 @@ in
           enabled = yes
           bezier = myBezierOld, 0.05, 0.9, 0.1, 1.05
           bezier = myBezier,0.22, 1, 0.36, 1,
-          animation = windows, 1, 5, myBezier
+          # animation = windows, 1, 5, myBezier
+          animation = windows, 1, 5, default, slide
           animation = windowsOut, 1, 4, default, popin 80%
           animation = border, 1, 8, default
           animation = fade, 1, 2, default
