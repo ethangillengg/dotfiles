@@ -23,6 +23,7 @@
     git
     wget
 
+    cava
     rust-analyzer
     nil
     rustup

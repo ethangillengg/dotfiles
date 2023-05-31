@@ -13,6 +13,7 @@ let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
   wofi = "${pkgs.wofi}/bin/wofi";
+  cava = "${pkgs.cava}/bin/cava";
   nmtui = "${pkgs.networkmanager}/bin/nmtui";
 
   terminal = "${pkgs.wezterm}/bin/wezterm";
@@ -84,6 +85,7 @@ in
           "memory"
           "clock"
           "pulseaudio"
+          "cava"
           # "custom/unread-mail"
           # "custom/gammastep"
           # "custom/gpg-agent"
@@ -133,6 +135,29 @@ in
           on-click = systemMonitor;
         };
 
+        cava ={
+        # cava_config= "$XDG_CONFIG_HOME/cava/cava.conf",
+         framerate= 60;
+          autosens= 1;
+          sensitivity= 100;
+          bars= 14;
+          lower_cutoff_freq= 50;
+          higher_cutoff_freq= 10000;
+          method= "pulse";
+          source= "auto";
+          stereo= true;
+          reverse= false;
+          bar_delimiter= 0;
+          monstercat= false;
+          waves= false;
+          noise_reduction= 0.77;
+          input_delay= 2;
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+        # actions= {
+        #            on-click-right= "mode"
+        #            }
+        };
+
         memory = {
           # format = "  {}%";
           format = " {}%";
@@ -143,6 +168,8 @@ in
         "battery#bat0" = {
           bat = "BAT0";
           interval = 10;
+          # format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+          # format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
           format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           format = "{icon}{capacity}%";
           format-plugged = "󰂄{capacity}%";
@@ -151,7 +178,7 @@ in
         "battery#bat1" = {
           bat = "BAT1";
           interval = 10;
-          format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = [ "󰂃" ];
           format = "{icon}{capacity}%";
           format-plugged = "󰂄{capacity}%";
           tooltip-format = "Battery 1";
