@@ -1,16 +1,12 @@
 # This file (and the global directory) holds config that i use on all hosts
 {
-  config,
   pkgs,
   lib,
-  stdenv,
-  meta,
-  inputs,
   outputs,
   ...
 }: {
   imports =
-    [./openssh.nix ./hyprland.nix]
+    [./openssh.nix ./hyprland.nix ./locale.nix]
     ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
@@ -28,13 +24,20 @@
     gnumake
     git
     wget
+
     nil
     alejandra
+    stylua
+    lua-language-server
+    rust-analyzer
+    rustfmt
+
+    libsForQt5.polkit-kde-agent
+    discord
+    samba
 
     cava
-    rust-analyzer
     rustup
-    rustfmt
     nodejs
     sshfs
     vim
@@ -48,6 +51,7 @@
     pciutils
     unzip
     btop
+    font-manager
 
     # Linux util replacements
     duf
@@ -62,8 +66,8 @@
     firefox
     osu-lazer-bin
     webcord-vencord
+    steam
     ripgrep
-    stylua
     mpv
     pavucontrol
     yt-music

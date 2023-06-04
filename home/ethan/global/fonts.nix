@@ -22,5 +22,9 @@
       # package = pkgs.jetbrains-mono;
       package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode"];};
     };
+    fallback = {
+      famly = "Japanese Fonts";
+      package = pkgs.noto-fonts-cjk;
+    };
   };
 }
