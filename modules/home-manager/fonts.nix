@@ -23,10 +23,11 @@ in {
     enable = lib.mkEnableOption "Whether to enable font profiles";
     monospace = mkFontOption "monospace";
     regular = mkFontOption "regular";
+    fallback = mkFontOption "fallback";
   };
 
   config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
-    home.packages = [cfg.monospace.package cfg.regular.package];
+    home.packages = [cfg.monospace.package cfg.regular.package cfg.fallback.package];
   };
 }
