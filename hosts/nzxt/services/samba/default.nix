@@ -2,7 +2,7 @@
   services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
 
   services.samba = {
-    enable = false;
+    enable = true;
     securityType = "user";
 
     # This adds to the [global] section:
@@ -12,8 +12,6 @@
       netbios name = smbnix
       security = user
       #use sendfile = yes
-      # hosts allow = 192.168.0. 127.0.0.1 localhost
-      # hosts deny = 0.0.0.0/0
       guest account = media
       map to guest = bad user
     '';
@@ -21,15 +19,28 @@
     # securityType = "none";
     shares = {
       media = {
-        path = "/mnt/ethanpc";
+        path = "/mnt/mediaserver/media";
         browseable = "yes";
         "writeable" = "yes";
         "null passwords" = "yes";
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
+        "force user" = "media";
+        "force group" = "media";
+      };
+
+      ethanpc = {
+        path = "/mnt/ethanpc";
+        browseable = "yes";
+        "writeable" = "yes";
+        "null passwords" = "yes";
+        # "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
         "force user" = "ethan";
         "force group" = "users";
+        "valid users" = "ethan";
       };
     };
   };

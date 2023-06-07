@@ -72,7 +72,6 @@
     pavucontrol
     yt-music
     qbittorrent
-    mpv
     pass-wayland
     youtube-music
   ];
