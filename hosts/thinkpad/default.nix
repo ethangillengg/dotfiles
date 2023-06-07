@@ -1,12 +1,4 @@
-{
-  config,
-  pkgs,
-  stdenv,
-  meta,
-  inputs,
-  outputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -16,6 +8,7 @@
     ./../common/optional/greetd.nix
     ./../common/optional/power-management.nix
     ./../common/optional/quietboot.nix
+    ./../common/optional/jellyfin-mpv-shim.nix
   ];
   networking.hostName = "thinkpad";
   powerManagement.powertop.enable = true;
