@@ -19,6 +19,7 @@ in {
   home.packages = with pkgs; [
     swaybg
     swayidle
+    qt6.qtwayland
   ];
 
   wayland.windowManager.hyprland = {

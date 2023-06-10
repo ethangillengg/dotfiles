@@ -25,11 +25,11 @@
     git
     wget
 
+    nodePackages.pnpm
     nil
     alejandra
     stylua
     lua-language-server
-    rust-analyzer
     rustfmt
 
     libsForQt5.polkit-kde-agent
@@ -43,9 +43,7 @@
     vim
     neovim
     xfce.thunar
-    python3Packages.virtualenv
     vscodium-fhs
-    python39
     pfetch
     wl-clipboard
     pciutils
