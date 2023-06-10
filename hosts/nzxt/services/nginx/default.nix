@@ -36,6 +36,8 @@ in {
         forceSSL = true; # redirect http to https
         locations = {
           "/" = {
+            proxyWebsockets = true;
+            recommendedProxySettings = true;
             proxyPass = "http://localhost:3000";
           };
         };

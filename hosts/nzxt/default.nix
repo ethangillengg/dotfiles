@@ -1,13 +1,9 @@
-{
-  config,
-  pkgs,
-  outputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./services
 
+    ./../common/optional/nixos-direnv.nix
     ./../common
   ];
 

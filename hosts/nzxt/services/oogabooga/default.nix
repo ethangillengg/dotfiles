@@ -26,18 +26,18 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    python3
-    python3Packages.virtualenv
-    python3Packages.pip
-    gcc11
-    libgccjit
     gnumake
-    conda
-    micromamba
     wget
-    ninja
-
-    libxml2
+    # python3
+    # python3Packages.virtualenv
+    # python3Packages.pip
+    # gcc11
+    # libgccjit
+    # conda
+    # micromamba
+    # ninja
+    #
+    # libxml2
     cudaPackages.cudatoolkit
 
     blas
