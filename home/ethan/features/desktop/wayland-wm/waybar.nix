@@ -92,13 +92,14 @@ in {
           "memory"
           "clock"
           "pulseaudio"
-          "cava"
+          # "cava"
           # "custom/unread-mail"
           # "custom/gammastep"
           # "custom/gpg-agent"
         ];
 
         modules-right = [
+          "custom/wgnord"
           "network"
           # "custom/tailscale-ping"
           "battery#bat0"
@@ -225,6 +226,23 @@ in {
           exec = "echo $USER@$(hostname)";
           on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
           tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
+        };
+
+        "custom/wgnord" = {
+          interval = 2;
+          return-type = "json";
+          exec = jsonOutput "wgnord" {
+            pre = ''status=$(sudo systemctl is-active --quiet wgnord && echo "connected" || echo "disconnected")'';
+            alt = "$status";
+            tooltip = "wgnord is $status";
+          };
+
+          format = "{icon} NordVPN";
+          format-icons = {
+            "connected" = "󰒘";
+            "disconnected" = "󰦞";
+          };
+          on-click = "";
         };
 
         "custom/menu" = {
