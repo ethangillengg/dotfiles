@@ -10,7 +10,7 @@
   # systemctl = "${pkgs.systemd}/bin/systemctl";
   # journalctl = "${pkgs.systemd}/bin/journalctl";
   # playerctl = "${pkgs.playerctl}/bin/playerctl";
-  # playerctld = "${pkgs.playerctl}/bin/playerctld";
+  # playerctld = "${pkgs.playerctl}/bin/playerctld";waybar
   # neomutt = "${pkgs.neomutt}/bin/neomutt";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";

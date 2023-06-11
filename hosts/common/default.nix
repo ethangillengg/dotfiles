@@ -25,6 +25,7 @@
     git
     wget
 
+    unoconv # convert .doc, .docx files
     nodePackages.pnpm
     nil
     alejandra
