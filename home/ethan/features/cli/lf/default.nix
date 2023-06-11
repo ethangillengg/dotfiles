@@ -50,17 +50,16 @@
       "mkdir" = "%mkdir \"$@\"";
       "touch" = "%touch \"$@\"";
 
-      "open" = "$nvim $fx";
-      # "open" =
-      #   ''
-      #     cmd open ''${{
-      #         case $(file --mime-type -Lb $f) in
-      #             text/*) nvim $fx;;
-      #             *) for f in $fx; do mimeopen $f > /dev/null 2> /dev/null & done;;
-      #         esac
-      #     }}
-      #   '';
-      # ''
+      # "open" = "$nvim $fx";
+      "open" =
+        ''
+          cmd open ''${{
+              case $(file --mime-type -Lb $f) in
+                  text/*) nvim $fx;;
+                  *) for f in $fx; do mimeopen $f > /dev/null 2> /dev/null & done;;
+              esac
+          }}
+        '';
       "bulk-rename" = ''
         ''${{
             old="$(mktemp)"

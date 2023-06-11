@@ -67,6 +67,12 @@ in {
           animation = workspaces, 1, 4, default
       }
 
+      dwindle {
+          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          preserve_split = yes # you probably want this
+      }
+
 
       bind = SUPER, Return, exec, wezterm
       bind = SUPER, Space, exec, wofi -S drun -W 40% -H 60%
@@ -141,7 +147,7 @@ in {
 
       blurls=waybar
       blurls=firefox
-      layerrule = unset, waybar
+      # layerrule = unset, waybar
 
       # Startup
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

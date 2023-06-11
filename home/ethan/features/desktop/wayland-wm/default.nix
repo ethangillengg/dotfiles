@@ -9,7 +9,7 @@
     ./waybar.nix
     ./mako.nix
     ./swaylock.nix
-    # ./eww
+    ./zathura.nix
   ];
 
   home.packages = with pkgs; [
