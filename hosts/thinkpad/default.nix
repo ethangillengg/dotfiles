@@ -9,6 +9,8 @@
     ./../common/optional/power-management.nix
     ./../common/optional/quietboot.nix
     ./../common/optional/jellyfin-mpv-shim.nix
+    ./../common/optional/wine.nix
+    ./../common/optional/wgnord-interface.nix
   ];
   networking.hostName = "thinkpad";
   powerManagement.powertop.enable = true;
@@ -82,6 +84,7 @@
 
   security.sudo.wheelNeedsPassword = false;
 
+  # networking.firewall.enable = false;
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release from which the default
