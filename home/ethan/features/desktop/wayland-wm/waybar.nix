@@ -109,7 +109,7 @@ in {
         ];
 
         clock = {
-          format = "{:%d/%m %H:%M}";
+          format = "{:%d/%m %I:%M %p}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>
@@ -229,7 +229,7 @@ in {
         };
 
         "custom/wgnord" = {
-          interval = 2;
+          interval = 10;
           return-type = "json";
           exec = jsonOutput "wgnord" {
             pre = ''status=$(sudo systemctl is-active --quiet wgnord && echo "connected" || echo "disconnected")'';
