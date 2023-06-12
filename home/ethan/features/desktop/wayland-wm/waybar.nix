@@ -87,8 +87,8 @@ in {
           # "custom/player"
         ];
         modules-center = [
+          "temperature"
           "cpu"
-          # "custom/gpu"
           "memory"
           "clock"
           "pulseaudio"
@@ -138,14 +138,26 @@ in {
           # on-click = calendar;
         };
 
+        temperature = {
+          thermal-zone = 5;
+          # "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+          critical-threshold = 85;
+          format-critical = "{temperatureC}°C";
+          format = "{temperatureC}°C";
+          interval = 3;
+          on-click = systemMonitor;
+        };
+
         cpu = {
-          format = " {usage}%";
+          format = " {usage}%";
+          # format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           interval = 3;
           on-click = systemMonitor;
         };
 
         memory = {
-          format = " {}%";
+          format = " {used:0.1f}G";
+          # format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           interval = 3;
           on-click = systemMonitor;
         };
