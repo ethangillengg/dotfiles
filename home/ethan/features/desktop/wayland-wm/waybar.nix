@@ -142,8 +142,10 @@ in {
           thermal-zone = 5;
           # "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
           critical-threshold = 85;
-          format-critical = "{temperatureC}°C";
-          format = "{temperatureC}°C";
+          # format-critical = "{temperatureC}°C";
+          format = "{icon}{temperatureC}°C";
+
+          format-icons = ["" "" "" "" "" "" "" "" ""];
           interval = 3;
           on-click = systemMonitor;
         };
