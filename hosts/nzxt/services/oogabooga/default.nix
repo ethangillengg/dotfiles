@@ -38,9 +38,9 @@ in {
     # ninja
     #
     # libxml2
-    cudaPackages.cudatoolkit
+    # cudaPackages.cudatoolkit
 
-    blas
+    # blas
     cargo
   ];
 }

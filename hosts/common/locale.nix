@@ -1,4 +1,11 @@
-{lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  environment.systemPackages = with pkgs; [
+    glibcLocales
+  ];
   i18n = {
     defaultLocale = lib.mkDefault "en_US.UTF-8";
     supportedLocales = lib.mkDefault [

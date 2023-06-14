@@ -1,10 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  inherit (config) colorscheme;
-  inherit (colorscheme) colors;
+{config, ...}: let
+  # inherit (config) colorscheme;
+  # inherit (colorscheme) colors;
 in {
   programs.wezterm = {
     enable = true;

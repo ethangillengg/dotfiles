@@ -12,7 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod"];
+  boot.initrd.availableKernelModules = ["thinkpad_acpi" "xhci_pci" "nvme" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
@@ -30,6 +30,7 @@
         vaapiVdpau
         libvdpau-va-gl
       ];
+      driSupport32Bit = true;
     };
 
     trackpoint = {
@@ -92,8 +93,79 @@
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
-  networking.enableIPv6 = false;
+  # networking.enableIPv6 = false;
   services.throttled.enable = true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = "performance";
+
+  boot.extraModprobeConfig = lib.mkMerge [
+    # idle audio card after one second
+    "options snd_hda_intel power_save=1"
+    # enable wifi power saving (keep uapsd off to maintain low latencies)
+    "options iwlwifi power_save=1 uapsd_disable=1"
+  ];
+
+  boot.kernelParams = ["intel_pstate=disable"];
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+
+      CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+
+      CPU_SCALING_MIN_FREQ_ON_AC = 800000;
+      CPU_SCALING_MAX_FREQ_ON_AC = 3500000;
+      CPU_SCALING_MIN_FREQ_ON_BAT = 800000;
+      CPU_SCALING_MAX_FREQ_ON_BAT = 2300000;
+
+      # Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).
+      # A value of 0 disables, >=1 enables power saving (recommended: 1).
+      # Default: 0 (AC), 1 (BAT)
+      SOUND_POWER_SAVE_ON_AC = 0;
+      SOUND_POWER_SAVE_ON_BAT = 1;
+
+      # Runtime Power Management for PCI(e) bus devices: on=disable, auto=enable.
+      # Default: on (AC), auto (BAT)
+      RUNTIME_PM_ON_AC = "on";
+      RUNTIME_PM_ON_BAT = "auto";
+
+      # Battery feature drivers: 0=disable, 1=enable
+      # Default: 1 (all)
+      NATACPI_ENABLE = 1;
+      TPACPI_ENABLE = 1;
+      TPSMAPI_ENABLE = 1;
+    };
+    # extraConfig = ''
+    #   START_CHARGE_THRESH_BAT0=75
+    #   STOP_CHARGE_THRESH_BAT0=80
+    #
+    #   CPU_SCALING_GOVERNOR_ON_AC=schedutil
+    #   CPU_SCALING_GOVERNOR_ON_BAT=schedutil
+    #
+    #   CPU_SCALING_MIN_FREQ_ON_AC=800000
+    #   CPU_SCALING_MAX_FREQ_ON_AC=3500000
+    #   CPU_SCALING_MIN_FREQ_ON_BAT=800000
+    #   CPU_SCALING_MAX_FREQ_ON_BAT=2300000
+    #
+    #   # Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).
+    #   # A value of 0 disables, >=1 enables power saving (recommended: 1).
+    #   # Default: 0 (AC), 1 (BAT)
+    #   SOUND_POWER_SAVE_ON_AC=0
+    #   SOUND_POWER_SAVE_ON_BAT=1
+    #
+    #   # Runtime Power Management for PCI(e) bus devices: on=disable, auto=enable.
+    #   # Default: on (AC), auto (BAT)
+    #   RUNTIME_PM_ON_AC=on
+    #   RUNTIME_PM_ON_BAT=auto
+    #
+    #   # Battery feature drivers: 0=disable, 1=enable
+    #   # Default: 1 (all)
+    #   NATACPI_ENABLE=1
+    #   TPACPI_ENABLE=1
+    #   TPSMAPI_ENABLE=1
+    # '';
+  };
 }
