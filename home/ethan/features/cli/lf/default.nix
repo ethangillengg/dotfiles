@@ -11,16 +11,18 @@
   xdg.configFile."lf/icons".source = ./icons;
   xdg.configFile."lf/colors".source = ./colors;
   # See https://github.com/gokcehan/lf/wiki/Previews#with-kitty-and-pistol
-  xdg.configFile."lf/preview".source = ./preview.sh;
-  xdg.configFile."lf/clean".source = ./clean.sh;
-  # xdg.configFile."ctpv/config".source = ./cptv;
+  # xdg.configFile."lf/preview".source = ./preview.sh;
+  # xdg.configFile."lf/clean".source = ./clean.sh;
+  xdg.configFile."ctpv/config".source = ./cptv;
 
   programs.lf = {
     enable = true;
 
     extraConfig = ''
-      set previewer ~/.config/lf/preview
-      set cleaner ~/.config/lf/clean
+      set previewer ctpv
+      set cleaner ctpvclear
+      &ctpv -s $id
+      &ctpvquit $id
 
       set drawbox
       set ratios 2:5:5
