@@ -3,14 +3,16 @@
     ./hardware-configuration.nix
 
     ./../common
+    ./../common/optional/desktop-apps.nix
     ./../common/optional/distributed-builds.nix
     ./../common/optional/x11-no-suspend.nix
     ./../common/optional/greetd.nix
-    ./../common/optional/power-management.nix
+    # ./../common/optional/power-management.nix
     ./../common/optional/quietboot.nix
     ./../common/optional/jellyfin-mpv-shim.nix
-    ./../common/optional/wine.nix
-    ./../common/optional/wgnord-interface.nix
+    # ./../common/optional/wine.nix
+    ./../common/optional/vpn.nix
+    ./../common/optional/qemu.nix
   ];
   networking.hostName = "thinkpad";
   powerManagement.powertop.enable = true;
@@ -41,20 +43,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
-  # networking.networkmanager.enable = true;
-  # powerManagement.enable = false;
-  # networking.networkmanager.wifi.backend = "iwd";
-
-  # Set your time zone.
-  time.timeZone = "America/Edmonton";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_CA.UTF-8";
 
   # Enable the GNOME Desktop Environment.
   programs.sway.enable = true;
@@ -79,13 +70,9 @@
     description = "ethan";
     extraGroups = ["wheel" "networkmanager" "docker"];
     shell = pkgs.fish;
-    # shell = "fish";
   };
 
   security.sudo.wheelNeedsPassword = false;
-
-  # networking.firewall.enable = false;
-  nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -95,6 +82,8 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
 
-  # enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  fonts.fontconfig = {
+    localConf = ''
+    '';
+  };
 }

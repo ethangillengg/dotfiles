@@ -141,7 +141,7 @@ in {
         temperature = {
           thermal-zone = 5;
           # "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-          critical-threshold = 85;
+          # critical-threshold = 85;
           # format-critical = "{temperatureC}°C";
           format = "{icon}{temperatureC}°C";
 

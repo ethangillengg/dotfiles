@@ -6,7 +6,7 @@
   ...
 }: {
   imports =
-    [./openssh.nix ./hyprland.nix ./locale.nix]
+    [./openssh.nix ./hyprland.nix ./locale.nix ./nix.nix]
     ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
@@ -25,54 +25,33 @@
     git
     wget
 
-    unoconv # convert .doc, .docx files
-    nodePackages.pnpm
+    # rustup
+    # nodePackages.pnpm
     nil
     alejandra
-    stylua
-    lua-language-server
+    # stylua
+    # lua-language-server
     rustfmt
+    rust-analyzer
 
-    libsForQt5.polkit-kde-agent
-    discord
-    samba
-
-    cava
-    rustup
-    nodejs
-    sshfs
-    vim
+    #my utils
     neovim
-    xfce.thunar
-    vscodium-fhs
-    pfetch
-    wl-clipboard
-    pciutils
-    unzip
-    btop
-    font-manager
-
-    # Linux util replacements
+    vim
+    unoconv # convert .doc, .docx files
     duf
     dua
     xh
     jqp
     jq
     fzf
-
-    # TODO: Configure these in home-manager
-    obs-studio
-    firefox
-    osu-lazer-bin
-    webcord-vencord
-    steam
+    unp #unpack .zip, .tar, .rar with one command
+    unzip
+    rar
+    pciutils
+    btop
     ripgrep
-    mpv
-    pavucontrol
-    yt-music
-    qbittorrent
-    pass-wayland
-    youtube-music
+
+    samba
   ];
 
   services.gvfs = {
