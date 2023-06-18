@@ -90,6 +90,7 @@ in {
           "temperature"
           "cpu"
           "memory"
+          "disk"
           "clock"
           "pulseaudio"
           # "cava"
@@ -161,6 +162,13 @@ in {
           format = " {used:0.1f}G";
           # format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           interval = 3;
+          on-click = systemMonitor;
+        };
+
+        disk = {
+          interval = 30;
+          format = "󰋊 {used}";
+          path = "/";
           on-click = systemMonitor;
         };
 
