@@ -4,7 +4,7 @@
 
     ./../common
     ./../common/optional/desktop-apps.nix
-    ./../common/optional/distributed-builds.nix
+    # ./../common/optional/distributed-builds.nix
     ./../common/optional/x11-no-suspend.nix
     ./../common/optional/greetd.nix
     # ./../common/optional/power-management.nix
@@ -12,7 +12,7 @@
     ./../common/optional/jellyfin-mpv-shim.nix
     # ./../common/optional/wine.nix
     ./../common/optional/vpn.nix
-    ./../common/optional/qemu.nix
+    # ./../common/optional/qemu.nix
   ];
   networking.hostName = "thinkpad";
   powerManagement.powertop.enable = true;
