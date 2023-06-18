@@ -31,16 +31,15 @@
       };
 
       # ethanpc = {
-      #   path = "/mnt/ethanpc";
+      #   path = "/mnt/mediaserver/ethan";
       #   browseable = "yes";
       #   "writeable" = "yes";
-      #   # "null passwords" = "yes";
-      #   # "guest ok" = "yes";
+      #   "null passwords" = "yes";
+      #   "guest ok" = "yes";
       #   "create mask" = "0644";
       #   "directory mask" = "0755";
       #   "force user" = "ethan";
       #   "force group" = "users";
-      #   "valid users" = "ethan";
       # };
     };
   };
