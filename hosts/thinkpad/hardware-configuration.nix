@@ -78,12 +78,12 @@
     fsType = "vfat";
   };
 
-  fileSystems."/home/ethan/ArchHome" = {
-    device = "/dev/disk/by-uuid/5e251812-09b2-4f56-baba-67a1d60cdb9b";
-    fsType = "ext4";
-  };
-
-  swapDevices = [{device = "/dev/disk/by-uuid/cf3cf789-0271-403f-bd64-89d4e2c102c3";}];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
