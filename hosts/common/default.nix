@@ -58,6 +58,8 @@
     package = lib.mkForce pkgs.gnome3.gvfs;
   };
 
+  security.pam.services = {swaylock = {};};
+
   documentation.man.man-db.enable = false;
   environment = {
     variables = {
