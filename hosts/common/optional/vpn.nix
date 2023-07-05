@@ -1,4 +1,8 @@
-{
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    wgnord-latest
+  ];
+
   services.wgnord = {
     enable = true;
     country = "canada";
