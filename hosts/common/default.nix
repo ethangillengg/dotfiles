@@ -37,7 +37,6 @@
     #my utils
     neovim
     vim
-    unoconv # convert .doc, .docx files
     duf
     dua
     xh
