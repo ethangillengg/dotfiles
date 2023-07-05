@@ -1,28 +1,26 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    trashy
-    file
-    perl536Packages.FileMimeInfo # for mime-type open
-    ctpv
-    pistol
-    chafa
-  ];
+{pkgs, ...}: let
+  # Dependencies
+  fd = "${pkgs.fd}/bin/fd";
+  fzf = "${pkgs.fzf}/bin/fzf";
+  trashy = "${pkgs.trashy}/bin/trashy";
+  trash-put = "${trashy} put";
 
+  ctpv = "${pkgs.ctpv}/bin/ctpv";
+  ctpvclear = "${pkgs.ctpv}/bin/ctpvclear";
+  ctpvquit = "${pkgs.ctpv}/bin/ctpvquit";
+in {
   xdg.configFile."lf/icons".source = ./icons;
   xdg.configFile."lf/colors".source = ./colors;
-  # See https://github.com/gokcehan/lf/wiki/Previews#with-kitty-and-pistol
-  # xdg.configFile."lf/preview".source = ./preview.sh;
-  # xdg.configFile."lf/clean".source = ./clean.sh;
   xdg.configFile."ctpv/config".source = ./cptv;
 
   programs.lf = {
     enable = true;
 
     extraConfig = ''
-      set previewer ctpv
-      set cleaner ctpvclear
-      &ctpv -s $id
-      &ctpvquit $id
+      set previewer ${ctpv}
+      set cleaner ${ctpvclear}
+      &${ctpv} -s $id
+      &${ctpvquit} $id
 
       set drawbox
       set ratios 2:5:5
@@ -44,23 +42,25 @@
 
       "H" = ":set hidden!";
 
-      "<delete>" = "trash";
+      "<delete>" = ":trash";
       "R" = ":bulk-rename";
+
+      "<c-f>" = ":fzf_jump";
     };
 
     commands = {
       "mkdir" = "%mkdir \"$@\"";
       "touch" = "%touch \"$@\"";
 
-      # "open" = "$nvim $fx";
-      "open" = ''
-        cmd open ''${{
-            case $(file --mime-type -Lb $f) in
-                text/*) nvim $fx;;
-                *) for f in $fx; do mimeopen $f > /dev/null 2> /dev/null & done;;
-            esac
-        }}
-      '';
+      "open" = "$nvim $fx";
+      # "open" = ''
+      #   cmd open ''${{
+      #       case $(${file} --mime-type -Lb $f) in
+      #           text/*) nvim $fx;;
+      #           *) for f in $fx; do mimeopen $f > /dev/null 2> /dev/null & done;;
+      #       esac
+      #   }}
+      # '';
       "bulk-rename" = ''
         ''${{
             old="$(mktemp)"
@@ -87,7 +87,22 @@
         }}
       '';
 
-      "trash" = "%trash put $fx";
+      "trash" = "%${trash-put} $fx";
+
+      "fzf_jump" = ''
+        ''${{
+              res="$(${fd} . --hidden --exclude ".git" | ${fzf} --reverse --header='Jump to location' --preview '${ctpv} {}')"
+              if [ -n "$res" ]; then
+                  if [ -d "$res" ]; then
+                      cmd="cd"
+                  else
+                      cmd="select"
+                  fi
+                  res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+                  lf -remote "send $id $cmd \"$res\""
+              fi
+          }}
+      '';
     };
 
     settings = {
