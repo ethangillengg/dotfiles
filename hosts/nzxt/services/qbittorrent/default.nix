@@ -13,8 +13,8 @@ in {
   };
 
   services.nginx.virtualHosts.${domain} = {
-    # enableACME = true;
-    # forceSSL = true; # redirect http to https
+    enableACME = true;
+    forceSSL = true; # redirect http to https
     locations = {
       "/" = {
         proxyWebsockets = true;
