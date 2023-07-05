@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./aliases.nix
     ./bash.nix
@@ -12,5 +12,6 @@
     ./gitui.nix
     ./git.nix
     ./bottom.nix
+    ./fzf.nix
   ];
 }
