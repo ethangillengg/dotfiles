@@ -7,6 +7,7 @@
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
+  swaybg = "${pkgs.swaybg}/bin/swaybg";
 
   colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
@@ -16,8 +17,6 @@ in {
   ];
 
   home.packages = with pkgs; [
-    swaybg
-    swayidle
     qt6.qtwayland
   ];
 
@@ -155,7 +154,7 @@ in {
 
       # Startup
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec=swaybg -i ${wallpaper} --mode fill
+      exec=${swaybg} -i ${wallpaper} --mode fill
       exec-once=mako
       exec-once=waybar
     '';

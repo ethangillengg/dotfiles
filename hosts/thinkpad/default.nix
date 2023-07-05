@@ -15,12 +15,11 @@
     # ./../common/optional/qemu.nix
   ];
   networking.hostName = "thinkpad";
-  powerManagement.powertop.enable = true;
+  networking.networkmanager.enable = true;
+
   programs = {
     light.enable = true;
     adb.enable = true;
-    dconf.enable = true;
-    kdeconnect.enable = true;
   };
   services.blueman.enable = true;
 
@@ -28,11 +27,6 @@
   services.logind = {
     lidSwitch = "suspend";
     lidSwitchExternalPower = "lock";
-  };
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -44,13 +38,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = false;
-
-  # Enable the GNOME Desktop Environment.
-  programs.sway.enable = true;
-
-  # Configure keymap in X11
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
