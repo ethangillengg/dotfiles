@@ -5,9 +5,6 @@
 }: let
   inherit (config.colorscheme) colors;
 in {
-  # home.packages = [
-  #   pkgs.swaylock
-  # ];
   programs.swaylock = {
     package = pkgs.swaylock-effects;
     settings = {

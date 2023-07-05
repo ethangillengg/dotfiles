@@ -13,9 +13,14 @@
     steam
     mpv
     qbittorrent
+    yt-dlp
 
     pavucontrol
     # pass-wayland
     youtube-music
+    termusic
+    ffmpeg
+
+    unoconv # convert .doc, .docx files
   ];
 }
