@@ -45,8 +45,8 @@ in {
     # Configure the systemd service
     systemd.services.wgnord = {
       description = "wgnord vpn service";
-      after = ["network.target"];
-      wants = ["network.target"];
+      after = ["network-online.target"];
+      wants = ["network-online.target"];
       wantedBy = ["multi-user.target"];
       serviceConfig = {
         Type = "oneshot";
@@ -60,8 +60,17 @@ in {
         Group = "root";
         # Set the path variables, so we can use openresolv
         Environment = "PATH=${openresolv}/bin:${coreutils}/bin:${curl}/bin:${gnugrep}/bin:${gnused}/bin:${iproute2}/bin:${jq}/bin:${wireguard-tools}/bin:$PATH";
+        Restart = "on-failure";
+        RestartSec = "10s";
       };
     };
+
+    # systemd.timers.wgnord = {
+    #   wantedBy = ["timers.target"];
+    #   timerConfig = {
+    #     OnBootSec = "0sec";
+    #   };
+    # };
 
     # Provide the template.conf file
     environment.etc."var/lib/wgnord/template.conf".text = cfg.template;

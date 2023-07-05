@@ -12,7 +12,6 @@
   # environment.systemPackages = with pkgs; [
   #   git
   #   vim
-  #   fzf
   #   wl-clipboard
   #   btop
   #   duf

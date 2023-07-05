@@ -34,10 +34,10 @@
     fsType = "ext4";
   };
 
-  fileSystems."/mnt/ethanpc" = {
-    device = "/dev/disk/by-uuid/54FC53F4FC53CF3C";
-    fsType = "ntfs";
-  };
+  # fileSystems."/mnt/ethanpc" = {
+  #   device = "/dev/disk/by-uuid/54FC53F4FC53CF3C";
+  #   fsType = "ntfs";
+  # };
 
   swapDevices = [];
 

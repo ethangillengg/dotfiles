@@ -42,8 +42,8 @@ in {
       serviceConfig = {
         # Type = "oneshot";
         RemainAfterExit = "yes";
-        Restart = "always";
-        RestartSec = "5";
+        # Restart = "always";
+        # RestartSec = "5";
         User = cfg.user;
         Group = cfg.group;
         ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --webui-port=${toString cfg.port} --profile=${qbittorrentConfigDir} -d";
