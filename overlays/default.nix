@@ -14,12 +14,12 @@
         owner = "horriblename";
         repo = "lf";
         rev = "master"; # set the revision to the commit hash or tag you want
-        sha256 = "sha256-cQf+OP1u6lf/7QgT/Rg9613Igx4YjqEUchmjsk31Z8c="; # replace this with the correct sha256 hash
+        sha256 = "sha256-CoWF3virzel8TbW79xc6xXxh6K6r9mCeoaAUYcE7VHc="; # replace this with the correct sha256 hash
       };
     });
 
     osu-lazer-bin = let
-      version = "2023.617.0";
+      version = "2023.621.0";
     in
       prev.callPackage (
         {
@@ -34,7 +34,7 @@
 
           osu-lazer-bin-src = {
             url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-            sha256 = "sha256-g/jBY7L06PrIHQ/2W52Itr+BkKIXEaYIHzyVMZHcrkk=";
+            sha256 = "sha256-21n04TSDBrsxTj/Os5lHLWiTzma5A6BAcyvrMofFj9g=";
           };
         in
           appimageTools.wrapType2 rec {
