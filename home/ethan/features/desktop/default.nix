@@ -1,14 +1,11 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./kitty.nix
     ./wezterm.nix
     ./feh.nix
     ./wofi.nix
     ./wayland-wm
+    ./mpv.nix
 
     ./common/qt.nix
     ./common/gtk.nix

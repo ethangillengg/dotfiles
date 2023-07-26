@@ -45,6 +45,7 @@
     fzf
     unp #unpack .zip, .tar, .rar with one command
     unzip
+    zip
     rar
     pciutils
     btop
