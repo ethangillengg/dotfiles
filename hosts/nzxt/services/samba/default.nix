@@ -25,7 +25,7 @@
         "writeable" = "yes";
         "null passwords" = "yes";
         "guest ok" = "yes";
-        "create mask" = "0775";
+        "create mask" = "0644";
         "directory mask" = "0775";
         "force user" = "media";
         "force group" = "media";
