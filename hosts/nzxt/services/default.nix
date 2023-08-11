@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   domain = "gillwire.duckdns.org";
   mediaUser = "media";
   email = "ethan.gill@ucalgary.ca";
@@ -34,22 +38,18 @@
     port = 6969;
   };
 
-  # oogabooga = import ./oogabooga {
-  #   domain = "ai.${domain}";
-  #   port = 7000;
-  #   inherit pkgs;
-  # };
-  #
-  # vaultwarden = import ./vaultwarden {
-  #   domain = "vault.${domain}";
-  #   port = 7001;
-  # };
+  oogabooga = import ./oogabooga {
+    domain = "ai.${domain}";
+    port = 7000;
+    inherit pkgs;
+  };
 
-  # nextcloud = import ./nextcloud {
-  #   domain = "cloud.${domain}";
-  #   port = 7002;
-  #   inherit pkgs;
-  # };
+  servarr = import ./servarr {
+    domain = domain;
+    user = mediaUser;
+    group = mediaUser;
+    inherit lib;
+  };
 
   samba = import ./samba {
     inherit pkgs;
@@ -61,6 +61,8 @@ in {
     qbittorrent
     komga
     samba
+    oogabooga
+    servarr
   ];
   # ] ++ (builtins.attrValues outputs.nixosModules);
 
