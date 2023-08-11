@@ -19,7 +19,7 @@
     });
 
     osu-lazer-bin = let
-      version = "2023.717.0";
+      version = "2023.803.0";
     in
       prev.callPackage (
         {
@@ -34,7 +34,7 @@
 
           osu-lazer-bin-src = {
             url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-            sha256 = "sha256-ozywsabQawTcflIPC86b/YV4apX1OnokziSrlLlyaIM=";
+            sha256 = "sha256-fO9j7hIEhxEDWVdNAPVriHuDQyF2XgReeROBNpXM8gU=";
           };
         in
           appimageTools.wrapType2 rec {
