@@ -41,11 +41,6 @@ in {
         inactive_opacity=0.84
         fullscreen_opacity=1.0
         rounding=2
-        blur=true
-        blur_size=5
-        blur_passes=3
-        blur_new_optimizations=true
-        blur_ignore_opacity=true
         drop_shadow=true
         shadow_range=12
         shadow_offset=3 3
