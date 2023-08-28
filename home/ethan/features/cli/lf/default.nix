@@ -22,6 +22,7 @@ in {
       &${ctpv} -s $id
       &${ctpvquit} $id
 
+      set sixel true
       set drawbox
       set ratios 2:5:5
       set info size
