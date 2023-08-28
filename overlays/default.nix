@@ -7,16 +7,16 @@
 
   modifications = final: prev: {
     # use lf-sixel for sixel image previews in wezterm
-    lf = prev.lf.overrideAttrs (oldAttrs: {
-      pname = "lf";
-      # version = "custom"; # set the version to something that makes sense for you
-      src = final.fetchFromGitHub {
-        owner = "horriblename";
-        repo = "lf";
-        rev = "master"; # set the revision to the commit hash or tag you want
-        sha256 = "sha256-CoWF3virzel8TbW79xc6xXxh6K6r9mCeoaAUYcE7VHc="; # replace this with the correct sha256 hash
-      };
-    });
+    # lf = prev.lf.overrideAttrs (oldAttrs: {
+    #   pname = "lf";
+    #   # version = "custom"; # set the version to something that makes sense for you
+    #   src = final.fetchFromGitHub {
+    #     owner = "horriblename";
+    #     repo = "lf";
+    #     rev = "master"; # set the revision to the commit hash or tag you want
+    #     sha256 = "sha256-CoWF3virzel8TbW79xc6xXxh6K6r9mCeoaAUYcE7VHc="; # replace this with the correct sha256 hash
+    #   };
+    # });
 
     osu-lazer-bin = let
       version = "2023.803.0";

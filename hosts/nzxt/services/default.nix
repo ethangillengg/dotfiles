@@ -15,8 +15,6 @@
 
   mediaserver = import ./jellyfin {
     domain = "media.${domain}";
-    # inherit domain;
-    # url = "media";
     user = mediaUser;
     group = mediaUser;
     port = 8096;
@@ -31,8 +29,6 @@
 
   qbittorrent = import ./qbittorrent {
     domain = "arr.${domain}";
-    # inherit domain;
-    # url = "arr";
     user = mediaUser;
     group = mediaUser;
     port = 6969;
@@ -64,8 +60,6 @@ in {
     oogabooga
     servarr
   ];
-  # ] ++ (builtins.attrValues outputs.nixosModules);
-
   # open (custom) port for ssh
   networking.firewall.allowedTCPPorts = [420];
 }
