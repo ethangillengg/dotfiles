@@ -148,8 +148,8 @@ in {
       # layerrule = unset, waybar
 
       # Startup
-      exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec=${swaybg} -i ${wallpaper} --mode fill
+      exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once=mako
       exec-once=waybar
     '';
