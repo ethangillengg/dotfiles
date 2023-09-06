@@ -14,7 +14,7 @@
   };
 
   mediaserver = import ./jellyfin {
-    domain = "media.${domain}";
+    inherit domain;
     user = mediaUser;
     group = mediaUser;
     port = 8096;
@@ -32,6 +32,13 @@
     user = mediaUser;
     group = mediaUser;
     port = 6969;
+  };
+
+  nzbget = import ./nzbget {
+    domain = "nzb.${domain}";
+    user = mediaUser;
+    group = mediaUser;
+    port = 6970;
   };
 
   oogabooga = import ./oogabooga {
@@ -55,6 +62,7 @@ in {
     nginx
     mediaserver
     qbittorrent
+    nzbget
     komga
     samba
     oogabooga
