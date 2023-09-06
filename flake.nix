@@ -2,16 +2,17 @@
   description = "NixOS and Home Manager configuration for my personal devices";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland"; # Hyprland (https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/)
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # sops-nix.url = "github:mic92/sops-nix"; # Secret management
 
     nix-colors.url = "github:misterio77/nix-colors";
@@ -49,6 +50,8 @@
       thinkpad = mkNixos [./hosts/thinkpad]; # Laptop
       nzxt = mkNixos [./hosts/nzxt]; # Server
     };
+
+    wallpapers = import ./home/ethan/wallpapers;
 
     homeConfigurations = {
       "ethan@thinkpad" = mkHome [./home/ethan/thinkpad.nix] nixpkgs.legacyPackages."x86_64-linux"; # Laptop
