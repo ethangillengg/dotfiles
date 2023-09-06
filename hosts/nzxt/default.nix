@@ -4,8 +4,11 @@
     ./services
 
     ./../common/optional/nixos-direnv.nix
+    ./../common/optional/tailscale.nix
+    ./../common/optional/gnome.nix
     ./../common
   ];
+  services.gnome.gnome-remote-desktop.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
