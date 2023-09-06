@@ -1,6 +1,5 @@
 {pkgs, ...} @ args: let
   domain = args.domain;
-  url = args.url;
   email = args.email;
 
   # Get the path to index.html
@@ -20,17 +19,17 @@ in {
       enable = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
-      virtualHosts.${domain} = {
-        enableACME = true;
-        forceSSL = true; # redirect http to https
-        locations = {
-          "/" = {
-            root = indexDir;
-            index = "index.html";
-            tryFiles = "$uri $uri/ =404";
-          };
-        };
-      };
+      # virtualHosts.${domain} = {
+      #   enableACME = true;
+      #   forceSSL = true; # redirect http to https
+      #   locations = {
+      #     "index" = {
+      #       root = indexDir;
+      #       index = "index.html";
+      #       tryFiles = "$uri $uri/ =404";
+      #     };
+      #   };
+      # };
       virtualHosts."dev.${domain}" = {
         enableACME = true;
         forceSSL = true; # redirect http to https
