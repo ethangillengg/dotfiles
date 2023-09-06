@@ -2,7 +2,7 @@
   # Dependencies
   fd = "${pkgs.fd}/bin/fd";
   fzf = "${pkgs.fzf}/bin/fzf";
-  trashy = "${pkgs.trashy}/bin/trashy";
+  trashy = "${pkgs.trashy}/bin/trash";
   trash-put = "${trashy} put";
 
   ctpv = "${pkgs.ctpv}/bin/ctpv";
