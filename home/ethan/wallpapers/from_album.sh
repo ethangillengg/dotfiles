@@ -1,4 +1,4 @@
-#!/usr/bin/env -S nix shell nixpkgs#httpie nixpkgs#jq --command bash
+#!/usr/bin/env -S nix shell nixpkgs#curl nixpkgs#jq --command bash
 
 function fetch_image() {
   name=$(echo $1 | cut -d '|' -f 1)
@@ -16,7 +16,7 @@ function fetch_image() {
 album="qlNokTk" # https://imgur.com/a/bXDPRpV
 clientid="0c2b2b57cdbe5d8"
 
-result=$(https api.imgur.com/3/album/$album Authorization:"Client-ID $clientid")
+result=$(curl https://api.imgur.com/3/album/$album -H "Authorization: Client-ID $clientid")
 images=$(echo $result | jq -r '.data.images[] | "\(.description)|\(.type)|\(.id)"')
 
 
