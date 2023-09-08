@@ -9,13 +9,11 @@
     osu-lazer-bin
     webcord-vencord
     steam
-    obsidian
     qbittorrent
     yt-dlp
 
     pavucontrol
     # pass-wayland
-    youtube-music
     termusic
     ffmpeg
 
