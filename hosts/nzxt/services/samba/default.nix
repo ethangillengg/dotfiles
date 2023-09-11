@@ -19,7 +19,7 @@
     # securityType = "none";
     shares = {
       media = {
-        path = "/mnt/mediaserver/media";
+        path = "/mnt/mediaserver/data/media";
         browseable = "yes";
         "read only" = "no";
         "writeable" = "yes";
