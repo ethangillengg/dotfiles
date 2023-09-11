@@ -21,7 +21,7 @@
   # colorscheme = inputs.nix-colors.colorschemes.rose-pine-moon;
 
   colorscheme = inputs.nix-colors.colorschemes.gruvbox-material-dark-hard;
-  wallpaper = outputs.wallpapers.gruvbox-windows;
+  wallpaper = outputs.wallpapers.gruvbox-pacman;
 
   # monitors = [{
   #   name = "eDP-1";
