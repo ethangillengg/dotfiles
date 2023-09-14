@@ -16,6 +16,7 @@
     hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad -j 4";
     nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#thinkpad";
     nrd = "ssh -t ethan@nzxt \"cd /home/ethan/.dotfiles/; git pull; sudo nixos-rebuild switch --flake .#nzxt; exit; bash -l\"";
+    nrdd = "nixos-rebuild switch --flake /home/ethan/.dotfiles#nzxt --target-host ethan@nzxt --use-remote-sudo";
 
     #My ip
     me = "xh -j ipinfo.io";
