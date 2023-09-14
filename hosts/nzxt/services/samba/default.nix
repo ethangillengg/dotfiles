@@ -14,6 +14,10 @@
       #use sendfile = yes
       guest account = media
       map to guest = bad user
+      kernel oplocks = yes
+      read raw = Yes
+      write raw = Yes
+      socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
     '';
 
     # securityType = "none";
