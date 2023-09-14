@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -19,25 +18,20 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/e8638e15-0774-4f3a-ba54-f093f4f74376";
-    fsType = "ext4";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/e8638e15-0774-4f3a-ba54-f093f4f74376";
+      fsType = "ext4";
+    };
+    "/boot/efi" = {
+      device = "/dev/disk/by-uuid/E8BD-954B";
+      fsType = "vfat";
+    };
+    "/mnt/mediaserver" = {
+      device = "/dev/disk/by-uuid/790d83dd-c8df-49a4-941b-cbb47eacfe95";
+      fsType = "ext4";
+    };
   };
-
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/E8BD-954B";
-    fsType = "vfat";
-  };
-
-  fileSystems."/mnt/mediaserver" = {
-    device = "/dev/disk/by-uuid/790d83dd-c8df-49a4-941b-cbb47eacfe95";
-    fsType = "ext4";
-  };
-
-  # fileSystems."/mnt/ethanpc" = {
-  #   device = "/dev/disk/by-uuid/54FC53F4FC53CF3C";
-  #   fsType = "ntfs";
-  # };
 
   swapDevices = [];
 
