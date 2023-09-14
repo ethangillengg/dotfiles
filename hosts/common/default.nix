@@ -6,7 +6,7 @@
   ...
 }: {
   imports =
-    [./openssh.nix ./hyprland.nix ./locale.nix ./nix.nix]
+    [./openssh.nix ./hyprland.nix ./locale.nix ./nix.nix ./nvim.nix]
     ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
@@ -25,19 +25,7 @@
     git
     wget
 
-    # rustup
-    # nodePackages.pnpm
-    nil
-    alejandra
-    # stylua
-    # lua-language-server
-    rustfmt
-    rust-analyzer
-    vscode-langservers-extracted
-    prettierd
-
     #my utils
-    neovim
     vim
     duf
     dua
