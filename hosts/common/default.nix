@@ -33,6 +33,8 @@
     # lua-language-server
     rustfmt
     rust-analyzer
+    vscode-langservers-extracted
+    prettierd
 
     #my utils
     neovim
