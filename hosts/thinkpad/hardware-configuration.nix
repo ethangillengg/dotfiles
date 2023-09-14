@@ -41,43 +41,38 @@
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
-    fsType = "btrfs";
-    options = ["subvol=root" "compress=zstd" "noatime"];
-  };
-
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/3e483fd2-4714-4b1c-8137-83f96a683b93";
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
-    fsType = "btrfs";
-    options = ["subvol=nix" "compress=zstd" "noatime"];
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
+      fsType = "btrfs";
+      options = ["subvol=root" "compress=zstd" "noatime"];
+    };
+    "/nix" = {
+      device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
+      fsType = "btrfs";
+      options = ["subvol=nix" "compress=zstd" "noatime"];
+    };
+    "/var/log" = {
+      device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
+      fsType = "btrfs";
+      options = ["subvol=log" "compress=zstd" "noatime"];
+    };
+    "/home" = {
+      device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
+      fsType = "btrfs";
+      options = ["subvol=home" "compress=zstd" "noatime"];
+    };
+    "/persist" = {
+      device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
+      fsType = "btrfs";
+      options = ["subvol=persist" "compress=zstd" "noatime"];
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/BD03-913A";
+      fsType = "vfat";
+    };
   };
-
-  fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
-    fsType = "btrfs";
-    options = ["subvol=log" "compress=zstd" "noatime"];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
-    fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd" "noatime"];
-  };
-
-  fileSystems."/persist" = {
-    device = "/dev/disk/by-uuid/c74fe5f9-bd7b-4f45-8b02-c0092747c18e";
-    fsType = "btrfs";
-    options = ["subvol=persist" "compress=zstd" "noatime"];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/BD03-913A";
-    fsType = "vfat";
-  };
-
   swapDevices = [
     {
       device = "/var/lib/swapfile";
@@ -138,34 +133,15 @@
       TPACPI_ENABLE = 1;
       TPSMAPI_ENABLE = 1;
     };
-    # extraConfig = ''
-    #   START_CHARGE_THRESH_BAT0=75
-    #   STOP_CHARGE_THRESH_BAT0=80
-    #
-    #   CPU_SCALING_GOVERNOR_ON_AC=schedutil
-    #   CPU_SCALING_GOVERNOR_ON_BAT=schedutil
-    #
-    #   CPU_SCALING_MIN_FREQ_ON_AC=800000
-    #   CPU_SCALING_MAX_FREQ_ON_AC=3500000
-    #   CPU_SCALING_MIN_FREQ_ON_BAT=800000
-    #   CPU_SCALING_MAX_FREQ_ON_BAT=2300000
-    #
-    #   # Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).
-    #   # A value of 0 disables, >=1 enables power saving (recommended: 1).
-    #   # Default: 0 (AC), 1 (BAT)
-    #   SOUND_POWER_SAVE_ON_AC=0
-    #   SOUND_POWER_SAVE_ON_BAT=1
-    #
-    #   # Runtime Power Management for PCI(e) bus devices: on=disable, auto=enable.
-    #   # Default: on (AC), auto (BAT)
-    #   RUNTIME_PM_ON_AC=on
-    #   RUNTIME_PM_ON_BAT=auto
-    #
-    #   # Battery feature drivers: 0=disable, 1=enable
-    #   # Default: 1 (all)
-    #   NATACPI_ENABLE=1
-    #   TPACPI_ENABLE=1
-    #   TPSMAPI_ENABLE=1
-    # '';
+  };
+
+  # For mount.cifs, required unless domain name resolution is not needed.
+  environment.systemPackages = [pkgs.cifs-utils];
+  fileSystems."/mnt/media" = {
+    device = "//nzxt/media";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"
+    ];
   };
 }
