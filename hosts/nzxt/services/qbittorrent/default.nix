@@ -1,4 +1,4 @@
-{...} @ args: let
+{config, ...} @ args: let
   domain = args.domain;
   port = args.port;
 
@@ -24,8 +24,10 @@ in {
     };
   };
 
+  sops.secrets.nord-vpn.sopsFile = ../../../common/secrets.yaml;
   services.wgnord = {
     enable = true;
+    tokenFile = config.sops.secrets.nord-vpn.path;
     country = "canada";
     template = ''
       [Interface]

@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
   domain = "gillwire.duckdns.org";
@@ -32,6 +33,7 @@
     user = mediaUser;
     group = mediaUser;
     port = 6969;
+    inherit config;
   };
 
   nzbget = import ./nzbget {
