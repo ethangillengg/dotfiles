@@ -13,7 +13,12 @@
       url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # sops-nix.url = "github:mic92/sops-nix"; # Secret management
+
+    # Secret management
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -24,8 +29,11 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"];
-    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+
+    lib = nixpkgs.lib // home-manager.lib;
+    systems = ["x86_64-linux" "aarch64-linux"];
+    forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
+    pkgsFor = nixpkgs.legacyPackages;
 
     mkNixos = modules:
       nixpkgs.lib.nixosSystem {
@@ -39,19 +47,23 @@
         extraSpecialArgs = {inherit inputs outputs;};
       };
   in {
-    nixpkgs.overlays = [inputs.self-overlay.overlays.additions];
-    overlays = import ./overlays {inherit inputs outputs;};
-
-    packages = forEachPkgs (pkgs: (import ./pkgs {inherit pkgs;}));
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
+    # templates = import ./templates;
+
+    overlays = import ./overlays {inherit inputs outputs;};
+    # hydraJobs = import ./hydra.nix {inherit inputs outputs;};
+
+    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
+    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
+    formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+
+    wallpapers = import ./home/misterio/wallpapers;
 
     nixosConfigurations = {
-      thinkpad = mkNixos [./hosts/thinkpad]; # Laptop
+      thinkpad = mkNixos [./hosts/thinkpad];
       nzxt = mkNixos [./hosts/nzxt]; # Server
     };
-
-    wallpapers = import ./home/ethan/wallpapers;
 
     homeConfigurations = {
       "ethan@thinkpad" = mkHome [./home/ethan/thinkpad.nix] nixpkgs.legacyPackages."x86_64-linux"; # Laptop

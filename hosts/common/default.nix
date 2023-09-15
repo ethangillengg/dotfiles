@@ -3,10 +3,19 @@
   pkgs,
   lib,
   outputs,
+  inputs,
   ...
 }: {
   imports =
-    [./openssh.nix ./hyprland.nix ./locale.nix ./nix.nix ./nvim.nix]
+    [
+      inputs.home-manager.nixosModules.home-manager
+      ./openssh.nix
+      ./hyprland.nix
+      ./locale.nix
+      ./nix.nix
+      ./nvim.nix
+      ./sops.nix
+    ]
     ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
