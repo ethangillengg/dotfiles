@@ -11,7 +11,7 @@
     ../common/optional/quietboot.nix
     ../common/optional/jellyfin-mpv-shim.nix
     # ./../common/optional/wine.nix
-    # ./../common/optional/vpn.nix
+    # ./../common/optional/wgnord.nix
     ../common/optional/tailscale.nix
     ../common/optional/podman.nix
     # ./../common/optional/qemu.nix

@@ -18,5 +18,8 @@
     ffmpeg
 
     unoconv # convert .doc, .docx files
+
+    age
+    sops
   ];
 }
