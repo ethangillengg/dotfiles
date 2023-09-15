@@ -100,7 +100,7 @@ in {
         ];
 
         modules-right = [
-          "custom/wgnord"
+          # "custom/wgnord"
           "network"
           # "custom/tailscale-ping"
           "battery#bat0"
