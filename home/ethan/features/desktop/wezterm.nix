@@ -1,7 +1,7 @@
 {config, ...}: let
   # inherit (config) colorscheme;
   # inherit (colorscheme) colors;
-  # color_scheme = "Catppuccin Mocha",
+  # color_scheme = "Gruvbox dark, medium (base16)",
   # color_scheme = "Material Darker (base16)",
 in {
   programs.wezterm = {
@@ -9,7 +9,7 @@ in {
     extraConfig = ''
       return {
         font_size = 14.0,
-        color_scheme = "Gruvbox dark, medium (base16)",
+        color_scheme = "Catppuccin Mocha",
         font = wezterm.font("${config.fontProfiles.monospace.family}"),
         hide_tab_bar_if_only_one_tab = true,
         enable_tab_bar = false,
