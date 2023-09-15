@@ -70,16 +70,6 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  services.openssh = {
-    enable = true;
-    # require public key authentication for better security
-    ports = [420];
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "yes";
-    };
-  };
   nix.settings.trusted-users = ["root" "ethan"];
 
   networking.firewall.enable = false;
