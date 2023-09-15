@@ -1,0 +1,25 @@
+keys:
+  # Users
+  - &users:
+    - &ethan age16jg4ftsrf8waj68y8x7shs80tal6cgruhh98m4wcaxyujqzvjytsrpjqv2
+Hosts:
+  - &hosts:
+    - &thinkpad age10a0ulh2zeqwgj58q0t55vvt0fnfgw6u4ff39kqzgw7ckvtylqe4qrjjtj7
+
+creation_rules:
+  - path_regex: secrets/example.ya?ml$
+    key_groups:
+      - age:
+          - *ethan
+          - *thinkpad
+  - path_regex: hosts/thinkpad/secrets.ya?ml$
+    key_groups:
+      - age:
+          - *ethan
+          - *thinkpad
+
+  - path_regex: hosts/common/secrets.ya?ml$
+    key_groups:
+      - age:
+          - *ethan
+          - *thinkpad
