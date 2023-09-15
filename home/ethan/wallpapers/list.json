@@ -1,11 +1,5 @@
 [
   {
-    "name": "gruvbox-code",
-    "ext": "jpeg",
-    "id": "85pWjJO",
-    "sha256": "1j3k1n42brl2x0n0jx6abvlb5vklk51sdjy7fxwhj30a519c4md6"
-  },
-  {
     "name": "gruvbox-pacman",
     "ext": "png",
     "id": "7NkMyse",
@@ -16,5 +10,29 @@
     "ext": "png",
     "id": "kNSfS6s",
     "sha256": "0zy7zrj6p5wwvxq1ldy7blhv7zgsdzjhc9as2s9q4jkm8fm62wl0"
+  },
+  {
+    "name": "catppuccin-buttons",
+    "ext": "png",
+    "id": "1QZ3IvI",
+    "sha256": "1l037b90fwdzshy7r4xhcf2b80h0bhsjlyy8qbpbm0dg32kv8qcv"
+  },
+  {
+    "name": "catppuccin-triangle",
+    "ext": "png",
+    "id": "7zfmK5X",
+    "sha256": "0p5z26lm4mfa29s4pkj8fl0sji0d1vnmnx1hf6356y1yrbqkhpav"
+  },
+  {
+    "name": "catppuccin-hashtags",
+    "ext": "png",
+    "id": "CdVFKxk",
+    "sha256": "04xk3fcxkzh5vgwiw35scjqyw3vnricv0965w2ghwrhmd4nbm5lc"
+  },
+  {
+    "name": "catppuccin-romb",
+    "ext": "png",
+    "id": "gMBVrKg",
+    "sha256": "0iw77hnq5sppqc4kmi74xf3lxdwh6s7p867gv77w4vj05csk8pjv"
   }
 ]
