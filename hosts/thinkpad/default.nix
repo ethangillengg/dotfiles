@@ -13,6 +13,7 @@
     # ./../common/optional/wine.nix
     # ./../common/optional/vpn.nix
     ../common/optional/tailscale.nix
+    ../common/optional/podman.nix
     # ./../common/optional/qemu.nix
   ];
   networking.hostName = "thinkpad";
