@@ -51,9 +51,7 @@ in {
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = "yes";
-        # ExecStartPre = "-${wgnord-latest}/bin/wgnord login \"$(<${cfg.authTokenFile})\"";
         ExecStartPre = "-${wgnord-latest}/bin/wgnord login \"\$(<${cfg.tokenFile})\"";
-        # ExecStartPre = "-${wgnord-latest}/bin/wgnord login \"${cat readFile cfg.tokenFile}\"";
         ExecStart = "${wgnord-latest}/bin/wgnord connect \"${cfg.country}\"";
         ExecStop = "-${wgnord-latest}/bin/wgnord disconnect";
         User = "root";
@@ -61,24 +59,12 @@ in {
         # Set the path variables, so we can use openresolv
         Environment = "PATH=${openresolv}/bin:${coreutils}/bin:${curl}/bin:${gnugrep}/bin:${gnused}/bin:${iproute2}/bin:${jq}/bin:${wireguard-tools}/bin:$PATH";
         Restart = "on-failure";
-        RestartSec = "10s";
+        RestartSec = "1s";
       };
     };
 
-    # systemd.timers.wgnord = {
-    #   wantedBy = ["timers.target"];
-    #   timerConfig = {
-    #     OnBootSec = "0sec";
-    #   };
-    # };
-
     # Provide the template.conf file
     environment.etc."var/lib/wgnord/template.conf".text = cfg.template;
-    # environment.etc."var/lib/wgnord/credentials.json" = {
-    #   group = "root";
-    #   user = "root";
-    #   mode = "0600";
-    # };
 
     systemd.tmpfiles.rules = [
       "d /etc/wireguard/ 755 root root"
