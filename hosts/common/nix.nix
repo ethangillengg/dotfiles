@@ -13,8 +13,8 @@
       trusted-public-keys = [
         # "cache.m7.rs:kszZ/NSwE/TjhOcPPQ16IuUiuRSisdiIwhKZCxguaWg="
         # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "nzxt.emerald-duck.ts.net:9999:7+2mxpoaF+NGTHZ7q2SnHxmmAfzc63pS41Scjxyz+gE="
-        # https://nzxt.emerald-duck.ts.net:9999:/PdhmEUvwHUTtTSduPyVpscte/oPlrzAT9eARJDartw=
+        # "nzxt.emerald-duck.ts.net:9999:7+2mxpoaF+NGTHZ7q2SnHxmmAfzc63pS41Scjxyz+gE="
+        "nzxt.emerald-duck.ts.net:7+2mxpoaF+NGTHZ7q2SnHxmmAfzc63pS41Scjxyz+gE="
       ];
 
       auto-optimise-store = lib.mkDefault true;
