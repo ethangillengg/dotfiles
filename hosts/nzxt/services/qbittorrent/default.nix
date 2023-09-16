@@ -12,17 +12,17 @@ in {
     inherit port;
   };
 
-  services.nginx.virtualHosts.${domain} = {
-    enableACME = true;
-    forceSSL = true; # redirect http to https
-    locations = {
-      "/" = {
-        proxyWebsockets = true;
-        recommendedProxySettings = true;
-        proxyPass = "http://localhost:${toString port}";
-      };
-    };
-  };
+  # services.nginx.virtualHosts.${domain} = {
+  #   enableACME = true;
+  #   forceSSL = true; # redirect http to https
+  #   locations = {
+  #     "/" = {
+  #       proxyWebsockets = true;
+  #       recommendedProxySettings = true;
+  #       proxyPass = "http://localhost:${toString port}";
+  #     };
+  #   };
+  # };
 
   sops.secrets.nord-vpn.sopsFile = ../../secrets.yaml;
   services.wgnord = {

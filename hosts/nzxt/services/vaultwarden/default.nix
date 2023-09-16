@@ -14,13 +14,13 @@ in {
     };
   };
 
-  services.nginx.virtualHosts.${domain} = {
-    enableACME = true;
-    forceSSL = true; # redirect http to https
-    locations = {
-      "/" = {
-        proxyPass = "http://localhost:${toString port}";
-      };
-    };
-  };
+  # services.nginx.virtualHosts.${domain} = {
+  #   enableACME = true;
+  #   forceSSL = true; # redirect http to https
+  #   locations = {
+  #     "/" = {
+  #       proxyPass = "http://localhost:${toString port}";
+  #     };
+  #   };
+  # };
 }

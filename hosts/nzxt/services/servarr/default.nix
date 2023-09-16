@@ -21,41 +21,41 @@ in {
       openFirewall = true;
     };
 
-    nginx.virtualHosts."sonarr.${domain}" = {
-      enableACME = true;
-      forceSSL = true; # redirect http to https
-      locations = {
-        "/" = {
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-          proxyPass = "http://localhost:8989";
-        };
-      };
-    };
-
-    nginx.virtualHosts."radarr.${domain}" = {
-      enableACME = true;
-      forceSSL = true; # redirect http to https
-      locations = {
-        "/" = {
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-          proxyPass = "http://localhost:7878";
-        };
-      };
-    };
-
-    nginx.virtualHosts."prowlarr.${domain}" = {
-      enableACME = true;
-      forceSSL = true; # redirect http to https
-      locations = {
-        "/" = {
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-          proxyPass = "http://localhost:9696";
-        };
-      };
-    };
+    # nginx.virtualHosts."sonarr.${domain}" = {
+    #   enableACME = true;
+    #   forceSSL = true; # redirect http to https
+    #   locations = {
+    #     "/" = {
+    #       proxyWebsockets = true;
+    #       recommendedProxySettings = true;
+    #       proxyPass = "http://localhost:8989";
+    #     };
+    #   };
+    # };
+    #
+    # nginx.virtualHosts."radarr.${domain}" = {
+    #   enableACME = true;
+    #   forceSSL = true; # redirect http to https
+    #   locations = {
+    #     "/" = {
+    #       proxyWebsockets = true;
+    #       recommendedProxySettings = true;
+    #       proxyPass = "http://localhost:7878";
+    #     };
+    #   };
+    # };
+    #
+    # nginx.virtualHosts."prowlarr.${domain}" = {
+    #   enableACME = true;
+    #   forceSSL = true; # redirect http to https
+    #   locations = {
+    #     "/" = {
+    #       proxyWebsockets = true;
+    #       recommendedProxySettings = true;
+    #       proxyPass = "http://localhost:9696";
+    #     };
+    #   };
+    # };
   };
 
   users.groups.${group} = lib.mkDefault {};
