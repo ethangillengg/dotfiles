@@ -12,6 +12,7 @@ in {
   imports =
     [
       inputs.nix-colors.homeManagerModule
+      ./../features/cli
       ./gnome.nix
       ./fonts.nix
     ]
@@ -23,6 +24,10 @@ in {
     username = "ethan";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "22.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    sessionPath = ["$HOME/.local/bin"];
+    sessionVariables = {
+      FLAKE = "$HOME/.dotfiles/";
+    };
   };
 
   # home-manager = {

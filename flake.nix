@@ -20,6 +20,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefly = {
+      url = "github:timhae/firefly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nh = {
+      url = "github:viperml/nh";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
   };
   outputs = {
@@ -58,7 +68,7 @@
     devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
     formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
-    wallpapers = import ./home/misterio/wallpapers;
+    wallpapers = import ./home/ethan/wallpapers;
 
     nixosConfigurations = {
       thinkpad = mkNixos [./hosts/thinkpad];
