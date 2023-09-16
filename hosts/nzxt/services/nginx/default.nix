@@ -19,25 +19,14 @@ in {
       enable = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
-      # virtualHosts.${domain} = {
-      #   enableACME = true;
-      #   forceSSL = true; # redirect http to https
-      #   locations = {
-      #     "index" = {
-      #       root = indexDir;
-      #       index = "index.html";
-      #       tryFiles = "$uri $uri/ =404";
-      #     };
-      #   };
-      # };
-      virtualHosts."dev.${domain}" = {
-        enableACME = true;
-        forceSSL = true; # redirect http to https
+      virtualHosts."/" = {
+        # enableACME = true;
+        # forceSSL = true; # redirect http to https
         locations = {
-          "/" = {
-            proxyWebsockets = true;
-            recommendedProxySettings = true;
-            proxyPass = "http://localhost:3000";
+          "index" = {
+            root = indexDir;
+            index = "index.html";
+            tryFiles = "$uri $uri/ =404";
           };
         };
       };
