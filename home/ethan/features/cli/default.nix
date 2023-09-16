@@ -9,7 +9,6 @@
     ./zoxide.nix
     ./fish.nix
     ./starship.nix
-    ./exa.nix
     ./lsd.nix
     ./lf
     ./bat.nix
