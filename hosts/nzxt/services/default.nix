@@ -69,6 +69,7 @@ in {
     samba
     oogabooga
     servarr
+    ./binary-cache
   ];
   # open (custom) port for ssh
   networking.firewall.allowedTCPPorts = [420];

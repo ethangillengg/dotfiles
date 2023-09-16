@@ -39,7 +39,6 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Edmonton";
-  i18n.defaultLocale = "en_CA.UTF-8";
   services.printing.enable = true;
 
   # Enable sound with pipewire.
