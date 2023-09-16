@@ -5,7 +5,7 @@
 
     ./../common/optional/nixos-direnv.nix
     ./../common/optional/tailscale.nix
-    ./../common/optional/gnome.nix
+    # ./../common/optional/gnome.nix
     ./../common
   ];
   services.gnome.gnome-remote-desktop.enable = true;
