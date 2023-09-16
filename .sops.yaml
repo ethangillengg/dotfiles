@@ -5,7 +5,7 @@ keys:
 Hosts:
   - &hosts:
     - &thinkpad age10a0ulh2zeqwgj58q0t55vvt0fnfgw6u4ff39kqzgw7ckvtylqe4qrjjtj7
-    - &nzxt age1vzhvd5ch09dnsjyv5rd7dsen28dz2kyakausk0pr82a74j306vnqnnaffu
+    - &nzxt age1f5n45gyfxqwrv7ztf7mdapgcnjmmvtx8g60k5tx7y96dntumqq2su9w8aw
 
 creation_rules:
   - path_regex: hosts/thinkpad/secrets.ya?ml$

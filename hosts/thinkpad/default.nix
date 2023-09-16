@@ -4,7 +4,7 @@
 
     ../common
     ../common/optional/desktop-apps.nix
-    # ./../common/optional/distributed-builds.nix
+    ./../common/optional/distributed-builds.nix
     ../common/optional/x11-no-suspend.nix
     ../common/optional/greetd.nix
     # ./../common/optional/power-management.nix
