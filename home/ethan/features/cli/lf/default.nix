@@ -8,6 +8,8 @@
   ctpv = "${pkgs.ctpv}/bin/ctpv";
   ctpvclear = "${pkgs.ctpv}/bin/ctpvclear";
   ctpvquit = "${pkgs.ctpv}/bin/ctpvquit";
+
+  mimeopen = "${pkgs.perl538Packages.FileMimeInfo}/bin/mimeopen";
 in {
   xdg.configFile."lf/icons".source = ./icons;
   xdg.configFile."lf/colors".source = ./colors;
@@ -52,16 +54,8 @@ in {
     commands = {
       "mkdir" = "%mkdir \"$@\"";
       "touch" = "%touch \"$@\"";
+      "open" = "\$${mimeopen} $fx";
 
-      "open" = "$nvim $fx";
-      # "open" = ''
-      #   cmd open ''${{
-      #       case $(${file} --mime-type -Lb $f) in
-      #           text/*) nvim $fx;;
-      #           *) for f in $fx; do mimeopen $f > /dev/null 2> /dev/null & done;;
-      #       esac
-      #   }}
-      # '';
       "bulk-rename" = ''
         ''${{
             old="$(mktemp)"
