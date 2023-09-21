@@ -17,6 +17,9 @@
     # Declarative
     environmentFile = config.sops.secrets.wireless.path;
     networks = {
+      "SPSETUP-212C" = {
+        psk = "@SPSETUP212C@";
+      };
       "eduroam" = {
         auth = ''
           key_mgmt=WPA-EAP
