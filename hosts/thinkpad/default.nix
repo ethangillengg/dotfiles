@@ -14,10 +14,10 @@
     # ./../common/optional/wgnord.nix
     ../common/optional/tailscale.nix
     ../common/optional/podman.nix
+    ../common/optional/wireless.nix
     # ./../common/optional/qemu.nix
   ];
   networking.hostName = "thinkpad";
-  networking.networkmanager.enable = true;
 
   programs = {
     light.enable = true;
@@ -57,7 +57,7 @@
   users.users.ethan = {
     isNormalUser = true;
     description = "ethan";
-    extraGroups = ["wheel" "networkmanager" "docker"];
+    extraGroups = ["wheel" "network" "docker"];
     shell = pkgs.fish;
   };
 
