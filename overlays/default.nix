@@ -6,7 +6,6 @@
   additions = final: prev: import ../pkgs {pkgs = final;};
 
   modifications = final: prev: {
-    # use lf-sixel for sixel image previews in wezterm
     # lf = prev.lf.overrideAttrs (oldAttrs: {
     #   pname = "lf";
     #   # version = "custom"; # set the version to something that makes sense for you
@@ -17,6 +16,30 @@
     #     sha256 = "sha256-CoWF3virzel8TbW79xc6xXxh6K6r9mCeoaAUYcE7VHc="; # replace this with the correct sha256 hash
     #   };
     # });
+
+    # use lf-sixel for sixel image previews in wezterm
+    lf = prev.callPackage (
+      {
+        lib,
+        stdenv,
+        buildGoModule,
+        fetchFromGitHub,
+        installShellFiles,
+      }:
+        buildGoModule rec {
+          pname = "lf";
+          version = "31";
+
+          src = fetchFromGitHub {
+            owner = "gokcehan";
+            repo = "lf";
+            rev = "r${version}";
+            hash = "sha256-Tuk/4R/gGtSY+4M/+OhQCbhXftZGoxZ0SeLIwYjTLA4=";
+          };
+
+          vendorHash = "sha256-PVvHrXfMN6ZSWqd5GJ08VaeKaHrFsz6FKdDoe0tk2BE=";
+        }
+    ) {};
 
     osu-lazer-bin = let
       version = "2023.803.0";
