@@ -4,8 +4,8 @@
   fzf = "${pkgs.fzf}/bin/fzf";
   trashy = "${pkgs.trashy}/bin/trash";
   trash-put = "${trashy} put";
-
   ctpv = "${pkgs.ctpv}/bin/ctpv";
+  zoxide = "${pkgs.zoxide}/bin/zoxide";
   ctpvclear = "${pkgs.ctpv}/bin/ctpvclear";
   ctpvquit = "${pkgs.ctpv}/bin/ctpvquit";
 
@@ -42,6 +42,8 @@ in {
       "f" = ":filter";
       "A" = "push :mkdir<space>";
       "a" = "push :touch<space>";
+      "zz" = ":zi";
+      "gr" = ":fzf_jump";
 
       "H" = ":set hidden!";
 
@@ -97,6 +99,20 @@ in {
                   lf -remote "send $id $cmd \"$res\""
               fi
           }}
+      '';
+
+      "z" = ''
+        %{{
+          	result="$(${zoxide} query --exclude $PWD $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
+          	lf -remote "send $id cd \"$result\""
+          }}
+      '';
+
+      "zi" = ''
+        ''${{
+              result="$(${zoxide} query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+              lf -remote "send $id cd \"$result\""
+            }}
       '';
     };
 
