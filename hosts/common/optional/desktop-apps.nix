@@ -7,7 +7,7 @@
     font-manager
     firefox
     osu-lazer-bin
-    webcord-vencord
+    webcord
     steam
     qbittorrent
     yt-dlp
