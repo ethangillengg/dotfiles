@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-  environment.systemPackages = [pkgs.wpa_supplicant_gui];
   # Wireless secrets stored through sops
   sops.secrets.wireless = {
     sopsFile = ../secrets.yaml;
@@ -19,6 +18,9 @@
     networks = {
       "SPSETUP-212C" = {
         psk = "@SPSETUP212C@";
+      };
+      "MIGNET" = {
+        psk = "@MIGNET@";
       };
       "eduroam" = {
         auth = ''
