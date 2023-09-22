@@ -63,7 +63,8 @@
   documentation.man.man-db.enable = false;
   environment = {
     variables = {
-      MANPAGER = "sh -c 'col -bx | bat -p -lman --theme base16'";
+      MANPAGER = "sh -c 'col -bx | bat -p -lman --theme dracula'";
+      MANROFFOPT = "-c";
       EDITOR = "nvim";
       NIXOS_OZONE_WL = "1";
     };
