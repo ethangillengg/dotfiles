@@ -6,6 +6,7 @@
     ./wofi.nix
     ./wayland-wm
     ./mpv.nix
+    ./wpa-gui.nix
 
     ./common/qt.nix
     ./common/gtk.nix
