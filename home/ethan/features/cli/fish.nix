@@ -1,9 +1,15 @@
-{
+{pkgs, ...}: let
+  # Dependencies
+  quote = "${pkgs.quote}/bin/quote";
+  cowsay = "${pkgs.neo-cowsay}/bin/cowsay";
+  nitch = "${pkgs.nitch}/bin/nitch";
+in {
   programs.fish = {
     enable = true;
     shellAbbrs = {};
     functions = {
-      fish_greeting = "pfetch";
+      # fish_greeting = "${quote} | ${cowsay} --random";
+      fish_greeting = "${nitch}";
       lfcd = ''
         set tmp (mktemp)
         # `command` is needed in case `lfcd` is aliased to `lf`
