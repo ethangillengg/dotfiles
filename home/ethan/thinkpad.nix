@@ -7,6 +7,7 @@
     ./global
     ./features/desktop
     ./features/coding
+    ./features/pass
     # ./wallpapers
   ];
 
