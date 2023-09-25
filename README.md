@@ -13,8 +13,8 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 
 ## General
 
-- [ ] Factor out generic host settings
-- [ ] password-store
+- [x] Factor out generic host settings
+- [x] password-store
 - [ ] Check out khal?
 
 ## Thinkpad
