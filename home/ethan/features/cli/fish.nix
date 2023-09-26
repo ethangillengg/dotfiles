@@ -3,13 +3,14 @@
   quote = "${pkgs.quote}/bin/quote";
   cowsay = "${pkgs.neo-cowsay}/bin/cowsay";
   nitch = "${pkgs.nitch}/bin/nitch";
+  gum = "${pkgs.gum}/bin/gum";
 in {
   programs.fish = {
     enable = true;
     shellAbbrs = {};
     functions = {
       # fish_greeting = "${quote} | ${cowsay} --random";
-      fish_greeting = "${nitch}";
+      fish_greeting = "${nitch}&& hyprctl splash | ${gum} style --bold";
       lfcd = ''
         set tmp (mktemp)
         # `command` is needed in case `lfcd` is aliased to `lf`
