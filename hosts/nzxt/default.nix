@@ -4,7 +4,7 @@
     ./services
 
     ./../common/optional/nixos-direnv.nix
-    ./../common/optional/tailscale.nix
+    ./../common/optional/tailscale-exit-node.nix
     # ./../common/optional/gnome.nix
     ./../common
   ];

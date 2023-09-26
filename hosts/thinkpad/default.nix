@@ -12,7 +12,6 @@
     ../common/optional/jellyfin-mpv-shim.nix
     # ./../common/optional/wine.nix
     # ./../common/optional/wgnord.nix
-    ../common/optional/tailscale.nix
     ../common/optional/podman.nix
     ../common/optional/wireless.nix
     # ./../common/optional/qemu.nix
