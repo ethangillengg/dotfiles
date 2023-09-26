@@ -1,5 +1,5 @@
-{ config, ... }:
-let inherit (config.colorscheme) colors;
+{config, ...}: let
+  inherit (config.colorscheme) colors;
 in {
   programs.zathura = {
     enable = true;
@@ -28,8 +28,5 @@ in {
       recolor-lightcolor = "#${colors.base00}";
       recolor-darkcolor = "#${colors.base06}";
     };
-    extraConfig = ''
-      set recolor-reverse-video "true"
-    '';
   };
 }
