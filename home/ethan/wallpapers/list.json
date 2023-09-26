@@ -6,6 +6,12 @@
     "sha256": "0dsj9vc63x3sapdcvcn0s5i5cwgfrld2i3xmxnp6k53vs65pq55h"
   },
   {
+    "name": "catppuccin-tetris",
+    "ext": "png",
+    "id": "YXaSD4m",
+    "sha256": "0g9gfiwg5nw1wsawc3bvifqip5lzkn03cxbx134bs64r6777z191"
+  },
+  {
     "name": "gruvbox-windows",
     "ext": "png",
     "id": "kNSfS6s",
@@ -34,5 +40,17 @@
     "ext": "png",
     "id": "gMBVrKg",
     "sha256": "0iw77hnq5sppqc4kmi74xf3lxdwh6s7p867gv77w4vj05csk8pjv"
+  },
+  {
+    "name": "catppuccin-sound",
+    "ext": "png",
+    "id": "tEEQBay",
+    "sha256": "14df1b8vyqv327pcnn3h5xvcfyzib14v2h3x3bfq63z5xzlgzf4r"
+  },
+  {
+    "name": "catppuccin-pacman",
+    "ext": "png",
+    "id": "Ix8WT4v",
+    "sha256": "1l29l1d665zsjpyvqx8h7kxb0hzijwvjn06idj1f4gn76f231w5d"
   }
 ]
