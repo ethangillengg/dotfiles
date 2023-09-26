@@ -9,8 +9,7 @@ in {
     enable = true;
     shellAbbrs = {};
     functions = {
-      # fish_greeting = "${quote} | ${cowsay} --random";
-      fish_greeting = "${nitch}&& hyprctl splash | ${gum} style --bold";
+      fish_greeting = "${nitch} && ${quote} | ${gum} style --bold";
       lfcd = ''
         set tmp (mktemp)
         # `command` is needed in case `lfcd` is aliased to `lf`
