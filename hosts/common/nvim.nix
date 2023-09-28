@@ -14,9 +14,6 @@
     # Lua
     lua-language-server
     stylua
-    # Rust
-    rust-analyzer
-    rustfmt
     # C/C++
     clang-tools # For 'clangd'
     # Misc.
