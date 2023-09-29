@@ -5,7 +5,9 @@
   outputs,
   inputs,
   ...
-}: {
+}: let
+  bat = "${pkgs.bat}/bin/bat";
+in {
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
@@ -64,7 +66,7 @@
   documentation.man.man-db.enable = false;
   environment = {
     variables = {
-      MANPAGER = "sh -c 'col -bx | bat -p -lman --theme dracula'";
+      MANPAGER = "sh -c 'col -bx | ${bat} -p -lman'";
       MANROFFOPT = "-c";
       EDITOR = "nvim";
       NIXOS_OZONE_WL = "1";

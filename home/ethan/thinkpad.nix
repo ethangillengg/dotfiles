@@ -22,7 +22,7 @@
   # colorscheme = inputs.nix-colors.colorschemes.gruvbox-material-dark-hard;
 
   # wallpaper = outputs.wallpapers.gruvbox-pacman;
-  wallpaper = outputs.wallpapers.catppuccin-tetris;
+  wallpaper = outputs.wallpapers.catppuccin-pacman;
 
   # monitors = [{
   #   name = "eDP-1";
