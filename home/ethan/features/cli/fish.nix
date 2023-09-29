@@ -1,13 +1,23 @@
 {pkgs, ...}: let
   # Dependencies
   quote = "${pkgs.quote}/bin/quote";
-  cowsay = "${pkgs.neo-cowsay}/bin/cowsay";
   nitch = "${pkgs.nitch}/bin/nitch";
   gum = "${pkgs.gum}/bin/gum";
 in {
   programs.fish = {
     enable = true;
-    shellAbbrs = {};
+
+    plugins = [
+      {
+        name = "fzf";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }
+      {
+        name = "forgit";
+        src = pkgs.fishPlugins.forgit.src;
+      }
+    ];
+
     functions = {
       fish_greeting = "${nitch} && ${quote} | ${gum} style --bold";
       lfcd = ''

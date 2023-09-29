@@ -22,5 +22,6 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 - [x] Encrypted drive
 - [x] Fix Qt being slow
 - [x] Fix discord screensharing
+- [ ] Fix tailscale and wifi
 - [ ] Opt-in persistence
 - [ ] Hyprland keybinding for [Super + Shit + Bracket]

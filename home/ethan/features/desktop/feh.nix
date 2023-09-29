@@ -79,4 +79,8 @@
       next_img = 3;
     };
   };
+  home.shellAliases = {
+    #manga reader
+    mr = "feh -FZ --cache-size 2048 --on-last-slide hold --font \"yudit/40\" --scroll-step 50 --info \"echo %u/%l\" $argv; ";
+  };
 }

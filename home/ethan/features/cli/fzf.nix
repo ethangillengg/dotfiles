@@ -8,6 +8,12 @@ in {
     enable = true;
     defaultCommand = "${fd} . --hidden --exclude \".git\"";
 
+    defaultOptions = [
+      "--border"
+      "--reverse"
+      "--cycle"
+    ];
+
     changeDirWidgetCommand = "${fd} --type d --hidden";
     changeDirWidgetOptions = ["--preview '${tree} -C {} | head -200'" "--height 100%"];
 

@@ -9,18 +9,26 @@
     };
     delta = {
       enable = true;
-      options = {
-        line-numbers = true;
-        side-by-side = true;
-      };
     };
 
     aliases = {
       graph = "log --decorate --oneline --graph";
+      undo = "reset --soft HEAD~1";
     };
 
     extraConfig = {
       init.defaultBranch = "main";
+      # Pretty "git status"
+      status.short = true;
+      # Pretty "git log"
+      log.date = "short";
+      format.pretty = "%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09%C(Cyan)%an: %C(reset)%s";
     };
+  };
+  home.shellAliases = {
+    gp = "git push";
+    gs = "git status";
+    gl = "git log";
+    gc = "git commit";
   };
 }
