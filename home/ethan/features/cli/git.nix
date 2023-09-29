@@ -1,4 +1,6 @@
-{
+{pkgs, ...}: let
+  git-interactive = "${pkgs.git-interactive}/bin/git-interactive";
+in {
   programs.git = {
     enable = true;
     userName = "Ethan Gill";
@@ -18,8 +20,6 @@
 
     extraConfig = {
       init.defaultBranch = "main";
-      # Pretty "git status"
-      status.short = true;
       # Pretty "git log"
       log.date = "short";
       format.pretty = "%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09%C(Cyan)%an: %C(reset)%s";
@@ -27,8 +27,9 @@
   };
   home.shellAliases = {
     gp = "git push";
-    gs = "git status";
+    gs = "git status --short"; # Pretty "git status"
     gl = "git log";
     gc = "git commit";
+    ga = git-interactive;
   };
 }
