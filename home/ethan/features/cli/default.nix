@@ -12,7 +12,6 @@
     ./lsd.nix
     ./lf
     ./bat.nix
-    ./gitui.nix
     ./git.nix
     ./bottom.nix
     ./fzf.nix
