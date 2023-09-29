@@ -6,4 +6,5 @@
   # Personal scripts
   yt-music = pkgs.callPackage ./yt-music {};
   quote = pkgs.callPackage ./quote {};
+  git-interactive = pkgs.callPackage ./git-interactive {};
 }
