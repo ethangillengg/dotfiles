@@ -32,7 +32,8 @@
     # jq # JSON pretty printer and manipulator
     # trekscii # Cute startrek cli printer
     timer # To help with my ADHD paralysis
-    #
+    nerdfix # fix nerd fonts
+
     # nil # Nix LSP
     # nixfmt # Nix formatter
     # nix-inspect # See which pkgs are in your PATH

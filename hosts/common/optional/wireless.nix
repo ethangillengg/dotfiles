@@ -23,7 +23,7 @@
           pairwise=CCMP
           auth_alg=OPEN
           eap=PEAP
-          identity="ethan.gill"
+          identity="ethan.gill@ucalgary.ca"
           password="@EDUROAM@"
           phase2="auth=MSCHAPV2"
         '';
