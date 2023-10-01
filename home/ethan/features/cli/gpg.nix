@@ -4,6 +4,8 @@
     name = "gnome3";
   };
 in {
+  home.packages = pinentry.packages;
+
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;

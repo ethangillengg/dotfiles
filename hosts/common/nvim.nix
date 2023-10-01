@@ -19,5 +19,7 @@
     # Misc.
     vscode-langservers-extracted
     prettierd
+    # for copilot (https://github.com/zbirenbaum/copilot.lua)
+    nodejs_20
   ];
 }

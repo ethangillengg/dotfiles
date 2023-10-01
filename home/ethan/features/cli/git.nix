@@ -22,7 +22,7 @@ in {
       init.defaultBranch = "main";
       # Pretty "git log"
       log.date = "short";
-      format.pretty = "%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09%C(Cyan)%an: %C(reset)%s";
+      format.pretty = "* %C(Yellow)%h %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %G? %C(Cyan)%an: %C(reset)%s";
     };
   };
   home.shellAliases = {
