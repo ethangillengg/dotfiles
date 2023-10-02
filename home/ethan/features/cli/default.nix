@@ -33,6 +33,7 @@
     # trekscii # Cute startrek cli printer
     timer # To help with my ADHD paralysis
     nerdfix # fix nerd fonts
+    chatgpt-cli
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
