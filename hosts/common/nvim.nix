@@ -21,7 +21,5 @@
     prettierd
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
     nodejs_18
-    pyright
-    nodePackages_latest.typescript-language-server
   ];
 }
