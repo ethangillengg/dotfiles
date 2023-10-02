@@ -15,6 +15,7 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 
 - [x] Factor out generic host settings
 - [x] password-store
+- [ ] Check out yazi instead of lf
 - [ ] Check out khal?
 
 ## Thinkpad
