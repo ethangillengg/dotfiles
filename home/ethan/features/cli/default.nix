@@ -11,6 +11,7 @@
     ./starship.nix
     ./lsd.nix
     ./lf
+    ./yazi.nix
     ./bat.nix
     ./git.nix
     ./bottom.nix
