@@ -8,6 +8,7 @@
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
   swaybg = "${pkgs.swaybg}/bin/swaybg";
+  cliphist = "${pkgs.cliphist}/bin/cliphist";
 
   colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
@@ -153,6 +154,11 @@ in {
       exec-once=mako
       exec-once=waybar
       exec-once=wezterm
+      # Clipboard manager
+      exec-once = wl-paste --type text --watch ${cliphist} store #Stores only text data
+      exec-once = wl-paste --type image --watch ${cliphist} store #Stores only image data
+
+      bind = SUPER, Y, exec, ${cliphist} list | wofi --dmenu | ${cliphist} decode | wl-copy
     '';
   };
 }
