@@ -20,6 +20,8 @@
     vscode-langservers-extracted
     prettierd
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
-    nodejs_20
+    nodejs_18
+    pyright
+    nodePackages_latest.typescript-language-server
   ];
 }
