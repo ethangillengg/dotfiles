@@ -8,6 +8,7 @@
     ../common/optional/x11-no-suspend.nix
     ../common/optional/greetd.nix
     # ./../common/optional/power-management.nix
+    ../common/optional/gnome.nix
     ../common/optional/quietboot.nix
     ../common/optional/jellyfin-mpv-shim.nix
     # ./../common/optional/wine.nix
