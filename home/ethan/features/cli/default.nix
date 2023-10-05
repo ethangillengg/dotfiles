@@ -17,13 +17,13 @@
     ./bottom.nix
     ./fzf.nix
     ./gpg.nix
+    ./manix.nix
   ];
   home.packages = with pkgs; [
     # comma # Install and run programs by sticking a , before them
     # distrobox # Nice escape hatch, integrates docker images with my environment
 
     # bc # Calculator
-    # bottom # System viewer
     # ncdu # TUI disk usage
     # eza # Better ls
     # ripgrep # Better grep
@@ -32,9 +32,11 @@
     # diffsitter # Better diff
     # jq # JSON pretty printer and manipulator
     # trekscii # Cute startrek cli printer
+
     timer # To help with my ADHD paralysis
     nerdfix # fix nerd fonts
-    chatgpt-cli
+    chatgpt-cli #chat with gpt
+    nix-melt
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
