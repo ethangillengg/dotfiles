@@ -1,9 +1,14 @@
-{config, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   # Wireless secrets stored through sops
   sops.secrets.wireless = {
     sopsFile = ../secrets.yaml;
     neededForUsers = true;
   };
+  networking.networkmanager.enable = lib.mkForce false;
 
   networking.wireless = {
     enable = true;
