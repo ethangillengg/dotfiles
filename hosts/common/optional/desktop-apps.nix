@@ -7,16 +7,20 @@
     font-manager
     firefox
     osu-lazer-bin
-    webcord
     steam
     qbittorrent
     yt-dlp
 
     pavucontrol
-    # pass-wayland
     termusic
     ffmpeg
 
+    webcord-vencord
+    obs-studio
+
     unoconv # convert .doc, .docx files
+    renderdoc
+
+    llama
   ];
 }

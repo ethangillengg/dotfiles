@@ -15,6 +15,7 @@
     waypipe
     wf-recorder
     wl-clipboard
+    xdg-desktop-portal-hyprland
   ];
 
   home.sessionVariables = {

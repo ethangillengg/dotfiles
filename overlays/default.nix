@@ -6,16 +6,31 @@
   additions = final: prev: import ../pkgs {pkgs = final;};
 
   modifications = final: prev: {
-    # lf = prev.lf.overrideAttrs (oldAttrs: {
-    #   pname = "lf";
-    #   # version = "custom"; # set the version to something that makes sense for you
-    #   src = final.fetchFromGitHub {
-    #     owner = "horriblename";
-    #     repo = "lf";
-    #     rev = "master"; # set the revision to the commit hash or tag you want
-    #     sha256 = "sha256-CoWF3virzel8TbW79xc6xXxh6K6r9mCeoaAUYcE7VHc="; # replace this with the correct sha256 hash
-    #   };
-    # });
+    # use this fork since the main is broken
+    # see: (https://github.com/mlvzk/manix/issues/31)
+    manix = prev.manix.overrideAttrs (oldAttrs: {
+      pname = "manix";
+      version = "0.6.3";
+
+      src = final.fetchFromGitHub {
+        owner = "waalge";
+        repo = "manix";
+        rev = "ed023294d9a20786a359306f252ab2a7669fe9a9"; # set the revision to the commit hash or tag you want
+        sha256 = "sha256-0UwLWHMIUT108AB+YgwVldYjQrUNV/7kyWdpeo7UqYo="; # replace this with the correct sha256 hash
+      };
+    });
+
+    ollama = prev.manix.overrideAttrs (oldAttrs: {
+      pname = "ollama";
+      version = "0.1.1";
+
+      src = final.fetchFromGitHub {
+        owner = "waalge";
+        repo = "manix";
+        rev = "ed023294d9a20786a359306f252ab2a7669fe9a9"; # set the revision to the commit hash or tag you want
+        sha256 = "sha256-0UwLWHMIUT108AB+YgwVldYjQrUNV/7kyWdpeo7UqYo="; # replace this with the correct sha256 hash
+      };
+    });
 
     # use lf-sixel for sixel image previews in wezterm
     lf = prev.callPackage (
