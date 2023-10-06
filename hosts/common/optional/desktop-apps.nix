@@ -9,7 +9,6 @@
     osu-lazer-bin
     steam
     qbittorrent
-    yt-dlp
 
     pavucontrol
     termusic
@@ -21,6 +20,7 @@
     unoconv # convert .doc, .docx files
     renderdoc
 
-    llama
+    yt-dlp
+    yt-music # chromium wrapper for yt music
   ];
 }
