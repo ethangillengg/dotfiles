@@ -15,6 +15,7 @@
     me = "xh -j ipinfo.io";
 
     lsblk = "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINTS,UUID";
+    llama-cpp = "nix run github:ggerganov/llama.cpp --";
 
     # hmc = "nvim \"+Man home-configuration.nix | only\"";
     hmc = "man home-configuration.nix";
