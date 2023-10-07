@@ -22,15 +22,20 @@
       "MIGNET" = {
         psk = "@MIGNET@";
       };
+      "NOKIA-7A02" = {
+        psk = "@NOKIA7A02@";
+      };
       "eduroam" = {
+        # key_mgmt=WPA-EAP
+        # pairwise=CCMP
+        # auth_alg=OPEN
+        # eap=PEAP
+        # phase2="auth=MSCHAPV2"
         auth = ''
           key_mgmt=WPA-EAP
-          pairwise=CCMP
-          auth_alg=OPEN
-          eap=PEAP
+          eap=PWD
           identity="ethan.gill@ucalgary.ca"
           password="@EDUROAM@"
-          phase2="auth=MSCHAPV2"
         '';
       };
     };
