@@ -15,6 +15,7 @@
     ffmpeg
 
     webcord-vencord
+    discord-ptb
     obs-studio
 
     unoconv # convert .doc, .docx files
@@ -22,5 +23,7 @@
 
     yt-dlp
     yt-music # chromium wrapper for yt music
+
+    betterbird
   ];
 }
