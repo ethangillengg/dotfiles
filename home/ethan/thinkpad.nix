@@ -8,6 +8,7 @@
     ./features/desktop
     ./features/coding
     ./features/pass
+    ./features/productivity
     # ./wallpapers
   ];
 
