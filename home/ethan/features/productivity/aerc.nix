@@ -1,52 +1,181 @@
 {
   programs.aerc = {
     enable = true;
-    extraConfig.general.unsafe-accounts-conf = true;
+    extraConfig = {
+      general = {
+        unsafe-accounts-conf = true;
+      };
+      ui = {
+        styleset-name = "dracula";
+        sidebar-width = 30;
+        border-char-vertical = "│";
+      };
+      viewer = {
+        pager = "less -R";
+      };
+    };
+
+    # this doesn't work unless I set all the binds for some reason
+    extraBinds = ''
+      <C-n> = :next-tab<Enter>
+      <tab> = :next-tab<Enter>
+      <C-p> = :prev-tab<Enter>
+      <backtab> = :prev-tab<Enter>
+      <C-t> = :term<Enter>
+      ? = :help keys<Enter>
+      <C-c> = :prompt 'Quit?' quit<Enter>
+      <C-q> = :prompt 'Quit?' quit<Enter>
+
+      [messages]
+      q = :quit<Enter>
+
+      j = :next<Enter>
+      <Down> = :next<Enter>
+      <C-d> = :next 50%<Enter>
+      <C-f> = :next 100%<Enter>
+      <PgDn> = :next 100%<Enter>
+
+      k = :prev<Enter>
+      <Up> = :prev<Enter>
+      <C-u> = :prev 50%<Enter>
+      <C-b> = :prev 100%<Enter>
+      <PgUp> = :prev 100%<Enter>
+      g = :select 0<Enter>
+      G = :select -1<Enter>
+
+      J = :next-folder<Enter>
+      <C-Down> = :next-folder<Enter>
+      K = :prev-folder<Enter>
+      <C-Up> = :prev-folder<Enter>
+      H = :collapse-folder<Enter>
+      <C-Left> = :collapse-folder<Enter>
+      L = :expand-folder<Enter>
+      <C-Right> = :expand-folder<Enter>
+
+      v = :mark -t<Enter>
+      <Space> = :mark -t<Enter>:next<Enter>
+      V = :mark -v<Enter>
+
+      T = :toggle-threads<Enter>
+      zc = :fold<Enter>
+      zo = :unfold<Enter>
+
+      <Enter> = :view<Enter>
+      d = :prompt 'Really delete this message?' 'delete-message'<Enter>
+      D = :delete<Enter>
+      a = :archive flat<Enter>
+      A = :unmark -a<Enter>:mark -T<Enter>:archive flat<Enter>
+
+      C = :compose<Enter>
+      m = :compose<Enter>
+
+      rr = :reply -a<Enter>
+      rq = :reply -aq<Enter>
+      Rr = :reply<Enter>
+      Rq = :reply -q<Enter>
+
+      c = :cf<space>
+      $ = :term<space>
+      ! = :term<space>
+      | = :pipe<space>
+
+      / = :search<space>
+      \ = :filter<space>
+      n = :next-result<Enter>
+      N = :prev-result<Enter>
+      <Esc> = :clear<Enter>
+
+      s = :split<Enter>
+      S = :vsplit<Enter>
+
+      [messages:folder=Drafts]
+      <Enter> = :recall<Enter>
+
+      [view]
+      / = :toggle-key-passthrough<Enter>/
+      q = :close<Enter>
+      O = :open<Enter>
+      o = :open<Enter>
+      S = :save<space>
+      | = :pipe<space>
+      D = :delete<Enter>
+      A = :archive flat<Enter>
+
+      <C-l> = :open-link <space>
+
+      f = :forward<Enter>
+      rr = :reply -a<Enter>
+      rq = :reply -aq<Enter>
+      Rr = :reply<Enter>
+      Rq = :reply -q<Enter>
+
+      H = :toggle-headers<Enter>
+      <C-k> = :prev-part<Enter>
+      <C-Up> = :prev-part<Enter>
+      <C-j> = :next-part<Enter>
+      <C-Down> = :next-part<Enter>
+      J = :next<Enter>
+      <C-Right> = :next<Enter>
+      K = :prev<Enter>
+      <C-Left> = :prev<Enter>
+
+      [view::passthrough]
+      $noinherit = true
+      $ex = <C-x>
+      <Esc> = :toggle-key-passthrough<Enter>
+
+      [compose]
+      # Keybindings used when the embedded terminal is not selected in the compose
+      # view
+      $noinherit = true
+      $ex = <C-x>
+      <C-k> = :prev-field<Enter>
+      <C-Up> = :prev-field<Enter>
+      <C-j> = :next-field<Enter>
+      <C-Down> = :next-field<Enter>
+      <A-p> = :switch-account -p<Enter>
+      <C-Left> = :switch-account -p<Enter>
+      <A-n> = :switch-account -n<Enter>
+      <C-Right> = :switch-account -n<Enter>
+      <tab> = :next-field<Enter>
+      <backtab> = :prev-field<Enter>
+      <C-p> = :prev-tab<Enter>
+      <C-PgUp> = :prev-tab<Enter>
+      <C-n> = :next-tab<Enter>
+      <C-PgDn> = :next-tab<Enter>
+
+      [compose::editor]
+      # Keybindings used when the embedded terminal is selected in the compose view
+      $noinherit = true
+      $ex = <C-x>
+      <C-k> = :prev-field<Enter>
+      <C-Up> = :prev-field<Enter>
+      <C-j> = :next-field<Enter>
+      <C-Down> = :next-field<Enter>
+      <C-p> = :prev-tab<Enter>
+      <C-PgUp> = :prev-tab<Enter>
+      <C-n> = :next-tab<Enter>
+      <C-PgDn> = :next-tab<Enter>
+
+      [compose::review]
+      # Keybindings used when reviewing a message to be sent
+      y = :send<Enter>
+      n = :abort<Enter>
+      v = :preview<Enter>
+      p = :postpone<Enter>
+      q = :choose -o d discard abort -o p postpone postpone<Enter>
+      e = :edit<Enter>
+      a = :attach<space>
+      d = :detach<space>
+
+      [terminal]
+      $noinherit = true
+      $ex = <C-x>
+
+      <C-p> = :prev-tab<Enter>
+      <C-n> = :next-tab<Enter>
+      <C-PgUp> = :prev-tab<Enter>
+      <C-PgDn> = :next-tab<Enter>
+    '';
   };
 }
-# #border.bg=#BD93F9
-# title.bg=#BD93F9
-#
-# title.fg=black
-# title.bold=true
-#
-# header.bold=true
-# header.fg=#BD93F9
-#
-# tab.selected.fg=black
-# tab.selected.bg=#BD93F9
-# tab.selected.bold=false
-# dirlist*.selected.bg=#44475A
-# dirlist*.selected.fg=white
-# dirlist*.selected.bold=false
-#
-# *error.bold=true
-# *error.fg=red
-# *warning.fg=yellow
-# *success.fg=green
-#
-# statusline_default.bg=#303030
-# statusline_error.fg=red
-#
-# msglist_unread.fg=#ffffff
-# msglist_unread.bold=true
-# msglist_deleted.fg=#666666
-# msglist_*.selected.bg=#44475A
-# msglist_marked.fg=black
-# msglist_marked.selected.fg=black
-# msglist_marked.bg=#BD93F9
-# msglist_marked.selected.bg=#9956f5
-#
-# completion_pill.reverse=false
-# selector_focused.bold=false
-# selector_focused.bg=#44475A
-# selector_focused.fg=white
-# selector_chooser.bold=false
-# selector_chooser.bg=#44475A
-# selector_chooser.fg=white
-# default.selected.bold=false
-# default.selected.fg=white
-# default.selected.bg=#44475A
-#
-# completion_default.selected.bg=#44475A
-# completion_default.selected.fg=white
