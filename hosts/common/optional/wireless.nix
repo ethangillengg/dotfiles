@@ -25,15 +25,17 @@
       "NOKIA-7A02" = {
         psk = "@NOKIA7A02@";
       };
+
+      "Ethan-OnePlus" = {
+        psk = "@HOTSPOT@";
+      };
       "eduroam" = {
-        # key_mgmt=WPA-EAP
-        # pairwise=CCMP
-        # auth_alg=OPEN
-        # eap=PEAP
-        # phase2="auth=MSCHAPV2"
         auth = ''
           key_mgmt=WPA-EAP
-          eap=PWD
+          pairwise=CCMP
+          auth_alg=OPEN
+          eap=PEAP
+          phase2="auth=MSCHAPV2"
           identity="ethan.gill@ucalgary.ca"
           password="@EDUROAM@"
         '';
