@@ -47,7 +47,6 @@ in {
     jqp
     jq
     fzf
-    unp #unpack .zip, .tar, .rar with one command
     unzip
     zip
     rar
