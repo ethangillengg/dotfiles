@@ -12,6 +12,13 @@ in {
   programs.qutebrowser = {
     enable = true;
     loadAutoconfig = true;
+    searchEngines = {
+      w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+      aw = "https://wiki.archlinux.org/?search={}";
+      nw = "https://nixos.wiki/index.php?search={}";
+      np = "https://search.nixos.org/packages?channel=unstable&query={}";
+      no = "https://search.nixos.org/options?channel=unstable&query={}";
+    };
     settings = {
       editor.command = ["xdg-open" "{file}"];
       tabs = {
