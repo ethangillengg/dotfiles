@@ -30,6 +30,7 @@ in {
     gs = "git status --short"; # Pretty "git status"
     gl = "git log";
     gc = "git commit";
+    gd = "git diff";
     ga = git-interactive;
   };
 }
