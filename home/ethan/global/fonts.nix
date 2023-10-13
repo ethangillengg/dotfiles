@@ -11,13 +11,13 @@
     # };
 
     monospace = {
-      # family = "JetBrainsMono Nerd Font";
-      family = "Fira Code Nerd Font";
+      family = "JetBrainsMono Nerd Font";
+      # family = "Fira Code Nerd Font";
       package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode"];};
     };
     regular = {
-      # family = "JetBrainsMono Nerd Font";
-      family = "Fira Code Nerd Font";
+      family = "JetBrainsMono Nerd Font";
+      # family = "Fira Code Nerd Font";
       package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode"];};
     };
     fallback = {
