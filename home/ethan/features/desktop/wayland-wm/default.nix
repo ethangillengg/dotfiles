@@ -6,6 +6,7 @@
     ./mako.nix
     ./swaylock.nix
     ./zathura.nix
+    ./qutebrowser.nix
   ];
 
   home.packages = with pkgs; [
