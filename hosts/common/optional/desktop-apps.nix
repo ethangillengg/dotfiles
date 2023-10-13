@@ -14,9 +14,9 @@
     termusic
     ffmpeg
 
-    webcord-vencord
-    discord-ptb
     obs-studio
+    armcord
+    # webcord
 
     unoconv # convert .doc, .docx files
     renderdoc
