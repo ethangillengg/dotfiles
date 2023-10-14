@@ -11,8 +11,4 @@
     ./common/qt.nix
     ./common/gtk.nix
   ];
-
-  home.packages = with pkgs; [
-    gimp
-  ];
 }
