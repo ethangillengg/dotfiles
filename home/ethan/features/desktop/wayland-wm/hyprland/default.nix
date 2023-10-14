@@ -144,11 +144,19 @@ in {
 
       # Screenshot
       bind = SUPER, s, exec, ${grim} -g "$(${slurp})" - | wl-copy -t image/png
+      # Password manager
       bind = SUPER, semicolon, exec, ${pass-wofi}
+      # Clipboard history
+      bind = SUPER, Y, exec, ${cliphist} list | wofi --dmenu | ${cliphist} decode | wl-copy
+
+      # trigger when the switch is turning off
+      bindl = , switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, 1920x1080, 0x0, 1"
+      # trigger when the switch is turning on
+      bindl = , switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
+
 
       blurls=waybar
       blurls=firefox
-      # layerrule = unset, waybar
 
       # Startup
       exec=${swaybg} -i ${wallpaper} --mode fill
@@ -160,7 +168,6 @@ in {
       exec-once = wl-paste --type text --watch ${cliphist} store #Stores only text data
       exec-once = wl-paste --type image --watch ${cliphist} store #Stores only image data
 
-      bind = SUPER, Y, exec, ${cliphist} list | wofi --dmenu | ${cliphist} decode | wl-copy
     '';
   };
 }

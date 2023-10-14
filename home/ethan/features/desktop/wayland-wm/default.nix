@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./hyprland
+    ./eww
 
     ./waybar.nix
     ./mako.nix
@@ -10,7 +11,6 @@
   ];
 
   home.packages = with pkgs; [
-    # grim
     imv
     slurp
     waypipe

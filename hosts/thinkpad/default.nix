@@ -6,16 +6,13 @@
     ../common/optional/desktop-apps.nix
     ./../common/optional/distributed-builds.nix
     ../common/optional/x11-no-suspend.nix
-    # ../common/optional/greetd.nix
-    # ./../common/optional/power-management.nix
-    ../common/optional/gnome.nix
+    ../common/optional/greetd.nix
+    # ../common/optional/gnome.nix
     ../common/optional/quietboot.nix
     ../common/optional/jellyfin-mpv-shim.nix
-    # ./../common/optional/wine.nix
     # ./../common/optional/wgnord.nix
     ../common/optional/podman.nix
     ../common/optional/wireless.nix
-    # ./../common/optional/qemu.nix
   ];
   networking.hostName = "thinkpad";
 
