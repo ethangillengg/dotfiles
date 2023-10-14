@@ -12,6 +12,7 @@
   pass-wofi = "${pkgs.pass-wofi.override {
     pass = config.programs.password-store.package;
   }}/bin/pass-wofi";
+  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 
   colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
@@ -135,8 +136,8 @@ in {
       bindm = SUPER, mouse:273, resizewindow
 
       # Keyboard controls (brightness, media, sound, etc)
-      bind=,XF86MonBrightnessUp,exec,sudo light -A 10
-      bind=,XF86MonBrightnessDown,exec,sudo light -U 10
+      bind=,XF86MonBrightnessUp,exec,brightnessctl set 5%-
+      bind=,XF86MonBrightnessDown,exec,brightnessctl set +5%
 
       bind=,XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%
       bind=,XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%

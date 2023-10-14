@@ -17,5 +17,9 @@ in {
     backgroundColor = "#${colors.base00}dd";
     borderColor = "#${colors.base03}dd";
     textColor = "#${colors.base05}dd";
+    extraConfig = ''
+      [mode=do-not-disturb]
+      invisible=1
+    '';
   };
 }

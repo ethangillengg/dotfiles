@@ -26,7 +26,7 @@ elif [ "$per" -gt "0" ]; then
 	icon="assets/battery_low.png"
 	notify-send -u critical "Battery Low" "Connect Charger"
 else
-        echo  && exit
+        echo 󰂎 && exit
 fi
 echo "$icon"
 }

@@ -53,6 +53,7 @@ in {
     pciutils
     btop
     ripgrep
+    fd
 
     samba
   ];

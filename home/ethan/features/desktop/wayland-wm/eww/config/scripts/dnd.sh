@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-STATUS=$(dunstctl is-paused)
+STATUS=$(makoctl mode)
 
 toggle() {
-    if [ $STATUS == "false" ]; then
-        dunstctl set-paused true
+    if [ $STATUS == "do-not-disturb" ]; then
+        makoctl mode -r do-not-disturb
     else
-        dunstctl set-paused false
+        makoctl mode -s do-not-disturb
     fi
 }
 
 
 class() {
-    if [ $STATUS == "false" ]; then
-        echo inactive
+    if [ $STATUS == "do-not-disturb" ]; then
+      echo active
     else
-        echo active
+      echo inactive
     fi
 }
 

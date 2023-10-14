@@ -4,10 +4,15 @@
   ...
 }: {
   # copy whole directory to ~/.config/eww
-  home.file."eww" = {
+  xdg.configFile."eww" = {
     source = ./config;
     recursive = true;
   };
+
+  home.packages = with pkgs; [
+    libnotify # send notifications
+    brightnessctl
+  ];
 
   # home = {
   #   activation = {
