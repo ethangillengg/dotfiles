@@ -11,7 +11,7 @@ check_if_empty() {
 }
 
 KEY="key"
-CITY="New Delhi"
+CITY="Calgary"
 CITY=$(encode_to_url_format "$CITY")
 WEATHER=$(curl -sf "api.openweathermap.org/data/2.5/weather?q=$CITY&appid=$KEY&units=metric")
 
@@ -57,19 +57,19 @@ case $WEATHER_ICON_CODE in
 		WEATHER_HEX="#adadff"
 		;;
 	"09d")
-		WEATHER_ICON=""
+		WEATHER_ICON="󰉁"
 		WEATHER_HEX="#6b95ff"
 		;;
 	"09n")
-		WEATHER_ICON=""
+		WEATHER_ICON="󰉁"
 		WEATHER_HEX="#6b95ff"
 		;;
 	"10d")
-		WEATHER_ICON=""
+		WEATHER_ICON="󰉁"
 		WEATHER_HEX="#6b95ff"
 		;;
 	"10n")
-		WEATHER_ICON=""
+		WEATHER_ICON="󰉁"
 		WEATHER_HEX="#6b95ff"
 		;;
 	"11d")

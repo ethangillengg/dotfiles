@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-STATUS=$(nmcli | grep wlo1 | awk 'FNR == 1 {print $2}')
+STATUS=$(wpa_cli  status | grep wpa_state | cut -d"=" -f2)
 SSID=$(iwgetid | awk -F '"' '{ print $2 }')
 STRENGTH=$(awk 'NR==3 {printf("%.0f",$3*10/7)}' /proc/net/wireless)
 
 toggle() {
-    if [[ $STATUS == "connected" ]]; then
-        nmcli radio wifi off
-        notify-send --icon=window-close --urgency=normal "Wi-Fi" "Wi-Fi has been turned off!"
+    if [[ $STATUS == "COMPLETED" ]]; then
+        sudo ifconfig wlp3s0 down
+        notify-send --icon=network-wireless-disconnected --urgency=normal "Wi-Fi" "Wi-Fi disabled"
     else
-        nmcli radio wifi on
-        notify-send --icon=checkmark --urgency=normal "Wi-Fi" "Wi-Fi has been turned on, you are back online!"
+        sudo ifconfig wlp3s0 up
+        notify-send --icon=network-wireless-signal-excellent --urgency=normal "Wi-Fi" "Wi-Fi enabled"
     fi
 }
 
 
 class() {
-    if [[ $STATUS == "connected" ]]; then
+    if [[ $STATUS == "COMPLETED" ]]; then
         echo active
     else
         echo inactive
@@ -23,7 +23,7 @@ class() {
 }
 
 ssid() {
-    if [[ $STATUS == "connected" ]]; then
+    if [[ $STATUS == "COMPLETED" ]]; then
         echo $(iwgetid -r)
 
     else
@@ -31,7 +31,7 @@ ssid() {
     fi
 }
 color() {
-    if [[ $STATUS == "connected" ]]; then
+    if [[ $STATUS == "COMPLETED" ]]; then
         echo "green"
 
     else
@@ -39,7 +39,7 @@ color() {
     fi
 }
 icon() {
-    if [[ $STATUS == "connected" ]]; then
+    if [[ $STATUS == "COMPLETED" ]]; then
         echo "󰤨 "
 
     else

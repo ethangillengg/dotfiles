@@ -4,10 +4,10 @@ toggle() {
     STATUS="$(bluetoothctl show | grep Powered | awk '{print $2}')"
     if [ $STATUS == "yes" ]; then
         bluetoothctl power off
-        notify-send --icon=bluetooth-offline --urgency=normal "Bluetooth" "Bluetooth has been turned off."
+        notify-send --icon=bluetooth-offline --urgency=normal "Bluetooth" "Bluetooth disabled"
     else
         bluetoothctl power on
-        notify-send --icon=volume-level-high --urgency=normal "Bluetooth" "Bluetooth has been turned on."
+        notify-send --icon=bluetooth-online --urgency=normal "Bluetooth" "Bluetooth enabled"
     fi
 }
 
