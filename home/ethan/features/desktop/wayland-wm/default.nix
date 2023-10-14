@@ -8,6 +8,7 @@
     ./swaylock.nix
     ./zathura.nix
     ./qutebrowser.nix
+    ./tofi.nix
   ];
 
   home.packages = with pkgs; [
