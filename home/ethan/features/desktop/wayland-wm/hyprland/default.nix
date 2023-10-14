@@ -9,6 +9,9 @@
   slurp = "${pkgs.slurp}/bin/slurp";
   swaybg = "${pkgs.swaybg}/bin/swaybg";
   cliphist = "${pkgs.cliphist}/bin/cliphist";
+  pass-wofi = "${pkgs.pass-wofi.override {
+    pass = config.programs.password-store.package;
+  }}/bin/pass-wofi";
 
   colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
@@ -141,6 +144,7 @@ in {
 
       # Screenshot
       bind = SUPER, s, exec, ${grim} -g "$(${slurp})" - | wl-copy -t image/png
+      bind = SUPER, semicolon, exec, ${pass-wofi}
 
       blurls=waybar
       blurls=firefox

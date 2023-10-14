@@ -1,5 +1,10 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   inherit (config.colorscheme) colors kind;
+  wofi = "${pkgs.wofi}/bin/wofi";
 in {
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
@@ -14,10 +19,26 @@ in {
     loadAutoconfig = true;
     searchEngines = {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+      d = "https://www.merriam-webster.com/dictionary/{}";
+
       aw = "https://wiki.archlinux.org/?search={}";
       nw = "https://nixos.wiki/index.php?search={}";
       np = "https://search.nixos.org/packages?channel=unstable&query={}";
       no = "https://search.nixos.org/options?channel=unstable&query={}";
+    };
+    keyBindings = {
+      normal = {
+        # try to fill username / password
+        ",l" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" -d \"wofi --dmenu\"";
+        # try to query for username/password
+        ",pq" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --unfiltered -d \"wofi --dmenu\"";
+        # try to fill password only
+        ",pp" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --password-only -d \"wofi --dmenu\"";
+        # try to fill username only
+        ",pu" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --username-only -d \"wofi --dmenu\"";
+        # try to fill otp only
+        ",po" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --otp-only -d \"wofi --dmenu\"";
+      };
     };
     settings = {
       editor.command = ["xdg-open" "{file}"];
