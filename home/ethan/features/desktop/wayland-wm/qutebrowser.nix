@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (config.colorscheme) colors kind;
-  wofi = "${pkgs.wofi}/bin/wofi";
+  rofi = "${pkgs.rofi}/bin/rofi";
 in {
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
@@ -29,15 +29,15 @@ in {
     keyBindings = {
       normal = {
         # try to fill username / password
-        ",l" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" -d \"wofi --dmenu\"";
+        ",l" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" -d \"tofi\"";
         # try to query for username/password
-        ",pq" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --unfiltered -d \"wofi --dmenu\"";
+        ",pq" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --unfiltered -d \"${rofi} --dmenu\"";
         # try to fill password only
-        ",pp" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --password-only -d \"wofi --dmenu\"";
+        ",pp" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --password-only -d \"${rofi} --dmenu\"";
         # try to fill username only
-        ",pu" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --username-only -d \"wofi --dmenu\"";
+        ",pu" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --username-only -d \"${rofi} --dmenu\"";
         # try to fill otp only
-        ",po" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --otp-only -d \"wofi --dmenu\"";
+        ",po" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --otp-only -d \"${rofi} --dmenu\"";
       };
     };
     settings = {

@@ -9,9 +9,9 @@
   slurp = "${pkgs.slurp}/bin/slurp";
   swaybg = "${pkgs.swaybg}/bin/swaybg";
   cliphist = "${pkgs.cliphist}/bin/cliphist";
-  pass-wofi = "${pkgs.pass-wofi.override {
-    pass = config.programs.password-store.package;
-  }}/bin/pass-wofi";
+  tofi = "${pkgs.tofi}/bin/tofi";
+  tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
+  pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 
   colorscheme = config.colorscheme;
@@ -76,7 +76,7 @@ in {
 
 
       bind = SUPER, Return, exec, wezterm
-      bind = SUPER, Space, exec, wofi -S drun -W 40% -H 60%
+      bind = SUPER, Space, exec, ${tofi-drun} --drun-launch=true --prompt-text "Launch: "
       bind = SUPER, F, fullscreen
       bind = SUPER, W, killactive,
       bind = SUPER, V, togglefloating,
@@ -136,8 +136,8 @@ in {
       bindm = SUPER, mouse:273, resizewindow
 
       # Keyboard controls (brightness, media, sound, etc)
-      bind=,XF86MonBrightnessUp,exec,brightnessctl set 5%-
-      bind=,XF86MonBrightnessDown,exec,brightnessctl set +5%
+      bind=,XF86MonBrightnessUp,exec,${brightnessctl} set 5%-
+      bind=,XF86MonBrightnessDown,exec,${brightnessctl} set +5%
 
       bind=,XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%
       bind=,XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%
@@ -146,9 +146,9 @@ in {
       # Screenshot
       bind = SUPER, s, exec, ${grim} -g "$(${slurp})" - | wl-copy -t image/png
       # Password manager
-      bind = SUPER, semicolon, exec, ${pass-wofi}
+      bind = SUPER, semicolon, exec, ${pass-tofi}
       # Clipboard history
-      bind = SUPER, Y, exec, ${cliphist} list | wofi --dmenu | ${cliphist} decode | wl-copy
+      bind = SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text "Clipboard: " | ${cliphist} decode | wl-copy
 
       # trigger when the switch is turning off
       bindl = , switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, 1920x1080, 0x0, 1"

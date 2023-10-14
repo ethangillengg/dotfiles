@@ -3,7 +3,7 @@
     ./rio.nix
     ./wezterm.nix
     ./feh.nix
-    ./wofi.nix
+    ./rofi.nix
     ./wayland-wm
     ./mpv.nix
     ./wpa-gui.nix

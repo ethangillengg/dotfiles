@@ -14,7 +14,7 @@
   # neomutt = "${pkgs.neomutt}/bin/neomutt";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
-  wofi = "${pkgs.wofi}/bin/wofi";
+  rofi = "${pkgs.rofi-wayland}/bin/rofi";
   cava = "${pkgs.cava}/bin/cava";
   nmtui = "${pkgs.networkmanager}/bin/nmtui";
 
@@ -246,7 +246,7 @@ in {
 
         "custom/hostname" = {
           exec = "echo $USER@$(hostname)";
-          on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+          on-click = "${rofi} -S drun -x 10 -y 10 -W 25% -H 60%";
           tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
         };
 
@@ -273,7 +273,7 @@ in {
             text = " ";
             tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
           };
-          on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+          on-click = "${rofi} -S drun -x 10 -y 10 -W 25% -H 60%";
         };
       };
     };
