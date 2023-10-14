@@ -36,7 +36,8 @@
     timer # To help with my ADHD paralysis
     nerdfix # fix nerd fonts
     chatgpt-cli #chat with gpt
-    nix-melt
+    nix-melt # analyze nix flake inputs/outputs
+    kalker # cli calculator
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
