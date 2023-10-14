@@ -14,54 +14,70 @@
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 
-  colorscheme = config.colorscheme;
   wallpaper = config.wallpaper;
+  inherit (config.colorscheme) colors;
 in {
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ];
-
-  home.packages = with pkgs; [
-    qt6.qtwayland
-  ];
-
   wayland.windowManager.hyprland = {
     enable = true;
+    settings = {
+      general = {
+        gaps_in = 4;
+        gaps_out = 4;
+        border_size = 2.7;
+        cursor_inactive_timeout = 4;
+        "col.active_border" = "0xff${colors.base0C}";
+        "col.inactive_border" = "0xff${colors.base02}";
+      };
+
+      decoration = {
+        active_opacity = 0.92;
+        inactive_opacity = 0.75;
+        fullscreen_opacity = 1.0;
+        rounding = 5;
+        blur = {
+          enabled = true;
+          size = 5;
+          passes = 3;
+          new_optimizations = true;
+          ignore_opacity = true;
+        };
+        drop_shadow = true;
+        shadow_range = 12;
+        shadow_offset = "3 3";
+        "col.shadow" = "0x44000000";
+        "col.shadow_inactive" = "0x66000000";
+      };
+      animations = {
+        enabled = "yes";
+        bezier = "myBezier, 0.22, 1, 0.36, 1,";
+        # animation = "windows, 1, 5, myBezier";
+        animation = [
+          "windows, 1, 5, default, slide"
+          "windowsOut, 1, 4, default, popin 80%"
+          "border, 1, 8, default"
+          "fade, 1, 2, default"
+          "workspaces, 1, 4, default"
+        ];
+      };
+    };
+    # decoration {
+    #   active_opacity=0.94
+    #   inactive_opacity=0.84
+    #   fullscreen_opacity=1.0
+    #   rounding=2
+    #   drop_shadow=true
+    #   shadow_range=12
+    #   shadow_offset=3 3
+    #   col.shadow=0x44000000
+    #   col.shadow_inactive=0x66000000
+    # }
     extraConfig = ''
       monitor=,highres,auto,1
 
-      general {
-        gaps_in=4
-        gaps_out=4
-        border_size=2.7
-        col.active_border=0xff${colorscheme.colors.base0C}
-        col.inactive_border=0xff${colorscheme.colors.base02}
-        cursor_inactive_timeout=4
-      }
+      layerrule = noanim, launcher
+      windowrulev2 = noanim,class:(wezterm),title:(wezterm)
 
-      decoration {
-        active_opacity=0.94
-        inactive_opacity=0.84
-        fullscreen_opacity=1.0
-        rounding=2
-        drop_shadow=true
-        shadow_range=12
-        shadow_offset=3 3
-        col.shadow=0x44000000
-        col.shadow_inactive=0x66000000
-      }
 
-      animations {
-          enabled = yes
-          bezier = myBezierOld, 0.05, 0.9, 0.1, 1.05
-          bezier = myBezier,0.22, 1, 0.36, 1,
-          # animation = windows, 1, 5, myBezier
-          animation = windows, 1, 5, default, slide
-          animation = windowsOut, 1, 4, default, popin 80%
-          animation = border, 1, 8, default
-          animation = fade, 1, 2, default
-          animation = workspaces, 1, 4, default
-      }
 
       dwindle {
           # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
