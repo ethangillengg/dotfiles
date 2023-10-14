@@ -18,7 +18,11 @@ fi
 
 selected=$(find -L . -not -path '*\/.*' -path "*.gpg" -type f -printf '%P\n' | \
   sed 's/.gpg$//g' | \
-  wofi -S dmenu -Q "$query") || exit 2
+  tofi --prompt-text "Select Password: " ) || exit 2
+
+if [ -z "$selected" ]; then
+    exit 1
+fi
 
 username=$(echo "$selected" | cut -d '/' -f2)
 url=$(echo "$selected" | cut -d '/' -f1)
@@ -28,7 +32,7 @@ Username
 OTP
 URL"
 
-field=$(printf "$fields" | wofi -S dmenu) || field="Password"
+field=$(printf "$fields" | tofi --prompt-text "Select Field: ") || field="Password"
 
 case "$field" in
     "Password")

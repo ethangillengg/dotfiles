@@ -24,5 +24,7 @@
     yt-dlp
     yt-music # chromium wrapper for yt music
     eww-wayland
+    tofi
+    st
   ];
 }

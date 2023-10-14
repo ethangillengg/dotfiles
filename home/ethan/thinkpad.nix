@@ -9,6 +9,7 @@
     ./features/coding
     ./features/pass
     ./features/productivity
+    ./features/music
     # ./wallpapers
   ];
 

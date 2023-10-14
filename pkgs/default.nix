@@ -7,5 +7,5 @@
   yt-music = pkgs.callPackage ./yt-music {};
   quote = pkgs.callPackage ./quote {};
   git-interactive = pkgs.callPackage ./git-interactive {};
-  pass-wofi = pkgs.callPackage ./pass-wofi {};
+  pass-tofi = pkgs.callPackage ./pass-tofi {};
 }
