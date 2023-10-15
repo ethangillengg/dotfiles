@@ -22,6 +22,7 @@
 in {
   imports = [
     ./basic-binds.nix
+    ./systemd-fixes.nix
   ];
 
   wayland.windowManager.hyprland = {
