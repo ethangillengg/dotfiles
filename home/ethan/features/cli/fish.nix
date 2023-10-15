@@ -8,7 +8,7 @@ in {
     enable = true;
 
     functions = {
-      fish_greeting = "${nitch} && ${quote} | ${gum} style --bold";
+      fish_greeting = "${nitch}";
       lfcd = ''
         set tmp (mktemp)
         # `command` is needed in case `lfcd` is aliased to `lf`

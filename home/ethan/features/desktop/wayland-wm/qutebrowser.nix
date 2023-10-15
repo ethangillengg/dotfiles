@@ -21,10 +21,12 @@ in {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       d = "https://www.merriam-webster.com/dictionary/{}";
 
+      gh = "https://github.com/search?q={}";
       aw = "https://wiki.archlinux.org/?search={}";
       nw = "https://nixos.wiki/index.php?search={}";
       np = "https://search.nixos.org/packages?channel=unstable&query={}";
       no = "https://search.nixos.org/options?channel=unstable&query={}";
+      ngh = "https://github.com/search?q=lang%3Anix+{}";
     };
     keyBindings = {
       normal = {
@@ -41,6 +43,7 @@ in {
       };
     };
     settings = {
+      qt.force_platform = "wayland";
       editor.command = ["xdg-open" "{file}"];
       tabs = {
         show = "multiple";
