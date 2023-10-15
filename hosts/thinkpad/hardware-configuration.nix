@@ -12,10 +12,15 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["thinkpad_acpi" "xhci_pci" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot = {
+    initrd.availableKernelModules = ["thinkpad_acpi" "xhci_pci" "nvme" "usb_storage" "sd_mod"];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
+    # Avoid touchpad click to tap (clickpad) bug. For more detail see:
+    # https://wiki.archlinux.org/title/Touchpad_Synaptics#Touchpad_does_not_work_after_resuming_from_hibernate/suspend
+    kernelParams = ["psmouse.synaptics_intertouch=0" "intel_pstate=disable"];
+  };
 
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
@@ -96,7 +101,6 @@
     "options iwlwifi power_save=1 uapsd_disable=1"
   ];
 
-  boot.kernelParams = ["intel_pstate=disable"];
   services.power-profiles-daemon.enable = lib.mkForce false;
   services.tlp = {
     enable = true;
