@@ -19,9 +19,10 @@
 in {
   wayland.windowManager.hyprland = {
     enable = true;
+
     settings = {
       general = {
-        gaps_in = 4;
+        gaps_in = 8;
         gaps_out = 4;
         border_size = 2.7;
         cursor_inactive_timeout = 4;
@@ -33,7 +34,7 @@ in {
         active_opacity = 0.92;
         inactive_opacity = 0.75;
         fullscreen_opacity = 1.0;
-        rounding = 5;
+        rounding = 1;
         blur = {
           enabled = true;
           size = 5;
@@ -47,60 +48,46 @@ in {
         "col.shadow" = "0x44000000";
         "col.shadow_inactive" = "0x66000000";
       };
+
       animations = {
         enabled = "yes";
         bezier = "myBezier, 0.22, 1, 0.36, 1,";
         # animation = "windows, 1, 5, myBezier";
         animation = [
-          "windows, 1, 5, default, slide"
-          "windowsOut, 1, 4, default, popin 80%"
+          "windows, 0, 5, default, slide"
+          "windowsIn, 1, 1, default, popin"
+          "windowsOut, 1, 2, default, popin"
+          "windowsMove, 1, 2, default, slide"
           "border, 1, 8, default"
           "fade, 1, 2, default"
-          "workspaces, 1, 4, default"
+          "workspaces, 1, 2, default, slidefade"
         ];
       };
+
+      dwindle = {
+        pseudotile = "yes";
+        preserve_split = "yes";
+      };
+
+      input = {
+        repeat_rate = 35;
+        repeat_delay = 250;
+      };
     };
-    # decoration {
-    #   active_opacity=0.94
-    #   inactive_opacity=0.84
-    #   fullscreen_opacity=1.0
-    #   rounding=2
-    #   drop_shadow=true
-    #   shadow_range=12
-    #   shadow_offset=3 3
-    #   col.shadow=0x44000000
-    #   col.shadow_inactive=0x66000000
-    # }
+    bind = [
+      "SUPER, Return, exec, wezterm"
+      "SUPER, Space, exec, ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \""
+      "SUPER, M, exec, swaylock -S --clock"
+    ];
     extraConfig = ''
       monitor=,highres,auto,1
-
       layerrule = noanim, launcher
-      windowrulev2 = noanim,class:(wezterm),title:(wezterm)
 
 
 
-      dwindle {
-          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-          pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-          preserve_split = yes # you probably want this
-      }
-
-      input {
-          repeat_rate = 35
-          repeat_delay = 250
-      }
 
 
-      bind = SUPER, Return, exec, wezterm
-      bind = SUPER, Space, exec, ${tofi-drun} --drun-launch=true --prompt-text "Launch: "
-      bind = SUPER, F, fullscreen
-      bind = SUPER, W, killactive,
-      bind = SUPER, V, togglefloating,
-      bind = SUPER, R, togglesplit, # dwindle
-      bind = SUPER, M, exec, swaylock -S --clock
-      bind = SUPER_SHIFT, M, exit,
 
-      # Move focus with SUPER + arrow keys
       bind = SUPER, left, movefocus, l
       bind = SUPER, H, movefocus, l
       bind = SUPER, right, movefocus, r
@@ -147,9 +134,6 @@ in {
       bind = SUPER, bracketright, workspace, +1
       bind = SUPER, bracketleft, workspace, -1
 
-      # Move/resize windows with SUPER + LMB/RMB and dragging
-      bindm = SUPER, mouse:272, movewindow
-      bindm = SUPER, mouse:273, resizewindow
 
       # Keyboard controls (brightness, media, sound, etc)
       bind=,XF86MonBrightnessUp,exec,${brightnessctl} set 5%-
