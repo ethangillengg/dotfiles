@@ -12,7 +12,6 @@ in {
     [
       inputs.home-manager.nixosModules.home-manager
       ./openssh.nix
-      ./hyprland.nix
       ./locale.nix
       ./nix.nix
       ./nvim.nix

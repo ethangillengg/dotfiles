@@ -25,7 +25,6 @@ in {
       "SUPER, W, killactive,"
       "SUPER, V, togglefloating,"
       "SUPER, R, togglesplit, # dwindle"
-      "SUPER_SHIFT, M, exit,"
       "SUPER,W,killactive"
 
       "SUPER,s,togglesplit"
