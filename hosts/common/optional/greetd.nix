@@ -14,11 +14,13 @@
     exec "${command}; ${pkgs.sway}/bin/swaymsg exit"
   ''}";
 in {
+  programs.sway.enable = true;
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
         command = sway-kiosk "${gtkgreet} -l -c Hyprland";
+        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
         inherit user;
       };
     };
@@ -29,4 +31,8 @@ in {
     lightdm.enable = lib.mkForce false;
     gdm.enable = lib.mkForce false;
   };
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+    sway
+  '';
 }
