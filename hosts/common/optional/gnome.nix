@@ -4,7 +4,9 @@
     enable = true;
     layout = "us";
     xkbVariant = "";
-    displayManager.gdm.enable = true;
+    displayManager.gdm = {
+      enable = false;
+    };
     desktopManager.gnome.enable = true;
   };
   environment.systemPackages = with pkgs; [
