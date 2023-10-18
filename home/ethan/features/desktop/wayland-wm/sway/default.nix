@@ -48,6 +48,7 @@ in {
         "${modifier}+BracketRight" = "workspace next";
         "${modifier}+w" = "kill";
         "${modifier}+m" = "exec ${swaylock} -S --clock";
+        "${modifier}+s" = "exec ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png";
 
         "${modifier}+f" = "fullscreen toggle";
         "${modifier}+v" = "floating toggle";
