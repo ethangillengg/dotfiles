@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  git-interactive = "${pkgs.git-interactive}/bin/git-interactive";
-in {
+{
   programs.git = {
     enable = true;
     userName = "Ethan Gill";
@@ -8,9 +6,6 @@ in {
     signing = {
       signByDefault = true;
       key = "4AF98CB0736E4B95DEE74A28BC3D2A808673D24F";
-    };
-    delta = {
-      enable = true;
     };
 
     aliases = {
@@ -31,6 +26,6 @@ in {
     gl = "git log";
     gc = "git commit";
     gd = "git diff";
-    ga = git-interactive;
+    ga = "git add";
   };
 }
