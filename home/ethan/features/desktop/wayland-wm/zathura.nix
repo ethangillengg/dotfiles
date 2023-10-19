@@ -6,7 +6,7 @@ in {
     options = {
       selection-clipboard = "clipboard";
       font = "${config.fontProfiles.regular.family} 12";
-      recolor = true;
+      recolor = false;
       default-bg = "#${colors.base00}";
       default-fg = "#${colors.base01}";
       statusbar-bg = "#${colors.base02}";
@@ -28,5 +28,9 @@ in {
       recolor-lightcolor = "#${colors.base00}";
       recolor-darkcolor = "#${colors.base06}";
     };
+  };
+
+  home.shellAliases = {
+    za = "zathura";
   };
 }
