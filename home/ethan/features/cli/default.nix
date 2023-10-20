@@ -38,6 +38,7 @@
     chatgpt-cli #chat with gpt
     nix-melt # analyze nix flake inputs/outputs
     kalker # cli calculator
+    pdfgrep # grep pdfs
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
