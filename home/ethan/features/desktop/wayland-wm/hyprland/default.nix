@@ -87,8 +87,8 @@ in {
       ];
       bind = [
         # Keyboard controls (brightness, media, sound, etc)
-        ",XF86MonBrightnessUp,exec,${brightnessctl} set 5%-"
-        ",XF86MonBrightnessDown,exec,${brightnessctl} set +5%"
+        ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
+        ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
         ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
         ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
         ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
@@ -104,6 +104,8 @@ in {
     extraConfig = ''
       monitor=,highres,auto,1
       layerrule = noanim, launcher
+      windowrule=float,^(gnome-calculator)$
+      windowrule=float,^(calculator)$
 
       bind = SUPER, left, movefocus, l
       bind = SUPER, H, movefocus, l
