@@ -5,27 +5,17 @@
 }: let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
-  # xml = "${pkgs.xmlstarlet}/bin/xml";
-  # gamemoded = "${pkgs.gamemode}/bin/gamemoded";
-  # systemctl = "${pkgs.systemd}/bin/systemctl";
-  # journalctl = "${pkgs.systemd}/bin/journalctl";
-  # playerctl = "${pkgs.playerctl}/bin/playerctl";
-  # playerctld = "${pkgs.playerctl}/bin/playerctld";waybar
-  # neomutt = "${pkgs.neomutt}/bin/neomutt";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
   hostname = "${pkgs.hostname}/bin/hostname";
   rofi = "${pkgs.rofi-wayland}/bin/rofi";
-  cava = "${pkgs.cava}/bin/cava";
   nmtui = "${pkgs.networkmanager}/bin/nmtui";
 
   terminal = "${pkgs.wezterm}/bin/wezterm";
   terminal-spawn = cmd: "${terminal} -e $SHELL -i -c ${cmd}";
 
-  # calendar = terminal-spawn ikhal;
   systemMonitor = terminal-spawn btop;
   networkManager = terminal-spawn nmtui;
-  # mail = terminal-spawn neomutt;
 
   # Function to simplify making waybar outputs
   jsonOutput = name: {
@@ -51,31 +41,11 @@ in {
     enable = true;
     systemd.enable = true;
     settings = {
-      # secondary = {
-      #   mode = "dock";
-      #   layer = "top";
-      #   height = 32;
-      #   width = 100;
-      #   margin = "4";
-      #   position = "bottom";
-      #   modules-center = (lib.optionals config.wayland.windowManager.sway.enable [
-      #     "sway/workspaces"
-      #     "sway/mode"
-      #   ]) ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
-      #     "wlr/workspaces"
-      #   ]);
-      #
-      #   "wlr/workspaces" = {
-      #     on-click = "activate";
-      #   };
-      # };
-
       primary = {
         mode = "dock";
         layer = "top";
         position = "top";
         height = 40;
-        # margin = "4 10 10 0";
         margin = "2 4";
         output = [
           "eDP-1"
@@ -85,26 +55,19 @@ in {
         modules-left = [
           "custom/menu"
           "custom/hostname"
-          # "custom/currentplayer"
-          # "custom/player"
+          "hyprland/workspaces"
         ];
         modules-center = [
           "temperature"
           "cpu"
           "memory"
-          "disk"
+          # "disk"
           "clock"
           "pulseaudio"
-          # "cava"
-          # "custom/unread-mail"
-          # "custom/gammastep"
-          # "custom/gpg-agent"
         ];
 
         modules-right = [
-          # "custom/wgnord"
           "network"
-          # "custom/tailscale-ping"
           "battery#bat0"
           "battery#bat1"
           "tray"
@@ -138,14 +101,10 @@ in {
               on-scroll-down = "shift_down";
             };
           };
-          # on-click = calendar;
         };
 
         temperature = {
           thermal-zone = 5;
-          # "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-          # critical-threshold = 85;
-          # format-critical = "{temperatureC}°C";
           format = "{icon}{temperatureC}°C";
 
           format-icons = ["" "" "" "" "" "" "" "" ""];
@@ -174,34 +133,9 @@ in {
           on-click = systemMonitor;
         };
 
-        cava = {
-          # cava_config= "$XDG_CONFIG_HOME/cava/cava.conf",
-          framerate = 60;
-          autosens = 1;
-          sensitivity = 100;
-          bars = 20;
-          lower_cutoff_freq = 50;
-          higher_cutoff_freq = 10000;
-          method = "pipewire";
-          source = "auto";
-          stereo = true;
-          reverse = false;
-          bar_delimiter = 0;
-          monstercat = false;
-          waves = false;
-          noise_reduction = 0.77;
-          input_delay = 2;
-          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
-          # actions= {
-          #            on-click-right= "mode"
-          #            }
-        };
-
         "battery#bat0" = {
           bat = "BAT0";
           interval = 10;
-          # format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-          # format-icons = ["󱃍" "󱊡" "󱊢" "󱊣"];
           format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           format = "{icon}{capacity}%";
           format-plugged = "󰂄{capacity}%";
@@ -323,19 +257,25 @@ in {
           color: #${colors.base05};
         }
 
+
+        #workpaces {
+          margin: 0;
+          padding: 0;
+        }
+
         #workspaces button {
-          background-color: #${colors.base01};
+          background-color: #${colors.base00};
           color: #${colors.base05};
-          margin: 4px;
+          padding: 2px 0px;
+          margin: 2px 0;
+          border-radius: 0;
         }
         #workspaces button.hidden {
-          background-color: #${colors.base00};
           color: #${colors.base04};
         }
         #workspaces button.focused,
         #workspaces button.active {
-          background-color: #${colors.base0A};
-          color: #${colors.base00};
+          color: #${colors.base0C};
         }
 
         #clock {
@@ -362,6 +302,7 @@ in {
           color: #${colors.base00};
           padding-right: 18px;
           padding-left: 0px;
+          margin-right: 0;
         }
 
         #custom-power {
