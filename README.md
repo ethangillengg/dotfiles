@@ -16,7 +16,7 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 - [x] Factor out generic host settings
 - [x] password-store
 - [x] Check out yazi instead of lf
-- [ ] Fix `yt-music` opening in a floating window on hyprland
+- [x] Fix `yt-music` opening in a floating window on hyprland
 - [ ] Check out khal?
 
 ## Thinkpad

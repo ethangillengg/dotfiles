@@ -25,7 +25,7 @@ in {
     height = 100%
     border-width = 0
     outline-width = 0
-    padding-left = 35%
+    padding-left = 25%
     padding-top = 10%
     result-spacing = 15
     num-results = 20
