@@ -23,8 +23,8 @@ in {
       highlight-active-color = "#${colors.base0D}";
       completion-bg = "#${colors.base01}";
       completion-fg = "#${colors.base05}";
-      completions-highlight-bg = "#${colors.base0D}";
-      completions-highlight-fg = "#${colors.base07}";
+      # completions-highlight-bg = "#${colors.base0D}";
+      # completions-highlight-fg = "#${colors.base07}";
       recolor-lightcolor = "#${colors.base00}";
       recolor-darkcolor = "#${colors.base06}";
     };
