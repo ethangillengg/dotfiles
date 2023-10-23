@@ -149,8 +149,8 @@ in {
       # Scroll through existing workspaces with mainMod + scroll
       bind = SUPER, mouse_down, workspace, +1
       bind = SUPER, mouse_up, workspace, -1
-      bind = SUPER, bracketright, workspace, +1
-      bind = SUPER, bracketleft, workspace, -1
+      bind = SUPER, bracketright, workspace, e+1
+      bind = SUPER, bracketleft, workspace, e-1
 
       # lock when lid closed
       bindl=,switch:Lid Switch,exec, ${swaylock} -S --clock
