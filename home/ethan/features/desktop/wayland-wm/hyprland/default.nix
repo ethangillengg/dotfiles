@@ -1,10 +1,9 @@
 {
-  inputs,
   config,
   pkgs,
   ...
 }: let
-  pactl = "${pkgs.pulseaudio}/bin/pactl";
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
   swaybg = "${pkgs.swaybg}/bin/swaybg";
@@ -13,10 +12,19 @@
   tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-  swaylock = "${config.programs.swaylock.package}/bin/swaylock";
+  notify-send = "${pkgs.libnotify}/bin/notify-send";
 
+  swaylock = "${config.programs.swaylock.package}/bin/swaylock";
   terminal = config.home.sessionVariables.TERMINAL;
   wallpaper = config.wallpaper;
+
+  brightness-up = "${notify-send} --urgency=normal \"Brightness Up\" \"\$(${brightnessctl} set +5% -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
+  brightness-down = "${notify-send} --urgency=normal \"Brightness Down\" \"\$(${brightnessctl} set 5%- -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
+
+  volume-up = "${notify-send} --urgency=normal \"Volume Up\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%+ -l 1.25 && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-high --app-name=\"vol_change\"";
+  volume-down = "${notify-send} --urgency=normal \"Volume Down\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%- && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-medium --app-name=\"vol_change\"";
+
+  volume-mute = "${notify-send} --urgency=normal \"Volume Muted\"  \"$(${wpctl} set-mute @DEFAULT_SINK@ toggle && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-muted --app-name=\"vol_change\"";
 
   inherit (config.colorscheme) colors;
 in {
@@ -87,11 +95,7 @@ in {
       ];
       bind = [
         # Keyboard controls (brightness, media, sound, etc)
-        ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
-        ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
-        ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-        ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-        ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
+        ",XF86AudioMute,exec,${volume-mute}"
 
         "SUPER, Return, exec, ${terminal}"
         "SUPER, Space, exec, ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \""
@@ -99,6 +103,15 @@ in {
         "SUPER, s, exec, ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png" # Screenshot
         "SUPER, semicolon, exec, ${pass-tofi}" # Password manager
         "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
+      ];
+
+      # Repeating
+      binde = [
+        ",XF86MonBrightnessUp,exec,${brightness-up}"
+        ",XF86MonBrightnessDown,exec,${brightness-down}"
+
+        ",XF86AudioRaiseVolume,exec,${volume-up}"
+        ",XF86AudioLowerVolume,exec,${volume-down}"
       ];
     };
     extraConfig = ''
