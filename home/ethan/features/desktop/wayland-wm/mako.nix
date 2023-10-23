@@ -14,6 +14,7 @@ in {
     height = 200;
     borderSize = 2;
     defaultTimeout = 8000;
+    groupBy = "app-name";
     backgroundColor = "#${colors.base00}dd";
     borderColor = "#${colors.base03}dd";
     textColor = "#${colors.base05}dd";
