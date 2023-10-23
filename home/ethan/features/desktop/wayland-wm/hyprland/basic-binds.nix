@@ -24,11 +24,9 @@ in {
       "SUPER, F, fullscreen, 0"
       "SUPER, W, killactive,"
       "SUPER, V, togglefloating,"
-      "SUPER, R, togglesplit, # dwindle"
+      "SUPER, R, togglesplit,"
       "SUPER,W,killactive"
 
-      "SUPER,s,togglesplit"
-      "SUPERSHIFT,f,fullscreen,0"
       "SUPERSHIFT,space,togglefloating"
 
       "SUPER,minus,splitratio,-0.25"
@@ -36,11 +34,6 @@ in {
 
       "SUPER,equal,splitratio,0.25"
       "SUPERSHIFT,equal,splitratio,0.3333333"
-
-      "SUPER,g,togglegroup"
-      "SUPER,t,lockactivegroup,toggle"
-      "SUPER,apostrophe,changegroupactive,f"
-      "SUPERSHIFT,apostrophe,changegroupactive,b"
 
       "SUPER,u,togglespecialworkspace"
       "SUPERSHIFT,u,movetoworkspace,special"
