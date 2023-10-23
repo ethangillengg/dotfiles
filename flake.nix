@@ -30,6 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    object-viewer = {
+      url = "git+ssh://git@github.com/ethangillengg/CPSC453/?submodules=1&ref=02-Object-Viewer";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
   };
   outputs = {
