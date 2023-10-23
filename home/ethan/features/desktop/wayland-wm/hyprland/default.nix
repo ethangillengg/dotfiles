@@ -146,28 +146,23 @@ in {
       bind = SUPER SHIFT, 9, movetoworkspace, 9
       bind = SUPER SHIFT, 0, movetoworkspace, 10
 
-
       # Scroll through existing workspaces with mainMod + scroll
       bind = SUPER, mouse_down, workspace, +1
       bind = SUPER, mouse_up, workspace, -1
       bind = SUPER, bracketright, workspace, +1
       bind = SUPER, bracketleft, workspace, -1
 
-
-
-
-      # trigger when the switch is turning off
-      bindl = , switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, 1920x1080, 0x0, 1"
-      # trigger when the switch is turning on
-      bindl = , switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
-
+      # lock when lid closed
+      bindl=,switch:Lid Switch,exec, ${swaylock} -S --clock
 
       blurls=waybar
       blurls=firefox
+      blurls=qutebrowser
 
       # Startup
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once=mako
+
       # Clipboard manager
       exec-once = wl-paste --type text --watch ${cliphist} store #Stores only text data
       exec-once = wl-paste --type image --watch ${cliphist} store #Stores only image data
