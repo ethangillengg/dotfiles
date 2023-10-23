@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # TODO: Configure these in home-manager
     cava
@@ -26,5 +30,9 @@
     eww-wayland
     tofi
     st
+
+    gnome.gnome-calculator
+
+    inputs.object-viewer.defaultPackage.x86_64-linux
   ];
 }
