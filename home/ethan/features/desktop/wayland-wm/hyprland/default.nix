@@ -18,6 +18,9 @@
   terminal = config.home.sessionVariables.TERMINAL;
   wallpaper = config.wallpaper;
 
+  terminal-spawn = cmd: "${pkgs.wezterm}/bin/wezterm start --always-new-process -e bash -i -c ${cmd}";
+  pomodoro-timer = terminal-spawn "${pkgs.pomodoro-sh}/bin/pomodoro-sh";
+
   brightness-up = "${notify-send} --urgency=normal \"Brightness Up\" \"\$(${brightnessctl} set +5% -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
   brightness-down = "${notify-send} --urgency=normal \"Brightness Down\" \"\$(${brightnessctl} set 5%- -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
 
@@ -103,6 +106,8 @@ in {
         "SUPER, s, exec, ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png" # Screenshot
         "SUPER, semicolon, exec, ${pass-tofi}" # Password manager
         "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
+
+        "SUPER SHIFT, P, exec, [workspace special;float] ${pomodoro-timer}"
       ];
 
       # Repeating
