@@ -11,6 +11,13 @@
 
   mimeopen = "${pkgs.perl538Packages.FileMimeInfo}/bin/mimeopen";
 in {
+  # dependencies for ctpv previews
+  home.packages = with pkgs; [
+    poppler_utils
+    atool
+    w3m
+  ];
+
   xdg.configFile."lf/icons".source = ./icons;
   xdg.configFile."lf/colors".source = ./colors;
   xdg.configFile."ctpv/config".source = ./cptv;
