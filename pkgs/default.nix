@@ -9,4 +9,5 @@
   git-interactive = pkgs.callPackage ./git-interactive {};
   pass-tofi = pkgs.callPackage ./pass-tofi {};
   pomodoro-sh = pkgs.callPackage ./pomodoro-sh {};
+  pdfsearch = pkgs.callPackage ./pdfsearch {};
 }
