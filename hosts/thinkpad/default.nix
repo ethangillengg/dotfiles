@@ -30,7 +30,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableAllFirmware = true;
-  # hardware.trackpoint.enable = true;
+  hardware.trackpoint.enable = true;
   programs.fish.enable = true;
 
   # Bootloader.

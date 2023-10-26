@@ -20,18 +20,6 @@
       };
     });
 
-    ollama = prev.manix.overrideAttrs (oldAttrs: {
-      pname = "ollama";
-      version = "0.1.1";
-
-      src = final.fetchFromGitHub {
-        owner = "waalge";
-        repo = "manix";
-        rev = "ed023294d9a20786a359306f252ab2a7669fe9a9"; # set the revision to the commit hash or tag you want
-        sha256 = "sha256-0UwLWHMIUT108AB+YgwVldYjQrUNV/7kyWdpeo7UqYo="; # replace this with the correct sha256 hash
-      };
-    });
-
     # use lf-sixel for sixel image previews in wezterm
     lf = prev.callPackage (
       {
