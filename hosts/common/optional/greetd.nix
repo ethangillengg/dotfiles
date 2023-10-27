@@ -32,7 +32,7 @@ in {
     gdm.enable = lib.mkForce false;
   };
   environment.etc."greetd/environments".text = ''
-    Hyprland
     sway
+    Hyprland
   '';
 }

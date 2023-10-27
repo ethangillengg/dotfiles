@@ -26,7 +26,6 @@
 
   volume-up = "${notify-send} --urgency=normal \"Volume Up\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%+ -l 1.25 && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-high --app-name=\"vol_change\"";
   volume-down = "${notify-send} --urgency=normal \"Volume Down\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%- && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-medium --app-name=\"vol_change\"";
-
   volume-mute = "${notify-send} --urgency=normal \"Volume Muted\"  \"$(${wpctl} set-mute @DEFAULT_SINK@ toggle && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-muted --app-name=\"vol_change\"";
 
   inherit (config.colorscheme) colors;
@@ -122,8 +121,7 @@ in {
     extraConfig = ''
       monitor=,highres,auto,1
       layerrule = noanim, launcher
-      windowrule=float,^(gnome-calculator)$
-      windowrule=float,^(calculator)$
+      windowrule=opacity 1.0 override 0.9 override,^(.*)(qutebrowser|firefox)(.*)$
 
       bind = SUPER, left, movefocus, l
       bind = SUPER, H, movefocus, l

@@ -6,6 +6,12 @@
     "sha256": "0dsj9vc63x3sapdcvcn0s5i5cwgfrld2i3xmxnp6k53vs65pq55h"
   },
   {
+    "name": "catppuccin-astro",
+    "ext": "jpeg",
+    "id": "0NvN2DD",
+    "sha256": "0xplaf3863j11brf38grmsrs7z01chv75ijqm0z405ripgvk62qk"
+  },
+  {
     "name": "catppuccin-tetris",
     "ext": "png",
     "id": "YXaSD4m",
