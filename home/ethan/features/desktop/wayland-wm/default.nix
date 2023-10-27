@@ -19,7 +19,9 @@
     waypipe
     wf-recorder
     wl-clipboard
+    xdg-desktop-portal
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
   ];
 
   home.sessionVariables = {
@@ -27,5 +29,6 @@
     LIBSEAT_BACKEND = "logind";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
   };
 }
