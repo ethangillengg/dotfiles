@@ -4,13 +4,16 @@
   ...
 }: {
   imports = [
+    ./lf
+
+    ./zsh.nix
+    ./fish.nix
+
     ./aliases.nix
     ./bash.nix
     ./zoxide.nix
-    ./fish.nix
     ./starship.nix
     ./lsd.nix
-    ./lf
     ./yazi.nix
     ./bat.nix
     ./git.nix

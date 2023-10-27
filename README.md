@@ -17,6 +17,7 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 - [x] password-store
 - [x] Check out yazi instead of lf
 - [x] Fix `yt-music` opening in a floating window on hyprland
+- [x] Switch to zsh
 - [ ] Check out khal?
 - [ ] hyprland gamemode
 - [ ] notifications show on fullscreen
@@ -25,8 +26,8 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 - [ ] fix betterbird no emails showing
 - [ ] youtube music qutebrowser
 - [ ] consistent keybindings qute and neovim
-- [ ] bash?
-- [ ] [Brightness like this](https://www.reddit.com/r/unixporn/comments/d0lxbf/sway_symbolic_links_save_lives_pywal_mako/)
+- [ ] Brightness like [this](https://www.reddit.com/r/unixporn/comments/d0lxbf/sway_symbolic_links_save_lives_pywal_mako/)
+- [ ] Swaykiosk
 
 ## Thinkpad
 

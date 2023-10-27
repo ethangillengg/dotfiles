@@ -24,7 +24,8 @@
         hide_mouse_cursor_when_typing = false,
         window_close_confirmation = "NeverPrompt",
         initial_cols = 120,
-        initial_rows = 32
+        initial_rows = 32,
+        cursor_blink_rate = 0
       }
     '';
   };

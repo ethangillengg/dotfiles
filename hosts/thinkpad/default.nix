@@ -34,6 +34,8 @@
     sensitivity = 200;
   };
   programs.fish.enable = true;
+  programs.zsh.enable = true;
+  environment.pathsToLink = ["/share/zsh"];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -57,7 +59,7 @@
     isNormalUser = true;
     description = "ethan";
     extraGroups = ["wheel" "network" "docker"];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   security.sudo.wheelNeedsPassword = false;
