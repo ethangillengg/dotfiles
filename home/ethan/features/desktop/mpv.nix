@@ -68,27 +68,30 @@
       "ctrl+shift+w" = "sub-step -1";
       "ctrl+b" = "sub-step -1";
 
+      ## Seeking
       "shift+l" = "seek  30; script-binding uosc/flash-timeline";
       "shift+h" = "seek -30; script-binding uosc/flash-timeline";
       "shift+right" = "seek  30; script-binding uosc/flash-timeline";
       "shift+left" = "seek -30; script-binding uosc/flash-timeline";
 
-      # Show playlist
-      "ctrl+p" = "script-binding uosc/items";
-      "ctrl+v" = "script-binding uosc/subtitles";
-      "ctrl+shift+v" = "script-binding uosc/load-subtitles";
-      "ctrl+s" = "screenshot";
-
-      # Flash title and timeline
-      "tab" = "script-message-to uosc toggle-elements timeline,top_bar";
-
+      ## Volume controls
       "m" = "no-osd cycle mute; script-binding uosc/flash-volume";
-
       "up" = "no-osd add volume  10; script-binding uosc/flash-volume";
       "down" = "no-osd add volume -10; script-binding uosc/flash-volume";
       "k" = "no-osd add volume  10; script-binding uosc/flash-volume";
       "j" = "no-osd add volume -10; script-binding uosc/flash-volume";
 
+      ## Show menus
+      "ctrl+p" = "script-binding uosc/items";
+      "ctrl+v" = "script-binding uosc/subtitles";
+      "ctrl+shift+v" = "script-binding uosc/load-subtitles";
+      "ctrl+f" = "script-binding quality_menu/video_formats_toggle";
+      "ctrl+alt+f" = "script-binding quality_menu/audio_formats_toggle";
+
+      ## Misc.
+      # Flash title and timeline
+      "tab" = "script-message-to uosc toggle-elements timeline,top_bar";
+      "ctrl+s" = "screenshot";
       "[" = "no-osd add speed -0.25; script-binding uosc/flash-speed";
       "]" = "no-osd add speed  0.25; script-binding uosc/flash-speed";
       "\\" = "no-osd set speed 1; script-binding uosc/flash-speed";

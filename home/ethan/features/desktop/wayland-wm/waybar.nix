@@ -64,8 +64,8 @@ in {
           "memory"
           # "disk"
           "clock"
-          "pulseaudio"
           "temperature"
+          "pulseaudio"
         ];
 
         modules-right = [

@@ -1,8 +1,6 @@
 {
   pkgs,
   lib,
-  inputs,
-  system,
   ...
 }: let
   user = "ethan";
@@ -19,7 +17,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = sway-kiosk "${gtkgreet} -l -c sway";
+        command = sway-kiosk "${gtkgreet} -l";
         # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
         inherit user;
       };

@@ -32,6 +32,7 @@ in {
     };
     keyBindings = {
       normal = {
+        ## Password-store integration
         # try to fill username / password
         ",l" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" -d \"tofi\"";
         # try to query for username/password
@@ -42,9 +43,12 @@ in {
         ",pu" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --username-only -d \"${rofi} --dmenu\"";
         # try to fill otp only
         ",po" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --otp-only -d \"${rofi} --dmenu\"";
-        ",m" = "spawn umpv {url}";
-        ",M" = "hint links spawn umpv {hint-url}";
+
+        ## MPV
+        ",m" = "hint links spawn umpv {hint-url}";
         ";m" = "hint --rapid links spawn umpv {hint-url}";
+        # open current url
+        ",M" = "spawn umpv {url}";
       };
     };
     settings = {
@@ -52,7 +56,6 @@ in {
       editor.command = ["xdg-open" "{file}"];
       tabs = {
         show = "multiple";
-        # position = "left";
       };
       fonts = {
         default_family = config.fontProfiles.regular.family;
