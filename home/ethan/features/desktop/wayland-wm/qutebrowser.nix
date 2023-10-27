@@ -43,6 +43,7 @@ in {
         # try to fill otp only
         ",po" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --otp-only -d \"${rofi} --dmenu\"";
         ",m" = "spawn umpv {url}";
+        ",M" = "hint links spawn umpv {hint-url}";
         ";m" = "hint --rapid links spawn umpv {hint-url}";
       };
     };

@@ -19,7 +19,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = sway-kiosk "${gtkgreet} -l -c Hyprland";
+        command = sway-kiosk "${gtkgreet} -l -c sway";
         # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
         inherit user;
       };
