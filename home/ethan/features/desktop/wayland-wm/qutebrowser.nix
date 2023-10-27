@@ -22,6 +22,8 @@ in {
       d = "https://www.merriam-webster.com/dictionary/{}";
 
       gh = "https://github.com/search?q={}";
+      ghr = "https://github.com/{}";
+      yt = "https://www.youtube.com/results?search_query={}";
       aw = "https://wiki.archlinux.org/?search={}";
       nw = "https://nixos.wiki/index.php?search={}";
       np = "https://search.nixos.org/packages?channel=unstable&query={}";
@@ -40,6 +42,8 @@ in {
         ",pu" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --username-only -d \"${rofi} --dmenu\"";
         # try to fill otp only
         ",po" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --otp-only -d \"${rofi} --dmenu\"";
+        ",m" = "spawn umpv {url}";
+        ";m" = "hint --rapid links spawn umpv {hint-url}";
       };
     };
     settings = {

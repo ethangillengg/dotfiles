@@ -9,7 +9,6 @@
     ../common/optional/greetd.nix
     # ../common/optional/gnome.nix
     ../common/optional/quietboot.nix
-    ../common/optional/jellyfin-mpv-shim.nix
     # ./../common/optional/wgnord.nix
     ../common/optional/podman.nix
     ../common/optional/wireless.nix
@@ -30,7 +29,10 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableAllFirmware = true;
-  hardware.trackpoint.enable = true;
+  hardware.trackpoint = {
+    enable = true;
+    sensitivity = 200;
+  };
   programs.fish.enable = true;
 
   # Bootloader.

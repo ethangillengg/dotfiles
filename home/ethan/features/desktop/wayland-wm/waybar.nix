@@ -46,7 +46,7 @@ in {
         layer = "top";
         position = "top";
         height = 40;
-        margin = "2 4";
+        margin = "0";
         output = [
           "eDP-1"
           "DP-2"
@@ -55,15 +55,17 @@ in {
         modules-left = [
           "custom/menu"
           "custom/hostname"
+          "sway/workspaces"
+          "sway/mode"
           "hyprland/workspaces"
         ];
         modules-center = [
-          "temperature"
           "cpu"
           "memory"
           # "disk"
           "clock"
           "pulseaudio"
+          "temperature"
         ];
 
         modules-right = [
@@ -71,7 +73,6 @@ in {
           "battery#bat0"
           "battery#bat1"
           "tray"
-          "custom/power"
         ];
 
         clock = {
@@ -175,17 +176,6 @@ in {
           on-click = networkManager;
         };
 
-        "custom/power" = {
-          exec = "echo '󰐥'";
-          on-click = "poweroff";
-        };
-
-        "custom/hostname" = {
-          exec = "echo $USER@$(${hostname})";
-          on-click = "${rofi} -S drun -x 10 -y 10 -W 25% -H 60%";
-          tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
-        };
-
         "custom/wgnord" = {
           interval = 10;
           return-type = "json";
@@ -201,6 +191,10 @@ in {
             "disconnected" = "󰦞";
           };
           on-click = "";
+        };
+
+        "custom/hostname" = {
+          exec = "echo $USER@$(${hostname})";
         };
 
         "custom/menu" = {
@@ -245,12 +239,10 @@ in {
           padding: 0;
           background-color: #${colors.base00};
           border: 2px solid #${colors.base0C};
-          border-radius: 4px;
         }
         window#waybar.bottom {
           opacity: 0.90;
           background-color: #${colors.base00};
-          border-radius: 4px;
         }
 
         window#waybar {
@@ -267,15 +259,21 @@ in {
           background-color: #${colors.base00};
           color: #${colors.base05};
           padding: 2px 0px;
-          margin: 2px 0;
-          border-radius: 0;
+          margin: 2px 2px;
         }
+
+        #workspaces button:hover {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #${colors.base09};
+        }
+
         #workspaces button.hidden {
-          color: #${colors.base04};
+          color: #${colors.base0C};
         }
         #workspaces button.focused,
         #workspaces button.active {
-          color: #${colors.base0C};
+          color: #${colors.base09};
+          border-bottom: 3px solid #${colors.base09};
         }
 
         #clock {
@@ -285,7 +283,6 @@ in {
           padding-right: 15px;
           margin-top: 0;
           margin-bottom: 0;
-          border-radius: 4px;
         }
 
         #custom-menu {
@@ -294,7 +291,6 @@ in {
           color: #${colors.base00};
           padding-right: 8px;
           padding-left: 6px;
-          border-radius: 4px 0 0 4px;
         }
 
         #custom-hostname {
@@ -310,7 +306,6 @@ in {
           background-color: #${colors.base0C};
           color: #${colors.base00};
           padding: 0 18px;
-          border-radius: 0 4px 4px 0;
         }
 
         #tray {

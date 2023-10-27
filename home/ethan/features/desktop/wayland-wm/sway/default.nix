@@ -1,29 +1,45 @@
 {
-  inputs,
   config,
   pkgs,
   ...
 }: let
-  pactl = "${pkgs.pulseaudio}/bin/pactl";
+  # Dependencies
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
+  notify-send = "${pkgs.libnotify}/bin/notify-send";
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
-  swaybg = "${pkgs.swaybg}/bin/swaybg";
-  cliphist = "${pkgs.cliphist}/bin/cliphist";
-  tofi = "${pkgs.tofi}/bin/tofi";
   tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-  swaylock = "${config.programs.swaylock.package}/bin/swaylock";
   terminal = config.home.sessionVariables.TERMINAL;
   wallpaper = config.wallpaper;
-  swaymsg = "${pkgs.sway}/bin/swaymsg";
+  swayidle = "${pkgs.swayidle}/bin/swayidle";
 
+  ## Media Controls (with notifications)
+  brightness-up = "${notify-send} --urgency=normal \"Brightness Up\" \"\$(${brightnessctl} set +5% -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
+  brightness-down = "${notify-send} --urgency=normal \"Brightness Down\" \"\$(${brightnessctl} set 5%- -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
+  volume-up = "${notify-send} --urgency=normal \"Volume Up\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%+ -l 1.25 && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-high --app-name=\"vol_change\"";
+  volume-down = "${notify-send} --urgency=normal \"Volume Down\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%- && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-medium --app-name=\"vol_change\"";
+  volume-mute = "${notify-send} --urgency=normal \"Volume Muted\"  \"$(${wpctl} set-mute @DEFAULT_SINK@ toggle && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-muted --app-name=\"vol_change\"";
+
+  ## Modes
+  system = "(l) lock, (e) logout, (s) shutdown";
+
+  ## Lock
+  # lock = "${config.programs.swaylock.package}/bin/swaylock --clock --indicator -f -F -S fill -i ${wallpaper}";
+  lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
+
+  # "exec swaylock --clock --indicator -f -i ${wallpaper} --scaling fill, mode default";
+
+  modifier = "Mod4";
   inherit (config.colorscheme) colors;
 in {
   wayland.windowManager.sway = {
     enable = true;
-    config = rec {
-      modifier = "Mod4";
+    systemd.enable = true;
+
+    config = {
+      inherit modifier;
       input = {
         "*" = {
           repeat_rate = "35";
@@ -32,33 +48,78 @@ in {
       };
 
       output = {
-        "*" = {
-          background = "${wallpaper} fit";
+        "*".bg = "${wallpaper} fit";
+
+        "DP-2" = {
+          mode = "2560x1440@100Hz";
         };
       };
 
+      gaps = {
+        inner = 20;
+        outer = 0;
+        smartGaps = true;
+      };
+
+      colors = {
+        focused = {
+          # The border around the title bar.
+          border = "#ffffff";
+
+          # The text color of the title bar.
+          text = "#ffffff";
+
+          # The background of the title bar.
+          background = "#285577";
+
+          # The border around the view itself.
+          childBorder = "#${colors.base0C}";
+
+          # The color used to indicate where a new view will open.
+          # In a tiled container, this would paint the right border
+          # of the current view if a new view would be opened to the right.
+          indicator = "#${colors.base0C}";
+        };
+      };
+
+      # Drag floating windows by holding down $mod and left mouse button.
+      # Resize them with right mouse button + $mod.
+      # Despite the name, also works for non-floating windows.
+      # Change normal to inverse to use left mouse button for resizing and right
+      # mouse button for dragging.
+      floating.modifier = "${modifier}";
+
+      # Disable swaybar since I am using waybar instead
+      bars = [];
+
       keybindings = {
+        ## Basics
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Space" = "exec ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \"";
-        "${modifier}+Shift+M" = "exec ${swaymsg} exit";
-
-        "${modifier}+Tab" = "workspace prev";
-        "${modifier}+Shift+Tab" = "workspace next";
+        "${modifier}+w" = "kill";
         "${modifier}+BracketLeft" = "workspace prev";
         "${modifier}+BracketRight" = "workspace next";
-        "${modifier}+w" = "kill";
-        "${modifier}+m" = "exec ${swaylock} -S --clock";
-        "${modifier}+s" = "exec ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png";
+        # reload the configuration file
+        "${modifier}+Shift+c" = "reload";
+        "${modifier}+m" = "exec ${lock}";
 
+        ### Manage windows
+
+        ## Basics
         "${modifier}+f" = "fullscreen toggle";
         "${modifier}+v" = "floating toggle";
-        "${modifier}+r" = "layout toggle split";
+        "${modifier}+p" = "sticky toggle";
+        "${modifier}+y" = "layout toggle split";
+        "${modifier}+o" = "workspace back_and_forth";
+        "${modifier}+c" = "move position center";
 
+        ## Focus windows
         "${modifier}+h" = "focus left";
         "${modifier}+j" = "focus down";
         "${modifier}+k" = "focus up";
         "${modifier}+l" = "focus right";
 
+        ## Move windows
         "${modifier}+Shift+h" = "move left";
         "${modifier}+Shift+j" = "move down";
         "${modifier}+Shift+k" = "move up";
@@ -84,14 +145,84 @@ in {
         "${modifier}+Shift+8" = "move container to workspace number 8";
         "${modifier}+Shift+9" = "move container to workspace number 9";
 
+        ## Scratchpad
+        # Sway has a "scratchpad", which is a bag of holding for windows.
+        # You can send windows there and get them back later.
+        # Move the currently focused window to the scratchpad
+        "${modifier}+Shift+u" = "move scratchpad";
+        # Show the next scratchpad window or hide the focused scratchpad window.
+        # If there are multiple scratchpad windows, this command cycles through them.
+        "${modifier}+u" = "scratchpad show";
+
+        "${modifier}+s" = "exec ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png";
         "${modifier}+Semicolon" = "exec ${pass-tofi}";
-        "XF86MonBrightnessUp" = "exec,${brightnessctl} set 5%-";
-        "XF86MonBrightnessDown" = "exec ${brightnessctl} set +5%";
-        "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
-        "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
-        "XF86AudioMute" = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
+
+        ## Media Controls
+        "XF86MonBrightnessUp" = "exec ${brightness-up}";
+        "XF86MonBrightnessDown" = "exec ${brightness-down}";
+        "XF86AudioRaiseVolume" = "exec ${volume-up}";
+        "XF86AudioLowerVolume" = "exec ${volume-down}";
+        "XF86AudioMute" = "exec ${volume-mute}";
+
+        ## Modes
+        "${modifier}+Shift+m" = ''mode "${system}"'';
+        "${modifier}+r" = "mode resize";
+      };
+
+      window = {
+        commands = [
+          {
+            criteria = {app_id = "gcr-prompter";};
+            # Hacky way to disable the fullscreen when pinentry triggered
+            command = "fullscreen toggle, fullscreen toggle";
+          }
+        ];
+      };
+
+      modes = {
+        # set $system (l) lock, (e) logout, (s) shutdown
+        "${system}" = {
+          l = "exec ${lock}, mode default";
+          e = "exec 'swaymsg exit; systemctl --user stop sway-session.target'"; # exit
+          # s = "exec --no-startup-id systemctl suspend, mode default";
+          s = "exec shutdown now";
+          # return to default mode
+          Return = "mode default";
+          Escape = "mode default";
+        };
+
+        resize = {
+          # up will shrink the containers height
+          # down will grow the containers height
+          # left will shrink the containers width
+          # right will grow the containers width
+          "k" = "resize shrink height 10px";
+          "j" = "resize grow height 10px";
+          "h" = "resize shrink width 10px";
+          "l" = "resize grow width 10px";
+          Return = "mode default";
+          Escape = "mode default";
+        };
       };
       menu = "exec ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \"";
+
+      startup = [
+        {
+          # Sleep after 15 minutes of inactivity
+          # Turn off display after 20 minutes of inactivity
+          command = ''
+            ${swayidle} -w \
+              timeout 900 '${lock}' \
+              timeout 1200 'swaymsg "output * dpms off"' \
+                resume 'swaymsg "output * dpms on"' \
+              before-sleep '${lock}'
+          '';
+        }
+      ];
     };
+
+    extraConfig = ''
+      bindswitch --reload --locked lid:on exec ${lock}
+    '';
   };
 }
