@@ -18,6 +18,7 @@
     ./fzf.nix
     ./gpg.nix
     ./manix.nix
+    ./chatgpt.nix
   ];
   home.packages = with pkgs; [
     # comma # Install and run programs by sticking a , before them
@@ -35,7 +36,6 @@
 
     timer # To help with my ADHD paralysis
     nerdfix # fix nerd fonts
-    chatgpt-cli #chat with gpt
     nix-melt # analyze nix flake inputs/outputs
     kalker # cli calculator
     pdfgrep # grep pdfs
