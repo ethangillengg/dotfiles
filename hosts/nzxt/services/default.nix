@@ -72,5 +72,5 @@ in {
     ./binary-cache
   ];
   # open (custom) port for ssh
-  networking.firewall.allowedTCPPorts = [420];
+  networking.firewall.allowedTCPPorts = [420 8080];
 }
