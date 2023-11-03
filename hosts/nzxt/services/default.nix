@@ -43,12 +43,6 @@
     port = 6970;
   };
 
-  oogabooga = import ./oogabooga {
-    domain = "ai.${domain}";
-    port = 7000;
-    inherit pkgs;
-  };
-
   servarr = import ./servarr {
     domain = domain;
     user = mediaUser;
@@ -67,7 +61,6 @@ in {
     nzbget
     komga
     samba
-    oogabooga
     servarr
     ./binary-cache
   ];
