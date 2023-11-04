@@ -1,4 +1,9 @@
-{
+{pkgs, ...}: let
+  # Dependencies
+  pandoc = "${pkgs.pandoc}/bin/pandoc";
+  bat = "${pkgs.bat}/bin/bat";
+  pdftotext = "${pkgs.poppler_utils}/bin/pdftotext";
+in {
   programs.aerc = {
     enable = true;
     extraConfig = {
@@ -12,6 +17,22 @@
       };
       viewer = {
         pager = "less -R";
+      };
+      filters = {
+        "text/plain" = "wrap -w 100 | colorize";
+        "text/html" = "${pandoc} -f html -t plain";
+        "text/calendar" = "calendar";
+        "text/*" = "${bat} -fP --file-name=\"$AERC_FILENAME\" --style=plain";
+
+        ".headers" = "colorize";
+
+        "application/pdf" = "${pdftotext} - -l 10 -nopgbrk -q - | fmt -w 100";
+        # using built-in terminal
+        "image/*" = "catimg -w$(tput cols) -";
+      };
+      openers = {
+        "text/plain" = "nvim -R";
+        "text/html" = "qutebrowser -R --target auto";
       };
     };
 

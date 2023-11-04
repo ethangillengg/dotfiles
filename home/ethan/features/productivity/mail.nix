@@ -4,9 +4,6 @@
   config,
   ...
 }: let
-  mbsync = "${config.programs.mbsync.package}/bin/mbsync";
-  pass = "${config.programs.password-store.package}/bin/pass";
-
   common = rec {
     realName = "Ethan Gill";
   };
@@ -31,8 +28,9 @@ in {
   programs.aerc.enable = true;
 
   accounts.email = {
+    maildirBasePath = "Mail";
     accounts = {
-      University = rec {
+      Uni = rec {
         address = "ethan.gill@ucalgary.ca";
         userName = address;
         realName = "Ethan Gill";
@@ -57,7 +55,7 @@ in {
         };
       };
 
-      Google =
+      G =
         rec {
           address = "greatredswarmjp@gmail.com";
           userName = address;
@@ -65,7 +63,7 @@ in {
         }
         // gmail;
 
-      Google-Business =
+      G-B =
         rec {
           address = "gill.ethan123@gmail.com";
           userName = address;
@@ -73,7 +71,7 @@ in {
         }
         // gmail;
 
-      Google-Secondary =
+      G-2 =
         rec {
           address = "greatredswarm@gmail.com";
           userName = address;
