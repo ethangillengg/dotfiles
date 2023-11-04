@@ -49,6 +49,7 @@ in {
         margin = "0";
         output = [
           "eDP-1"
+          "DP-1"
           "DP-2"
         ];
 
