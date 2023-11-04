@@ -21,7 +21,7 @@ in {
 
   xdg.configFile."lf/icons".source = ./icons;
   xdg.configFile."lf/colors".source = ./colors;
-  xdg.configFile."ctpv/config".source = ./cptv;
+  xdg.configFile."ctpv/config".source = ./ctpv;
 
   programs.lf = {
     enable = true;
