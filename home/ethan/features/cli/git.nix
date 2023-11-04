@@ -22,7 +22,8 @@
   };
   home.shellAliases = {
     gp = "git push";
-    gs = "git status --short"; # Pretty "git status"
+    gs = "git status";
+    gss = "git status --short"; # Pretty "git status"
     gl = "git log";
     gc = "git commit";
     gca = "git commit --amend -C HEAD"; # use the previous commit message
