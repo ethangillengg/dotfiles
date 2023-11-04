@@ -20,11 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    firefly = {
-      url = "github:timhae/firefly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nh = {
       url = "github:viperml/nh";
       inputs.nixpkgs.follows = "nixpkgs";
