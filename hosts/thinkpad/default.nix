@@ -58,7 +58,7 @@
   users.users.ethan = {
     isNormalUser = true;
     description = "ethan";
-    extraGroups = ["wheel" "network" "docker"];
+    extraGroups = ["wheel" "network" "docker" "video"];
     shell = pkgs.zsh;
   };
 

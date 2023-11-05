@@ -4,37 +4,28 @@
   ...
 }: let
   # Dependencies
-  wpctl = "${pkgs.wireplumber}/bin/wpctl";
-  notify-send = "${pkgs.libnotify}/bin/notify-send";
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
   tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
-  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   terminal = config.home.sessionVariables.TERMINAL;
   wallpaper = config.wallpaper;
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
 
-  ## Media Controls (with notifications)
-  brightness-up = "${notify-send} --urgency=normal \"Brightness Up\" \"\$(${brightnessctl} set +5% -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
-  brightness-down = "${notify-send} --urgency=normal \"Brightness Down\" \"\$(${brightnessctl} set 5%- -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
-  volume-up = "${notify-send} --urgency=normal \"Volume Up\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%+ -l 1.25 && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-high --app-name=\"vol_change\"";
-  volume-down = "${notify-send} --urgency=normal \"Volume Down\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%- && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-medium --app-name=\"vol_change\"";
-  volume-mute = "${notify-send} --urgency=normal \"Volume Muted\"  \"$(${wpctl} set-mute @DEFAULT_SINK@ toggle && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-muted --app-name=\"vol_change\"";
-
   ## Modes
   system = "(l) lock, (e) logout, (s) shutdown";
 
   ## Lock
-  # lock = "${config.programs.swaylock.package}/bin/swaylock --clock --indicator -f -F -S fill -i ${wallpaper}";
   lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
-
-  # "exec swaylock --clock --indicator -f -i ${wallpaper} --scaling fill, mode default";
 
   modifier = "Mod4";
   inherit (config.colorscheme) colors;
 in {
+  imports = [
+    ./extras.nix
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
@@ -161,13 +152,6 @@ in {
 
         "${modifier}+s" = "exec ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png";
         "${modifier}+Semicolon" = "exec ${pass-tofi}";
-
-        ## Media Controls
-        "XF86MonBrightnessUp" = "exec ${brightness-up}";
-        "XF86MonBrightnessDown" = "exec ${brightness-down}";
-        "XF86AudioRaiseVolume" = "exec ${volume-up}";
-        "XF86AudioLowerVolume" = "exec ${volume-down}";
-        "XF86AudioMute" = "exec ${volume-mute}";
 
         ## Modes
         "${modifier}+Shift+m" = ''mode "${system}"'';
