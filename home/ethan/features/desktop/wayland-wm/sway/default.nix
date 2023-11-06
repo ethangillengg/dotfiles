@@ -14,6 +14,7 @@
   terminal = config.home.sessionVariables.TERMINAL;
   wallpaper = config.wallpaper;
   swayidle = "${pkgs.swayidle}/bin/swayidle";
+  wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
 
   ## Media Controls (with notifications)
   brightness-up = "${notify-send} --urgency=normal \"Brightness Up\" \"\$(${brightnessctl} set +5% -m | awk -F ',' '{print $4}')\" --icon=notification-display-brightness --app-name=\"brightness_change\"";
@@ -60,8 +61,8 @@ in {
       };
 
       gaps = {
-        inner = 20;
-        outer = 0;
+        inner = 16;
+        outer = 4;
         smartGaps = true;
       };
 
@@ -227,6 +228,7 @@ in {
 
     extraConfig = ''
       bindswitch --reload --locked lid:on exec ${lock}
+      exec ${wlsunset} -t 3000 -T 6500 -l 51.1 -L -114.1
     '';
   };
 }
