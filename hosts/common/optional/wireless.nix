@@ -29,6 +29,10 @@
       "Ethan-OnePlus" = {
         psk = "@HOTSPOT@";
       };
+
+      "bill wi the science fi_5G-2" = {
+        psk = "@bill_wi_science_fi@";
+      };
       "eduroam" = {
         auth = ''
           key_mgmt=WPA-EAP
