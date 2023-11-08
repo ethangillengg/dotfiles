@@ -6,9 +6,8 @@
   nix = {
     settings = {
       substituters = [
-        # "https://nix-community.cachix.org"
-        # "https://cache.nixos.org/"
-        "http://nzxt.emerald-duck.ts.net"
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
       ];
       trusted-public-keys = [
         # "cache.m7.rs:kszZ/NSwE/TjhOcPPQ16IuUiuRSisdiIwhKZCxguaWg="
