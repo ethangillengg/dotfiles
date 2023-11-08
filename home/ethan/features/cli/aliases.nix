@@ -5,20 +5,29 @@
     vi = "nvim";
     vim = "nvim";
 
+    ## Nix commands
     hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad";
     nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#thinkpad";
     nrb = "sudo nixos-rebuild boot --flake /home/ethan/.dotfiles#thinkpad";
-    nrd = "ssh -t ethan@nzxt \"cd /home/ethan/.dotfiles/; git pull; sudo nixos-rebuild switch --flake .#nzxt; exit; bash -l\"";
-    nrdd = "nixos-rebuild switch --flake /home/ethan/.dotfiles#nzxt --target-host ethan@nzxt --use-remote-sudo";
 
-    #My ip
+    # Rebuild on remote
+    nrd = "ssh -t ethan@nzxt \"cd /home/ethan/.dotfiles/; git pull; sudo nixos-rebuild switch --flake .#nzxt; exit; bash -l\"";
+    # Rebuild remote on local
+    nrdd = "nixos-rebuild switch --flake /home/ethan/.dotfiles#nzxt --target-host ethan@nzxt --use-remote-sudo";
+    # List generations
+    nlg = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
+    # Delete old generations
+    ndg = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old";
+
+    # My ip
     me = "xh -j ipinfo.io";
 
-    lsblk = "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINTS,UUID";
-    llama-cpp = "nix run github:ggerganov/llama.cpp --";
+    lsblk = "lsblk -o NAME,FSUSED,FSSIZE,FSUSE%";
 
     # hmc = "nvim \"+Man home-configuration.nix | only\"";
     hmc = "man home-configuration.nix";
     hmp = "home-manager packages | fzf";
+    hlg = "home-manager generations";
+    hdg = "home-manager expire-generations \"-1 minute\"";
   };
 }
