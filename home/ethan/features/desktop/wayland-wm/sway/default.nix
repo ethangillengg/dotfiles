@@ -212,7 +212,7 @@ in {
 
     extraConfig = ''
       bindswitch --reload --locked lid:on exec ${lock}
-      exec ${wlsunset} -t 3000 -T 6500 -l 51.1 -L -114.1
+      exec ${wlsunset} -t 2500 -T 6500 -l 51.1 -L -114.1
     '';
   };
 }

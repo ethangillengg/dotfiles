@@ -28,6 +28,8 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 - [ ] consistent keybindings qute and neovim
 - [ ] Brightness like [this](https://www.reddit.com/r/unixporn/comments/d0lxbf/sway_symbolic_links_save_lives_pywal_mako/)
 - [ ] Swaykiosk
+- [ ] Passthrough mute to discord
+- [ ] Hover calculator
 
 ## Thinkpad
 

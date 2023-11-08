@@ -10,6 +10,7 @@
     pfetch
     font-manager
     firefox
+    ungoogled-chromium
     osu-lazer-bin
     steam
     qbittorrent
