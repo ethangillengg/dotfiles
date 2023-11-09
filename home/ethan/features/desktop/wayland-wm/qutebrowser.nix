@@ -5,6 +5,7 @@
 }: let
   inherit (config.colorscheme) colors kind;
   rofi = "${pkgs.rofi}/bin/rofi";
+  wezterm = "${pkgs.wezterm}/bin/wezterm";
 in {
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
@@ -53,19 +54,38 @@ in {
     };
     settings = {
       qt.force_platform = "wayland";
-      editor.command = ["xdg-open" "{file}"];
       tabs = {
         show = "multiple";
+      };
+      # Save the browser session by default
+      auto_save.session = true;
+      url = {
+        # Default page when opening new tab
+        default_page = "qute://start/";
+        # Default pages on startup
+        start_pages = ["qute://start/"];
+      };
+      downloads = {
+        # Don't prompt, just download to ~/Downloads
+        location = {
+          prompt = false;
+          suggestion = "both";
+        };
+      };
+      content = {
+        javascript = {
+          clipboard = "access";
+        };
+      };
+      editor = {
+        command = [wezterm "start" "--always-new-process" "-e" "nvim" "{file}" "-c" "normal {line}G{column0}l"];
       };
       fonts = {
         default_family = config.fontProfiles.regular.family;
         default_size = "12pt";
       };
       colors = {
-        webpage = {
-          preferred_color_scheme = kind;
-          bg = "#ffffff";
-        };
+        webpage.preferred_color_scheme = kind;
         completion = {
           fg = "#${colors.base05}";
           match.fg = "#${colors.base09}";
