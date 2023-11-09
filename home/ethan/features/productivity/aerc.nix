@@ -22,7 +22,6 @@ in {
         "text/plain" = "wrap -w 100 | colorize";
         "text/html" = "${pandoc} -f html -t plain";
         "text/calendar" = "calendar";
-        "text/*" = "${bat} -fP --file-name=\"$AERC_FILENAME\" --style=plain";
 
         ".headers" = "colorize";
 
