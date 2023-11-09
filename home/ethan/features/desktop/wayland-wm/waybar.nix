@@ -55,7 +55,6 @@ in {
 
         modules-left = [
           "custom/menu"
-          "custom/hostname"
           "sway/workspaces"
           "sway/mode"
           "hyprland/workspaces"
@@ -194,10 +193,6 @@ in {
           on-click = "";
         };
 
-        "custom/hostname" = {
-          exec = "echo $USER@$(${hostname})";
-        };
-
         "custom/menu" = {
           return-type = "json";
           exec = jsonOutput "menu" {
@@ -288,18 +283,9 @@ in {
 
         #custom-menu {
           font-size: 28px;
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-right: 8px;
+          color: #${colors.base0C};
+          padding-right: 4px;
           padding-left: 6px;
-        }
-
-        #custom-hostname {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-right: 18px;
-          padding-left: 0px;
-          margin-right: 0;
         }
 
         #custom-power {

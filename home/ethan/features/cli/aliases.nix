@@ -18,6 +18,8 @@
     nlg = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
     # Delete old generations
     ndg = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old";
+    # Collect garbage
+    ncg = "nix-collect-garbage -d";
 
     # My ip
     me = "xh -j ipinfo.io";
