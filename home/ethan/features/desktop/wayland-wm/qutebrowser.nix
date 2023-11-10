@@ -50,6 +50,8 @@ in {
         ";m" = "hint --rapid links spawn umpv {hint-url}";
         # open current url
         ",M" = "spawn umpv {url}";
+
+        "cm" = "clear-messages";
       };
     };
     settings = {
@@ -57,8 +59,6 @@ in {
       tabs = {
         show = "multiple";
       };
-      # Save the browser session by default
-      auto_save.session = true;
       url = {
         # Default page when opening new tab
         default_page = "qute://start/";
@@ -70,11 +70,6 @@ in {
         location = {
           prompt = false;
           suggestion = "both";
-        };
-      };
-      content = {
-        javascript = {
-          clipboard = "access";
         };
       };
       editor = {
