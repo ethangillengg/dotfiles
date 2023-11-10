@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     yt-dlp
+    jellyfin-mpv-shim
   ];
 
   programs.mpv = {
@@ -41,7 +42,7 @@
       hdr-compute-peak = "no";
 
       ## Youtube
-      ytdl-format = "bestvideo[height<=?1440][vcodec!=?vp9]+bestaudio/best";
+      ytdl-format = "bestvideo[height<=?1440]+bestaudio/best";
       save-position-on-quit = true;
 
       ## Misc.

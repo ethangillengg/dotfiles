@@ -26,6 +26,9 @@
 
     lsblk = "lsblk -o NAME,FSUSED,FSSIZE,FSUSE%";
 
+    # Play lofi-girl
+    lofi = "mpv --player-operation-mode=cplayer --speed=1.0 --ytdl-format=\"bestaudio\" \"ytdl://youtube.com/watch?v=jfKfPfyJRdk\"";
+
     # hmc = "nvim \"+Man home-configuration.nix | only\"";
     hmc = "man home-configuration.nix";
     hmp = "home-manager packages | fzf";
