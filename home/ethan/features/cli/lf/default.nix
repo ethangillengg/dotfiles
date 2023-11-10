@@ -17,6 +17,7 @@ in {
     libreoffice-fresh
     atool
     w3m
+    pkgs.trashy
   ];
 
   xdg.configFile."lf/icons".source = ./icons;
