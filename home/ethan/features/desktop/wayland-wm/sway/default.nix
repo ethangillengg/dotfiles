@@ -52,9 +52,8 @@ in {
       };
 
       gaps = {
-        inner = 16;
+        inner = 12;
         outer = 4;
-        smartGaps = true;
       };
 
       colors = {
@@ -83,7 +82,15 @@ in {
       # Despite the name, also works for non-floating windows.
       # Change normal to inverse to use left mouse button for resizing and right
       # mouse button for dragging.
-      floating.modifier = "${modifier}";
+      floating = {
+        modifier = "${modifier}";
+        # Float these applications by default
+        criteria = [
+          {app_id = "pavucontrol";}
+          {app_id = ".blueman-manager-wrapped";}
+          {app_id = "org.gnome.Calculator";}
+        ];
+      };
 
       # Disable swaybar since I am using waybar instead
       bars = [];
@@ -207,12 +214,14 @@ in {
               before-sleep '${lock}'
           '';
         }
+        {
+          command = "${wlsunset} -t 2500 -T 6500 -l 51.1 -L -114.1";
+        }
       ];
     };
 
     extraConfig = ''
       bindswitch --reload --locked lid:on exec ${lock}
-      exec ${wlsunset} -t 2500 -T 6500 -l 51.1 -L -114.1
     '';
   };
 }
