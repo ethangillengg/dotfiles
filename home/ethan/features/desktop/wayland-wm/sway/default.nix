@@ -89,6 +89,7 @@ in {
           {app_id = "pavucontrol";}
           {app_id = ".blueman-manager-wrapped";}
           {app_id = "org.gnome.Calculator";}
+          {app_id = "lofi";}
         ];
       };
 

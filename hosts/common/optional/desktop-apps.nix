@@ -14,6 +14,7 @@
     osu-lazer-bin
     steam
     qbittorrent
+    obsidian
 
     pavucontrol
     termusic
@@ -27,7 +28,6 @@
     renderdoc
 
     yt-dlp
-    yt-music # chromium wrapper for yt music
     eww-wayland
     tofi
     st

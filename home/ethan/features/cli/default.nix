@@ -12,6 +12,7 @@
     ./aliases.nix
     ./bash.nix
     ./zoxide.nix
+    ./ytfzf.nix
     ./starship.nix
     ./lsd.nix
     ./yazi.nix
@@ -42,7 +43,6 @@
     nix-melt # analyze nix flake inputs/outputs
     kalker # cli calculator
     pdfgrep # grep pdfs
-    ytfzf # youtube cli
 
     # nil # Nix LSP
     # nixfmt # Nix formatter

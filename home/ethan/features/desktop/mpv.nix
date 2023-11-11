@@ -42,7 +42,7 @@
       hdr-compute-peak = "no";
 
       ## Youtube
-      ytdl-format = "bestvideo[height<=?1440]+bestaudio/best";
+      ytdl-format = "bestvideo[height<=?1080]+bestaudio/best";
       save-position-on-quit = true;
 
       ## Misc.
