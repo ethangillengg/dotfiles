@@ -18,7 +18,7 @@ in {
     # Play lofi-girl (audio-only)
     lofi = "ytfzf -m lofi";
     # Fix for mpv osd and plugins
-    ytfzf = "mpv $(ytfzf -L)";
+    yt = "mpv $(ytfzf -L)";
   };
 
   xdg = {
@@ -34,3 +34,4 @@ in {
     };
   };
 }
+# hello bro

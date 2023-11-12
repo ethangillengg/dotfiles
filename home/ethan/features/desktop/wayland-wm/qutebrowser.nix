@@ -64,6 +64,7 @@ in {
         default_page = "qute://start/";
         # Default pages on startup
         start_pages = ["qute://start/"];
+        open_base_url = true;
       };
       downloads = {
         # Don't prompt, just download to ~/Downloads
