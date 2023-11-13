@@ -10,7 +10,7 @@
     ./features/pass
     ./features/productivity
     ./features/music
-    # ./wallpapers
+    ./features/japanese
   ];
 
   #Favs:

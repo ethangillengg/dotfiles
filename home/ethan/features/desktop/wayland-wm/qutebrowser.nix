@@ -30,6 +30,7 @@ in {
       np = "https://search.nixos.org/packages?channel=unstable&query={}";
       no = "https://search.nixos.org/options?channel=unstable&query={}";
       ngh = "https://github.com/search?q=lang%3Anix+{}";
+      nyaa = "https://nyaa.si/?f=0&c=0_0&s=seeders&o=desc&q={}";
     };
     keyBindings = {
       normal = {
