@@ -43,6 +43,8 @@
     nix-melt # analyze nix flake inputs/outputs
     kalker # cli calculator
     pdfgrep # grep pdfs
+    unar # unpack .zip, .tar, .rar with one command
+    pandoc
 
     # nil # Nix LSP
     # nixfmt # Nix formatter

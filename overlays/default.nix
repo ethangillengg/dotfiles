@@ -20,6 +20,19 @@
       };
     });
 
+    # use this package for mupdf backend (faster)
+    zathura = prev.zathura.overrideAttrs (oldAttrs: {
+      pname = "zathura";
+      version = "0.4.1";
+
+      src = final.fetchFromGitHub {
+        owner = "pwmt";
+        repo = "zathura-pdf-mupdf";
+        rev = "0.4.1"; # set the revision to the commit hash or tag you want
+        sha256 = "sha256-JvYDTVSV9h+weSS3XOWl9B2bo3CatrsPzVNVmKpTSK8="; # replace this with the correct sha256 hash
+      };
+    });
+
     # use lf-sixel for sixel image previews in wezterm
     lf = prev.callPackage (
       {
