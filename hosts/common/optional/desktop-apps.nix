@@ -9,7 +9,6 @@
     xfce.thunar
     pfetch
     font-manager
-    firefox
     ungoogled-chromium
     google-chrome
     steam

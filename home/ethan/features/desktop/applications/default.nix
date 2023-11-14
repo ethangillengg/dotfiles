@@ -8,5 +8,6 @@
     ./wpa-gui.nix
     ./zathura.nix
     ./qutebrowser.nix
+    ./firefox.nix
   ];
 }
