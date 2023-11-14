@@ -45,6 +45,7 @@
     pdfgrep # grep pdfs
     unar # unpack .zip, .tar, .rar with one command
     pandoc
+    dig
 
     # nil # Nix LSP
     # nixfmt # Nix formatter

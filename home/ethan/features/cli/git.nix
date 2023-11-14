@@ -11,6 +11,7 @@
     aliases = {
       graph = "log --decorate --oneline --graph";
       undo = "reset --soft HEAD~1";
+      tracked = "for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads";
     };
 
     extraConfig = {
