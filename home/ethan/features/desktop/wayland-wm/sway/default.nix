@@ -169,9 +169,14 @@ in {
       window = {
         commands = [
           {
-            criteria = {app_id = "gcr-prompter";};
             # Hacky way to disable the fullscreen when pinentry triggered
+            criteria.app_id = "gcr-prompter";
             command = "fullscreen toggle, fullscreen toggle";
+          }
+          {
+            # Don't sleep if youtube music is open
+            criteria.title = "^YouTube Music.*";
+            command = "inhibit_idle visible";
           }
         ];
       };

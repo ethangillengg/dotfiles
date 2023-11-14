@@ -45,7 +45,6 @@ in {
         ",pu" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --username-only -d \"${rofi} --dmenu\"";
         # try to fill otp only
         ",po" = "spawn --userscript qute-pass -U secret -u \"login: (.+)\" --otp-only -d \"${rofi} --dmenu\"";
-
         ## MPV
         ",m" = "hint links spawn umpv {hint-url}";
         ";m" = "hint --rapid links spawn umpv {hint-url}";
@@ -53,13 +52,15 @@ in {
         ",M" = "spawn umpv {url}";
 
         "cm" = "clear-messages";
+        "<Ctrl-c>" = "yank selection";
+        "<Ctrl-e>" = "edit-url";
       };
     };
     settings = {
+      content.javascript.clipboard = "access";
       qt.force_platform = "wayland";
-      tabs = {
-        show = "multiple";
-      };
+      tabs.show = "multiple";
+
       url = {
         # Default page when opening new tab
         default_page = "qute://start/";
