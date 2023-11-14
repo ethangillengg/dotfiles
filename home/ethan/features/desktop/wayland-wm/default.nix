@@ -8,8 +8,6 @@
     ./waybar.nix
     ./mako.nix
     ./swaylock.nix
-    ./zathura.nix
-    ./qutebrowser.nix
     ./tofi.nix
   ];
 
