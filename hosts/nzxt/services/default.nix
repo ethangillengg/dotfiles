@@ -4,27 +4,25 @@
   config,
   ...
 }: let
-  domain = "gillwire.duckdns.org";
+  domain = "mignet.duckdns.org";
   mediaUser = "media";
   email = "ethan.gill@ucalgary.ca";
 
   nginx = import ./nginx {
-    inherit pkgs;
     inherit domain;
+    inherit pkgs;
     inherit email;
   };
 
   mediaserver = import ./jellyfin {
-    inherit domain;
+    domain = "media.${domain}";
     user = mediaUser;
     group = mediaUser;
     port = 8096;
   };
 
-  komga = import ./komga {
-    domain = "manga.${domain}";
-    user = mediaUser;
-    group = mediaUser;
+  kavita = import ./kavita {
+    domain = "books.${domain}";
     port = 7002;
   };
 
@@ -49,20 +47,17 @@
     group = mediaUser;
     inherit lib;
   };
-
-  samba = import ./samba {
-    inherit pkgs;
-  };
 in {
   imports = [
     nginx
     mediaserver
     qbittorrent
     nzbget
-    komga
-    samba
+    kavita
     servarr
     ./binary-cache
+    ./adguard
+    ./samba
   ];
   # open (custom) port for ssh
   networking.firewall.allowedTCPPorts = [420 8080];

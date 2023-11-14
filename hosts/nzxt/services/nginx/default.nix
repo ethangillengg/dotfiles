@@ -19,14 +19,27 @@ in {
       enable = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
-      virtualHosts."/" = {
-        # enableACME = true;
-        # forceSSL = true; # redirect http to https
-        locations = {
-          "index" = {
-            root = indexDir;
-            index = "index.html";
-            tryFiles = "$uri $uri/ =404";
+      virtualHosts = {
+        "${domain}" = {
+          enableACME = true;
+          forceSSL = true; # redirect http to https
+          root = indexDir;
+          locations = {
+            "index" = {
+              root = indexDir;
+              index = "index.html";
+              tryFiles = "$uri $uri/ =404";
+            };
+          };
+        };
+
+        "dad.${domain}" = {
+          locations = {
+            "/" = {
+              proxyWebsockets = true;
+              recommendedProxySettings = true;
+              proxyPass = "http://192.168.1.198:80";
+            };
           };
         };
       };
