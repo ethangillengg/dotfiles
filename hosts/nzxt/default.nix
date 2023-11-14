@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./services
@@ -10,21 +14,10 @@
   ];
   services.gnome.gnome-remote-desktop.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   git
-  #   vim
-  #   wl-clipboard
-  #   btop
-  #   duf
-  #   dua
-  #   termscp
-  #   qbittorrent-nox
-  #   pciutils
-  #   nvtop
-  #   speedtest-cli
-  # ];
+  nix.settings.substituters = lib.mkForce [
+    "https://nix-community.cachix.org"
+    "https://cache.nixos.org/"
+  ];
 
   nixpkgs.config.allowUnfree = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;

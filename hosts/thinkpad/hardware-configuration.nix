@@ -84,9 +84,14 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
+  # networking.useDHCP = lib.mkDefault true;
+  networking = {
+    useDHCP = true; # Disable DHCP if you want manual control
+    nameservers = [
+      "192.168.1.225"
+      "9.9.9.9"
+    ];
+  };
 
   services.throttled.enable = true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -106,12 +111,14 @@
     settings = {
       START_CHARGE_THRESH_BAT0 = 75;
       STOP_CHARGE_THRESH_BAT0 = 80;
+      START_CHARGE_THRESH_BAT1 = 75;
+      STOP_CHARGE_THRESH_BAT1 = 80;
 
       CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
       CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
 
       CPU_SCALING_MIN_FREQ_ON_AC = 800000;
-      CPU_SCALING_MAX_FREQ_ON_AC = 3500000;
+      CPU_SCALING_MAX_FREQ_ON_AC = 3300000;
       CPU_SCALING_MIN_FREQ_ON_BAT = 800000;
       CPU_SCALING_MAX_FREQ_ON_BAT = 2300000;
 
@@ -137,10 +144,19 @@
   # For mount.cifs, required unless domain name resolution is not needed.
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/media" = {
-    device = "//nzxt/media";
+    device = "//100.113.35.34/media";
     fsType = "cifs";
     options = [
-      "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=60"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
+      "credentials=${config.sops.secrets.samba-credentials.path}" # Path to the decrypted password file
     ];
+  };
+
+  sops.secrets.samba-credentials = {
+    sopsFile = ../common/secrets.yaml;
   };
 }

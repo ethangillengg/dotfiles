@@ -1,4 +1,8 @@
-{pkgs}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
 
   services.samba = {
@@ -10,42 +14,23 @@
       workgroup = WORKGROUP
       server string = smbnix
       netbios name = smbnix
-      security = user
-      #use sendfile = yes
-      guest account = media
-      map to guest = bad user
       kernel oplocks = yes
       read raw = Yes
       write raw = Yes
       socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
     '';
 
-    # securityType = "none";
     shares = {
       media = {
         path = "/mnt/mediaserver/data/media";
         browseable = "yes";
         "read only" = "no";
         "writeable" = "yes";
-        "null passwords" = "yes";
-        "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0775";
         "force user" = "media";
         "force group" = "media";
       };
-
-      # ethanpc = {
-      #   path = "/mnt/mediaserver/ethan";
-      #   browseable = "yes";
-      #   "writeable" = "yes";
-      #   "null passwords" = "yes";
-      #   "guest ok" = "yes";
-      #   "create mask" = "0644";
-      #   "directory mask" = "0755";
-      #   "force user" = "ethan";
-      #   "force group" = "users";
-      # };
     };
   };
 
@@ -53,35 +38,4 @@
   # the needed ports in the firewall.
   networking.firewall.allowedTCPPorts = [445 139 5357];
   networking.firewall.allowedUDPPorts = [137 138 3702];
-
-  # To make SMB mounting easier on the command line
-  environment.systemPackages = with pkgs; [
-    cifs-utils
-  ];
-
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      domain = true;
-      hinfo = true;
-      userServices = true;
-      workstation = true;
-    };
-    extraServiceFiles = {
-      smb = ''
-        <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
-        <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
-        <service-group>
-          <name replace-wildcards="yes">%h</name>
-          <service>
-            <type>_smb._tcp</type>
-            <port>445</port>
-          </service>
-        </service-group>
-      '';
-    };
-  };
 }
