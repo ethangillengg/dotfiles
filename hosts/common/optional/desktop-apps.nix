@@ -11,7 +11,7 @@
     font-manager
     firefox
     ungoogled-chromium
-    osu-lazer-bin
+    google-chrome
     steam
     qbittorrent
     obsidian

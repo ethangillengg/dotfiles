@@ -28,6 +28,7 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 - [ ] consistent keybindings qute and neovim
 - [ ] Swaykiosk
 - [ ] Passthrough mute to discord
+- [ ] [Pre commit hooks](https://github.com/cachix/pre-commit-hooks.nix)
 
 ## Thinkpad
 
