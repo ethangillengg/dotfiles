@@ -7,7 +7,6 @@
   jq = "${pkgs.jq}/bin/jq";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
-  hostname = "${pkgs.hostname}/bin/hostname";
   rofi = "${pkgs.rofi-wayland}/bin/rofi";
   nmtui = "${pkgs.networkmanager}/bin/nmtui";
 
@@ -51,6 +50,7 @@ in {
           "eDP-1"
           "DP-1"
           "DP-2"
+          "HDMI-A-2"
         ];
 
         modules-left = [
@@ -115,14 +115,12 @@ in {
 
         cpu = {
           format = " {usage}%";
-          # format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           interval = 3;
           on-click = systemMonitor;
         };
 
         memory = {
           format = " {used:0.1f}G";
-          # format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           interval = 3;
           on-click = systemMonitor;
         };
