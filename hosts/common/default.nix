@@ -17,6 +17,7 @@ in {
       ./nvim.nix
       ./sops.nix
       ./tailscale.nix
+      ./thunar.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 

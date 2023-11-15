@@ -90,6 +90,8 @@ in {
           {app_id = ".blueman-manager-wrapped";}
           {app_id = "org.gnome.Calculator";}
           {app_id = "lofi";}
+          {app_id = "Thunar";}
+          {app_id = "file-roller";}
         ];
       };
 
