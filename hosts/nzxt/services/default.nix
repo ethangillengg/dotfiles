@@ -22,8 +22,12 @@
   };
 
   kavita = import ./kavita {
+    user = mediaUser;
+    group = mediaUser;
     domain = "books.${domain}";
     port = 7002;
+    inherit pkgs;
+    inherit lib;
   };
 
   qbittorrent = import ./qbittorrent {

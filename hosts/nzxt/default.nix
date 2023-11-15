@@ -57,7 +57,7 @@
   };
 
   users.users.media = {
-    isNormalUser = true;
+    isNormalUser = lib.mkForce true;
   };
 
   security.sudo.wheelNeedsPassword = false;
