@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     # TODO: Configure these in home-manager
     cava
-    xfce.thunar
     pfetch
     font-manager
     ungoogled-chromium

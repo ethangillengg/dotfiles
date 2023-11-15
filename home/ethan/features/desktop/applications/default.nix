@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./rio.nix
     ./wezterm.nix
