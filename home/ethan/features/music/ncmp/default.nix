@@ -2,7 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  notify-send = "${pkgs.libnotify}/bin/notify-send";
+  mpc = "${pkgs.mpc-cli}/bin/mpc";
+in {
   programs.ncmpcpp = {
     enable = true;
     package = pkgs.ncmpcpp.override {
@@ -11,6 +14,30 @@
       taglibSupport = true;
     };
     mpdMusicDir = "${config.home.homeDirectory}/Music";
+
+    bindings = [
+      {
+        key = "j";
+        command = "scroll_down";
+      }
+      {
+        key = "k";
+        command = "scroll_up";
+      }
+      {
+        key = "J";
+        command = ["select_item" "scroll_down"];
+      }
+      {
+        key = "K";
+        command = ["select_item" "scroll_up"];
+      }
+      {
+        key = "d";
+        command = ["delete_playlist_items"];
+      }
+    ];
+
     settings = {
       # Miscelaneous
       ncmpcpp_directory = "${config.home.homeDirectory}/.config/ncmpcpp";
@@ -24,6 +51,7 @@
       lines_scrolled = "0";
       follow_now_playing_lyrics = "yes";
       lyrics_fetchers = "musixmatch";
+      execute_on_song_change = "${notify-send} \"Now Playing\" \"$(${mpc} --format '%title% \\n%artist% - %album%' current)\"";
 
       # visualizer
       visualizer_data_source = "/tmp/mpd.fifo";
