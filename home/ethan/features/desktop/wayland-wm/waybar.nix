@@ -5,16 +5,21 @@
 }: let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
+  wpa-gui = "${pkgs.wpa_supplicant_gui}/bin/wpa_gui";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
   rofi = "${pkgs.rofi-wayland}/bin/rofi";
-  nmtui = "${pkgs.networkmanager}/bin/nmtui";
+  mpc = "${pkgs.mpc-cli}/bin/mpc";
+  ncmpcpp = "${pkgs.ncmpcpp}/bin/ncmpcpp";
+
+  wallpaper = config.wallpaper;
+  lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
 
   terminal = "${pkgs.wezterm}/bin/wezterm";
   terminal-spawn = cmd: "${terminal} -e $SHELL -i -c ${cmd}";
 
   systemMonitor = terminal-spawn btop;
-  networkManager = terminal-spawn nmtui;
+  musicPlayer = terminal-spawn ncmpcpp;
 
   # Function to simplify making waybar outputs
   jsonOutput = name: {
@@ -56,27 +61,29 @@ in {
         modules-left = [
           "custom/menu"
           "sway/workspaces"
-          "sway/mode"
           "hyprland/workspaces"
+          "mpris"
+          "cava"
         ];
         modules-center = [
-          "cpu"
-          "memory"
-          # "disk"
-          "clock"
           "temperature"
+          "cpu"
+          "clock"
+          "battery"
           "pulseaudio"
         ];
-
         modules-right = [
-          "network"
-          "battery#bat0"
-          "battery#bat1"
+          "sway/mode"
           "tray"
+          "network"
+          "group/group-power"
         ];
 
         clock = {
+          # 20/12/2020 10:00 AM
           format = "{:%m/%d %I:%M %p}";
+          # Monday Dec 20  10:00 AM
+          # format = "{:%A %b %d  %I:%M %p}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>
@@ -104,6 +111,46 @@ in {
           };
         };
 
+        tray = {
+          icon-size = 15;
+          spacing = 0;
+        };
+
+        "group/group-power" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 200;
+            children-class = "not-power";
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/power" # First element is the "group leader" and won't ever be hidden
+            "custom/reboot"
+            "custom/quit"
+            "custom/lock"
+          ];
+        };
+        "custom/quit" = {
+          format = "󰍃";
+          tooltip = false;
+          on-click = "swaymsg exit; systemctl --user stop sway-session.target";
+        };
+        "custom/lock" = {
+          format = "󰍁";
+          tooltip = false;
+          on-click = "${lock}";
+        };
+        "custom/reboot" = {
+          format = "";
+          tooltip = false;
+          on-click = "reboot";
+        };
+        "custom/power" = {
+          format = "";
+          tooltip = false;
+          on-click = "shutdown now";
+        };
+
         temperature = {
           thermal-zone = 5;
           format = "{icon}{temperatureC}°C";
@@ -125,6 +172,34 @@ in {
           on-click = systemMonitor;
         };
 
+        mpris = {
+          format = "{status_icon} {dynamic}";
+          tooltip-format = "{title} - {artist} ({position}/{length})";
+          dynamic-order = ["title" "artist"];
+          artist-len = 12;
+          title-len = 20;
+          dynamic-len = 22;
+          dynamic-importance-order = ["title" "artist"];
+          status-icons = {
+            playing = "󰎈";
+            paused = "󰏤";
+            stopped = "󰓛";
+          };
+        };
+
+        cava = {
+          sleep_timer = 5; # Seconds with no input before cava main thread goes to sleep mode
+          hide_on_silence = true; # Hides the widget if no input is present (after sleep_timer elapsed)
+          method = "pipewire";
+          bars = 12;
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+          bar_delimiter = 0;
+          input_delay = 0;
+          actions = {
+            on-click-right = "mode";
+          };
+        };
+
         disk = {
           interval = 30;
           format = "󰋊 {used}";
@@ -132,21 +207,23 @@ in {
           on-click = systemMonitor;
         };
 
-        "battery#bat0" = {
-          bat = "BAT0";
-          interval = 10;
-          format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+        battery = {
+          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           format = "{icon}{capacity}%";
-          format-plugged = "󰂄{capacity}%";
-          tooltip-format = "Battery 0";
-        };
-        "battery#bat1" = {
-          bat = "BAT1";
-          interval = 10;
-          format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-          format = "{icon}{capacity}%";
-          format-plugged = "󰂄{capacity}%";
-          tooltip-format = "Battery 1";
+          format-charging = "󰂄{capacity}%";
+          format-plugged = "󰂏{capacity}%"; # when fully charged
+          tooltip-format = "{timeTo}\nRate: {power}W";
+
+          states = {
+            warning = 25;
+            critical = 10;
+          };
+          format-warning = "󰂃{capacity}%";
+          format-critical = "󰂃{capacity}%";
+
+          weighted-average = true; # average battery percentage across all batteries
+          full-at = 80; # since we stop charging at 80% to preserve battery life
+          interval = 3;
         };
 
         pulseaudio = {
@@ -171,7 +248,7 @@ in {
             {ipaddr}/{cidr}
             Up: {bandwidthUpBits}
             Down: {bandwidthDownBits}'';
-          on-click = networkManager;
+          on-click = wpa-gui;
         };
 
         "custom/wgnord" = {
@@ -182,7 +259,6 @@ in {
             alt = "$status";
             tooltip = "wgnord is $status";
           };
-
           format = "{icon} NordVPN";
           format-icons = {
             "connected" = "󰒘";
@@ -215,82 +291,68 @@ in {
       */
       ''
         * {
-          font-size: 20px;
+          font-size: 18px;
           font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
-          padding: 0px 16px;
+          padding: 0 12px;
         }
 
+        /* This is a hack to fix the tray icon being cut off */
         .modules-right {
-          margin-right: -30px;
+          margin-right: -16px;
+        }
+        .modules-left {
+          margin-left: -16px;
         }
 
-        .modules-left {
-          margin-left: -30px;
-        }
 
         window#waybar.top {
-          opacity: 0.95;
           padding: 0;
           background-color: #${colors.base00};
           border: 2px solid #${colors.base0C};
-        }
-        window#waybar.bottom {
-          opacity: 0.90;
-          background-color: #${colors.base00};
         }
 
         window#waybar {
           color: #${colors.base05};
         }
 
-
-        #workpaces {
-          margin: 0;
-          padding: 0;
+        #workspaces {
+          border-radius: 0px;
+          padding-left: 0px;
+          padding: 0px;
         }
-
         #workspaces button {
-          background-color: #${colors.base00};
+          padding: 0px;
           color: #${colors.base05};
-          padding: 2px 0px;
-          margin: 2px 2px;
-        }
-
-        #workspaces button:hover {
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 3px solid #${colors.base09};
-        }
-
-        #workspaces button.hidden {
-          color: #${colors.base0C};
         }
         #workspaces button.focused,
         #workspaces button.active {
-          color: #${colors.base09};
-          border-bottom: 3px solid #${colors.base09};
+          background-color: #${colors.base0C};
+          color: #${colors.base00};
+        }
+        #workspaces button:hover {
+          border-radius: 0px;
+          background-color: #${colors.base09};
+          color: #${colors.base00};
+        }
+
+        #battery.discharging.warning {
+          color: #${colors.base09}; /* orange */
+        }
+        #battery.discharging.critical {
+          color: #${colors.base08}; /* red */
         }
 
         #clock {
           background-color: #${colors.base0C};
           color: #${colors.base00};
-          padding-left: 15px;
-          padding-right: 15px;
+          padding: 0px 16px;
           margin-top: 0;
           margin-bottom: 0;
         }
 
         #custom-menu {
-          font-size: 28px;
+          font-size: 26px;
           color: #${colors.base0C};
-          padding-right: 4px;
-          padding-left: 6px;
-        }
-
-        #custom-power {
-          font-size: 24px;
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding: 0 18px;
         }
 
         #tray {
