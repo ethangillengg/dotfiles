@@ -62,28 +62,28 @@ in {
           "custom/menu"
           "sway/workspaces"
           "hyprland/workspaces"
+          # "temperature"
           "mpris"
           "cava"
         ];
         modules-center = [
-          "temperature"
-          "cpu"
           "clock"
-          "battery"
-          "pulseaudio"
         ];
         modules-right = [
           "sway/mode"
           "tray"
+          "pulseaudio"
+          "battery"
+          "cpu"
           "network"
           "group/group-power"
         ];
 
         clock = {
           # 20/12/2020 10:00 AM
-          format = "{:%m/%d %I:%M %p}";
+          # format = "{:%m/%d %I:%M %p}";
           # Monday Dec 20  10:00 AM
-          # format = "{:%A %b %d  %I:%M %p}";
+          format = "{:%I:%M %p  %A %b %d}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>
@@ -173,7 +173,7 @@ in {
         };
 
         mpris = {
-          format = "{status_icon} {dynamic}";
+          format = "<i>{status_icon} {dynamic}</i>";
           tooltip-format = "{title} - {artist} ({position}/{length})";
           dynamic-order = ["title" "artist"];
           artist-len = 12;
@@ -181,7 +181,7 @@ in {
           dynamic-len = 22;
           dynamic-importance-order = ["title" "artist"];
           status-icons = {
-            playing = "󰎈";
+            playing = "";
             paused = "󰏤";
             stopped = "󰓛";
           };
@@ -335,16 +335,41 @@ in {
           color: #${colors.base00};
         }
 
+
+
+        #cpu {
+          color: #${colors.base0A};
+        }
+
+        #mpris {
+          color: #${colors.base04};
+        }
+
+        #pulseaudio {
+          color: #${colors.base0E};
+        }
+
+        #temperature {
+          color: #${colors.base0C};
+        }
+
+        #battery
+        {
+          color: #${colors.base0B};
+        }
         #battery.discharging.warning {
-          color: #${colors.base09}; /* orange */
+          color: #${colors.base09};
         }
         #battery.discharging.critical {
-          color: #${colors.base08}; /* red */
+          color: #${colors.base08};
+        }
+
+        #custom-power {
+          color: #${colors.base08};
         }
 
         #clock {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
+          color: #${colors.base05};
           padding: 0px 16px;
           margin-top: 0;
           margin-bottom: 0;
@@ -356,6 +381,7 @@ in {
         }
 
         #tray {
+          margin-right: 6px;
           color: #${colors.base05};
         }
       '';

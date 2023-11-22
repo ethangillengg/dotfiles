@@ -9,12 +9,12 @@
   tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   terminal = config.home.sessionVariables.TERMINAL;
-  wallpaper = config.wallpaper;
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
+  wallpaper = config.wallpaper;
 
   ## Modes
-  system = "(l) lock, (e) logout, (s) shutdown";
+  system = "(l) lock, (e) exit, (s) shutdown";
 
   ## Lock
   lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
@@ -24,6 +24,11 @@
 in {
   imports = [
     ./extras.nix
+  ];
+
+  # expose these to the user
+  home.packages = with pkgs; [
+    pkgs.wlsunset
   ];
 
   wayland.windowManager.sway = {
@@ -188,7 +193,6 @@ in {
         "${system}" = {
           l = "exec ${lock}, mode default";
           e = "exec 'swaymsg exit; systemctl --user stop sway-session.target'"; # exit
-          # s = "exec --no-startup-id systemctl suspend, mode default";
           s = "exec shutdown now";
           # return to default mode
           Return = "mode default";

@@ -17,7 +17,10 @@
       return {
         font_size = 16.0,
         color_scheme = "Catppuccin Mocha",
-        font = wezterm.font("${config.fontProfiles.monospace.family}"),
+        font = wezterm.font_with_fallback {
+          "${config.fontProfiles.monospace.family}",
+          "${config.fontProfiles.fallback.family}",
+        },
         hide_tab_bar_if_only_one_tab = true,
         enable_tab_bar = false,
         window_close_confirmation = "NeverPrompt",
