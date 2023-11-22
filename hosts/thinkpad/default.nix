@@ -31,11 +31,6 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  hardware.enableAllFirmware = true;
-  hardware.trackpoint = {
-    enable = true;
-    sensitivity = 200;
-  };
   programs.fish.enable = true;
   programs.zsh.enable = true;
   environment.pathsToLink = ["/share/zsh"];
@@ -61,7 +56,7 @@
   users.users.ethan = {
     isNormalUser = true;
     description = "ethan";
-    extraGroups = ["wheel" "network" "docker" "video"];
+    extraGroups = ["wheel" "network" "docker" "video" "cdrom"];
     shell = pkgs.zsh;
   };
 
