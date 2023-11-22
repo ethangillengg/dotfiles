@@ -95,8 +95,8 @@ in {
           {app_id = ".blueman-manager-wrapped";}
           {app_id = "org.gnome.Calculator";}
           {app_id = "lofi";}
-          {app_id = "Thunar";}
           {app_id = "file-roller";}
+          {app_id = "^thunar$";}
         ];
       };
 
@@ -180,6 +180,12 @@ in {
             criteria.app_id = "gcr-prompter";
             command = "fullscreen toggle, fullscreen toggle";
           }
+
+          {
+            criteria.title = "^Music$";
+            command = "move scratchpad, scratchpad show,";
+          }
+
           {
             # Don't sleep if youtube music is open
             criteria.title = "^YouTube Music.*";
