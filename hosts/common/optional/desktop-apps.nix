@@ -32,7 +32,7 @@
 
     gnome.gnome-calculator
 
-    inputs.object-viewer.defaultPackage.x86_64-linux
-    inputs.ripgrep-all.packages.x86_64-linux.default
+    # inputs.object-viewer.defaultPackage.x86_64-linux
+    # inputs.ripgrep-all.packages.x86_64-linux.default
   ];
 }
