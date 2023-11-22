@@ -50,7 +50,6 @@ in {
       allow_for_physical_item_deletion = "no";
       lines_scrolled = "0";
       follow_now_playing_lyrics = "yes";
-      lyrics_fetchers = "musixmatch";
       execute_on_song_change = "${notify-send} \"Now Playing\" \"$(${mpc} --format '%title% \\n%artist% - %album%' current)\"";
 
       # visualizer

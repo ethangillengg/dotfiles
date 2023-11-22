@@ -10,8 +10,6 @@
       cfg = {
         # Gnome shell native connector
         enableGnomeExtensions = true;
-        # Tridactyl native connector
-        enableTridactylNative = true;
       };
     };
 
@@ -21,6 +19,7 @@
       extensions = with pkgs.inputs.firefox-addons; [
         # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # privacy-badger
+        tridactyl
         i-dont-care-about-cookies
         darkreader
         ublock-origin
