@@ -23,24 +23,6 @@ in {
     group = group;
   };
 
-  # # Define the systemd service
-  # systemd.services.kavita = {
-  #   description = "Kavita Server";
-  #   after = ["network.target"];
-  #   wantedBy = ["multi-user.target"];
-  #
-  #   serviceConfig = {
-  #     Type = "simple";
-  #     User = user;
-  #     Group = group;
-  #     WorkingDirectory = "/opt/Kavita";
-  #     ExecStart = "${pkgs.kavita}/bin/kavita"; # Assuming that the package is called 'kavita'. You need to adjust this according to the actual package name.
-  #     TimeoutStopSec = 20;
-  #     KillMode = "process";
-  #     Restart = "on-failure";
-  #   };
-  # };
-
   services.nginx.virtualHosts.${domain} = {
     enableACME = true;
     forceSSL = true; # redirect http to https

@@ -14,7 +14,7 @@
     inherit email;
   };
 
-  mediaserver = import ./jellyfin {
+  jellyfin = import ./jellyfin {
     domain = "media.${domain}";
     user = mediaUser;
     group = mediaUser;
@@ -54,7 +54,7 @@
 in {
   imports = [
     nginx
-    mediaserver
+    jellyfin
     qbittorrent
     nzbget
     kavita
