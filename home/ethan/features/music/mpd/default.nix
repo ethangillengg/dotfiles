@@ -20,15 +20,6 @@
       	format              "44100:16:2"
       	path                "/tmp/mpd.fifo"
       }
-      audio_output {
-      	type		            "httpd"
-      	name		            "lossless"
-      	encoder		          "flac"
-      	port		            "8000"
-      	max_client	        "8"
-      	mixer_type	        "software"
-      	format		          "44100:16:2"
-      }
     '';
     network.startWhenNeeded = true;
   };
