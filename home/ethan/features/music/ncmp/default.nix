@@ -21,8 +21,24 @@ in {
         command = "scroll_down";
       }
       {
+        key = "alt-j";
+        command = "move_selected_items_down";
+      }
+      {
+        key = "alt-k";
+        command = "move_selected_items_up";
+      }
+      {
         key = "k";
         command = "scroll_up";
+      }
+      {
+        key = "l";
+        command = "next_column";
+      }
+      {
+        key = "h";
+        command = "previous_column";
       }
       {
         key = "J";
@@ -67,11 +83,12 @@ in {
 
       # window
       song_window_title_format = "Music";
-      statusbar_visibility = "no";
-      header_visibility = "no";
-      titles_visibility = "no";
+      statusbar_visibility = "yes";
+      header_visibility = "yes";
+      titles_visibility = "yes";
+
       # progress bar
-      progressbar_look = "━━━";
+      progressbar_look = "─╼ ";
       progressbar_color = "black";
       progressbar_elapsed_color = "blue";
 
@@ -80,8 +97,8 @@ in {
       song_list_format = "$(008)%t$R  $(247)%a$R$5  %l$8";
       song_columns_list_format = "(53)[blue]{tr} (45)[blue]{a}";
 
-      current_item_prefix = "$b$2| ";
-      current_item_suffix = "$/b$5";
+      current_item_prefix = "$(yellow)$r";
+      current_item_suffix = "$/r$(end)";
 
       now_playing_prefix = "$b$5| ";
       now_playing_suffix = "$/b$5";
