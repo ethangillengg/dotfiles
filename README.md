@@ -21,10 +21,10 @@ home-manager switch --flake .#USERNAME@HOSTNAME
 - [x] Brightness like [this](https://www.reddit.com/r/unixporn/comments/d0lxbf/sway_symbolic_links_save_lives_pywal_mako/)
 - [x] fix betterbird no emails showing
 - [x] Float calculator
+- [x] fix slow link opening
+- [ ] syncthing for manga and music (playlists too?)
 - [ ] Check out khal?
 - [ ] notifications show on fullscreen
-- [ ] fix slow link opening
-- [ ] youtube music qutebrowser
 - [ ] consistent keybindings qute and neovim
 - [ ] Swaykiosk
 - [ ] Passthrough mute to discord
