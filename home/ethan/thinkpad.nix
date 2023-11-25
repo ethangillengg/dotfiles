@@ -17,7 +17,7 @@
   colorscheme = inputs.nix-colors.colorschemes.catppuccin-mocha;
   # colorscheme = inputs.nix-colors.colorschemes.gruvbox-material-dark-hard;
 
-  wallpaper = outputs.wallpapers.catppuccin-astro;
+  wallpaper = outputs.wallpapers.forest-spring;
   # wallpaper = outputs.wallpapers.gruvbox-pacman;
 
   # monitors = [{

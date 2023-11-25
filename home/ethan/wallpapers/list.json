@@ -58,5 +58,35 @@
     "ext": "png",
     "id": "Ix8WT4v",
     "sha256": "1l29l1d665zsjpyvqx8h7kxb0hzijwvjn06idj1f4gn76f231w5d"
+  },
+  {
+    "name": "mountain-green",
+    "ext": "jpeg",
+    "id": "v32d8QZ",
+    "sha256": "13cyi4d09iq3ialgfxyigivasp04xinz85n698cdlrg7zki1x0qb"
+  },
+  {
+    "name": "frozen-river-fog",
+    "ext": "jpeg",
+    "id": "JtvhsOg",
+    "sha256": "1k1cnrjxzj93ywbl2n0pcf79w1brhjgmpz95qw9v9cks7wd1sdsz"
+  },
+  {
+    "name": "forest-spring",
+    "ext": "jpeg",
+    "id": "b2a8jxG",
+    "sha256": "1w5yms4lbfv4r6wcbnm7nc64pcgaafy7rljna2gsw5syh9ywzll8"
+  },
+  {
+    "name": "mountain-rainy",
+    "ext": "jpeg",
+    "id": "2YxKRRb",
+    "sha256": "0c2p19qdxkz285f8wwwd3d2xqyp6dpz9km9xk95hm30f326pl16l"
+  },
+  {
+    "name": "mountain-snow-covered-lake",
+    "ext": "jpeg",
+    "id": "GQ3Vesi",
+    "sha256": "1mq6a7wpil96fqfy9fymqbhkcykc25fzxjd3jqdw79zzwqg630zn"
   }
 ]
