@@ -21,6 +21,13 @@
     port = 8096;
   };
 
+  navidrome = import ./navidrome {
+    domain = "media.${domain}";
+    user = mediaUser;
+    group = mediaUser;
+    port = 4533;
+  };
+
   kavita = import ./kavita {
     user = mediaUser;
     group = mediaUser;
@@ -59,6 +66,7 @@ in {
     nzbget
     kavita
     servarr
+    navidrome
     ./binary-cache
     ./adguard
     ./samba
