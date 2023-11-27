@@ -11,6 +11,7 @@
   terminal = config.home.sessionVariables.TERMINAL;
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
   wallpaper = config.wallpaper;
 
   ## Modes
@@ -183,7 +184,7 @@ in {
 
           {
             criteria.title = "^Music$";
-            command = "move scratchpad, scratchpad show,";
+            command = "move scratchpad, sticky enable, scratchpad show, inhibit_idle visible";
           }
 
           {

@@ -21,7 +21,6 @@
     ./bottom.nix
     ./fzf.nix
     ./gpg.nix
-    ./manix.nix
     ./chatgpt.nix
   ];
   home.packages = with pkgs; [

@@ -239,7 +239,7 @@ in {
         };
 
         network = {
-          interval = 3;
+          interval = 1;
           format-wifi = " {essid}";
           format-ethernet = "󰈀 {essid}";
           format-disconnected = "";
