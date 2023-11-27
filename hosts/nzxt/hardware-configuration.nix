@@ -31,6 +31,16 @@
       device = "/dev/disk/by-uuid/790d83dd-c8df-49a4-941b-cbb47eacfe95";
       fsType = "ext4";
     };
+
+    "/export/data" = {
+      device = "/mnt/mediaserver/data";
+      options = ["bind"];
+    };
+
+    "/export/media" = {
+      device = "/mnt/mediaserver/data/media";
+      options = ["bind"];
+    };
   };
 
   swapDevices = [];

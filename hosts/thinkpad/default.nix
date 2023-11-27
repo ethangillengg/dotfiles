@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
+    ./network-fs.nix
 
     ../common
     ../common/optional/desktop-apps.nix
