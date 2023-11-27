@@ -12,7 +12,7 @@ in {
       Port = port;
       MusicFolder = "/mnt/mediaserver/data/media/music";
       CovertArtPriority = "*.jpg, *.JPG, *.png, *.PNG, embedded";
-      AutoImportPlaylists = false;
+      AutoImportPlaylists = true;
       EnableSharing = true;
     };
   };
