@@ -23,6 +23,7 @@
 
     # My ip
     me = "xh -j ipinfo.io";
+    ts = "tailscale";
 
     lsblk = "lsblk -o NAME,FSUSED,FSSIZE,FSUSE%";
 
