@@ -141,27 +141,4 @@
       TPSMAPI_ENABLE = 1;
     };
   };
-
-  sops.secrets.samba-credentials = {
-    sopsFile = ../common/secrets.yaml;
-  };
-
-  # For mount.cifs, required unless domain name resolution is not needed.
-  environment.systemPackages = [pkgs.cifs-utils];
-  fileSystems."/mnt/media" = {
-    device = "//100.113.35.34/media";
-    fsType = "cifs";
-    options = [
-      "x-systemd.automount"
-      "noauto"
-      "x-systemd.idle-timeout=60"
-      "x-systemd.device-timeout=5s"
-      "x-systemd.mount-timeout=5s"
-      "credentials=${config.sops.secrets.samba-credentials.path}" # Path to the decrypted password file
-      "uid=1000" # Replace yourUsername with the actual non-root username
-      "gid=100" # The group ID of the user
-      "file_mode=0775" # File permissions (read, write, execute for user and group; read, execute for others)
-      "dir_mode=0775" # Directory permissions (same as file_mode)
-    ];
-  };
 }
