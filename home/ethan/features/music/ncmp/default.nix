@@ -20,6 +20,7 @@ in {
         key = "j";
         command = "scroll_down";
       }
+
       {
         key = "alt-j";
         command = "move_selected_items_down";
@@ -47,6 +48,11 @@ in {
       {
         key = "K";
         command = ["select_item" "scroll_up"];
+      }
+
+      {
+        key = "y";
+        command = "show_lyrics";
       }
       {
         key = "d";
