@@ -2,8 +2,6 @@
   # simple aliases that are compatible across all shells
   home.shellAliases = {
     v = "nvim";
-    vi = "nvim";
-    vim = "nvim";
 
     ## Nix commands
     hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad";
