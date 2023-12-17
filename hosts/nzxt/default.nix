@@ -8,8 +8,10 @@
     ./services
 
     ./../common/optional/nixos-direnv.nix
+    ./../common/optional/podman.nix
     ./../common/optional/tailscale-exit-node.nix
-    # ./../common/optional/gnome.nix
+    ./../common/optional/gnome.nix
+    ../common/optional/desktop-apps.nix
     ./../common
   ];
   services.gnome.gnome-remote-desktop.enable = true;

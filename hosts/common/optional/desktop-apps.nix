@@ -17,9 +17,12 @@
     pavucontrol
     termusic
     ffmpeg
+    wayvnc
 
+    remmina
     obs-studio
     armcord
+    osu-lazer-bin
     # webcord
 
     unoconv # convert .doc, .docx files

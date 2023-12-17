@@ -19,6 +19,10 @@
     # Misc.
     vscode-langservers-extracted
     prettierd
+    nodePackages_latest.bash-language-server
+    shfmt
+    marksman
+    yamlfmt
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
     nodejs_18
   ];
