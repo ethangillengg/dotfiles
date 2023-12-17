@@ -12,7 +12,6 @@
     google-chrome
     steam
     qbittorrent
-    obsidian
 
     pavucontrol
     termusic
