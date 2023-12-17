@@ -45,6 +45,7 @@
     ouch # compress/decompress .zip, .tar, .rar with one command
     pandoc
     dig
+    glow # pretty markdown
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
