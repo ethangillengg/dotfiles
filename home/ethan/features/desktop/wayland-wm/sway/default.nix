@@ -167,6 +167,8 @@ in {
         "${modifier}+u" = "scratchpad show";
 
         "${modifier}+s" = "exec ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png";
+        # Take a screenshot and put it in ~/Pictures/screenshots
+        "${modifier}+Shift+s" = "exec ${grim} -g \"$(${slurp})\" ~/Pictures/screenshots/$(date +'%s_grim.png')";
         "${modifier}+Semicolon" = "exec ${pass-tofi}";
 
         ## Modes
