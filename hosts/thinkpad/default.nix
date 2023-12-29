@@ -11,7 +11,7 @@
     # ../common/optional/gnome.nix
     ../common/optional/quietboot.nix
     # ./../common/optional/wgnord.nix
-    ../common/optional/podman.nix
+    ../common/optional/docker.nix
     ../common/optional/wireless.nix
   ];
   networking.hostName = "thinkpad";
