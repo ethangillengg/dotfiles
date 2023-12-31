@@ -7,12 +7,13 @@
     ./hardware-configuration.nix
     ./services
 
-    ./../common/optional/nixos-direnv.nix
-    ./../common/optional/podman.nix
-    ./../common/optional/tailscale-exit-node.nix
-    ./../common/optional/gnome.nix
+    ../common
     ../common/optional/desktop-apps.nix
-    ./../common
+    ../common/optional/nixos-direnv.nix
+    ../common/optional/docker.nix
+    ../common/optional/tailscale-exit-node.nix
+    ../common/optional/gnome.nix
+    ../common/optional/desktop-apps.nix
   ];
   services.gnome.gnome-remote-desktop.enable = true;
 
