@@ -53,7 +53,8 @@ in {
 
         "cm" = "clear-messages";
         "<Ctrl-c>" = "yank selection";
-        "<Ctrl-e>" = "edit-url";
+        "<Ctrl-r>" = "edit-url";
+        "<Ctrl-e>" = "edit-text";
       };
     };
     settings = {
@@ -76,7 +77,20 @@ in {
         };
       };
       editor = {
-        command = [wezterm "start" "--always-new-process" "-e" "nvim" "{file}" "-c" "normal {line}G{column0}l"];
+        command = [
+          # Open nvim in a new wezterm window
+          wezterm
+          "start"
+          "--always-new-process"
+          "-e"
+          "nvim"
+          "{file}.md"
+          "-c"
+          "normal {line}G{column0}l"
+          # For github
+          "-c"
+          "set ft=markdown"
+        ];
       };
       fonts = {
         default_family = config.fontProfiles.regular.family;
