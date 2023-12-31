@@ -1,17 +1,20 @@
 {
+  outputs,
   inputs,
-  pkgs,
   ...
 }: {
   imports = [
     ./global
-    ./features/cli
     ./features/desktop
     ./features/coding
-    # ./features/desktop/hyprland
-    # ./features/desktop/wireless
-    # ./features/productivity
-    # ./features/pass
-    # ./features/games
+    ./features/pass
+    ./features/productivity
+    ./features/music
+    ./features/japanese
   ];
+
+  #Favs:
+  colorscheme = inputs.nix-colors.colorschemes.catppuccin-mocha;
+
+  wallpaper = outputs.wallpapers.forest-spring;
 }

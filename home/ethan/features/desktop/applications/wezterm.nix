@@ -11,12 +11,12 @@
   };
   programs.wezterm = {
     enable = true;
-    # color_scheme = "Gruvbox dark, medium (base16)",
     # color_scheme = "Material Darker (base16)",
+    # color_scheme = "Catppuccin Mocha",
     extraConfig = ''
       return {
         font_size = 16.0,
-        color_scheme = "Catppuccin Mocha",
+        color_scheme = "Gruvbox dark, medium (base16)",
         font = wezterm.font_with_fallback {
           "${config.fontProfiles.monospace.family}",
           "${config.fontProfiles.fallback.family}",
