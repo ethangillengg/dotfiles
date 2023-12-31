@@ -11,6 +11,7 @@
   rofi = "${pkgs.rofi-wayland}/bin/rofi";
   mpc = "${pkgs.mpc-cli}/bin/mpc";
   ncmpcpp = "${pkgs.ncmpcpp}/bin/ncmpcpp";
+  random-wallpaper = "${pkgs.random-wallpaper}/bin/random-wallpaper";
 
   wallpaper = config.wallpaper;
   lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
@@ -75,6 +76,7 @@ in {
           "pulseaudio"
           "battery"
           "cpu"
+          "custom/random-wallpaper"
           "network"
           "group/group-power"
         ];
@@ -149,6 +151,12 @@ in {
           format = "";
           tooltip = false;
           on-click = "shutdown now";
+        };
+
+        "custom/random-wallpaper" = {
+          format = "󰸉";
+          tooltip = false;
+          on-click = random-wallpaper;
         };
 
         temperature = {

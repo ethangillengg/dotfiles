@@ -11,7 +11,8 @@
   terminal = config.home.sessionVariables.TERMINAL;
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
-  playerctl = "${pkgs.playerctl}/bin/playerctl";
+  random-wallpaper = "${pkgs.random-wallpaper}/bin/random-wallpaper";
+  swww = "${pkgs.swww}/bin/swww";
   wallpaper = config.wallpaper;
 
   ## Modes
@@ -28,8 +29,9 @@ in {
   ];
 
   # expose these to the user
-  home.packages = with pkgs; [
+  home.packages = [
     pkgs.wlsunset
+    pkgs.swww
   ];
 
   wayland.windowManager.sway = {
@@ -50,8 +52,6 @@ in {
       };
 
       output = {
-        "*".bg = "${wallpaper} fit";
-
         "DP-2" = {
           mode = "2560x1440@100Hz";
         };
@@ -237,6 +237,12 @@ in {
         }
         {
           command = "${wlsunset} -t 2500 -T 6500 -l 51.1 -L -114.1";
+        }
+        {
+          command = ''
+            ${swww} init\
+            ${random-wallpaper}\
+          '';
         }
       ];
     };
