@@ -84,12 +84,17 @@ in {
           "--always-new-process"
           "-e"
           "nvim"
+          # Edit new file with .md extension
           "{file}.md"
+          # Go to same position as in qutebrowser
           "-c"
           "normal {line}G{column0}l"
-          # For github
+          # Link qute temp file with .md file
           "-c"
-          "set ft=markdown"
+          ":silent exec '!ln {file} {file}.md'"
+          # Reload the file to get new contents after linking
+          "-c"
+          ":e"
         ];
       };
       fonts = {
