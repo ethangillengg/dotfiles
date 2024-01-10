@@ -74,6 +74,7 @@ in {
           "sway/mode"
           "tray"
           "pulseaudio"
+          "backlight"
           "battery"
           "cpu"
           "custom/random-wallpaper"
@@ -246,6 +247,10 @@ in {
           on-click = pavucontrol;
         };
 
+        backlight = {
+          format = "󰃠 {percent}%";
+        };
+
         network = {
           interval = 1;
           format-wifi = " {essid}";
@@ -343,19 +348,22 @@ in {
           color: #${colors.base00};
         }
 
-
-
         #cpu {
-          color: #${colors.base0A};
+          color: #${colors.base0D};
         }
 
         #mpris {
           color: #${colors.base04};
         }
 
+        #backlight{
+          color: #${colors.base0A};
+        }
+
         #pulseaudio {
           color: #${colors.base0E};
         }
+
 
         #temperature {
           color: #${colors.base0C};
