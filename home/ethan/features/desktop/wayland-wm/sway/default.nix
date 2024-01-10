@@ -11,7 +11,6 @@
   terminal = config.home.sessionVariables.TERMINAL;
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
-  random-wallpaper = "${pkgs.random-wallpaper}/bin/random-wallpaper";
   swww = "${pkgs.swww}/bin/swww";
   wallpaper = config.wallpaper;
 
@@ -225,6 +224,9 @@ in {
 
       startup = [
         {
+          command = "${swww} init";
+        }
+        {
           # Sleep after 15 minutes of inactivity
           # Turn off display after 20 minutes of inactivity
           command = ''
@@ -237,12 +239,6 @@ in {
         }
         {
           command = "${wlsunset} -t 2500 -T 6500 -l 51.1 -L -114.1";
-        }
-        {
-          command = ''
-            ${swww} init\
-            ${random-wallpaper}\
-          '';
         }
       ];
     };
