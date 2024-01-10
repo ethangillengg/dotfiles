@@ -54,7 +54,5 @@
     # ltex-ls # Spell checking LSP
 
     # tly # Tally counter
-    inputs.nh.packages."x86_64-linux".default
-    # inputs.nh.default # nixos-rebuild and home-manager CLI wrapper
   ];
 }
