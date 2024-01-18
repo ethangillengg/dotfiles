@@ -66,12 +66,12 @@ in {
           # "temperature"
           "mpris"
           "cava"
+          "sway/mode"
         ];
         modules-center = [
           "clock"
         ];
         modules-right = [
-          "sway/mode"
           "tray"
           "pulseaudio"
           "backlight"
@@ -334,6 +334,7 @@ in {
           padding: 0px;
         }
         #workspaces button {
+          border-radius: 0px;
           padding: 0px;
           color: #${colors.base05};
         }
