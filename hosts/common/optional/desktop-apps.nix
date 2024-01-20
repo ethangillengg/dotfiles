@@ -22,7 +22,6 @@
     wayvnc
 
     remmina
-    obs-studio
     armcord
     osu-lazer-bin
     obsidian
