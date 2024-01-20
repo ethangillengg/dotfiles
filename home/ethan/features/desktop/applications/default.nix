@@ -9,5 +9,6 @@
     ./zathura.nix
     ./qutebrowser.nix
     ./firefox.nix
+    ./obs-studio.nix
   ];
 }
