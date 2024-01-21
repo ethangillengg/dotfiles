@@ -10,5 +10,6 @@
     ./qutebrowser.nix
     ./firefox.nix
     ./obs-studio.nix
+    ./sioyek.nix
   ];
 }

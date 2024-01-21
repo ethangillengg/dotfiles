@@ -2,7 +2,7 @@
   inherit (config.colorscheme) colors;
 in {
   programs.zathura = {
-    enable = true;
+    enable = false;
     options = {
       selection-clipboard = "clipboard";
       font = "${config.fontProfiles.regular.family} 12";
