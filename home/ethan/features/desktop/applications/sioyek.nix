@@ -27,9 +27,12 @@ in {
       ui_font = "${config.fontProfiles.regular.family}";
       font_size = "20";
       status_bar_font_size = font_size;
+      page_separator_width = "2";
+      should_launch_new_window = "1";
 
       ## Default colors
       background_color = "#${colors.base01}";
+      page_separator_color = "#${colors.base01}";
       text_highlight_color = "#${colors.base0A}";
       search_highlight_color = "#${colors.base0D}";
       status_bar_color = "#${colors.base02}";
@@ -39,5 +42,9 @@ in {
       custom_background_color = "#${colors.base01}";
       custom_text_color = "#${colors.base04}";
     };
+  };
+
+  xdg.mimeApps.defaultApplications = {
+    "application/pdf" = ["sioyek"];
   };
 }
