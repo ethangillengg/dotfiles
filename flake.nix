@@ -64,7 +64,7 @@
   in {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    # templates = import ./templates;
+    templates = import ./templates;
 
     overlays = import ./overlays {inherit inputs outputs;};
     # hydraJobs = import ./hydra.nix {inherit inputs outputs;};
