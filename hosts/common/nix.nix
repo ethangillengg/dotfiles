@@ -23,6 +23,7 @@
 
       auto-optimise-store = lib.mkDefault true;
       experimental-features = ["nix-command" "flakes" "repl-flake"];
+      flake-registry = ""; # Disable global flake registry
       warn-dirty = false;
     };
     gc = {
