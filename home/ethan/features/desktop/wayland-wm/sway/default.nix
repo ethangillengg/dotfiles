@@ -12,6 +12,7 @@
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
   swww = "${pkgs.swww}/bin/swww";
+  thunderbird = "${pkgs.thunderbird}/bin/thunderbird";
   wallpaper = config.wallpaper;
 
   ## Modes
@@ -225,6 +226,9 @@ in {
       startup = [
         {
           command = "${swww} init";
+        }
+        {
+          command = "${thunderbird}";
         }
         {
           # Sleep after 15 minutes of inactivity
