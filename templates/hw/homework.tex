@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+
+\usepackage [
+	headsep=25pt,
+	footnotesep=0pt,
+	footskip=0pt,
+]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{datetime}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{marvosym}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{wasysym}
+\usepackage{tikz}
+\usepackage{meta}
+\usepackage[none]{hyphenat} % Prevent hyphenation
+
+\newenvironment{sol}[1][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries {#1}:}]}{\end{trivlist}}
+
+% --------------------------------------------------------------
+%                         Functions
+% --------------------------------------------------------------
+\newcommand{\Let}[2]{Let {$#1$} be #2.}
+% --------------------------------------------------------------
+%                         Header/Footer
+% --------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead[L]{\doctitle}
+\fancyhead[R]{page \thepage\ of \pageref*{LastPage}}
+\fancyfoot{} % no footer
+% --------------------------------------------------------------
+%                         Title
+% --------------------------------------------------------------
+\begin{document}
+
+\title{\doctitle}
+\author{\ponename}
+\date{\today}
+\maketitle
+\thispagestyle{empty} % remove page count for title page
+
+
+\newpage
+% --------------------------------------------------------------
+%                         Assignment
+% --------------------------------------------------------------
+\setcounter{page}{1}
+
+\bigskip
+
+\section*{Exercise A: Moore's Law}
+\subsection*{Question A}
+According to the trend in device scaling historically observed by Moore’s Law, the number of transistors on a chip in 2025 should be how many times the number in 2015?
+\begin{sol}
+	Moore's law states that the number of transistors should double every two years.
+	\begin{itemize}
+		\item \Let{Y}{number of years passed}
+		\item \Let{n}{the coefficient of number of transistors}
+	\end{itemize}
+	\begin{align*}
+		n & = 2\cdot{Y}    \\
+		  & = 2(Y_1-Y_0)   \\
+		  & = 2(2025-2015) \\
+		  & = 20           \\
+	\end{align*}
+	According to Moore's law, the number of transistors in 2025 should be \textbf{20 times} the number in 2015.
+\end{sol}
+
+
+% --------------------------------------------------------------
+%                         The End
+% --------------------------------------------------------------
+\end{document}
+

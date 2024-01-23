@@ -1,0 +1,5 @@
+*.pdf
+*.aux
+result
+.direnv
+indent.log
