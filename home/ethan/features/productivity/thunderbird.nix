@@ -2,7 +2,19 @@
   programs.thunderbird = {
     enable = true;
     profiles = {
-      ethan.isDefault = true;
+      ethan = {
+        isDefault = true;
+        userChrome = ''
+          /* Hide tab bar in Thunderbird */
+          #tabs-toolbar {
+            display: none;
+          }
+        '';
+        # So that the userChrome actually works
+        extraConfig = ''
+          user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+        '';
+      };
     };
     settings = let
       date_format = "yyyy-MM-dd";

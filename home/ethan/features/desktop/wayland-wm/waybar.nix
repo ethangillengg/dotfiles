@@ -169,6 +169,12 @@ in {
           on-click = systemMonitor;
         };
 
+        "sway/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            "0: email" = "󰇮 ";
+          };
+        };
         cpu = {
           format = " {usage}%";
           interval = 3;
