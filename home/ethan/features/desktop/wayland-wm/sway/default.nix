@@ -82,6 +82,13 @@ in {
           indicator = "#${colors.base0C}";
         };
       };
+      assigns = {
+        "0: email" = [
+          {
+            app_id = "thunderbird";
+          }
+        ];
+      };
 
       # Drag floating windows by holding down $mod and left mouse button.
       # Resize them with right mouse button + $mod.
@@ -228,9 +235,6 @@ in {
           command = "${swww} init";
         }
         {
-          command = "${thunderbird}";
-        }
-        {
           # Sleep after 15 minutes of inactivity
           # Turn off display after 20 minutes of inactivity
           command = ''
@@ -243,6 +247,9 @@ in {
         }
         {
           command = "${wlsunset} -t 2500 -T 6500 -l 51.1 -L -114.1";
+        }
+        {
+          command = "${thunderbird};";
         }
       ];
     };
