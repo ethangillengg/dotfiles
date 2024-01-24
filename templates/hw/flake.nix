@@ -67,11 +67,6 @@
       # defaultPackage = packages.virtual-orrery;
       devShell = pkgs.mkShell {
         nativeBuildInputs = [pkgs.bashInteractive];
-        shellHook = ''
-          echo "Welcome to the LaTeX Homework Report Template!"
-          echo "To build, run 'make' or 'nix build .#homework'"
-          echo "To watch for changes, run 'nix run .#watch'"
-        '';
         buildInputs = with pkgs; [
           rubber
           texlab
