@@ -36,8 +36,9 @@
     # diffsitter # Better diff
     # jq # JSON pretty printer and manipulator
     # trekscii # Cute startrek cli printer
+    # timer # To help with my ADHD paralysis
 
-    timer # To help with my ADHD paralysis
+    porsmo # cli pomodoro, stopwatch and timer
     nerdfix # fix nerd fonts
     nix-melt # analyze nix flake inputs/outputs
     kalker # cli calculator
