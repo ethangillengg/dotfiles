@@ -10,7 +10,6 @@
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   terminal = config.home.sessionVariables.TERMINAL;
   swayidle = "${pkgs.swayidle}/bin/swayidle";
-  wlsunset = "${pkgs.wlsunset}/bin/wlsunset";
   swww = "${pkgs.swww}/bin/swww";
   thunderbird = "${pkgs.thunderbird}/bin/thunderbird";
   wallpaper = config.wallpaper;
@@ -26,11 +25,11 @@
 in {
   imports = [
     ./extras.nix
+    ./wlsunset.nix
   ];
 
   # expose these to the user
   home.packages = [
-    pkgs.wlsunset
     pkgs.swww
   ];
 
@@ -244,9 +243,6 @@ in {
                 resume 'swaymsg "output * dpms on"' \
               before-sleep '${lock}'
           '';
-        }
-        {
-          command = "${wlsunset} -t 2500 -T 6500 -l 51.1 -L -114.1";
         }
         {
           command = "${thunderbird};";
