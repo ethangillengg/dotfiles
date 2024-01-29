@@ -1,7 +1,18 @@
-{
+{pkgs, ...}: let
+  vim-scratchpad = pkgs.writeShellScriptBin "vim-scratchpad" ''
+    #!/usr/bin/env bash
+    if [ -z "$1" ]; then
+      echo "No extension supplied"
+      exit 1
+    fi
+
+    nvim /tmp/$(date +%s).$1
+  '';
+in {
   # simple aliases that are compatible across all shells
   home.shellAliases = {
     v = "nvim";
+    vs = "${vim-scratchpad}/bin/vim-scratchpad";
 
     ## Nix commands
     hm = "home-manager switch --flake /home/ethan/.dotfiles#ethan@thinkpad";

@@ -1,10 +1,5 @@
 # This file (and the global directory) holds config that i use on all hosts
-{
-  pkgs,
-  lib,
-  outputs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     neovim
 
@@ -25,5 +20,6 @@
     yamlfmt
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
     nodejs_18
+    asmfmt
   ];
 }
