@@ -7,19 +7,26 @@
 ]{geometry}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{datetime}
-\usepackage{graphicx}
 \usepackage{multicol}
 \usepackage{marvosym}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
 \usepackage{wasysym}
-\usepackage{tikz}
 \usepackage{meta}
+\usepackage{hyperref}
 \usepackage[none]{hyphenat} % Prevent hyphenation
+\usepackage[style=ieee]{biblatex}
 
+% --------------------------------------------------------------
+%                         Styles
+% --------------------------------------------------------------
+\addbibresource{hw.bib}
+\urlstyle{same} % url same style as text
+% --------------------------------------------------------------
+%                         Environments
+% --------------------------------------------------------------
 \newenvironment{sol}[1][Solution]{\begin{trivlist}
 		\item[\hskip \labelsep {\bfseries {#1}:}]}{\end{trivlist}}
-
 % --------------------------------------------------------------
 %                         Functions
 % --------------------------------------------------------------
@@ -53,7 +60,7 @@
 
 \section*{Exercise A: Moore's Law}
 \subsection*{Question A}
-According to the trend in device scaling historically observed by Moore’s Law, the number of transistors on a chip in 2025 should be how many times the number in 2015?
+According to the trend in device scaling historically observed by Moore’s Law, the number of transistors on a chip in 2025 should be how many times the number in 2015? \cite{hennessey2019computer}
 \begin{sol}
 	Moore's law states that the number of transistors should double every two years.
 	\begin{itemize}
@@ -69,9 +76,13 @@ According to the trend in device scaling historically observed by Moore’s Law,
 	According to Moore's law, the number of transistors in 2025 should be \textbf{20 times} the number in 2015.
 \end{sol}
 
+% --------------------------------------------------------------
+%                         Bibliography
+% --------------------------------------------------------------
+\pagebreak
+\printbibliography
 
 % --------------------------------------------------------------
 %                         The End
 % --------------------------------------------------------------
 \end{document}
-

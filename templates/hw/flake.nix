@@ -13,7 +13,7 @@
         system = "x86_64-linux"; # or something else
         config = {allowUnfree = true;};
       };
-      pname = "homework";
+      pname = "hw";
       name = pname;
 
       watcher = pkgs.writeScriptBin "watch" ''
@@ -23,8 +23,10 @@
           -pvc \
           -outdir="$out" \
           -pdf \
-          -pdflatex="pdflatex -interaction=nonstopmode" \
+          -time \
+          -quiet \
           -use-make ${pname}.tex
+        ${pname}.tex
         rm -r "$out"
       '';
 
@@ -37,7 +39,6 @@
           (texlive.combine {
             inherit
               (texlive)
-              scheme-medium
               multirow
               hyperref
               blindtext
