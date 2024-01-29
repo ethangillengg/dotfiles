@@ -1,1 +1,2 @@
-$pdf_previewer = 'sioyek';
+$pdf_previewer = 'start sioyek';
+$pdf_mode = 1; 

@@ -1,5 +1,5 @@
 DOCNAME=presentation
-PDFLATEX="pdflatex -interaction=nonstopmode"
+PDFLATEX="pdflatex -synctex=1 -interaction=nonstopmode"
 
 .PHONY: $(DOCNAME).pdf all clean
 
