@@ -1,6 +1,6 @@
 {
   imports = [
-    ./rio.nix
+    ./obsidian.nix
     ./wezterm.nix
     ./feh.nix
     ./rofi.nix
