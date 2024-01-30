@@ -5,18 +5,26 @@ in {
   # youtube cli
   home.packages = with pkgs; [
     ytfzf
+    ytmdl # download music
   ];
 
   # Write config
   xdg.configFile."ytfzf/conf.sh".text = ''
-    fzf_preview_side=right
-    async_thumbnails=1
-    show_thumbnails=1
+    async_thumbnails=0
+    show_thumbnails=0
+    yt_video_link_domain=https://www.youtube.com
+    invidious_instance=inv.n8pjl.ca
+  '';
+
+  xdg.configFile."ytmdl/config".text = ''
+    SONG_DIR = "/home/ethan/Music$Artist->Album"
   '';
 
   home.shellAliases = {
     # Play lofi-girl (audio-only)
     lofi = "ytfzf -m lofi";
+    # search for music
+    ytm = "ytfzf -m";
     # Fix for mpv osd and plugins
     yt = "mpv $(ytfzf -L)";
   };
@@ -35,3 +43,4 @@ in {
   };
 }
 # hello bro
+
