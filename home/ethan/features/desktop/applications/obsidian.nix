@@ -12,7 +12,7 @@
     obsidian = {
       name = "Obsidian";
       genericName = "obisidan";
-      exec = "obsidian --disable-gpu";
+      exec = "env WAYLAND_DISPLAY= obsidian --disable-gpu";
       terminal = false;
       categories = ["Application"];
     };
