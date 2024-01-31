@@ -60,6 +60,7 @@
     extraGroups = ["wheel" "network" "docker" "video" "cdrom"];
     shell = pkgs.zsh;
   };
+  home-manager.users.ethan = import ../../home/ethan/thinkpad.nix;
 
   security.sudo.wheelNeedsPassword = false;
 
