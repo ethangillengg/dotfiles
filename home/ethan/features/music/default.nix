@@ -3,5 +3,6 @@
     ./mpd
     ./cava
     ./ncmp
+    ./sptlrx.nix
   ];
 }
