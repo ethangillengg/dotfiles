@@ -30,11 +30,6 @@ in {
     };
   };
 
-  # home-manager = {
-  #   useUserPackages = true;
-  #   extraSpecialArgs = { inherit inputs outputs; };
-  # };
-
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
@@ -43,7 +38,7 @@ in {
   };
 
   nix = {
-    package = pkgs.nix;
+    package = lib.mkDefault pkgs.nix;
     settings = {
       experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
