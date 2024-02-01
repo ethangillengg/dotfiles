@@ -1,34 +1,9 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  nfsMountOptions = [
-    "x-systemd.automount"
-    "noauto"
-    "noatime"
-    "x-systemd.idle-timeout=600" # disconnects after 10 minutes idle (i.e. 600 seconds)
-    "x-systemd.requires=tailscale-online.target" # requires tailscale daemon to be running
-  ];
+{pkgs, ...}: let
   mediaServer = "100.113.35.34";
 in {
   # For mount.cifs, required unless domain name resolution is not needed.
   environment.systemPackages = with pkgs; [cifs-utils nfs-utils];
   services.rpcbind.enable = true; # needed for NFS
-
-  # NFS
-  # fileSystems = {
-  #   # "/mnt/nfs/data" = {
-  #   #   device = "${mediaServer}:/data";
-  #   #   fsType = "nfs";
-  #   #   options = nfsMountOptions;
-  #   # };
-  #   "/mnt/nfs/media" = {
-  #     device = "${mediaServer}:/media";
-  #     fsType = "nfs";
-  #     options = nfsMountOptions;
-  #   };
-  # };
 
   systemd.mounts = let
     commonMountOptions = {
@@ -48,8 +23,8 @@ in {
   systemd.automounts = let
     commonAutoMountOptions = {
       wantedBy = ["multi-user.target"];
-      # requires = ["tailscaled.service"];
-      after = ["tailscaled.service"];
+      after = ["tailscale-online.target"];
+
       automountConfig = {
         TimeoutIdleSec = "600";
       };
