@@ -3,8 +3,16 @@
   pkgs,
   ...
 }: let
-  notify-send = "${pkgs.libnotify}/bin/notify-send";
-  mpc = "${pkgs.mpc-cli}/bin/mpc";
+  songinfo = pkgs.writeShellScriptBin "songinfo" ''
+    music_dir="$HOME/Music"
+    previewdir="$XDG_CONFIG_HOME/ncmpcpp/previews"
+    filename="$(${pkgs.mpc-cli}/bin/mpc --format "$music_dir"/%file% current)"
+    previewname="$previewdir/$(${pkgs.mpc-cli}/bin/mpc --format %album% current | base64).png"
+
+    [ -e "$previewname" ] || ${pkgs.ffmpeg}/bin/ffmpeg -y -i "$filename" -an -vf scale=128:128 "$previewname" > /dev/null 2>&1
+
+    ${pkgs.libnotify}/bin/notify-send -r 27072 "Now Playing" "$(${pkgs.mpc-cli}/bin/mpc --format '%title% \n%artist% - %album%' current)" -i "$previewname"
+  '';
 in {
   programs.ncmpcpp = {
     enable = true;
@@ -49,11 +57,6 @@ in {
         key = "K";
         command = ["select_item" "scroll_up"];
       }
-
-      {
-        key = "y";
-        command = "show_lyrics";
-      }
       {
         key = "d";
         command = ["delete_playlist_items"];
@@ -72,7 +75,8 @@ in {
       allow_for_physical_item_deletion = "no";
       lines_scrolled = "0";
       follow_now_playing_lyrics = "yes";
-      execute_on_song_change = "${notify-send} \"Now Playing\" \"$(${mpc} --format '%title% \\n%artist% - %album%' current)\"";
+      execute_on_song_change = "${songinfo}/bin/songinfo";
+      # "${notify-send} \"Now Playing\" \"$(${mpc} --format '%title% \\n%artist% - %album%' current)\"";
 
       # visualizer
       visualizer_data_source = "/tmp/mpd.fifo";
@@ -94,7 +98,8 @@ in {
       titles_visibility = "yes";
 
       # progress bar
-      progressbar_look = "─╼ ";
+      # progressbar_look = "─╼ ";
+      progressbar_look = "▃▃▃";
       progressbar_color = "black";
       progressbar_elapsed_color = "blue";
 
