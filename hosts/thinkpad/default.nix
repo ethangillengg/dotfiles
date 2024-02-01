@@ -22,6 +22,7 @@
   programs = {
     light.enable = true;
     adb.enable = true;
+    dconf.enable = true;
   };
   services.blueman.enable = true;
 
