@@ -8,10 +8,9 @@
   wpa-gui = "${pkgs.wpa_supplicant_gui}/bin/wpa_gui";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
-  rofi = "${pkgs.rofi-wayland}/bin/rofi";
-  mpc = "${pkgs.mpc-cli}/bin/mpc";
   ncmpcpp = "${pkgs.ncmpcpp}/bin/ncmpcpp";
   random-wallpaper = "${pkgs.random-wallpaper}/bin/random-wallpaper";
+  sptlrx = "${pkgs.sptlrx}/bin/sptlrx";
 
   wallpaper = config.wallpaper;
   lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
@@ -21,6 +20,7 @@
 
   systemMonitor = terminal-spawn btop;
   musicPlayer = terminal-spawn ncmpcpp;
+  lyricsViewer = terminal-spawn sptlrx;
 
   # Function to simplify making waybar outputs
   jsonOutput = name: {
@@ -63,9 +63,8 @@ in {
           "custom/menu"
           "sway/workspaces"
           "hyprland/workspaces"
-          # "temperature"
-          "mpris"
           "cava"
+          "mpris"
           "sway/mode"
         ];
         modules-center = [
@@ -77,16 +76,16 @@ in {
           "backlight"
           "battery"
           "cpu"
-          "custom/random-wallpaper"
           "network"
-          "group/group-power"
         ];
 
         clock = {
           # 20/12/2020 10:00 AM
-          # format = "{:%m/%d %I:%M %p}";
-          # Monday Dec 20  10:00 AM
-          format = "{:%I:%M %p  %A %b %d}";
+          format = "{:%m/%d %I:%M %p}";
+          # 10:00 AM Monday Dec 20
+          # format = "{:%I:%M %p  %A %b %d}";
+          # 10:00 AM Mon Dec 20
+          # format = "{:%I:%M %p  %a %b %d}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>
@@ -119,47 +118,6 @@ in {
           spacing = 0;
         };
 
-        "group/group-power" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 200;
-            children-class = "not-power";
-            transition-left-to-right = false;
-          };
-          modules = [
-            "custom/power" # First element is the "group leader" and won't ever be hidden
-            "custom/reboot"
-            "custom/quit"
-            "custom/lock"
-          ];
-        };
-        "custom/quit" = {
-          format = "󰍃";
-          tooltip = false;
-          on-click = "swaymsg exit; systemctl --user stop sway-session.target";
-        };
-        "custom/lock" = {
-          format = "󰍁";
-          tooltip = false;
-          on-click = "${lock}";
-        };
-        "custom/reboot" = {
-          format = "";
-          tooltip = false;
-          on-click = "reboot";
-        };
-        "custom/power" = {
-          format = "";
-          tooltip = false;
-          on-click = "shutdown now";
-        };
-
-        "custom/random-wallpaper" = {
-          format = "󰸉";
-          tooltip = false;
-          on-click = random-wallpaper;
-        };
-
         temperature = {
           thermal-zone = 5;
           format = "{icon}{temperatureC}°C";
@@ -188,31 +146,30 @@ in {
         };
 
         mpris = {
-          format = "<i>{status_icon} {dynamic}</i>";
+          player = "mpd";
+          format = "{dynamic}";
+          format-paused = "{status_icon} <i>{dynamic}</i>";
           tooltip-format = "{title} - {artist} ({position}/{length})";
           dynamic-order = ["title" "artist"];
           artist-len = 12;
           title-len = 20;
-          dynamic-len = 22;
+          dynamic-len = 32;
           dynamic-importance-order = ["title" "artist"];
           status-icons = {
-            playing = "";
             paused = "󰏤";
-            stopped = "󰓛";
           };
+          on-click-right = musicPlayer;
+          on-click-middle = lyricsViewer;
         };
 
         cava = {
-          sleep_timer = 5; # Seconds with no input before cava main thread goes to sleep mode
+          sleep_timer = 3; # Seconds with no input before cava main thread goes to sleep mode
           hide_on_silence = true; # Hides the widget if no input is present (after sleep_timer elapsed)
           method = "pipewire";
-          bars = 12;
+          bars = 10;
           format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           bar_delimiter = 0;
           input_delay = 0;
-          actions = {
-            on-click-right = "mode";
-          };
         };
 
         disk = {
@@ -270,6 +227,13 @@ in {
           on-click = wpa-gui;
         };
 
+        "custom/lyrics" = {
+          exec = "${sptlrx} pipe";
+          on-click = lyricsViewer;
+          max-length = 40;
+          format = "<i>{}</i>";
+        };
+
         "custom/wgnord" = {
           interval = 10;
           return-type = "json";
@@ -292,7 +256,8 @@ in {
             text = " ";
             tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
           };
-          on-click = "${rofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+
+          on-click = random-wallpaper;
         };
       };
     };
@@ -359,8 +324,11 @@ in {
           color: #${colors.base0D};
         }
 
-        #mpris {
+        #custom-lyrics {
           color: #${colors.base04};
+        }
+        #mpris {
+          /* color: #${colors.base04}; */
         }
 
         #backlight{
