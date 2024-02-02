@@ -5,9 +5,11 @@
     enable = true;
     musicDirectory = "${config.home.homeDirectory}/Music";
     dataDir = "${config.home.homeDirectory}/.config/mpd";
+    playlistDirectory = "/mnt/nfs/media/music/";
     extraConfig = ''
       auto_update           "yes"
       restore_paused        "yes"
+      save_absolute_paths_in_playlists "no"
       audio_output {
         type "pipewire"
         name "PipeWire sound server"
