@@ -30,7 +30,8 @@ in {
     # Collect garbage
     ncg = "nix-collect-garbage -d";
     nf = "nix flake";
-    nw = "nix run .#watch";
+    nsp = "nix-shell -p";
+    nrw = "nix run .#watch";
 
     # My ip
     me = "xh -j ipinfo.io";
