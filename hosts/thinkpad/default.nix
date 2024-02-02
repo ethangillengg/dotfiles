@@ -13,6 +13,7 @@
     # ./../common/optional/wgnord.nix
     ../common/optional/docker.nix
     ../common/optional/wireless.nix
+    ../common/optional/mpd-scrobble.nix
   ];
   networking.hostName = "thinkpad";
   nix.settings.substituters = [
