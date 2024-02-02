@@ -14,6 +14,7 @@ in {
       CovertArtPriority = "*.jpg, *.JPG, *.png, *.PNG, embedded";
       AutoImportPlaylists = true;
       EnableSharing = true;
+      ScanSchedule = "@every 1h"; # scan for music/playlists every hour
     };
   };
 }
