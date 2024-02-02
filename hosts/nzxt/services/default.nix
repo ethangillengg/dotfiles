@@ -22,7 +22,14 @@
   };
 
   navidrome = import ./navidrome {
-    domain = "media.${domain}";
+    domain = "music.${domain}";
+    user = mediaUser;
+    group = mediaUser;
+    port = 4533;
+  };
+
+  gonic = import ./gonic {
+    domain = "gonic.${domain}";
     user = mediaUser;
     group = mediaUser;
     port = 4533;
@@ -67,6 +74,7 @@ in {
     kavita
     servarr
     navidrome
+    gonic
     ./binary-cache
     ./adguard
     ./samba
