@@ -21,7 +21,6 @@ in {
       clockSupport = true;
       taglibSupport = true;
     };
-    mpdMusicDir = "${config.home.homeDirectory}/Music";
 
     bindings = [
       {
