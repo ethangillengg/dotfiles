@@ -12,7 +12,6 @@
     ../common/optional/nixos-direnv.nix
     ../common/optional/docker.nix
     ../common/optional/tailscale-exit-node.nix
-    ../common/optional/gnome.nix
     ../common/optional/desktop-apps.nix
   ];
   nix.settings.substituters = lib.mkForce [
