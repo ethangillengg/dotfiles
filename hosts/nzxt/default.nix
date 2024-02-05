@@ -15,8 +15,6 @@
     ../common/optional/gnome.nix
     ../common/optional/desktop-apps.nix
   ];
-  services.gnome.gnome-remote-desktop.enable = true;
-
   nix.settings.substituters = lib.mkForce [
     "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
