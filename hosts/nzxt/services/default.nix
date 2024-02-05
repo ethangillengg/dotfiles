@@ -26,13 +26,7 @@
     user = mediaUser;
     group = mediaUser;
     port = 4533;
-  };
-
-  gonic = import ./gonic {
-    domain = "gonic.${domain}";
-    user = mediaUser;
-    group = mediaUser;
-    port = 4533;
+    inherit lib;
   };
 
   kavita = import ./kavita {
@@ -40,8 +34,7 @@
     group = mediaUser;
     domain = "books.${domain}";
     port = 7002;
-    inherit pkgs;
-    inherit lib;
+    inherit pkgs lib;
   };
 
   qbittorrent = import ./qbittorrent {
@@ -74,7 +67,6 @@ in {
     kavita
     servarr
     navidrome
-    gonic
     ./binary-cache
     ./adguard
     ./samba
