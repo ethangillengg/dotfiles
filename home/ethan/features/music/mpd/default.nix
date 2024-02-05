@@ -5,7 +5,7 @@
     enable = true;
     musicDirectory = "${config.home.homeDirectory}/Music";
     dataDir = "${config.home.homeDirectory}/.config/mpd";
-    playlistDirectory = "/mnt/nfs/media/music/";
+    playlistDirectory = "${config.home.homeDirectory}/Music";
     extraConfig = ''
       auto_update           "yes"
       restore_paused        "yes"

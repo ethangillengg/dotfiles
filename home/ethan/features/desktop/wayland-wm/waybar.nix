@@ -146,7 +146,6 @@ in {
         };
 
         mpris = {
-          player = "mpd";
           format = "{dynamic}";
           format-paused = "{status_icon} <i>{dynamic}</i>";
           tooltip-format = "{title} - {artist} ({position}/{length})";

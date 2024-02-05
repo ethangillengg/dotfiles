@@ -1,5 +1,4 @@
 {pkgs, ...}: let
-  rofi = "${pkgs.rofi}/bin/rofi";
   wezterm = "${pkgs.wezterm}/bin/wezterm";
 in {
   # youtube cli
@@ -17,7 +16,7 @@ in {
   '';
 
   xdg.configFile."ytmdl/config".text = ''
-    SONG_DIR = "/home/ethan/Music$Artist->Album"
+    SONG_DIR = "/home/ethan/Music/.unimported"
   '';
 
   home.shellAliases = {
@@ -42,5 +41,3 @@ in {
     };
   };
 }
-# hello bro
-
