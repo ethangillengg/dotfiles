@@ -21,5 +21,7 @@
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
     nodejs_18
     asmfmt
+    gopls
+    go
   ];
 }
