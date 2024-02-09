@@ -16,6 +16,7 @@
 
   ## Modes
   system = "(l) lock, (e) exit, (s) shutdown";
+  move = "move windows (hjkl)";
 
   ## Lock
   lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
@@ -118,8 +119,6 @@ in {
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Space" = "exec ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \"";
         "${modifier}+w" = "kill";
-        "${modifier}+BracketLeft" = "workspace prev";
-        "${modifier}+BracketRight" = "workspace next";
         # reload the configuration file
         "${modifier}+Shift+c" = "reload";
         "${modifier}+m" = "exec ${lock}";
@@ -130,7 +129,7 @@ in {
         "${modifier}+f" = "fullscreen toggle";
         "${modifier}+v" = "floating toggle";
         "${modifier}+p" = "sticky toggle";
-        "${modifier}+y" = "layout toggle split";
+        # "${modifier}+y" = "layout toggle split";
         "${modifier}+o" = "workspace back_and_forth";
         "${modifier}+c" = "move position center";
 
@@ -139,12 +138,8 @@ in {
         "${modifier}+j" = "focus down";
         "${modifier}+k" = "focus up";
         "${modifier}+l" = "focus right";
-
-        ## Move windows
-        "${modifier}+Shift+h" = "move left";
-        "${modifier}+Shift+j" = "move down";
-        "${modifier}+Shift+k" = "move up";
-        "${modifier}+Shift+l" = "move right";
+        "${modifier}+Shift+h" = "workspace prev";
+        "${modifier}+Shift+l" = "workspace next";
 
         "${modifier}+1" = "workspace number 1";
         "${modifier}+2" = "workspace number 2";
@@ -182,6 +177,7 @@ in {
 
         ## Modes
         "${modifier}+Shift+m" = ''mode "${system}"'';
+        "${modifier}+y" = ''mode "${move}"'';
         "${modifier}+r" = "mode resize";
       };
 
@@ -213,6 +209,17 @@ in {
           e = "exec 'swaymsg exit; systemctl --user stop sway-session.target'"; # exit
           s = "exec shutdown now";
           # return to default mode
+          Return = "mode default";
+          Escape = "mode default";
+        };
+
+        # Move windows around with hjkl
+        "${move}" = {
+          "h" = "move left";
+          "j" = "move down";
+          "k" = "move up";
+          "l" = "move right";
+          "y" = "layout toggle split";
           Return = "mode default";
           Escape = "mode default";
         };
