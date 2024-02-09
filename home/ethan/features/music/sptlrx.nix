@@ -8,11 +8,7 @@ in {
   ];
 
   xdg.configFile."sptlrx/config.yaml".source = formats.yaml.generate "sptlrx-config" {
-    player = "mpd";
-    mpd = {
-      address = "127.0.0.1:6600";
-      password = "";
-    };
+    player = "mpris";
     # lyrics styles
     style = {
       before = {
@@ -21,7 +17,7 @@ in {
       };
       current = {
         # typo in the source code
-        undeline = true;
+        underline = true;
         bold = true;
       };
     };
