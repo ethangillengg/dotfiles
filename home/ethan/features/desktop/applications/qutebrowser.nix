@@ -55,6 +55,10 @@ in {
         "<Ctrl-c>" = "yank selection";
         "<Ctrl-r>" = "edit-url";
         "<Ctrl-e>" = "edit-text";
+        "J" = "nop";
+        "K" = "nop";
+        "L" = "tab-next";
+        "H" = "tab-prev";
       };
     };
     settings = {
