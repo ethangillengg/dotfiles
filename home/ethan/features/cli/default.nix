@@ -47,6 +47,7 @@
     pandoc
     dig
     glow # pretty markdown
+    tree
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
