@@ -15,7 +15,7 @@
     wayvnc
 
     remmina
-    armcord
+    vesktop
     osu-lazer-bin
     # webcord
 
