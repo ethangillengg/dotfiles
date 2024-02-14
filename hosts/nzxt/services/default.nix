@@ -4,73 +4,131 @@
   config,
   ...
 }: let
-  domain = "mignet.duckdns.org";
-  mediaUser = "media";
+  # Base info
   email = "ethan.gill@ucalgary.ca";
-
-  nginx = import ./nginx {
-    inherit domain;
-    inherit pkgs;
-    inherit email;
+  serverDomain = "mignet.duckdns.org";
+  mediaUser = {
+    user = "media";
+    group = "media";
   };
 
-  jellyfin = import ./jellyfin {
-    domain = "media.${domain}";
-    user = mediaUser;
-    group = mediaUser;
-    port = 8096;
+  # Helper functions
+  nginxProxy = {
+    port,
+    proxy,
+    ...
+  }: let
+    proxyDomain = "${proxy.subdomain}.${serverDomain}";
+  in {
+    ${proxyDomain} = {
+      enableACME = true;
+      forceSSL = true; # redirect http to https
+      locations = {
+        "/" = {
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+          proxyPass = "http://localhost:${toString port}";
+        };
+      };
+    };
   };
 
-  navidrome = import ./navidrome {
-    domain = "music.${domain}";
-    user = mediaUser;
-    group = mediaUser;
-    port = 4533;
-    inherit lib;
-  };
+  mediaService = {
+    path,
+    port ? null,
+    user ? mediaUser.user,
+    group ? mediaUser.group,
+    extraArgs ? {},
+    ...
+  }:
+    import path ({
+        inherit user group port; # from args
+        inherit pkgs lib config; # from nixos inputs
+      }
+      // extraArgs);
 
-  kavita = import ./kavita {
-    user = mediaUser;
-    group = mediaUser;
-    domain = "books.${domain}";
-    port = 7002;
-    inherit pkgs lib;
-  };
-
-  qbittorrent = import ./qbittorrent {
-    domain = "arr.${domain}";
-    user = mediaUser;
-    group = mediaUser;
-    port = 6969;
-    inherit config;
-  };
-
-  nzbget = import ./nzbget {
-    domain = "nzb.${domain}";
-    user = mediaUser;
-    group = mediaUser;
-    port = 6970;
-  };
+  # Service Configurations
+  mediaServiceConfigs = [
+    {
+      path = ./jellyfin;
+      port = 8096;
+      proxy = {
+        enable = true;
+        subdomain = "media";
+      };
+    }
+    {
+      path = ./navidrome;
+      port = 4533;
+      proxy = {
+        enable = true;
+        subdomain = "music";
+      };
+    }
+    {
+      path = ./kavita;
+      port = 7002;
+      proxy = {
+        enable = true;
+        subdomain = "books";
+      };
+    }
+    {
+      path = ./qbittorrent;
+      port = 6969;
+      proxy = {
+        enable = true;
+        subdomain = "arr";
+      };
+    }
+    {
+      path = ./nzbget;
+      port = 6970;
+      proxy = {
+        enable = true;
+        subdomain = "nzb";
+      };
+    }
+  ];
 
   servarr = import ./servarr {
-    domain = domain;
-    user = mediaUser;
-    group = mediaUser;
+    domain = serverDomain;
+    inherit (mediaUser) user group;
     inherit lib;
   };
+
+  nginx = import ./nginx {
+    domain = serverDomain;
+    inherit email;
+    inherit pkgs;
+  };
+
+  mediaServices = map mediaService mediaServiceConfigs;
+  nginxProxies = map nginxProxy mediaServiceConfigs;
+
+  # Merge all mapped proxies into a single attribute set
+  # see example: https://nixos.org/manual/nix/stable/language/builtins.html#builtins-foldl'
+  virtualHosts = builtins.foldl' (acc: elem: elem // acc) {} nginxProxies;
 in {
-  imports = [
-    nginx
-    jellyfin
-    qbittorrent
-    nzbget
-    kavita
-    servarr
-    navidrome
-    ./binary-cache
-    ./adguard
-    ./samba
-  ];
+  imports =
+    [
+      nginx
+      servarr
+
+      ./binary-cache
+      ./adguard
+      ./samba
+    ]
+    ++ mediaServices;
+  # Nginx proxy subdomains
+  services.nginx.virtualHosts = virtualHosts;
+
+  users.groups.${mediaUser.group} = lib.mkDefault {};
+  users.users.${mediaUser.user} = lib.mkDefault {
+    description = "Media services";
+    group = mediaUser.group;
+  };
+
   # open (custom) port for ssh
   networking.firewall.allowedTCPPorts = [420 8080];
 }

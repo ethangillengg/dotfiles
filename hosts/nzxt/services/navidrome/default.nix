@@ -25,16 +25,4 @@ in {
     User = lib.mkForce user;
     Group = lib.mkForce group;
   };
-
-  services.nginx.virtualHosts.${domain} = {
-    enableACME = true;
-    forceSSL = true; # redirect http to https
-    locations = {
-      "/" = {
-        proxyWebsockets = true;
-        recommendedProxySettings = true;
-        proxyPass = "http://localhost:${toString port}";
-      };
-    };
-  };
 }

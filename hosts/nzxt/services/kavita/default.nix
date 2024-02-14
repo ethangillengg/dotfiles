@@ -22,16 +22,4 @@ in {
     description = "Media services";
     group = group;
   };
-
-  services.nginx.virtualHosts.${domain} = {
-    enableACME = true;
-    forceSSL = true; # redirect http to https
-    locations = {
-      "/" = {
-        proxyWebsockets = true;
-        recommendedProxySettings = true;
-        proxyPass = "http://localhost:${toString port}";
-      };
-    };
-  };
 }
