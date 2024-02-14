@@ -23,5 +23,6 @@
     asmfmt
     gopls
     go
+    deno
   ];
 }
