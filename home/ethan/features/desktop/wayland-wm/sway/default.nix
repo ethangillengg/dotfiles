@@ -16,7 +16,6 @@
 
   ## Modes
   system = "(l) lock, (e) exit, (s) shutdown";
-  move = "move windows (hjkl)";
 
   ## Lock
   lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
@@ -27,6 +26,7 @@ in {
   imports = [
     ./extras.nix
     ./wlsunset.nix
+    ./zenmode.nix
   ];
 
   # expose these to the user
@@ -129,17 +129,23 @@ in {
         "${modifier}+f" = "fullscreen toggle";
         "${modifier}+v" = "floating toggle";
         "${modifier}+p" = "sticky toggle";
-        # "${modifier}+y" = "layout toggle split";
         "${modifier}+o" = "workspace back_and_forth";
         "${modifier}+c" = "move position center";
+        "${modifier}+BracketRight" = "workspace next";
+        "${modifier}+BracketLeft" = "workspace prev";
 
         ## Focus windows
         "${modifier}+h" = "focus left";
         "${modifier}+j" = "focus down";
         "${modifier}+k" = "focus up";
         "${modifier}+l" = "focus right";
-        "${modifier}+Shift+h" = "workspace prev";
-        "${modifier}+Shift+l" = "workspace next";
+
+        ## Move windows
+        "${modifier}+Shift+h" = "move left";
+        "${modifier}+Shift+j" = "move down";
+        "${modifier}+Shift+k" = "move up";
+        "${modifier}+Shift+l" = "move right";
+        "${modifier}+y" = "layout toggle split";
 
         "${modifier}+1" = "workspace number 1";
         "${modifier}+2" = "workspace number 2";
@@ -177,7 +183,6 @@ in {
 
         ## Modes
         "${modifier}+Shift+m" = ''mode "${system}"'';
-        "${modifier}+y" = ''mode "${move}"'';
         "${modifier}+r" = "mode resize";
       };
 
@@ -188,12 +193,10 @@ in {
             criteria.app_id = "gcr-prompter";
             command = "fullscreen toggle, fullscreen toggle";
           }
-
           {
-            criteria.title = "^Music$";
             command = "move scratchpad, sticky enable, scratchpad show, inhibit_idle visible";
+            criteria.title = "^Music$";
           }
-
           {
             # Don't sleep if youtube music is open
             criteria.title = "^YouTube Music.*";
@@ -209,17 +212,6 @@ in {
           e = "exec 'swaymsg exit; systemctl --user stop sway-session.target'"; # exit
           s = "exec shutdown now";
           # return to default mode
-          Return = "mode default";
-          Escape = "mode default";
-        };
-
-        # Move windows around with hjkl
-        "${move}" = {
-          "h" = "move left";
-          "j" = "move down";
-          "k" = "move up";
-          "l" = "move right";
-          "y" = "layout toggle split";
           Return = "mode default";
           Escape = "mode default";
         };
