@@ -59,6 +59,12 @@ in {
         "K" = "nop";
         "L" = "tab-next";
         "H" = "tab-prev";
+
+        "gL" = "tab-move +";
+        "gH" = "tab-move -";
+
+        "<Ctrl-h>" = "back";
+        "<Ctrl-l>" = "forward";
       };
     };
     settings = {
