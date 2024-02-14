@@ -1,9 +1,8 @@
 {
   pkgs,
   lib,
-  config,
   ...
-}: let
+} @ inputs: let
   # Base info
   email = "ethan.gill@ucalgary.ca";
   serverDomain = "mignet.duckdns.org";
@@ -12,40 +11,12 @@
     group = "media";
   };
 
-  # Helper functions
-  nginxProxy = {
-    port ? -1,
-    proxy ? {},
-    ...
-  }: let
-    proxyDomain = "${proxy.subdomain}.${serverDomain}";
-  in {
-    ${proxyDomain} = {
-      enableACME = true;
-      forceSSL = true; # redirect http to https
-      locations = {
-        "/" = {
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-          proxyPass = "http://localhost:${toString port}";
-        };
-      };
-    };
-  };
-
-  mediaService = {
-    path,
-    port ? null,
-    user ? mediaUser.user,
-    group ? mediaUser.group,
-    extraArgs ? {},
-    ...
-  }:
-    import path ({
-        inherit user group port; # from args
-        inherit pkgs lib config; # from nixos inputs
-      }
-      // extraArgs);
+  helpers = import ./helpers.nix (
+    {inherit email serverDomain mediaUser;}
+    # pass all the NixOS inputs (pkgs, lib, config, etc.)
+    // inputs
+  );
+  inherit (helpers) mediaService nginxProxy; # expose helpers to this scope
 
   # Service Configurations
   mediaServiceConfigs = [
