@@ -1,10 +1,8 @@
-{...} @ args: let
-  domain = args.domain;
-  port = args.port;
-
-  user = args.user;
-  group = args.group;
-in {
+{
+  user,
+  group,
+  ...
+}: {
   services.nzbget = {
     enable = true;
     inherit user;

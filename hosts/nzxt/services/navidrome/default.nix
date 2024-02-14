@@ -1,10 +1,10 @@
-{lib, ...} @ args: let
-  port = args.port;
-  domain = args.domain;
-  user = args.user;
-  group = args.group;
-  # Ensure that the user and group 'kavita' exists
-in {
+{
+  lib,
+  port,
+  user,
+  group,
+  ...
+}: {
   services.navidrome = {
     enable = true;
     settings = {
