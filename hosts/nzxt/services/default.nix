@@ -14,8 +14,8 @@
 
   # Helper functions
   nginxProxy = {
-    port,
-    proxy,
+    port ? -1,
+    proxy ? {},
     ...
   }: let
     proxyDomain = "${proxy.subdomain}.${serverDomain}";
@@ -89,13 +89,14 @@
         subdomain = "nzb";
       };
     }
-  ];
 
-  servarr = import ./servarr {
-    domain = serverDomain;
-    inherit (mediaUser) user group;
-    inherit lib;
-  };
+    # Servarr stack
+    {path = ./servarr/sonarr.nix;}
+    {path = ./servarr/radarr.nix;}
+    {path = ./servarr/prowlarr.nix;}
+    {path = ./servarr/bazarr.nix;}
+    {path = ./servarr/lidarr.nix;}
+  ];
 
   nginx = import ./nginx {
     domain = serverDomain;
@@ -103,8 +104,11 @@
     inherit pkgs;
   };
 
-  mediaServices = map mediaService mediaServiceConfigs;
-  nginxProxies = map nginxProxy mediaServiceConfigs;
+  # only proxy if "proxy.enable = true"
+  servicesToProxy = builtins.filter ({proxy ? {enable = false;}, ...}:
+    proxy.enable)
+  mediaServiceConfigs;
+  nginxProxies = map nginxProxy servicesToProxy;
 
   # Merge all mapped proxies into a single attribute set
   # see example: https://nixos.org/manual/nix/stable/language/builtins.html#builtins-foldl'
@@ -113,13 +117,12 @@ in {
   imports =
     [
       nginx
-      servarr
-
       ./binary-cache
       ./adguard
       ./samba
     ]
-    ++ mediaServices;
+    ++ map mediaService mediaServiceConfigs;
+
   # Nginx proxy subdomains
   services.nginx.virtualHosts = virtualHosts;
 
