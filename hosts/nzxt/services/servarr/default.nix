@@ -1,5 +1,4 @@
 {lib, ...} @ args: let
-  domain = args.domain;
   user = args.user;
   group = args.group;
 in {
@@ -9,6 +8,7 @@ in {
       openFirewall = true;
       inherit user group;
     };
+
     radarr = {
       enable = true;
       openFirewall = true;
@@ -25,11 +25,11 @@ in {
       enable = true;
       openFirewall = true;
     };
-  };
 
-  users.groups.${group} = lib.mkDefault {};
-  users.users.${user} = lib.mkDefault {
-    description = "Media services";
-    group = group;
+    lidarr = {
+      enable = true;
+      openFirewall = true;
+      inherit user group;
+    };
   };
 }
