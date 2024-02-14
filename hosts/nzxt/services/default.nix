@@ -127,6 +127,7 @@ in {
   users.users.${mediaUser.user} = lib.mkDefault {
     description = "Media services";
     group = mediaUser.group;
+    isNormalUser = lib.mkForce true;
   };
 
   # open (custom) port for ssh

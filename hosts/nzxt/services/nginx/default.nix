@@ -1,7 +1,9 @@
-{pkgs, ...} @ args: let
-  domain = args.domain;
-  email = args.email;
-
+{
+  pkgs,
+  domain,
+  email,
+  ...
+}: let
   # Get the path to index.html
   indexPath = builtins.path {
     name = "index.html";
@@ -29,16 +31,6 @@ in {
               root = indexDir;
               index = "index.html";
               tryFiles = "$uri $uri/ =404";
-            };
-          };
-        };
-
-        "dad.${domain}" = {
-          locations = {
-            "/" = {
-              proxyWebsockets = true;
-              recommendedProxySettings = true;
-              proxyPass = "http://192.168.1.198:80";
             };
           };
         };

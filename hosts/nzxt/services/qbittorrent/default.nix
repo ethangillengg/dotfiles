@@ -1,28 +1,16 @@
-{config, ...} @ args: let
-  domain = args.domain;
-  port = args.port;
-
-  user = args.user;
-  group = args.group;
-in {
+{
+  config,
+  port,
+  user,
+  group,
+  ...
+}: {
   services.qbittorrent-nox = {
     enable = true;
     inherit user;
     inherit group;
     inherit port;
   };
-
-  # services.nginx.virtualHosts.${domain} = {
-  #   enableACME = true;
-  #   forceSSL = true; # redirect http to https
-  #   locations = {
-  #     "/" = {
-  #       proxyWebsockets = true;
-  #       recommendedProxySettings = true;
-  #       proxyPass = "http://localhost:${toString port}";
-  #     };
-  #   };
-  # };
 
   sops.secrets.nord-vpn.sopsFile = ../../secrets.yaml;
   services.wgnord = {

@@ -1,19 +1,16 @@
 {
   lib,
-  pkgs,
+  port,
+  user,
+  group,
   ...
-} @ args: let
-  port = args.port;
-  domain = args.domain;
-  user = args.user;
-  group = args.group;
-  # Ensure that the user and group 'kavita' exists
-in {
+}: {
   services = {
     kavita = {
       enable = true;
       tokenKeyFile = "/var/lib/kavita/token";
       inherit port;
+      # TODO: use media server user
       # inherit user;
     };
   };

@@ -1,7 +1,8 @@
-{lib, ...} @ args: let
-  user = args.user;
-  group = args.group;
-in {
+{
+  user,
+  group,
+  ...
+}: {
   services = {
     sonarr = {
       enable = true;

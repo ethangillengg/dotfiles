@@ -11,12 +11,4 @@
       inherit group;
     };
   };
-
-  users = {
-    groups.${group} = {};
-    users.${user} = {
-      description = "Media services";
-      group = group;
-    };
-  };
 }
