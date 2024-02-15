@@ -24,7 +24,7 @@
   inherit (config.colorscheme) colors;
 in {
   imports = [
-    ./extras.nix
+    ./media.nix
     ./wlsunset.nix
     ./zenmode.nix
   ];
