@@ -6,7 +6,6 @@
     font-manager
     ungoogled-chromium
     google-chrome
-    steam
     qbittorrent
 
     pavucontrol
@@ -14,7 +13,6 @@
     ffmpeg
     wayvnc
 
-    remmina
     vesktop
     osu-lazer-bin
     # webcord
@@ -23,9 +21,7 @@
     renderdoc
 
     yt-dlp
-    eww-wayland
     tofi
-    st
 
     gnome.gnome-calculator
   ];
