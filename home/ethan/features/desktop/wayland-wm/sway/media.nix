@@ -4,10 +4,10 @@
   pamixer = "${pkgs.pamixer}/bin/pamixer";
 in {
   # On-screen notifications for media controls (eg. brightness, volume, etc.)
-  # services.swayosd = {
-  #   enable = true;
-  #   maxVolume = 125;
-  # };
+  services.swayosd = {
+    enable = true;
+  };
+  # maxVolume = 125;
   wayland.windowManager.sway.config.keybindings = {
     # TODO: Wait for upstream fix of swayosd-libinput-backend service for NixOS
     ## Media Controls
