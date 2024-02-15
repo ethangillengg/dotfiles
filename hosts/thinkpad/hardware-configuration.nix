@@ -88,10 +88,6 @@
   # networking.useDHCP = lib.mkDefault true;
   networking = {
     useDHCP = true; # Disable DHCP if you want manual control
-    nameservers = [
-      "192.168.1.225"
-      "9.9.9.9"
-    ];
   };
 
   services.throttled.enable = true;
