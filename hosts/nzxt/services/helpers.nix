@@ -32,11 +32,17 @@
     user ? mediaUser.user,
     group ? mediaUser.group,
     extraArgs ? {},
+    proxy ? {},
     ...
   }:
     import path (
       {
         inherit user group port; # from args
+
+        domain =
+          if proxy.subdomain != null
+          then "${proxy.subdomain}.${serverDomain}"
+          else null;
       }
       // extraArgs
       // inputs # pass all the NixOS inputs forward
