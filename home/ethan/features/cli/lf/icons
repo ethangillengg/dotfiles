@@ -88,7 +88,7 @@ fi             # FILE
 *.cc            
 *.cp            
 *.c             
-*.cs            
+*.cs            󰌛
 *.h             
 *.hh            
 *.hpp           
@@ -149,15 +149,15 @@ fi             # FILE
 *.tsx           
 *.jl            
 *.pp            
-*.vue           ﵂
+*.vue           󰡄
 *.elm           
 *.swift         
 *.xcplayground  
-*.tex           ﭨ
-*.r             ﳒ
-*.rproj         鉶
-*.sol           ﲹ
-*.pem           
+*.tex           󰙩
+*.r             󰟔
+*.rproj         󰗆
+*.sol           󰞻
+*.pem           󰌋
 
 # file names (vim-devicons) (case-insensitive not supported in lf)
 *gruntfile.coffee       
@@ -194,7 +194,7 @@ fi             # FILE
 *gemfile                
 *makefile               
 *cmakelists.txt         
-*robots.txt             ﮧ
+*robots.txt             󰚩
 
 # file names (case-sensitive adaptations)
 *Gruntfile.coffee       
@@ -358,5 +358,5 @@ Vagrantfile             
 
 # other formats
 *.pdf   
-*.srt   
-*.ass   
+*.srt   󰅞
+*.ass   󰅞
