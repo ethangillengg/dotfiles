@@ -9,11 +9,9 @@
     settings = {
       format = let
         git = "$git_branch$git_commit$git_state$git_status";
-        cloud = "$aws$gcloud$openstack";
       in ''
-        \[$username@$hostname\] ($shlvl)($cmd_duration) $fill ($nix_shell)$custom
-        $directory(${git})(- ${cloud}) $fill $time
-        $jobs$character
+        \[$username@$hostname\] (${git})($shlvl)($cmd_duration) $fill ($nix_shell)($time)
+        $directory$character
       '';
 
       fill = {
@@ -64,14 +62,6 @@
       time = {
         format = "\\\[[$time]($style)\\\]";
         disabled = false;
-      };
-
-      # Cloud
-      gcloud = {
-        format = "on [$symbol$active(/$project)(\\($region\\))]($style)";
-      };
-      aws = {
-        format = "on [$symbol$profile(\\($region\\))]($style)";
       };
 
       # Icon changes only \/
