@@ -78,11 +78,13 @@
     nixosConfigurations = {
       thinkpad = mkNixos [./hosts/thinkpad];
       nzxt = mkNixos [./hosts/nzxt]; # Server
+      wsl = mkNixos [./hosts/wsl];
     };
 
     homeConfigurations = {
       "ethan@thinkpad" = mkHome [./home/ethan/thinkpad.nix] nixpkgs.legacyPackages."x86_64-linux"; # Laptop
       "ethan@nzxt" = mkHome [./home/ethan/nzxt.nix] nixpkgs.legacyPackages."x86_64-linux"; # Server
+      "ethan@wsl" = mkHome [./home/ethan/wsl.nix] nixpkgs.legacyPackages."x86_64-linux";
     };
   };
 }
