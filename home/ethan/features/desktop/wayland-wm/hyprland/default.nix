@@ -27,7 +27,7 @@
   volume-down = "${notify-send} --urgency=normal \"Volume Down\"  \"$(${wpctl} set-volume @DEFAULT_SINK@ 5%- && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-medium --app-name=\"vol_change\"";
   volume-mute = "${notify-send} --urgency=normal \"Volume Muted\"  \"$(${wpctl} set-mute @DEFAULT_SINK@ toggle && ${wpctl} get-volume @DEFAULT_SINK@)\" --icon=volume-level-muted --app-name=\"vol_change\"";
 
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 in {
   imports = [
     ./basic-binds.nix
@@ -43,8 +43,8 @@ in {
         gaps_out = 4;
         border_size = 2.7;
         cursor_inactive_timeout = 4;
-        "col.active_border" = "0xff${colors.base0C}";
-        "col.inactive_border" = "0xff${colors.base02}";
+        "col.active_border" = "0xff${palette.base0C}";
+        "col.inactive_border" = "0xff${palette.base02}";
       };
 
       decoration = {
