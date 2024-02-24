@@ -11,9 +11,6 @@
           d = "dash";
         };
       };
-      extensions = with pkgs; [
-        gh-eco
-      ];
     };
     gh-dash = {
       enable = true;
