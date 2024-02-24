@@ -16,9 +16,6 @@
     ../common/optional/mpd-scrobble.nix
   ];
   networking.hostName = "thinkpad";
-  nix.settings.substituters = [
-    "http://nzxt.emerald-duck.ts.net"
-  ];
 
   programs = {
     light.enable = true;
