@@ -13,9 +13,8 @@
     ffmpeg
     wayvnc
 
-    vesktop
+    vesktop # discord client
     osu-lazer-bin
-    # webcord
 
     unoconv # convert .doc, .docx files
     renderdoc
