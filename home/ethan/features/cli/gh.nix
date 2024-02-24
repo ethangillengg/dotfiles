@@ -1,13 +1,4 @@
-{pkgs, ...}: let
-  ghFormatIssue = pkgs.writeShellScriptBin "gh-format-issue" ''
-    #!/usr/bin/env bash
-    PR_NAME=$(gh issue view $1 --json title --jq '.title')
-    echo "$PR_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/$/-eg/'
-    # wl-copy "$PR_NAME_DASHED"
-  '';
-  # PR_NAME_DASHED=$(echo "$PR_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/$/-eg/')
-  # wl-copy "$PR_NAME_DASHED"
-in {
+{pkgs, ...}: {
   programs = {
     gh = {
       enable = true;
@@ -38,6 +29,7 @@ in {
                 echo "$PR_NAME_DASHED" > /tmp/gh-issue-name
                 nvim /tmp/gh-issue-name
                 cd {{.RepoPath}} && git checkout -b "$(cat /tmp/gh-issue-name)"
+                nvim
               '';
               description = "Create Issue Branch";
             }
@@ -53,9 +45,9 @@ in {
               command = ''
                 cd {{.RepoPath}} &&
                 gh pr checkout {{.PrNumber}} &&
-                nvim -c ":DiffviewOpen main...{{.HeadRefName}}"
+                nvim -c ":Octo pr edit {{.PrNumber}}" -c "j"
               '';
-              description = "PR Diff in Neovim";
+              description = "Review PR in nvim";
             }
             {
               key = "enter";
