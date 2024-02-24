@@ -267,7 +267,7 @@ in {
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
     style = let
-      inherit (config.colorscheme) colors;
+      inherit (config.colorscheme) palette;
     in
       /*
       css
@@ -290,12 +290,12 @@ in {
 
         window#waybar.top {
           padding: 0;
-          background-color: #${colors.base00};
-          border: 2px solid #${colors.base0C};
+          background-color: #${palette.base00};
+          border: 2px solid #${palette.base0C};
         }
 
         window#waybar {
-          color: #${colors.base05};
+          color: #${palette.base05};
         }
 
         #workspaces {
@@ -306,60 +306,60 @@ in {
         #workspaces button {
           border-radius: 0px;
           padding: 0px;
-          color: #${colors.base05};
+          color: #${palette.base05};
         }
         #workspaces button.focused,
         #workspaces button.active {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
+          background-color: #${palette.base0C};
+          color: #${palette.base00};
         }
         #workspaces button:hover {
           border-radius: 0px;
-          background-color: #${colors.base09};
-          color: #${colors.base00};
+          background-color: #${palette.base09};
+          color: #${palette.base00};
         }
 
         #cpu {
-          color: #${colors.base0D};
+          color: #${palette.base0D};
         }
 
         #custom-lyrics {
-          color: #${colors.base04};
+          color: #${palette.base04};
         }
         #mpris {
-          /* color: #${colors.base04}; */
+          /* color: #${palette.base04}; */
         }
 
         #backlight{
-          color: #${colors.base0A};
+          color: #${palette.base0A};
         }
 
         #pulseaudio {
-          color: #${colors.base0E};
+          color: #${palette.base0E};
         }
 
 
         #temperature {
-          color: #${colors.base0C};
+          color: #${palette.base0C};
         }
 
         #battery
         {
-          color: #${colors.base0B};
+          color: #${palette.base0B};
         }
         #battery.discharging.warning {
-          color: #${colors.base09};
+          color: #${palette.base09};
         }
         #battery.discharging.critical {
-          color: #${colors.base08};
+          color: #${palette.base08};
         }
 
         #custom-power {
-          color: #${colors.base08};
+          color: #${palette.base08};
         }
 
         #clock {
-          color: #${colors.base05};
+          color: #${palette.base05};
           padding: 0px 16px;
           margin-top: 0;
           margin-bottom: 0;
@@ -367,12 +367,12 @@ in {
 
         #custom-menu {
           font-size: 26px;
-          color: #${colors.base0C};
+          color: #${palette.base0C};
         }
 
         #tray {
           margin-right: 6px;
-          color: #${colors.base05};
+          color: #${palette.base05};
         }
       '';
   };

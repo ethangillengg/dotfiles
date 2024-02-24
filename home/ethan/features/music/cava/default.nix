@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 in {
   home.packages = [pkgs.cava];
   home.file.".config/cava/config".text = ''
@@ -25,8 +25,8 @@ in {
     # You can define as many as 8 different colors. They range from bottom to top of screen
     gradient = 1
     gradient_count = 3
-    gradient_color_1 = '#${colors.base0C}'
-    gradient_color_2 = '#${colors.base05}'
-    gradient_color_3 = '#${colors.base05}'
+    gradient_color_1 = '#${palette.base0C}'
+    gradient_color_2 = '#${palette.base05}'
+    gradient_color_3 = '#${palette.base05}'
   '';
 }

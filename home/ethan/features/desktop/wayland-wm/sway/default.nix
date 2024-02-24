@@ -21,7 +21,7 @@
   lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
 
   modifier = "Mod4";
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 in {
   imports = [
     ./media.nix
@@ -77,12 +77,12 @@ in {
           background = "#285577";
 
           # The border around the view itself.
-          childBorder = "#${colors.base0C}";
+          childBorder = "#${palette.base0C}";
 
           # The color used to indicate where a new view will open.
           # In a tiled container, this would paint the right border
           # of the current view if a new view would be opened to the right.
-          indicator = "#${colors.base0C}";
+          indicator = "#${palette.base0C}";
         };
       };
       assigns = {

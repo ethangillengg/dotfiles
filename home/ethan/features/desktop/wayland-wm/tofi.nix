@@ -3,18 +3,18 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 in {
   home.packages = [pkgs.tofi];
   home.file.".config/tofi/config".text = ''
     font = "${config.fontProfiles.regular.family}"
     text-cursor = true
-    border-color = "#${colors.base0C}"
-    text-color = "#${colors.base05}"
-    selection-color = "#${colors.base0C}"
+    border-color = "#${palette.base0C}"
+    text-color = "#${palette.base05}"
+    selection-color = "#${palette.base0C}"
 
     ## Windowed Theme
-    # background-color = "#${colors.base00}"
+    # background-color = "#${palette.base00}"
     # outline-width = 0
     # border-width = 3
     # corner-radius = 2

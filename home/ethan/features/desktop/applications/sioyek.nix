@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 in {
   programs.sioyek = {
     enable = true;
@@ -31,16 +31,16 @@ in {
       should_launch_new_window = "1";
 
       ## Default colors
-      background_color = "#${colors.base01}";
-      page_separator_color = "#${colors.base01}";
-      text_highlight_color = "#${colors.base0A}";
-      search_highlight_color = "#${colors.base0D}";
-      status_bar_color = "#${colors.base02}";
-      status_bar_text_color = "#${colors.base04}";
-      link_highlight_color = "#${colors.base0D}";
+      background_color = "#${palette.base01}";
+      page_separator_color = "#${palette.base01}";
+      text_highlight_color = "#${palette.base0A}";
+      search_highlight_color = "#${palette.base0D}";
+      status_bar_color = "#${palette.base02}";
+      status_bar_text_color = "#${palette.base04}";
+      link_highlight_color = "#${palette.base0D}";
       ## Themed colors
-      custom_background_color = "#${colors.base01}";
-      custom_text_color = "#${colors.base04}";
+      custom_background_color = "#${palette.base01}";
+      custom_text_color = "#${palette.base04}";
     };
   };
 
