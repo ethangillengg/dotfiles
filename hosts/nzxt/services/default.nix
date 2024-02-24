@@ -69,6 +69,21 @@
       };
     }
 
+    {
+      path = ./binary-cache;
+      port = 9998;
+      proxy = {
+        enable = true;
+        subdomain = "nix";
+      };
+    }
+
+    # Local LLMs
+    {
+      path = ./ollama;
+      port = 9999;
+    }
+
     # Servarr stack
     {path = ./servarr/sonarr.nix;}
     {path = ./servarr/radarr.nix;}
@@ -96,7 +111,6 @@ in {
   imports =
     [
       nginx
-      ./binary-cache
       ./adguard
       ./samba
     ]
