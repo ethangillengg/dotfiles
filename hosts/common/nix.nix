@@ -6,14 +6,12 @@
   nix = {
     settings = {
       substituters = [
-        "https://cache.nixos.org"
         "https://nix-community.cachix.org"
         "https://nix.mignet.duckdns.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nix.mignet.duckdns.org:Dx+OrFUQ70+tkfDYByVvfPKKoVT5jRkJuRUShRtpRog="
-        # "nzxt.emerald-duck.ts.net:1kS1rqbwM+v6Smi3XiiV/SYcqNXM03taU3PbekrPL+U="
       ];
 
       auto-optimise-store = lib.mkDefault true;
