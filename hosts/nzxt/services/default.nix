@@ -111,7 +111,6 @@ in {
   imports =
     [
       nginx
-      ./adguard
       ./samba
     ]
     ++ map mediaService mediaServiceConfigs;
