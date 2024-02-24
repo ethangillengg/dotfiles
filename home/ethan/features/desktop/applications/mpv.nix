@@ -7,9 +7,13 @@
   programs.mpv = {
     enable = true;
     scripts = with pkgs; [
-      mpvScripts.thumbfast
-      mpvScripts.quality-menu
-      mpvScripts.uosc
+      mpvScripts.thumbfast # High-performance on-the-fly thumbnailer for mpv
+      mpvScripts.quality-menu # Change youtube video quality (ytdl-format) on the fly
+      mpvScripts.uosc # Feature-rich minimalist proximity-based UI for MPV player
+      mpvScripts.mpris # Mpris support for mpv
+      mpvScripts.autoload # Automatically load playlist entries before and after the currently played file
+      mpvScripts.mpv-cheatsheet # mpv script for looking up keyboard shortcuts
+      mpvScripts.mpvacious # Create Anki cards from movies and TV shows.
     ];
 
     scriptOpts = {
