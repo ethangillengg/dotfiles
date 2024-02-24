@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./lf
 
@@ -18,6 +14,7 @@
     ./yazi.nix
     ./bat.nix
     ./git.nix
+    ./gh.nix
     ./bottom.nix
     ./fzf.nix
     ./gpg.nix
