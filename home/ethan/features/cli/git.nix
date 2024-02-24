@@ -1,5 +1,5 @@
 {
-  programs.git = {
+  programs. git = {
     enable = true;
     userName = "Ethan Gill";
     userEmail = "ethan.gill@ucalgary.ca";
@@ -12,6 +12,20 @@
       graph = "log --decorate --oneline --graph";
       undo = "reset --soft HEAD~1";
       tracked = "for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads";
+
+      p = "push";
+      s = "status";
+      ss = "status --short"; # Pretty "git status"
+      l = "log";
+      c = "commit";
+      cA = "commit --amend"; # ammend with new message
+      ca = "commit --amend -C HEAD"; # use the previous commit message
+      d = "diff";
+      a = "add";
+      r = "restore . --staged";
+
+      ch = "checkout";
+      chm = "checkout main";
     };
 
     extraConfig = {
@@ -22,13 +36,6 @@
     };
   };
   home.shellAliases = {
-    gp = "git push";
-    gs = "git status";
-    gss = "git status --short"; # Pretty "git status"
-    gl = "git log";
-    gc = "git commit";
-    gca = "git commit --amend -C HEAD"; # use the previous commit message
-    gd = "git diff";
-    ga = "git add";
+    g = "git";
   };
 }
