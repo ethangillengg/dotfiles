@@ -8,6 +8,7 @@
   zoxide = "${pkgs.zoxide}/bin/zoxide";
   ctpvclear = "${pkgs.ctpv}/bin/ctpvclear";
   ctpvquit = "${pkgs.ctpv}/bin/ctpvquit";
+  ouch = "${pkgs.ouch}/bin/ouch";
 
   mimeopen = "${pkgs.perl538Packages.FileMimeInfo}/bin/mimeopen";
 in {
@@ -54,6 +55,9 @@ in {
       "zz" = ":zi";
       "gr" = ":fzf_jump";
 
+      "e" = ":decompress";
+      "E" = ":compress";
+
       "H" = ":set hidden!";
 
       "<delete>" = ":trash";
@@ -66,6 +70,8 @@ in {
       "mkdir" = "%mkdir \"$@\"";
       "touch" = "%touch \"$@\"";
       "open" = "\$${mimeopen} $fx";
+      "compress" = "%${ouch} compress $fx \"$fx.zip\"";
+      "decompress" = "%${ouch} decompress $fx";
 
       "bulk-rename" = ''
         ''${{
