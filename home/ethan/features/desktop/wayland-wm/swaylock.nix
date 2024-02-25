@@ -16,7 +16,7 @@ in {
       scaling = "fill";
 
       indicator-idle-visible = true;
-      grace = 2;
+      grace = 1;
 
       font = config.fontProfiles.regular.family;
       font-size = 36;
