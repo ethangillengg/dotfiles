@@ -8,8 +8,15 @@ in {
   programs.swaylock = {
     package = pkgs.swaylock-effects;
     settings = {
-      effect-blur = "50x2";
-      # fade-in = 0.1;
+      effect-blur = "15x3";
+      show-failed-attempts = true;
+      clock = true;
+      # image = config.wallpaper;
+      screenshots = true;
+      scaling = "fill";
+
+      indicator-idle-visible = true;
+      grace = 2;
 
       font = config.fontProfiles.regular.family;
       font-size = 36;
@@ -19,8 +26,8 @@ in {
       disable-caps-lock-text = true;
       indicator-caps-lock = true;
       indicator-radius = 180;
-      indicator-idle-visible = true;
 
+      # Colors
       ring-color = "#${palette.base02}";
       inside-wrong-color = "#${palette.base08}";
       ring-wrong-color = "#${palette.base08}";

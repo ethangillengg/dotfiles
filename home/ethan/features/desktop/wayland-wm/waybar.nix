@@ -193,7 +193,7 @@ in {
           format-critical = "󰂃{capacity}%";
 
           weighted-average = true; # average battery percentage across all batteries
-          full-at = 80; # since we stop charging at 80% to preserve battery life
+          # full-at = 80; # since we stop charging at 80% to preserve battery life
           interval = 3;
         };
 

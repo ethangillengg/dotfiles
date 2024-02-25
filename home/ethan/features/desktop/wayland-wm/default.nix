@@ -2,12 +2,11 @@
   imports = [
     ./hyprland
     ./sway
-
-    ./eww
+    ./swaylock.nix
+    ./swayidle.nix
 
     ./waybar.nix
     ./mako.nix
-    ./swaylock.nix
     ./tofi.nix
   ];
 
