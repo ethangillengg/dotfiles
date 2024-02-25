@@ -1,9 +1,14 @@
 {
-  config,
-  pkgs,
-  ...
-}: {
   nix = {
+    settings = {
+      # add this here so nzxt does not get itself added
+      substituters = [
+        "https://nix.mignet.duckdns.org"
+      ];
+      trusted-public-keys = [
+        "nix.mignet.duckdns.org:Dx+OrFUQ70+tkfDYByVvfPKKoVT5jRkJuRUShRtpRog="
+      ];
+    };
     buildMachines = [
       {
         hostName = "nzxt";
