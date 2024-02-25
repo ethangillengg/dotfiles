@@ -17,6 +17,9 @@
   ];
   networking.hostName = "thinkpad";
 
+  services.upower = {
+    enable = true;
+  };
   programs = {
     light.enable = true;
     adb.enable = true;

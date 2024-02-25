@@ -9,16 +9,16 @@
   tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   terminal = config.home.sessionVariables.TERMINAL;
-  swayidle = "${pkgs.swayidle}/bin/swayidle";
   swww = "${pkgs.swww}/bin/swww";
   thunderbird = "${pkgs.thunderbird}/bin/thunderbird";
   wallpaper = config.wallpaper;
+  poweralertd = "${pkgs.poweralertd}/bin/poweralertd";
 
   ## Modes
   system = "(l) lock, (e) exit, (s) shutdown";
 
   ## Lock
-  lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
+  swaylock = "${config.programs.swaylock.package}/bin/swaylock";
 
   modifier = "Mod4";
   inherit (config.colorscheme) palette;
@@ -121,7 +121,7 @@ in {
         "${modifier}+w" = "kill";
         # reload the configuration file
         "${modifier}+Shift+c" = "reload";
-        "${modifier}+m" = "exec ${lock}";
+        "${modifier}+m" = "exec ${swaylock}";
 
         ### Manage windows
 
@@ -208,7 +208,7 @@ in {
       modes = {
         # set $system (l) lock, (e) logout, (s) shutdown
         "${system}" = {
-          l = "exec ${lock}, mode default";
+          l = "exec ${swaylock}, mode default";
           e = "exec 'swaymsg exit; systemctl --user stop sway-session.target'"; # exit
           s = "exec shutdown now";
           # return to default mode
@@ -232,28 +232,14 @@ in {
       menu = "exec ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \"";
 
       startup = [
-        {
-          command = "${swww} init";
-        }
-        {
-          # Sleep after 15 minutes of inactivity
-          # Turn off display after 20 minutes of inactivity
-          command = ''
-            ${swayidle} -w \
-              timeout 900 '${lock}' \
-              timeout 1200 'swaymsg "output * dpms off"' \
-                resume 'swaymsg "output * dpms on"' \
-              before-sleep '${lock}'
-          '';
-        }
-        {
-          command = "${thunderbird};";
-        }
+        {command = "${swww} init";}
+        {command = poweralertd;}
+        {command = "${thunderbird};";}
       ];
     };
 
     extraConfig = ''
-      bindswitch --reload --locked lid:on exec ${lock}
+      bindswitch --reload --locked lid:on exec ${swaylock}
     '';
   };
 }
