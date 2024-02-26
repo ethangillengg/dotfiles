@@ -8,22 +8,19 @@
       trusted-public-keys = [
         "nix.mignet.duckdns.org:Dx+OrFUQ70+tkfDYByVvfPKKoVT5jRkJuRUShRtpRog="
       ];
+      builders-use-substitutes = true;
+      max-jobs = 2;
     };
     buildMachines = [
       {
         hostName = "nzxt";
         system = "x86_64-linux";
-        maxJobs = 8;
-        speedFactor = 2;
+        maxJobs = 6;
+        speedFactor = 3;
         supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
         mandatoryFeatures = [];
       }
     ];
-    settings.max-jobs = 0;
     distributedBuilds = true;
-    # optional, useful when the builder has a faster internet connection than yours
-    extraOptions = ''
-      builders-use-substitutes = true
-    '';
   };
 }
