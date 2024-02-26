@@ -6,7 +6,12 @@
   lib,
   modulesPath,
   ...
-}: {
+}: let
+  mediaserverMountOpts = {
+    device = "/dev/disk/by-uuid/45efa216-f3b6-4925-89c8-2a30845e95cf";
+    fsType = "btrfs";
+  };
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -49,34 +54,41 @@
       device = "/dev/disk/by-uuid/E8BD-954B";
       fsType = "vfat";
     };
-    "/mnt/mediaserver" = {
-      device = "/dev/disk/by-uuid/790d83dd-c8df-49a4-941b-cbb47eacfe95";
-      fsType = "ext4";
-    };
 
-    "/export/data" = {
-      device = "/mnt/mediaserver/data";
-      options = ["bind"];
-    };
+    "/mediaserver/media" =
+      {
+        options = ["subvol=media"];
+      }
+      // mediaserverMountOpts;
+
+    "/mediaserver/other" =
+      {
+        options = ["subvol=other"];
+      }
+      // mediaserverMountOpts;
+
+    "/mediaserver/torrents" =
+      {
+        options = ["subvol=torrents"];
+      }
+      // mediaserverMountOpts;
+
+    "/mediaserver/usenet" =
+      {
+        options = ["subvol=usenet"];
+      }
+      // mediaserverMountOpts;
 
     "/export/media" = {
-      device = "/mnt/mediaserver/data/media";
+      device = "/mediaserver/media";
       options = ["bind"];
     };
   };
 
   swapDevices = [];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = false;
-  # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp8s0.useDHCP = lib.mkDefault true;
+  networking.useDHCP = false; # static ip
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  # high-resolution display
 }

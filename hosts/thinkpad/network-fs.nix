@@ -15,7 +15,7 @@ in {
   in [
     (commonMountOptions
       // {
-        what = "${mediaServer}:/media";
+        what = "${mediaServer}:/export/media";
         where = "/mnt/nfs/media";
       })
   ];
