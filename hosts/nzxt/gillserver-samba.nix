@@ -5,7 +5,7 @@
 }: let
   mediaUID = config.users.users.media.uid;
   mediaGID = config.users.groups.media.gid;
-  options = ["uid=${toString mediaUID}" "gid=${toString mediaGID}"];
+  options = ["ro" "uid=${toString mediaUID}" "gid=${toString mediaGID}"];
 in {
   # TV SHOWS
   fileSystems."/mnt/gillserver/ImportedTV" = {
