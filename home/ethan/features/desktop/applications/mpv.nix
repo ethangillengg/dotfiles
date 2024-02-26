@@ -65,12 +65,10 @@
       "left" = "seek -5; script-binding uosc/flash-timeline";
 
       ## Subtitles controls
-      "w" = "sub-seek 1";
-      "shift+w" = "sub-seek -1";
-      "b" = "sub-seek -1";
-      "ctrl+w" = "sub-step 1";
-      "ctrl+shift+w" = "sub-step -1";
-      "ctrl+b" = "sub-step -1";
+      "alt+l" = "sub-seek 1; script-binding uosc/flash-timeline";
+      "alt+h" = "sub-seek -1; script-binding uosc/flash-timeline";
+      "ctrl+alt+l" = "sub-step 1";
+      "ctrl+alt+h" = "sub-step -1";
 
       ## Seeking
       "shift+l" = "seek  30; script-binding uosc/flash-timeline";
