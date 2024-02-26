@@ -7,6 +7,7 @@
 in {
   home.shellAliases = {
     ai = "OPENAI_API_KEY=$(${pass} show personal/openai) aichat";
+    mods = "OPENAI_API_KEY=$(${pass} show personal/openai) mods";
   };
 
   xdg.configFile = {
