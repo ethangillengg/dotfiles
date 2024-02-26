@@ -34,6 +34,7 @@
 
     extraConfig = {
       init.defaultBranch = "main";
+      push = {autoSetupRemote = true;};
       # Pretty "git log"
       log.date = "short";
       format.pretty = "* %C(Yellow)%h %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s";
