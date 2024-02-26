@@ -27,7 +27,7 @@
 
     shares = {
       media = {
-        path = "/mnt/mediaserver/data/media";
+        path = "/mediaserver/media";
         browseable = "yes";
         "read only" = "no";
         "writeable" = "yes";
@@ -38,10 +38,10 @@
       };
 
       data = {
-        path = "/mnt/mediaserver/data";
+        path = "/mediaserver";
         browseable = "yes";
-        "read only" = "no";
-        "writeable" = "yes";
+        "read only" = "yes";
+        "writeable" = "no";
         "create mask" = "0644";
         "directory mask" = "0775";
         "force user" = "media";
@@ -52,10 +52,9 @@
 
   services.nfs.server = {
     enable = true;
+    # /export/mediaserver     100.66.165.20(ro,fsid=0,no_subtree_check,all_squash,anonuid=1003,anongid=988)
     exports = ''
-      /export         100.66.165.20(rw,fsid=0,no_subtree_check,all_squash,anonuid=1003,anongid=988)
-      /export/data    100.66.165.20(rw,nohide,insecure,no_subtree_check,all_squash,anonuid=1003,anongid=988)
-      /export/media   100.66.165.20(rw,nohide,insecure,no_subtree_check,all_squash,anonuid=1003,anongid=988)
+      /export/media           100.66.165.20(rw,nohide,insecure,no_subtree_check,all_squash,anonuid=1003,anongid=988)
     '';
 
     lockdPort = 4001;

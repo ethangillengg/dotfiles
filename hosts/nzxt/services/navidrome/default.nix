@@ -10,7 +10,7 @@
     settings = {
       Address = "0.0.0.0";
       Port = port;
-      MusicFolder = "/mnt/mediaserver/data/media/music";
+      MusicFolder = "/mediaserver/media/music";
       PlaylistsPath = "."; # only in root music dir
       CovertArtPriority = "*.jpg, *.JPG, *.png, *.PNG, embedded";
       AutoImportPlaylists = true;
