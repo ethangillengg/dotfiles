@@ -42,5 +42,19 @@
   };
   home.shellAliases = {
     g = "git";
+    gp = "git push";
+    gs = "git status";
+    gss = "git status --short";
+    gl = "git log";
+    gc = "git commit";
+    gcA = "git commit --amend"; # ammend with new message
+    gca = "git commit --amend -C HEAD"; # use the previous commit message
+    gd = "git diff";
+    ga = "git add";
+    gr = "git restore . --staged";
+    gcp = "git rev-parse HEAD | tr -d '\\n' | wl-copy && echo \"Copied SHA $(git rev-parse HEAD)\"";
+    grp = "git rev-parse HEAD";
+    gch = "git checkout";
+    gchm = "git checkout main";
   };
 }

@@ -82,7 +82,7 @@
             }
             {
               key = "enter";
-              command = "gh pr view {{.PrNumber}} --repo \"{{.RepoName}}\"";
+              command = "gh pr view {{.PrNumber}} --comments --repo \"{{.RepoName}}\"";
               description = "View PR";
             }
           ];
