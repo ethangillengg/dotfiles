@@ -40,12 +40,13 @@
     nerdfix # fix nerd fonts
     nix-melt # analyze nix flake inputs/outputs
     kalker # cli calculator
-    pdfgrep # grep pdfs
+    ripgrep-all # ripgrep for all files
     ouch # compress/decompress .zip, .tar, .rar with one command
-    pandoc
-    dig
+    pandoc # document converter
+    dig # dns
     glow # pretty markdown
     tree
+    ai
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
