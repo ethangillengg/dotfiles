@@ -18,7 +18,8 @@
     ./bottom.nix
     ./fzf.nix
     ./gpg.nix
-    ./chatgpt.nix
+    ./aichat.nix
+    ./mods.nix
   ];
   home.packages = with pkgs; [
     # comma # Install and run programs by sticking a , before them
