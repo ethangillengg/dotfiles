@@ -5,10 +5,9 @@
     yaml = yaml {};
   };
 in {
-  home.shellAliases = {
-    ai = "OPENAI_API_KEY=$(${pass} show personal/openai) aichat";
-    mods = "OPENAI_API_KEY=$(${pass} show personal/openai) mods";
-  };
+  home.packages = with pkgs; [
+    aichat
+  ];
 
   xdg.configFile = {
     "aichat/config.yaml".source = formats.yaml.generate "aichat-config" {
@@ -29,9 +28,4 @@ in {
       }
     ];
   };
-
-  home.packages = with pkgs; [
-    aichat
-    mods
-  ];
 }

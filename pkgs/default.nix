@@ -8,4 +8,5 @@
   quote = pkgs.callPackage ./quote {};
   pass-tofi = pkgs.callPackage ./pass-tofi {};
   pdfsearch = pkgs.callPackage ./pdfsearch {};
+  ai = pkgs.callPackage ./ai {};
 }
