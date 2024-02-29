@@ -15,7 +15,6 @@ in {
   # dependencies for ctpv previews
   home.packages = with pkgs; [
     poppler_utils
-    libreoffice-fresh
     atool
     w3m
     pkgs.trashy
