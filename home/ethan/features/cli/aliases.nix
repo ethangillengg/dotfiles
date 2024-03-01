@@ -2,11 +2,10 @@
   vim-scratchpad = pkgs.writeShellScriptBin "vim-scratchpad" ''
     #!/usr/bin/env bash
     if [ -z "$1" ]; then
-      echo "No extension supplied"
-      exit 1
+      nvim $(mktemp /tmp/tmp.XXXXXX)
     fi
 
-    nvim /tmp/$(date +%s).$1
+    nvim $(mktemp /tmp/tmp.XXXXXX.$1)
   '';
 in {
   # simple aliases that are compatible across all shells
