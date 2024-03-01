@@ -13,6 +13,7 @@
     # ./../common/optional/wgnord.nix
     ../common/optional/docker.nix
     ../common/optional/wireless.nix
+    ../common/optional/touchpad-fix.nix
   ];
   networking.hostName = "thinkpad";
   i18n.inputMethod.fcitx5.waylandFrontend = true;
