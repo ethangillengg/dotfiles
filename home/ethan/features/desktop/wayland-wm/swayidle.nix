@@ -58,6 +58,14 @@ in {
         timeout = 60;
         command = "${swaymsg} 'output * dpms off'";
         resumeCommand = "${swaymsg} 'output * dpms on'";
+      }))
+      ++ (lib.optionals config.wayland.windowManager.sway.enable (afterLockTimeout {
+        timeout = 120;
+        command = "systemctl suspend";
+      }))
+      ++ (lib.optionals config.wayland.windowManager.sway.enable (afterLockTimeout {
+        timeout = 300;
+        command = "systemctl hibernate";
       }));
   };
 }
