@@ -13,9 +13,9 @@
     # ./../common/optional/wgnord.nix
     ../common/optional/docker.nix
     ../common/optional/wireless.nix
-    ../common/optional/mpd-scrobble.nix
   ];
   networking.hostName = "thinkpad";
+  i18n.inputMethod.fcitx5.waylandFrontend = true;
 
   services.upower = {
     enable = true;
