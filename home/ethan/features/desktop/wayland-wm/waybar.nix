@@ -77,6 +77,7 @@ in {
           "pulseaudio"
           "backlight"
           "battery"
+          "battery#BAT1"
           "cpu"
           "network"
         ];
@@ -181,6 +182,7 @@ in {
         };
 
         battery = {
+          bat = "BAT0";
           format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           format = "{icon}{capacity}%";
           format-charging = "󰂄{capacity}%";
@@ -194,9 +196,28 @@ in {
           format-warning = "󰂃{capacity}%";
           format-critical = "󰂃{capacity}%";
 
-          weighted-average = true; # average battery percentage across all batteries
+          weighted-average = false; # average battery percentage across all batteries
           # full-at = 80; # since we stop charging at 80% to preserve battery life
-          interval = 3;
+          interval = 15;
+        };
+        "battery#BAT1" = {
+          bat = "BAT1";
+          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format = "{icon}{capacity}%";
+          format-charging = "󰂄{capacity}%";
+          format-plugged = "󰂏{capacity}%"; # when fully charged
+          tooltip-format = "{timeTo}\nRate: {power}W";
+
+          states = {
+            warning = 25;
+            critical = 10;
+          };
+          format-warning = "󰂃{capacity}%";
+          format-critical = "󰂃{capacity}%";
+
+          weighted-average = false; # average battery percentage across all batteries
+          # full-at = 80; # since we stop charging at 80% to preserve battery life
+          interval = 15;
         };
 
         pulseaudio = {
