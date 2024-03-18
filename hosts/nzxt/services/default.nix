@@ -112,6 +112,7 @@ in {
     [
       nginx
       ./samba
+      ./heartlens.nix
     ]
     ++ map mediaService mediaServiceConfigs;
 
