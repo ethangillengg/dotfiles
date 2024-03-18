@@ -3,7 +3,7 @@
     enable = true;
     dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
 
     history = {
       path = "${config.xdg.dataHome}/zsh/zsh_history";
