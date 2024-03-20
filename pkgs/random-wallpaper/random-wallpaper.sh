@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-wallpaperdir="$HOME/Pictures/wallpapers/gruvbox"
+wallpaperdir="$HOME/Pictures/wallpapers/gruvbox-nature"
 
 files=("$wallpaperdir"/*)
 randompic=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
