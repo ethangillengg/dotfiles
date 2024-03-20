@@ -16,7 +16,6 @@
     ../common/optional/touchpad-fix.nix
   ];
   networking.hostName = "thinkpad";
-  i18n.inputMethod.fcitx5.waylandFrontend = true;
 
   services.upower = {
     enable = true;
