@@ -16,10 +16,20 @@
     waypipe
     wf-recorder
     wl-clipboard
-    xdg-desktop-portal
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-wlr
   ];
+  xdg.portal = {
+    enable = true;
+    configPackages = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
+    ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
+    ];
+  };
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = 1;
