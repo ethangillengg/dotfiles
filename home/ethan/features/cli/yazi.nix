@@ -15,12 +15,12 @@ in {
       opener = {
         "archive" = [
           {
-            exec = "${unar} \"$1\"";
+            run = "${unar} \"$1\"";
           }
         ];
         "text" = [
           {
-            exec = "nvim \"$@\"";
+            run = "nvim \"$@\"";
             block = true;
           }
         ];
