@@ -50,29 +50,5 @@
         sha256 = "sha256-JvYDTVSV9h+weSS3XOWl9B2bo3CatrsPzVNVmKpTSK8="; # replace this with the correct sha256 hash
       };
     });
-
-    # use lf-sixel for sixel image previews in wezterm
-    lf = prev.callPackage (
-      {
-        lib,
-        stdenv,
-        buildGoModule,
-        fetchFromGitHub,
-        installShellFiles,
-      }:
-        buildGoModule rec {
-          pname = "lf";
-          version = "31";
-
-          src = fetchFromGitHub {
-            owner = "gokcehan";
-            repo = "lf";
-            rev = "r${version}";
-            hash = "sha256-Tuk/4R/gGtSY+4M/+OhQCbhXftZGoxZ0SeLIwYjTLA4=";
-          };
-
-          vendorHash = "sha256-PVvHrXfMN6ZSWqd5GJ08VaeKaHrFsz6FKdDoe0tk2BE=";
-        }
-    ) {};
   };
 }
