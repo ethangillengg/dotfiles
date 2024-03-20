@@ -27,6 +27,8 @@
       # copy current commit hash to clipboard and also echo it
       cp = "!git rev-parse HEAD | tr -d '\\n' | wl-copy && echo \"Copied SHA $(git rev-parse HEAD)\"";
       rp = "rev-parse HEAD";
+      sw = "switch";
+      swm = "switch main";
 
       ch = "checkout";
       chm = "checkout main";
