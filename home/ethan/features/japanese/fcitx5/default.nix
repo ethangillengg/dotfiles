@@ -17,10 +17,9 @@
     };
   };
 
-  xdg.configFile."fcitx5" = {
-    source = ./config;
-    recursive = true;
-  };
+  # workaround for fcitx5 expecting a writeable config file
+  # see: https://github.com/nix-community/home-manager/issues/3090#issuecomment-1799268943
+  xdg.configFile.fcitx5.source = ./config;
 
   # only if sway is enabled
   wayland.windowManager.sway.config.startup = [
