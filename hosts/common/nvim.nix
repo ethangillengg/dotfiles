@@ -46,5 +46,7 @@ in {
     deno
     nodePackages_latest.volar
     nodePackages_latest.typescript-language-server
+    xmlformat
+    lemminx
   ];
 }
