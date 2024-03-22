@@ -16,11 +16,15 @@
       family = "Rounded Mgen+ 1c";
       package = pkgs.rounded-mgenplus;
     };
+
+    emoji = {
+      family = "Twitter Color Emoji";
+      package = pkgs.twitter-color-emoji;
+    };
   };
 
   # Extra fonts
   home.packages = with pkgs; [
     fontpreview # easy font preview
-    rictydiminished-with-firacode
   ];
 }
