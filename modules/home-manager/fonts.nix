@@ -24,10 +24,16 @@ in {
     monospace = mkFontOption "monospace";
     regular = mkFontOption "regular";
     fallback = mkFontOption "fallback";
+    emoji = mkFontOption "emoji";
   };
 
   config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
-    home.packages = [cfg.monospace.package cfg.regular.package cfg.fallback.package];
+    home.packages = [
+      cfg.monospace.package
+      cfg.regular.package
+      cfg.fallback.package
+      cfg.emoji.package
+    ];
   };
 }
