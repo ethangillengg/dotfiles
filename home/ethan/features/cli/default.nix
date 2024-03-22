@@ -1,7 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./lf
-
     ./zsh.nix
     ./fish.nix
 

@@ -18,7 +18,7 @@
     };
 
     shellAliases = {
-      lfcd = "cd \"$(command lf -print-last-dir \"$@\")\"";
+      fj = "yacd";
     };
 
     completionInit = ''
@@ -90,6 +90,16 @@
       bindkey -M vicmd '^[[P' vi-delete-char
       bindkey -M vicmd '^e' edit-command-line
       bindkey -M visual '^[[P' vi-delete
+
+      # yazi change dir
+      function yacd() {
+        tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+        yazi --cwd-file="$tmp"
+        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+          cd -- "$cwd"
+        fi
+        rm -f -- "$tmp"
+      }
     '';
   };
 }
