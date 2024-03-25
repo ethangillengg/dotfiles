@@ -45,7 +45,7 @@ while true; do
 		else
 			# If the file is not empty, pipe its contents to the 'mods'
 			command
-			OPENAI_API_KEY=$(/nix/store/a3ig3ag8m9f6b3sgmh3sryymqhslq7ky-password-store-1.7.4/bin/pass show personal/openai) mods "$@" <"$tmpfile"
+			OPENAI_API_KEY=$(pass show personal/openai) mods "$@" <"$tmpfile"
 		fi
 	else
 		echo "Neovim did not exit successfully. Exiting."
