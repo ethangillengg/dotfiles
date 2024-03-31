@@ -40,11 +40,11 @@
           }
           {
             title = "HeartLens";
-            filters = "repo:AhadAli01/HeartLens is:open";
+            filters = "repo:AhadAli01/HeartLens is:open -linked:pr";
           }
           {
             title = "PSM";
-            filters = "repo:Calgary-Co-op/production-shrink-management-app is:open";
+            filters = "repo:Calgary-Co-op/production-shrink-management-app is:open -linked:pr";
           }
         ];
 
