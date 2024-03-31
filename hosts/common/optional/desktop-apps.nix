@@ -12,6 +12,7 @@
     termusic
     ffmpeg
     wayvnc
+    steam
 
     vesktop # discord client
     osu-lazer-bin
