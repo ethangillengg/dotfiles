@@ -87,6 +87,7 @@ in {
 
   swapDevices = [];
   networking.useDHCP = false; # static ip
+  networking.enableIPv6 = false;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
