@@ -45,6 +45,7 @@
     glow # pretty markdown
     tree
     ai
+    wl-mirror
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
