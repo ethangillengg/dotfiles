@@ -1,4 +1,7 @@
 {config, ...}: {
+  # fix for: https://github.com/NixOS/nixpkgs/issues/155475
+  systemd.services.prowlarr.environment.HOME = "/var/empty";
+
   services.prowlarr = {
     enable = true;
     openFirewall = true;
