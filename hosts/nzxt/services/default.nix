@@ -78,12 +78,6 @@
       };
     }
 
-    # Local LLMs
-    {
-      path = ./ollama;
-      port = 9999;
-    }
-
     # Servarr stack
     {path = ./servarr/sonarr.nix;}
     {path = ./servarr/radarr.nix;}
