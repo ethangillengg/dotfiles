@@ -54,12 +54,13 @@
               key = "C";
               command = ''
                 PR_NAME=$(gh issue view {{.IssueNumber}} --repo {{.RepoName}} --json title --jq '.title')
-                PR_NAME_DASHED=$(echo "$PR_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/$/-eg/')
+                PR_NAME_DASHED=$(echo "{{.IssueNumber}} $PR_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
                 # cat into temp file and edit in nvim
                 echo "$PR_NAME_DASHED" > /tmp/gh-issue-name
                 nvim /tmp/gh-issue-name
                 cd {{.RepoPath}}
-                git checkout -b "$(cat /tmp/gh-issue-name)"
+                # branch off of latest main
+                git switch main && git pull && git checkout -b "$(cat /tmp/gh-issue-name)"
                 kill -9 $PPID
               '';
               description = "Create Issue Branch";
