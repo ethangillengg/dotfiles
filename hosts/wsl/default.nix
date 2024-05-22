@@ -14,10 +14,21 @@
     <nixos-wsl/modules>
 
     ../common
+    ./wsl-vpnkit.nix
   ];
 
-  wsl.enable = true;
-  networking.hostName = "wsl";
+  wsl = {
+    enable = true;
+    wslConf = {
+      network.generateResolvConf = false;
+    };
+  };
+  networking = {
+    hostName = "wsl";
+    nameservers = [
+      "8.8.8.8"
+    ];
+  };
   wsl.defaultUser = "ethan";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nix.settings = {
