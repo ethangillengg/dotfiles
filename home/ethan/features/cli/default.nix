@@ -7,7 +7,6 @@
     ./bash.nix
     ./zoxide.nix
     ./ytfzf.nix
-    ./starship.nix
     ./lsd.nix
     ./yazi.nix
     ./bat.nix
