@@ -49,12 +49,10 @@ in {
     xmlformat
     lemminx
     biome
-    # dotnet-sdk
     csharp-ls
     dotnet-sdk_8
     dotnet-runtime_8
     dotnet-aspnetcore_8
-    dotnet-sdk_7
     csharpier
   ];
 }
