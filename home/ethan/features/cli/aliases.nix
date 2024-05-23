@@ -14,9 +14,9 @@ in {
     vs = "${vim-scratchpad}/bin/vim-scratchpad";
 
     ## Nix commands
-    hm = "home-manager switch --flake /home/ethan/.dotfiles#$USER@$HOST";
-    nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles#$HOST --impure";
-    nrb = "sudo nixos-rebuild boot --flake /home/ethan/.dotfiles#thinkpad";
+    hm = "home-manager switch --flake /home/ethan/.dotfiles\\#$USER@$HOST";
+    nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles\\#$HOST --impure";
+    nrb = "sudo nixos-rebuild boot --flake /home/ethan/.dotfiles\\#$HOST";
 
     # Rebuild on remote
     nrd = "ssh -t ethan@nzxt \"cd /home/ethan/.dotfiles/; git pull; sudo nixos-rebuild switch --flake .#nzxt; exit; bash -l\"";
