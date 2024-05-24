@@ -45,6 +45,7 @@
     tree
     ai
     wl-mirror
+    imagemagick # convert images on cli
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
