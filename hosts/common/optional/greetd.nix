@@ -57,9 +57,7 @@ in {
     sway
   '';
 
-  services. xserver.displayManager = {
-    sddm.enable = lib.mkForce false;
-    lightdm.enable = lib.mkForce false;
-    gdm.enable = lib.mkForce false;
-  };
+  services.displayManager.sddm.enable = lib.mkForce false;
+  services.xserver.displayManager.lightdm.enable = lib.mkForce false;
+  services.xserver.displayManager.gdm.enable = lib.mkForce false;
 }
