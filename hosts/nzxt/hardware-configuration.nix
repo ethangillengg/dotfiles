@@ -88,7 +88,7 @@ in {
 
   swapDevices = [];
   networking.useDHCP = false; # static ip
-  networking.enableIPv6 = false;
+  networking.enableIPv6 = true; # WGNORD breaks if this is disabled
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
