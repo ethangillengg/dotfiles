@@ -4,9 +4,10 @@
       # add this here so nzxt does not get itself added
       substituters = [
         "https://nix.mignet.duckdns.org"
+        "https://cache.nixos.org/"
       ];
       trusted-public-keys = [
-        "nix.mignet.duckdns.org:Dx+OrFUQ70+tkfDYByVvfPKKoVT5jRkJuRUShRtpRog="
+        "nix.mignet.duckdns.org:ofuHUoAmBPCdi27E1iHo1GoEblp3itJpog/ex9gXSAA="
       ];
       builders-use-substitutes = true;
       max-jobs = 2;
