@@ -9,7 +9,7 @@
     kavita = {
       enable = true;
       tokenKeyFile = "/var/lib/kavita/token";
-      port = port;
+      settings.port = port;
       # TODO: use media server user
       # inherit user;
     };
