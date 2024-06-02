@@ -18,6 +18,7 @@ in {
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.enable = true;
   hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     # Modesetting is required.
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
