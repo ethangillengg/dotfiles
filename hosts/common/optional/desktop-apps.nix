@@ -13,6 +13,7 @@
     ffmpeg
     wayvnc
     steam
+    foot
 
     vesktop # discord client
     osu-lazer-bin

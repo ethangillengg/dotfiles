@@ -23,11 +23,9 @@
         },
         hide_tab_bar_if_only_one_tab = true,
         enable_tab_bar = false,
+        enable_wayland = false,
+        front_end = "OpenGL",
         window_close_confirmation = "NeverPrompt",
-        hide_mouse_cursor_when_typing = false,
-        window_close_confirmation = "NeverPrompt",
-        initial_cols = 120,
-        initial_rows = 32,
         cursor_blink_rate = 0
       }
     '';
