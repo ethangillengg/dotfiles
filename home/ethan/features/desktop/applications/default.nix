@@ -11,5 +11,6 @@
     ./firefox.nix
     ./obs-studio.nix
     ./sioyek.nix
+    ./foot.nix
   ];
 }
