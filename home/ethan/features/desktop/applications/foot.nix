@@ -27,6 +27,7 @@ in {
       };
       cursor = {
         blink = "no";
+        color = "${palette.base00} ${palette.base07}";
       };
       scrollback = {
         lines = 100000;

@@ -41,8 +41,13 @@ in {
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
     nodejs_18
     asmfmt
+    # GO
     gopls
     go
+    templ
+    tailwindcss
+    tailwindcss-language-server
+
     deno
     nodePackages_latest.volar
     nodePackages_latest.typescript-language-server
