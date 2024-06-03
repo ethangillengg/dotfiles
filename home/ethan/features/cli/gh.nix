@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   programs = {
     gh = {
       enable = true;
@@ -25,8 +25,8 @@
             filters = "is:open review-requested:@me";
           }
           {
-            title = "HeartLens";
-            filters = "repo:AhadAli01/HeartLens is:open";
+            title = "Manifast";
+            filters = "repo:SunwaptaSolutions/MW5-Compliance is:open";
           }
           {
             title = "PSM";
@@ -39,8 +39,8 @@
             filters = "is:open assignee:@me";
           }
           {
-            title = "HeartLens";
-            filters = "repo:AhadAli01/HeartLens is:open -linked:pr";
+            title = "Manifast";
+            filters = "repo:SunwaptaSolutions/MW5-Compliance is:open -linked:pr";
           }
           {
             title = "PSM";
@@ -90,8 +90,7 @@
         };
 
         repoPaths = {
-          default_path = "~/Code";
-          "AhadAli01/HeartLens" = "~/Code/School/Heartlens";
+          default_path = "~/Local";
         };
       };
     };
