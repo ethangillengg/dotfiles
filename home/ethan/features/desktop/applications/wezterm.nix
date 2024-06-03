@@ -5,9 +5,6 @@
 }: {
   home = {
     packages = [pkgs.wezterm];
-    sessionVariables = {
-      TERMINAL = "wezterm";
-    };
   };
   programs.wezterm = {
     enable = true;
@@ -24,6 +21,7 @@
         hide_tab_bar_if_only_one_tab = true,
         enable_tab_bar = false,
         enable_wayland = false,
+        audible_bell = "Disabled",
         front_end = "OpenGL",
         window_close_confirmation = "NeverPrompt",
         cursor_blink_rate = 0
