@@ -8,7 +8,7 @@ in {
     startup = [
       {
         # 6:30AM - 8:00PM
-        command = "${wlsunset} -t 3200 -S 06:30 -s 20:00";
+        command = "${wlsunset} -S 06:30 -s 20:00";
       }
     ];
   };
