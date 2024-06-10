@@ -15,6 +15,7 @@
 
     ../common
     ./wsl-vpnkit.nix
+    ../common/optional/ascii-workaround.nix
   ];
 
   wsl = {
