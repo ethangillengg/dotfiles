@@ -16,7 +16,7 @@ in {
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   services.xserver.videoDrivers = ["nvidia"];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     # Modesetting is required.
