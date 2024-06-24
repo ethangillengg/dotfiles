@@ -14,6 +14,8 @@
     ../common/optional/docker.nix
     ../common/optional/wireless.nix
     ../common/optional/touchpad-fix.nix
+
+    ../common/optional/ascii-workaround.nix
   ];
   networking.hostName = "thinkpad";
 
