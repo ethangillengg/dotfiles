@@ -6,6 +6,7 @@
   inherit (config.colorscheme) variant palette;
   rofi = "${pkgs.rofi}/bin/rofi";
   wezterm = "${pkgs.wezterm}/bin/wezterm";
+  notify-send = "${pkgs.libnotify}/bin/notify-send";
 in {
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
@@ -48,6 +49,10 @@ in {
         ## MPV
         ",m" = "hint links spawn umpv {hint-url}";
         ";m" = "hint --rapid links spawn umpv {hint-url}";
+        ## YT-DL
+        ",d" = "hint links spawn yt-dlp {hint-url}";
+        ";d" = "hint --rapid links spawn yt-dlp {hint-url}";
+
         # open current url
         ",M" = "spawn umpv {url}";
 
