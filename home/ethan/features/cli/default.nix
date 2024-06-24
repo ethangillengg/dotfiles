@@ -7,6 +7,7 @@
     ./bash.nix
     ./zoxide.nix
     ./ytfzf.nix
+    ./yt-dlp.nix
     ./lsd.nix
     ./yazi.nix
     ./bat.nix
@@ -16,7 +17,7 @@
     ./fzf.nix
     ./gpg.nix
     ./aichat.nix
-    ./mods.nix
+    # ./mods.nix
   ];
   home.packages = with pkgs; [
     # comma # Install and run programs by sticking a , before them
@@ -43,7 +44,7 @@
     dig # dns
     glow # pretty markdown
     tree
-    ai
+    # ai
     wl-mirror
     imagemagick # convert images on cli
 
