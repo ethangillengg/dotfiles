@@ -16,11 +16,9 @@ in {
     enable = true;
     settings = {
       main = {
-        # term = "xterm-256-color";
-        font = "${config.fontProfiles.monospace.family}:size=16";
+        font = "${config.fontProfiles.monospace.family}:size=12";
         dpi-aware = "yes";
         pad = "16x16";
-        # line-height = 16;
       };
       mouse = {
         hide-when-typing = "yes";
