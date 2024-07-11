@@ -13,7 +13,6 @@
       mpvScripts.mpris # Mpris support for mpv
       mpvScripts.autoload # Automatically load playlist entries before and after the currently played file
       mpvScripts.mpv-cheatsheet # mpv script for looking up keyboard shortcuts
-      mpvScripts.mpvacious # Create Anki cards from movies and TV shows.
     ];
 
     scriptOpts = {
@@ -41,9 +40,11 @@
       video-sync = "display-resample";
       # makes motion appear smoother
       interpolation = true;
-      tscale = "oversample";
       # fix slow HDR playback
       hdr-compute-peak = "no";
+      vd-lavc-fast = true;
+      vd-lavc-threads = 6;
+      profile = "fast";
 
       ## Youtube
       ytdl-format = "bestvideo[height<=?1080]+bestaudio/best";
