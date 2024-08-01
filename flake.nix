@@ -36,6 +36,8 @@
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
   outputs = {
     self,
@@ -52,7 +54,11 @@
 
     mkNixos = modules:
       nixpkgs.lib.nixosSystem {
-        inherit modules;
+        modules =
+          modules
+          ++ [
+            inputs.nixos-wsl.nixosModules.default
+          ];
         specialArgs = {inherit inputs outputs;};
       };
 

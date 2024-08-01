@@ -50,7 +50,7 @@ in {
     tailwindcss-language-server
 
     deno
-    nodePackages_latest.volar
+    vue-language-server
     nodePackages_latest.typescript-language-server
     xmlformat
     lemminx
