@@ -3,6 +3,7 @@
     ./zsh.nix
     ./fish.nix
 
+    ./mods.nix
     ./aliases.nix
     ./bash.nix
     ./zoxide.nix
@@ -17,7 +18,6 @@
     ./fzf.nix
     ./gpg.nix
     ./aichat.nix
-    # ./mods.nix
   ];
   home.packages = with pkgs; [
     # comma # Install and run programs by sticking a , before them
@@ -34,6 +34,7 @@
     # trekscii # Cute startrek cli printer
     # timer # To help with my ADHD paralysis
 
+    ai
     porsmo # cli pomodoro, stopwatch and timer
     nerdfix # fix nerd fonts
     nix-melt # analyze nix flake inputs/outputs
@@ -44,9 +45,10 @@
     dig # dns
     glow # pretty markdown
     tree
-    # ai
+    sqlite
     wl-mirror
     imagemagick # convert images on cli
+    sqlcmd
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
