@@ -6,4 +6,6 @@
   virtualisation.docker = {
     enable = true;
   };
+
+  users.users.ethan.extraGroups = ["docker"];
 }

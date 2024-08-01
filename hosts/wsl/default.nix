@@ -4,7 +4,6 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 {
-  config,
   lib,
   pkgs,
   ...
@@ -15,7 +14,7 @@
 
     ../common
     ./wsl-vpnkit.nix
-    ../common/optional/ascii-workaround.nix
+    ../common/optional/docker.nix
   ];
 
   wsl = {
