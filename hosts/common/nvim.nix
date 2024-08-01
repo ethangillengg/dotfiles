@@ -40,6 +40,7 @@ in {
     yamlfmt
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
     nodejs_18
+    bun
     asmfmt
     # GO
     gopls
@@ -55,6 +56,8 @@ in {
     lemminx
     biome
     csharp-ls
+
+    omnisharp-roslyn
     dotnet-sdk_8
     dotnet-runtime_8
     dotnet-aspnetcore_8
