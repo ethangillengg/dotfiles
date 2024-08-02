@@ -12,9 +12,6 @@
   random-wallpaper = "${pkgs.random-wallpaper}/bin/random-wallpaper";
   sptlrx = "${pkgs.sptlrx}/bin/sptlrx";
 
-  wallpaper = config.wallpaper;
-  lock = "${config.programs.swaylock.package}/bin/swaylock --clock -f -i ${wallpaper} --scaling fill -F";
-
   terminal = "${pkgs.wezterm}/bin/wezterm";
   terminal-spawn = cmd: "${terminal} -e $SHELL -i -c ${cmd}";
 
