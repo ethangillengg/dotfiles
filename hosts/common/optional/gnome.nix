@@ -2,8 +2,8 @@
   # Enable the GNOME Desktop Environment.
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
     displayManager.gdm = {
       enable = false;
     };

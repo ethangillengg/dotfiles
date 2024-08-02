@@ -10,6 +10,7 @@
 
     ../common
     ../common/optional/desktop-apps.nix
+    ../common/optional/greetd.nix
     ../common/optional/nixos-direnv.nix
     ../common/optional/docker.nix
     ../common/optional/tailscale-exit-node.nix
@@ -32,7 +33,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -54,14 +54,13 @@
     ];
   };
 
+  home-manager.users.ethan = import ../../home/ethan/nzxt.nix;
+
   users.users.media = {
     isNormalUser = lib.mkForce true;
   };
 
-  security.sudo.wheelNeedsPassword = false;
-
   nix.settings.trusted-users = ["root" "ethan"];
-
   networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
