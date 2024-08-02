@@ -70,6 +70,15 @@
     }
 
     {
+      path = ./glance;
+      port = 6971;
+      proxy = {
+        enable = true;
+        subdomain = "glance";
+      };
+    }
+
+    {
       path = ./binary-cache;
       port = 9998;
       proxy = {
