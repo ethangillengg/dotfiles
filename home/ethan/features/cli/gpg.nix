@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  pinentryPackage = pkgs.pinentry-qt;
+  pinentryPackage = pkgs.pinentry-tty;
 
   minsToSecs = mins: (mins * 60);
 in {
