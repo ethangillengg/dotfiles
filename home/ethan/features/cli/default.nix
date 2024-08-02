@@ -35,6 +35,7 @@
     # timer # To help with my ADHD paralysis
 
     ai
+    tomb
     porsmo # cli pomodoro, stopwatch and timer
     nerdfix # fix nerd fonts
     nix-melt # analyze nix flake inputs/outputs

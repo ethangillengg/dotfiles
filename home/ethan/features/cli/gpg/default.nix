@@ -1,9 +1,9 @@
 {pkgs, ...}: let
-  pinentryPackage = pkgs.pinentry-tty;
+  pinentryPackage = pkgs.pinentry-qt;
 
   minsToSecs = mins: (mins * 60);
 in {
-  home.packages = [pinentryPackage];
+  home.packages = [pinentryPackage pkgs.gnupg];
 
   home.file.".gnupg/gpg.conf".source = ./gpg.conf;
   services.gpg-agent = {
