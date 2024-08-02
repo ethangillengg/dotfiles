@@ -18,11 +18,8 @@
     osu-lazer-bin
 
     unoconv # convert .doc, .docx files
-    renderdoc
 
     yt-dlp
     tofi
-
-    gnome.gnome-calculator
   ];
 }

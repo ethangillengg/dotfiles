@@ -37,8 +37,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   programs.fish.enable = true;
-  programs.zsh.enable = true;
-  environment.pathsToLink = ["/share/zsh"];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -57,16 +55,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  users.users.ethan = {
-    isNormalUser = true;
-    description = "ethan";
-    extraGroups = ["wheel" "network" "docker" "video" "cdrom"];
-    shell = pkgs.zsh;
-  };
   home-manager.users.ethan = import ../../home/ethan/thinkpad.nix;
-
-  security.sudo.wheelNeedsPassword = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

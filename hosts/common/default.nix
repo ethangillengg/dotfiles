@@ -18,6 +18,7 @@ in {
       ./sops.nix
       ./tailscale.nix
       ./thunar.nix
+      ./ethan.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
@@ -65,6 +66,7 @@ in {
 
   security.pam.services.swaylock = {};
 
+  security.sudo.wheelNeedsPassword = false;
   documentation.man.man-db.enable = false;
   environment = {
     variables = {

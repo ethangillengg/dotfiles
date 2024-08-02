@@ -22,6 +22,7 @@ in {
   ];
   environment.systemPackages = with pkgs; [
     neovim-custom
+    tree-sitter
 
     # Nix
     nil

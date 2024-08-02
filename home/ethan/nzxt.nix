@@ -15,6 +15,5 @@
 
   #Favs:
   colorscheme = inputs.nix-colors.colorschemes.catppuccin-mocha;
-
   wallpaper = outputs.wallpapers.forest-spring;
 }
