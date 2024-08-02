@@ -36,7 +36,6 @@
         vaapiVdpau
         libvdpau-va-gl
       ];
-      driSupport32Bit = true;
     };
     enableAllFirmware = true;
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

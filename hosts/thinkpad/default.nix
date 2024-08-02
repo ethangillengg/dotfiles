@@ -14,8 +14,6 @@
     ../common/optional/docker.nix
     ../common/optional/wireless.nix
     ../common/optional/touchpad-fix.nix
-
-    ../common/optional/ascii-workaround.nix
   ];
   networking.hostName = "thinkpad";
 
@@ -46,7 +44,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
