@@ -3,7 +3,9 @@
     enable = true;
     openFirewall = true;
     settings = {
-      inherit port;
+      server = {
+        inherit port;
+      };
     };
   };
 }
