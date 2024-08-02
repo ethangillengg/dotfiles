@@ -16,7 +16,7 @@
     ./gh.nix
     ./bottom.nix
     ./fzf.nix
-    ./gpg.nix
+    ./gpg
     ./aichat.nix
   ];
   home.packages = with pkgs; [

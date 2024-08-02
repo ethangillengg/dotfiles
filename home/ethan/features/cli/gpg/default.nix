@@ -5,6 +5,7 @@
 in {
   home.packages = [pinentryPackage];
 
+  home.file.".gnupg/gpg.conf".source = ./gpg.conf;
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
