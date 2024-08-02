@@ -54,7 +54,7 @@ in {
   };
 
   environment.etc."greetd/environments".text = ''
-    sway
+    hyprland
   '';
 
   services.displayManager.sddm.enable = lib.mkForce false;
