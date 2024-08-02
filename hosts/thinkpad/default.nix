@@ -11,7 +11,6 @@
     # ../common/optional/gnome.nix
     ../common/optional/quietboot.nix
     # ./../common/optional/wgnord.nix
-    ../common/optional/docker.nix
     ../common/optional/wireless.nix
     ../common/optional/touchpad-fix.nix
   ];
