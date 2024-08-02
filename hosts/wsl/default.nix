@@ -3,11 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ../common
     ./wsl-vpnkit.nix
@@ -30,12 +26,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nix.settings = {
     experimental-features = ["nix-command" "flakes" "repl-flake"];
-  };
-
-  programs.zsh.enable = true;
-  users.users.ethan = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
   };
 
   # This value determines the NixOS release from which the default
