@@ -81,7 +81,7 @@ in {
         # Default page when opening new tab
         default_page = "https://glance.mignet.duckdns.org/";
         # Default pages on startup
-        start_pages = ["qute://start/"];
+        start_pages = ["https://glance.mignet.duckdns.org/"];
         open_base_url = true;
       };
       downloads = {
