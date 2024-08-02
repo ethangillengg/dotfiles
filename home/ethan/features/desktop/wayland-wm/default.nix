@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./hyprland
-    ./sway
     ./swaylock.nix
     ./swayidle.nix
 

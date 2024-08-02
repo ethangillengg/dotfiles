@@ -34,22 +34,25 @@ in {
     ./systemd-fixes.nix
   ];
 
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "hyprland";
+  };
+
   wayland.windowManager.hyprland = {
-    enable = false;
+    enable = true;
 
     settings = {
       general = {
-        gaps_in = 8;
-        gaps_out = 4;
-        border_size = 2.7;
-        cursor_inactive_timeout = 4;
+        gaps_in = 4;
+        gaps_out = 12;
+        border_size = 2;
         "col.active_border" = "0xff${palette.base0C}";
         "col.inactive_border" = "0xff${palette.base02}";
       };
 
       decoration = {
-        active_opacity = 0.92;
-        inactive_opacity = 0.75;
+        active_opacity = 1;
+        inactive_opacity = 0.9;
         fullscreen_opacity = 1.0;
         rounding = 1;
         blur = {
@@ -100,7 +103,7 @@ in {
 
         "SUPER, Return, exec, ${terminal}"
         "SUPER, Space, exec, ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \""
-        "SUPER, M, exec, ${swaylock} -S --clock" # lock screen
+        "SUPER, M, exec, ${swaylock}" # lock screen
         "SUPER, s, exec, ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png" # Screenshot
         "SUPER, semicolon, exec, ${pass-tofi}" # Password manager
         "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
