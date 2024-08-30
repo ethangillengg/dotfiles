@@ -59,6 +59,11 @@
                       title = "Jellyfin";
                       url = "https://media.mignet.duckdns.org";
                     }
+
+                    {
+                      title = "Sonarr";
+                      url = "https://media.mignet.duckdns.org";
+                    }
                     {
                       title = "Kavita";
                       url = "https://mignet.duckdns.org";
