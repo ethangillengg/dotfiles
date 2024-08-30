@@ -16,8 +16,8 @@
     # Declarative
     environmentFile = config.sops.secrets.wireless.path;
     networks = {
-      "SPSETUP-212C" = {
-        psk = "@SPSETUP212C@";
+      "FBI Recruitment Van" = {
+        psk = "@FBI@";
       };
       "MIGNET" = {
         psk = "@MIGNET@";
