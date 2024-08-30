@@ -50,6 +50,7 @@
     wl-mirror
     imagemagick # convert images on cli
     sqlcmd
+    speedtest-go
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
