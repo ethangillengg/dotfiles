@@ -53,6 +53,8 @@ in {
           "eDP-1"
           "DP-1"
           "DP-2"
+          "DP-3"
+          "DP-4"
           "DP-5"
           "DP-6"
           "HDMI-A-2"
