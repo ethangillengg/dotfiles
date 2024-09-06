@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./services
-    ./gillserver-samba.nix
+    # ./gillserver-samba.nix #TODO: Fix this
 
     ../common
     ../common/optional/desktop-apps.nix
