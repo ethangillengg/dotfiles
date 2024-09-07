@@ -9,7 +9,7 @@
     qbittorrent
 
     pavucontrol
-    termusic
+    feishin
     ffmpeg
     wayvnc
     steam
