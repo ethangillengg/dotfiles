@@ -10,11 +10,10 @@
 
     ../common
     ../common/optional/desktop-apps.nix
-    ../common/optional/greetd.nix
+    # ../common/optional/greetd.nix
     ../common/optional/nixos-direnv.nix
     ../common/optional/docker.nix
     ../common/optional/tailscale-exit-node.nix
-    ../common/optional/desktop-apps.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

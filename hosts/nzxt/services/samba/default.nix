@@ -6,24 +6,24 @@
     securityType = "user";
 
     # This adds to the [global] section:
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = smbnix
-      netbios name = smbnix
-
-      # Disables opportunistic locking if not required
-      kernel oplocks = no
-      locking = no
-
-      # Optimizes I/O operations
-      read raw = Yes
-      write raw = Yes
-      aio read size = 16384
-      aio write size = 16384
-
-      # Improves socket performance
-      socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
-    '';
+    # extraConfig = ''
+    #   workgroup = WORKGROUP
+    #   server string = smbnix
+    #   netbios name = smbnix
+    #
+    #   # Disables opportunistic locking if not required
+    #   kernel oplocks = no
+    #   locking = no
+    #
+    #   # Optimizes I/O operations
+    #   read raw = Yes
+    #   write raw = Yes
+    #   aio read size = 16384
+    #   aio write size = 16384
+    #
+    #   # Improves socket performance
+    #   socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+    # '';
 
     shares = {
       media = {

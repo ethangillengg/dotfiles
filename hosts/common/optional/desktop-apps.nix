@@ -15,7 +15,7 @@
     steam
 
     vesktop # discord client
-    osu-lazer-bin
+    osu-lazer
 
     unoconv # convert .doc, .docx files
 
