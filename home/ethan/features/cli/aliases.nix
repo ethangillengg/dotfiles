@@ -36,7 +36,7 @@ in {
     me = "xh -j ipinfo.io";
     ts = "tailscale";
 
-    lsblk = "lsblk -o NAME,FSUSED,FSSIZE,FSUSE%";
+    lsblk = "lsblk -o NAME,FSUSED,FSSIZE,FSUSE%,MOUNTPOINTS,UUID";
 
     # hmc = "nvim \"+Man home-configuration.nix | only\"";
     hmc = "man home-configuration.nix";
