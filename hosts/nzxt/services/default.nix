@@ -44,14 +44,14 @@
         subdomain = "music";
       };
     }
-    {
-      path = ./kavita;
-      port = 7002;
-      proxy = {
-        enable = true;
-        subdomain = "books";
-      };
-    }
+    # {
+    #   path = ./kavita;
+    #   port = 7002;
+    #   proxy = {
+    #     enable = true;
+    #     subdomain = "books";
+    #   };
+    # }
     {
       path = ./qbittorrent;
       port = 6969;
