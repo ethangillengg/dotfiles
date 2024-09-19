@@ -3,7 +3,6 @@
 
   services.samba = {
     enable = true;
-    securityType = "user";
 
     # This adds to the [global] section:
     # extraConfig = ''
@@ -25,7 +24,8 @@
     #   socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
     # '';
 
-    shares = {
+    settings = {
+      global.security = "user";
       media = {
         path = "/mediaserver/media";
         browseable = "yes";
