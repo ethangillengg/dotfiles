@@ -41,20 +41,60 @@ in {
     nvidiaSettings = true;
   };
 
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.grub = {
+  #   enable = true;
+  #   version = 2;
+  #   device = "nodev";
+  #   efiSupport = true;
+  #   enableCryptodisk = true;
+  # };
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.supportedFilesystems = ["btrfs" "ntfs"];
+
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.kernelParams = ["nvidia-drm.fbdev=1"];
   boot.extraModulePackages = [];
 
+  boot.initrd.luks.devices.enc = {
+    device = "/dev/disk/by-uuid/bff14bf9-4454-431a-a1d2-e1a121364799";
+    allowDiscards = true;
+    preLVM = true;
+  };
+
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/e8638e15-0774-4f3a-ba54-f093f4f74376";
-      fsType = "ext4";
+      device = "/dev/disk/by-uuid/858180cd-fe08-4fbc-ab6d-4918fbedb5d0";
+      fsType = "btrfs";
+      options = ["subvol=root" "compress=zstd" "noatime"];
     };
-    "/boot/efi" = {
-      device = "/dev/disk/by-uuid/E8BD-954B";
+
+    "/home" = {
+      device = "/dev/disk/by-uuid/858180cd-fe08-4fbc-ab6d-4918fbedb5d0";
+      fsType = "btrfs";
+      options = ["subvol=home" "compress=zstd" "noatime"];
+    };
+
+    "/nix" = {
+      device = "/dev/disk/by-uuid/858180cd-fe08-4fbc-ab6d-4918fbedb5d0";
+      fsType = "btrfs";
+      options = ["subvol=nix" "compress=zstd" "noatime"];
+    };
+
+    "/var/log" = {
+      device = "/dev/disk/by-uuid/858180cd-fe08-4fbc-ab6d-4918fbedb5d0";
+      fsType = "btrfs";
+      options = ["subvol=log" "compress=zstd" "noatime"];
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/F524-0603";
       fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
     };
 
     "/mediaserver/media" =
@@ -85,9 +125,18 @@ in {
       device = "/mediaserver/media";
       options = ["bind"];
     };
+
+    # "/" = {
+    #   device = "/dev/disk/by-uuid/c83ed483-6172-4ab8-af7f-783766dc07f9";
+    #   fsType = "btrfs";
+    # };
+    # "/boot/efi" = {
+    #   device = "/dev/disk/by-uuid/E618-9977";
+    #   fsType = "vfat";
+    # };
   };
 
-  swapDevices = [];
+  swapDevices = [{device = "/dev/disk/by-uuid/366afe57-3fb9-4204-8f4a-0f78374a8e1b";}];
   networking.useDHCP = false; # static ip
   networking.enableIPv6 = true; # WGNORD breaks if this is disabled
 
