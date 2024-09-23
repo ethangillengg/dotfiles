@@ -23,6 +23,7 @@ in {
     ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.extraSpecialArgs = {inherit inputs outputs;};
+  programs.dconf.enable = true; # see nixpkgs #3113 (https://github.com/nix-community/home-manager/issues/3113)
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
