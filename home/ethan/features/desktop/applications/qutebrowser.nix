@@ -73,6 +73,7 @@ in {
       };
     };
     settings = {
+      zoom.default = "150%";
       content.javascript.clipboard = "access";
       qt.force_platform = "wayland";
       tabs.show = "multiple";

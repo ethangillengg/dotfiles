@@ -16,7 +16,7 @@ in {
     enable = true;
     settings = {
       main = {
-        font = "${config.fontProfiles.monospace.family}:size=12";
+        font = "${config.fontProfiles.monospace.family}:size=16";
         dpi-aware = "yes";
         pad = "16x16";
       };
