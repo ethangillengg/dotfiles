@@ -63,6 +63,7 @@ in {
   boot.initrd.luks.devices.enc = {
     device = "/dev/disk/by-uuid/bff14bf9-4454-431a-a1d2-e1a121364799";
     allowDiscards = true;
+    bypassWorkqueues = true;
     preLVM = true;
   };
 
