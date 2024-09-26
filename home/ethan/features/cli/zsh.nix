@@ -20,6 +20,7 @@
     shellAliases = {
       # custom file broswer
       fj = "yacd";
+      rm = "'nocorrect rm'";
     };
 
     # Plugin manager
