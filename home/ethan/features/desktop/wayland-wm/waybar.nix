@@ -57,6 +57,7 @@ in {
           "DP-4"
           "DP-5"
           "DP-6"
+          "HDMI-A-1"
           "HDMI-A-2"
         ];
 
