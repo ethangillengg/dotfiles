@@ -91,7 +91,7 @@
     {path = ./servarr/sonarr.nix;}
     {path = ./servarr/radarr.nix;}
     {path = ./servarr/prowlarr.nix;}
-    {path = ./servarr/bazarr.nix;}
+    # {path = ./servarr/bazarr.nix;}
     {path = ./servarr/lidarr.nix;}
   ];
 
