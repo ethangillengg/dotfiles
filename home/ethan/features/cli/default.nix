@@ -51,6 +51,7 @@
     imagemagick # convert images on cli
     sqlcmd
     speedtest-go
+    wgnord-latest
 
     # nil # Nix LSP
     # nixfmt # Nix formatter
