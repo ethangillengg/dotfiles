@@ -38,6 +38,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
   outputs = {
     self,

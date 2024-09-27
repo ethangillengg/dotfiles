@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
@@ -32,12 +33,12 @@ in {
   imports = [
     ./basic-binds.nix
     ./systemd-fixes.nix
+    ./hyprcursor.nix
   ];
 
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "hyprland";
   };
-
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -92,7 +93,20 @@ in {
       input = {
         repeat_rate = 35;
         repeat_delay = 250;
+        sensitivity = 0.0;
+
+        accel_profile = "flat";
       };
+      cursor = {
+        inactive_timeout = 10;
+        allow_dumb_copy = true;
+      };
+      # Enables direct scanout. Direct scanout attempts to reduce lag when there is only one fullscreen application on a screen (e.g. game).
+      # It is also recommended to set this to false if the fullscreen application shows graphical glitches.
+      render = {
+        # direct_scanout = true;
+      };
+
       exec = [
         "${swaybg} -i ${wallpaper} --mode fill"
         # exec-once=wezterm
