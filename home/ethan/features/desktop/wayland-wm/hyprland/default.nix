@@ -93,9 +93,10 @@ in {
       input = {
         repeat_rate = 35;
         repeat_delay = 250;
-        sensitivity = 0.0;
+        sensitivity = -0.38;
 
         accel_profile = "flat";
+        force_no_accel = true;
       };
       cursor = {
         inactive_timeout = 10;
