@@ -14,36 +14,22 @@
     enable = true;
     fallbackToWPA2 = false;
     # Declarative
-    environmentFile = config.sops.secrets.wireless.path;
+    secretsFile = config.sops.secrets.wireless.path;
     networks = {
-      "FBI Recruitment Van" = {
-        psk = "@FBI@";
-      };
-      "MIGNET" = {
-        psk = "@MIGNET@";
-      };
-      "NOKIA-7A02" = {
-        psk = "@NOKIA7A02@";
-      };
-
-      "Ethan-OnePlus" = {
-        psk = "@HOTSPOT@";
-      };
-
-      "bill wi the science fi_5G-2" = {
-        psk = "@bill_wi_science_fi@";
-      };
-      "eduroam" = {
-        auth = ''
-          key_mgmt=WPA-EAP
-          pairwise=CCMP
-          auth_alg=OPEN
-          eap=PEAP
-          phase2="auth=MSCHAPV2"
-          identity="ethan.gill@ucalgary.ca"
-          password="@EDUROAM@"
-        '';
-      };
+      "FBI Recruitment Van".pskRaw = "ext:FBI";
+      "MIGNET".pskRaw = "ext:MIGNET";
+      "NOKIA-7A02".pskRaw = "ext:NOKIA7A02";
+      "Ethan-OnePlus".pskRaw = "ext:HOTSPOT";
+      "bill wi the science fi_5G-2". pskRaw = "ext:bill_wi_science_fi";
+      "eduroam".auth = ''
+        key_mgmt=WPA-EAP
+        pairwise=CCMP
+        auth_alg=OPEN
+        eap=PEAP
+        phase2="auth=MSCHAPV2"
+        identity="ethan.gill@ucalgary.ca"
+        password="ext:EDUROAM"
+      '';
     };
 
     # Imperative
