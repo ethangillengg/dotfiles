@@ -8,7 +8,6 @@
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
   swaybg = "${pkgs.swaybg}/bin/swaybg";
-  cliphist = "${pkgs.cliphist}/bin/cliphist";
   tofi = "${pkgs.tofi}/bin/tofi";
   tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
@@ -122,7 +121,7 @@ in {
         "SUPER, s, exec, ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png" # Screenshot
         "SUPER_SHIFT, s, exec, ${grim} -g \"$(${slurp})\" ~/Pictures/screenshots/$(date +'%s_grim.png')" # Screenshot
         "SUPER, semicolon, exec, ${pass-tofi}" # Password manager
-        "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
+        # "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
       ];
 
       # Repeating
@@ -195,8 +194,6 @@ in {
       exec-once=mako
 
       # Clipboard manager
-      exec-once = wl-paste --type text --watch ${cliphist} store #Stores only text data
-      exec-once = wl-paste --type image --watch ${cliphist} store #Stores only image data
 
     '';
   };
