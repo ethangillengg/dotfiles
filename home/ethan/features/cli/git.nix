@@ -47,7 +47,7 @@
     g = "git";
     gp = "git push";
     gs = "git status";
-    gw = "git switch";
+    gsw = "git switch";
     gss = "git status --short";
     gl = "git log";
     gc = "git commit";
