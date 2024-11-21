@@ -120,6 +120,7 @@ in {
         "SUPER, Space, exec, ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \""
         "SUPER, M, exec, ${swaylock}" # lock screen
         "SUPER, s, exec, ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png" # Screenshot
+        "SUPER_SHIFT, s, exec, ${grim} -g \"$(${slurp})\" ~/Pictures/screenshots/$(date +'%s_grim.png')" # Screenshot
         "SUPER, semicolon, exec, ${pass-tofi}" # Password manager
         "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
       ];
