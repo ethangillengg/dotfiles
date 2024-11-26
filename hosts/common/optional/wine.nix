@@ -1,6 +1,14 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # ...
+    # lutris
+    (lutris.override {
+      extraLibraries = pkgs: [
+        # List library dependencies here
+        vulkan-tools
+        vulkan-loader
+        amdvlk
+      ];
+    })
 
     # support both 32- and 64-bit applications
     wineWowPackages.stable
@@ -9,7 +17,7 @@
     wine
 
     # support 64-bit only
-    (wine.override {wineBuild = "wine64";})
+    # (wine.override {wineBuild = "wine64";})
 
     # wine-staging (version with experimental features)
     wineWowPackages.staging
@@ -23,11 +31,10 @@
     cdemu-client
     cdemu-daemon
 
-    lutris
-
     wine-staging
     vulkan-tools
     vulkan-loader
+    amdvlk
     # libvulkan
     # libvulkan_i686
     # vulkan-loader.i686
