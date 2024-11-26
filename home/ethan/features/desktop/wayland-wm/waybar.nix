@@ -49,17 +49,6 @@ in {
         position = "top";
         height = 40;
         margin = "0";
-        output = [
-          "eDP-1"
-          "DP-1"
-          "DP-2"
-          "DP-3"
-          "DP-4"
-          "DP-5"
-          "DP-6"
-          "HDMI-A-1"
-          "HDMI-A-2"
-        ];
 
         modules-left = [
           "custom/menu"
