@@ -35,9 +35,6 @@ in {
     ./hyprcursor.nix
   ];
 
-  home.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "hyprland";
-  };
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -133,8 +130,10 @@ in {
         ",XF86AudioLowerVolume,exec,${volume-down}"
       ];
     };
+    # monitor=,highres,auto,1
     extraConfig = ''
-      monitor=,highres,auto,1
+      monitor = DP-3, 2560x1440, 0x0, 1
+      monitor = DVI-D-1, 1920x1080, -1920x0, 1
       layerrule = noanim, launcher
       windowrule=opacity 1.0 override 0.9 override,^(.*)(qutebrowser|firefox)(.*)$
 
