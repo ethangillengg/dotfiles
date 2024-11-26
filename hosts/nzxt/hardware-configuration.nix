@@ -5,6 +5,7 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }: let
   mediaserverMountOpts = {
@@ -15,33 +16,45 @@ in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.graphics.enable = true;
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    # Modesetting is required.
-    modesetting.enable = true;
-    powerManagement = {
-      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      enable = true;
-      # Fine-grained power management. Turns off GPU when not in use.
-      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-      finegrained = false;
-    };
 
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+  services.xserver.videoDrivers = ["amdgpu"];
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
 
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
+    extraPackages = with pkgs; [
+      amdvlk
+    ];
+    # For 32 bit applications
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
   };
+  # hardware.nvidia = {
+  #   package = config.boot.kernelPackages.nvidiaPackages.production;
+  #   # Modesetting is required.
+  #   modesetting.enable = true;
+  #   powerManagement = {
+  #     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+  #     enable = true;
+  #     # Fine-grained power management. Turns off GPU when not in use.
+  #     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+  #     finegrained = false;
+  #   };
+  #
+  #   # Use the NVidia open source kernel module (not to be confused with the
+  #   # independent third-party "nouveau" open source driver).
+  #   # Support is limited to the Turing and later architectures. Full list of
+  #   # supported GPUs is at:
+  #   # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
+  #   # Only available from driver 515.43.04+
+  #   # Currently alpha-quality/buggy, so false is currently the recommended setting.
+  #   open = false;
+  #
+  #   # Enable the Nvidia settings menu,
+  #   # accessible via `nvidia-settings`.
+  #   nvidiaSettings = true;
+  # };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
