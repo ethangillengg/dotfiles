@@ -8,6 +8,7 @@
     ../common
     ./wsl-vpnkit.nix
     ../common/optional/docker.nix
+    ../common/optional/vscode-wsl-fix.nix
   ];
 
   wsl = {
