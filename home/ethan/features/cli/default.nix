@@ -38,9 +38,6 @@
     tomb
     porsmo # cli pomodoro, stopwatch and timer
     nerdfix # fix nerd fonts
-    nix-melt # analyze nix flake inputs/outputs
-    kalker # cli calculator
-    ripgrep-all # ripgrep for all files
     ouch # compress/decompress .zip, .tar, .rar with one command
     pandoc # document converter
     dig # dns
@@ -56,7 +53,7 @@
     # nil # Nix LSP
     # nixfmt # Nix formatter
     # nix-inspect # See which pkgs are in your PATH
-    #
+
     # ltex-ls # Spell checking LSP
 
     # tly # Tally counter
