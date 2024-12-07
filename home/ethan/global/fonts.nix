@@ -4,12 +4,12 @@
 
     monospace = {
       family = "JetBrainsMono Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode"];};
+      package = pkgs.nerd-fonts.jetbrains-mono;
     };
 
     regular = {
       family = "JetBrainsMono Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode"];};
+      package = pkgs.nerd-fonts.jetbrains-mono;
     };
 
     fallback = {
@@ -26,5 +26,6 @@
   # Extra fonts
   home.packages = with pkgs; [
     fontpreview # easy font preview
+    nerd-fonts.fira-code
   ];
 }
