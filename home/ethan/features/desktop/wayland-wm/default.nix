@@ -15,6 +15,7 @@
     waypipe
     wf-recorder
     wl-clipboard
+    cliphist
   ];
   xdg.portal = {
     enable = true;

@@ -13,6 +13,7 @@
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
+  cliphist = "${pkgs.cliphist}/bin/cliphist";
 
   swaylock = "${config.programs.swaylock.package}/bin/swaylock";
   terminal = config.home.sessionVariables.TERMINAL;
@@ -118,7 +119,7 @@ in {
         "SUPER, s, exec, ${grim} -g \"$(${slurp})\" - | wl-copy -t image/png" # Screenshot
         "SUPER_SHIFT, s, exec, ${grim} -g \"$(${slurp})\" ~/Pictures/screenshots/$(date +'%s_grim.png')" # Screenshot
         "SUPER, semicolon, exec, ${pass-tofi}" # Password manager
-        # "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
+        "SUPER, Y, exec, ${cliphist} list | ${tofi} --prompt-text \"Clipboard: \" | ${cliphist} decode | wl-copy" # Clipboard history
       ];
 
       # Repeating
@@ -132,7 +133,7 @@ in {
     };
     # monitor=,highres,auto,1
     extraConfig = ''
-      monitor = DP-3, 2560x1440, 0x0, 1
+      monitor = DP-3, 2560x1440@144, 0x0, 1
       monitor = DVI-D-1, 1920x1080, -1920x0, 1
       layerrule = noanim, launcher
       windowrule=opacity 1.0 override 0.9 override,^(.*)(qutebrowser|firefox)(.*)$
@@ -193,6 +194,7 @@ in {
       exec-once=mako
 
       # Clipboard manager
+      exec-once=wl-paste --watch ${cliphist} store
 
     '';
   };
