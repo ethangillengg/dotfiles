@@ -86,6 +86,14 @@
         subdomain = "nix";
       };
     }
+    {
+      path = ./open-webui;
+      port = 9999;
+      proxy = {
+        enable = true;
+        subdomain = "ai";
+      };
+    }
 
     # Servarr stack
     {path = ./servarr/sonarr.nix;}
