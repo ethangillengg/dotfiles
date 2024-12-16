@@ -65,6 +65,9 @@ in {
     package = lib.mkForce pkgs.gnome.gvfs;
   };
 
+  # needed for store VS Code auth token
+  services.gnome.gnome-keyring.enable = true;
+
   security.pam.services.swaylock = {};
 
   security.sudo.wheelNeedsPassword = false;
