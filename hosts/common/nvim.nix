@@ -59,8 +59,8 @@ in {
 
     omnisharp-roslyn
     roslyn-ls
-    dotnet-sdk_8
-    dotnet-runtime_8
-    dotnet-aspnetcore_8
+    dotnet-sdk_9
+    dotnet-runtime_9
+    dotnet-aspnetcore_9
   ];
 }
