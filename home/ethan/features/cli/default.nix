@@ -34,6 +34,9 @@
     sqlcmd
     speedtest-go
     wgnord-latest
+    s-tui # power and other bench not in btop
+    stress # stress test cpu
+    geekbench
 
     # ai
     # nix-inspect # See which pkgs are in your PATH
