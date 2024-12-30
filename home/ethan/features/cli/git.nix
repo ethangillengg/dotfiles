@@ -2,7 +2,7 @@
   programs. git = {
     enable = true;
     userName = "Ethan Gill";
-    userEmail = "ethan.gill@ucalgary.ca";
+    userEmail = "gill.ethan123@gmail.com";
     signing = {
       signByDefault = true;
       key = "4AF98CB0736E4B95DEE74A28BC3D2A808673D24F";
