@@ -36,6 +36,7 @@
     wgnord-latest
     s-tui # power and other bench not in btop
     stress # stress test cpu
+    unoconv # convert .doc, .docx files
     geekbench
 
     # ai

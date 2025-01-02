@@ -25,7 +25,6 @@
         ublock-origin
         sponsorblock
         browserpass
-        ff2mpv
       ];
 
       settings = {

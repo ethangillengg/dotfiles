@@ -1,6 +1,6 @@
 {port, ...}: {
   services.ollama = {
-    enable = true;
+    enable = false;
     listenAddress = "0.0.0.0:${toString port}";
   };
 }

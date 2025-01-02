@@ -15,7 +15,7 @@ in {
 
     ## Nix commands
     hm = "home-manager switch --flake /home/ethan/.dotfiles\\#$USER@$HOST";
-    nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles\\#$HOST --impure";
+    nr = "sudo nixos-rebuild switch --flake /home/ethan/.dotfiles\\#$HOST";
     nrb = "sudo nixos-rebuild boot --flake /home/ethan/.dotfiles\\#$HOST";
 
     # Rebuild on remote
@@ -29,6 +29,7 @@ in {
     # Collect garbage
     ncg = "nix-collect-garbage -d";
     nf = "nix flake";
+    nfu = "nix flake update";
     nsp = "nix-shell -p";
     nrw = "nix run .#watch";
 

@@ -24,31 +24,17 @@
   additions = final: prev: import ../pkgs {pkgs = final;};
 
   modifications = final: prev: {
-    # use this fork since the main is broken
-    # see: (https://github.com/mlvzk/manix/issues/31)
-    manix = prev.manix.overrideAttrs (oldAttrs: {
-      pname = "manix";
-      version = "0.6.3";
-
-      src = final.fetchFromGitHub {
-        owner = "waalge";
-        repo = "manix";
-        rev = "ed023294d9a20786a359306f252ab2a7669fe9a9"; # set the revision to the commit hash or tag you want
-        sha256 = "sha256-0UwLWHMIUT108AB+YgwVldYjQrUNV/7kyWdpeo7UqYo="; # replace this with the correct sha256 hash
-      };
-    });
-
-    # use this package for mupdf backend (faster)
-    zathura = prev.zathura.overrideAttrs (oldAttrs: {
-      pname = "zathura";
-      version = "0.4.1";
-
-      src = final.fetchFromGitHub {
-        owner = "pwmt";
-        repo = "zathura-pdf-mupdf";
-        rev = "0.4.1"; # set the revision to the commit hash or tag you want
-        sha256 = "sha256-JvYDTVSV9h+weSS3XOWl9B2bo3CatrsPzVNVmKpTSK8="; # replace this with the correct sha256 hash
-      };
-    });
+    # see: (https://github.com/NixOS/nixpkgs/issues/361550, https://github.com/NixOS/nixpkgs/issues/363965)
+    # open-webui = prev.open-webui.overrideAttrs (oldAttrs: rec {
+    #   pname = "open-webui";
+    #   version = "0.4.7";
+    #
+    #   src = final.fetchFromGitHub {
+    #     owner = "open-webui";
+    #     repo = "open-webui";
+    #     rev = "v${version}";
+    #     hash = "sha256-LQFedDcECmS142tGH9+/7ic+wKTeMuysK2fjGmvYPYQ=";
+    #   };
+    # });
   };
 }

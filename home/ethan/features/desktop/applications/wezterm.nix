@@ -1,13 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  home = {
-    packages = [pkgs.wezterm];
-  };
+{config, ...}: {
   programs.wezterm = {
-    enable = true;
+    enable = false;
     # color_scheme = "Material Darker (base16)",
     # color_scheme = "Catppuccin Mocha",
     extraConfig = ''

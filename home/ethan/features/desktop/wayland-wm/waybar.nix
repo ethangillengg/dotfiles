@@ -8,16 +8,12 @@
   wpa-gui = "${pkgs.wpa_supplicant_gui}/bin/wpa_gui";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
-  ncmpcpp = "${pkgs.ncmpcpp}/bin/ncmpcpp";
   random-wallpaper = "${pkgs.random-wallpaper}/bin/random-wallpaper";
-  sptlrx = "${pkgs.sptlrx}/bin/sptlrx";
 
   terminal = "${pkgs.wezterm}/bin/wezterm";
   terminal-spawn = cmd: "${terminal} -e $SHELL -i -c ${cmd}";
 
   systemMonitor = terminal-spawn btop;
-  musicPlayer = terminal-spawn ncmpcpp;
-  lyricsViewer = terminal-spawn sptlrx;
 
   # Function to simplify making waybar outputs
   jsonOutput = name: {
@@ -149,8 +145,6 @@ in {
           status-icons = {
             paused = "󰏤";
           };
-          on-click-right = musicPlayer;
-          on-click-middle = lyricsViewer;
         };
 
         cava = {
@@ -236,13 +230,6 @@ in {
             Up: {bandwidthUpBits}
             Down: {bandwidthDownBits}'';
           on-click = wpa-gui;
-        };
-
-        "custom/lyrics" = {
-          exec = "${sptlrx} pipe";
-          on-click = lyricsViewer;
-          max-length = 40;
-          format = "<i>{}</i>";
         };
 
         "custom/wgnord" = {
