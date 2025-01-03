@@ -9,11 +9,13 @@
     # print the diff, removing the file header
     DIFF=$(git diff HEAD --color=always -- "$FILE_PATH" | tail -n +5)
     if [[ $DIFF ]]; then
+        echo $FILE_PATH
         echo "$DIFF"
     else
     # Prints the untracked file all in green
       RESET="\033[0m"
       GREEN="\033[32m"
+      echo $FILE_PATH
       while IFS= read -r line; do
         echo -e "$GREEN$line$RESET"
       done < "$FILE_PATH"
@@ -72,7 +74,7 @@ in {
 
       fzf-gitadd-widget() {
       # TODO: fix for filenames wrapped in quotes
-          local files=$(git -c color.status=always status --short | fzf -m --ansi --preview '${gitDiffAllFiles} {}' | cut -c4- | sed 's/ -> /#/' | awk '{print $1}')
+          local files=$(git -c color.status=always status --short | fzf -m --ansi --preview '${gitDiffAllFiles} {}' --preview-window '65%' | cut -c4- | sed 's/ -> /#/' | awk '{print $1}')
           if [ -n "$files" ]; then
               LBUFFER+=" $(echo $files | tr '\n' ' ')"
               zle reset-prompt
