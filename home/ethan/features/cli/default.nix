@@ -19,6 +19,10 @@
     ./gpg
     ./aichat.nix
   ];
+
+  home.sessionVariables = {
+    DOTNET_ROOT = "/usr/share/dotnet";
+  };
   home.packages = with pkgs; [
     tomb
     porsmo # cli pomodoro, stopwatch and timer
