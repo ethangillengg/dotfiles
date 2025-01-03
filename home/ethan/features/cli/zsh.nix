@@ -1,4 +1,26 @@
-{config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  gitDiffAllFilesPkg = pkgs.writeShellScriptBin "git-diff-all-files" ''
+    #!/usr/bin/env bash
+    FILE_PATH=$(echo "$1" | awk '{$1=""; sub(/^ +/, ""); print}')
+    # print the diff, removing the file header
+    DIFF=$(git diff HEAD --color=always -- "$FILE_PATH" | tail -n +5)
+    if [[ $DIFF ]]; then
+        echo "$DIFF"
+    else
+    # Prints the untracked file all in green
+      RESET="\033[0m"
+      GREEN="\033[32m"
+      while IFS= read -r line; do
+        echo -e "$GREEN$line$RESET"
+      done < "$FILE_PATH"
+    fi
+  '';
+  gitDiffAllFiles = "${gitDiffAllFilesPkg}/bin/git-diff-all-files";
+in {
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -50,7 +72,7 @@
 
       fzf-gitadd-widget() {
       # TODO: fix for filenames wrapped in quotes
-          local files=$(git -c color.status=always status --short | fzf -m --ansi --preview 'git diff --color=always $(echo {} | cut -c4-)' | cut -c4- | sed 's/ -> /#/' | awk '{print $1}')
+          local files=$(git -c color.status=always status --short | fzf -m --ansi --preview '${gitDiffAllFiles} {}' | cut -c4- | sed 's/ -> /#/' | awk '{print $1}')
           if [ -n "$files" ]; then
               LBUFFER+=" $(echo $files | tr '\n' ' ')"
               zle reset-prompt
