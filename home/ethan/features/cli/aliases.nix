@@ -44,5 +44,9 @@ in {
     hmp = "home-manager packages | fzf";
     hlg = "home-manager generations";
     hdg = "home-manager expire-generations \"-1 minute\"";
+
+    # Docker
+    d = "docker";
+    dc = "docker compose";
   };
 }
