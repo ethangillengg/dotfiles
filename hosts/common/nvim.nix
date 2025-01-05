@@ -27,7 +27,6 @@
     templ
     tailwindcss
     tailwindcss-language-server
-    netcoredbg
 
     vue-language-server
     nodePackages_latest.typescript-language-server
@@ -39,5 +38,7 @@
     dotnet-sdk_9
     dotnet-runtime_9
     dotnet-aspnetcore_9
+    netcoredbg
+    csharpier
   ];
 }

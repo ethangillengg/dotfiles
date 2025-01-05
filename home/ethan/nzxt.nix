@@ -14,6 +14,6 @@
   ];
 
   #Favs:
-  colorscheme = inputs.nix-colors.colorschemes.catppuccin-mocha;
+  colorscheme = inputs.nix-colors.colorschemes.gruvbox-material-dark-hard;
   wallpaper = outputs.wallpapers.forest-spring;
 }
