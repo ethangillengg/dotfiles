@@ -10,6 +10,7 @@
     qbittorrent
 
     pavucontrol
+    google-chrome
     steam
 
     vesktop # discord client
