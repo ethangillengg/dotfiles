@@ -1,11 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ./zsh.nix
-    ./fish.nix
-
-    ./mods.nix
-    ./aliases.nix
     ./bash.nix
+    ./aliases.nix
+
     ./zoxide.nix
     ./ytfzf.nix
     ./yt-dlp.nix
@@ -16,8 +14,8 @@
     ./gh.nix
     ./bottom.nix
     ./fzf.nix
+    ./trashy.nix
     ./gpg
-    ./aichat.nix
   ];
 
   home.sessionVariables = {
@@ -43,7 +41,6 @@
     unoconv # convert .doc, .docx files
     geekbench
 
-    # ai
-    # nix-inspect # See which pkgs are in your PATH
+    nix-inspect # See which pkgs are in your PATH
   ];
 }
