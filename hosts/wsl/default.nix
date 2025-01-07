@@ -3,7 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
-{lib, ...}: {
+{
   imports = [
     ../common
     ./wsl-vpnkit.nix
@@ -24,10 +24,6 @@
     ];
   };
   wsl.defaultUser = "ethan";
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
