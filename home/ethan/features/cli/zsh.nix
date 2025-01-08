@@ -55,6 +55,9 @@ in {
     };
 
     initExtra = ''
+      # no autocorrect
+      unsetopt correct
+
       # Change cursor shape for different vi modes.
       function zle-keymap-select () {
           case $KEYMAP in
