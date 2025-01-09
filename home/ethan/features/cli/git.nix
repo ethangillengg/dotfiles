@@ -41,6 +41,7 @@
       log.date = "short";
       format.pretty = "* %C(Yellow)%h %C(reset)%ad (%C(Green)%cr%C(reset)) %C(Cyan)%an %C(reset)(%aE): %C(reset)%s";
       merge.tool = "nvimdiff";
+      core.editor = "nvim";
     };
   };
   home.shellAliases = {
@@ -52,8 +53,8 @@
     gl = "git log";
     gc = "git commit";
     gcm = "git commit -m";
-    gcA = "git commit --amend"; # ammend with new message
-    gca = "git commit --amend -C HEAD"; # use the previous commit message
+    gca = "git commit --amend"; # ammend with new message
+    gcA = "git commit --amend -C HEAD"; # use the previous commit message
     gd = "git diff";
     ga = "git add";
     gr = "git restore . --staged";
