@@ -88,7 +88,7 @@ in {
       bindkey '^e' fzf-gitadd-widget
 
       # editor for edit-command-line
-      export VISUAL="nvim --clean"
+      export VISUAL="nvim"
       bindkey '^e' edit-command-line
       bindkey -M vicmd "^e" edit-command-line
 

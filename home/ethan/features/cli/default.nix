@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./zsh.nix
     ./bash.nix
@@ -19,9 +23,10 @@
   ];
 
   home.sessionVariables = {
-    DOTNET_ROOT = "/usr/share/dotnet";
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet/";
   };
   home.packages = with pkgs; [
+    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     tomb
     porsmo # cli pomodoro, stopwatch and timer
     nerdfix # fix nerd fonts

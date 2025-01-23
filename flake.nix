@@ -28,6 +28,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
   outputs = {
     self,
@@ -72,15 +73,15 @@
     wallpapers = import ./home/ethan/wallpapers;
 
     nixosConfigurations = {
-      thinkpad = mkNixos [./hosts/thinkpad];
+      thinkpad = mkNixos [./hosts/thinkpad]; # Laptop
       nzxt = mkNixos [./hosts/nzxt]; # Server
-      wsl = mkNixos [./hosts/wsl];
+      wsl = mkNixos [./hosts/wsl]; # Work
     };
 
     homeConfigurations = {
       "ethan@thinkpad" = mkHome [./home/ethan/thinkpad.nix] nixpkgs.legacyPackages."x86_64-linux"; # Laptop
       "ethan@nzxt" = mkHome [./home/ethan/nzxt.nix] nixpkgs.legacyPackages."x86_64-linux"; # Server
-      "ethan@wsl" = mkHome [./home/ethan/wsl.nix] nixpkgs.legacyPackages."x86_64-linux";
+      "ethan@wsl" = mkHome [./home/ethan/wsl.nix] nixpkgs.legacyPackages."x86_64-linux"; # Work
     };
   };
 }
