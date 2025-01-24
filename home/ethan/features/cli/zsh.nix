@@ -79,7 +79,7 @@ in {
       # TODO: fix for filenames wrapped in quotes
           local files=$(git -c color.status=always status --short | fzf -m --ansi --preview '${gitDiffAllFiles} {}' --preview-window '65%' | cut -c4- | sed 's/ -> /#/' | awk '{print $1}')
           if [ -n "$files" ]; then
-              LBUFFER+=" $(echo $files | tr '\n' ' ')"
+              LBUFFER+=" $(echo $files | tr '\n' ' ' | sed 's/\S\+/"&"/g')"
               zle reset-prompt
           fi
       }
