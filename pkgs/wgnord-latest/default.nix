@@ -5,6 +5,7 @@
   fetchFromGitHub,
   gnugrep,
   gnused,
+  gawk,
   iproute2,
   jq,
   lib,
@@ -14,13 +15,13 @@
 }:
 resholve.mkDerivation rec {
   pname = "wgnord";
-  version = "0.2.0";
+  version = "0.2.2";
 
   src = fetchFromGitHub {
     owner = "phirecc";
     repo = pname;
-    rev = "0.2.0";
-    hash = "sha256-00513jr3Sk8YahqI14pQ7pU4P7MBUlsqXXfrACu35RQ=";
+    rev = "0.2.2";
+    hash = "sha256-K7O3SI24bkaLuEF+7FmbXUx7H0gPKsLttEmSCc3PT2c=";
   };
 
   postPatch = ''
@@ -47,12 +48,16 @@ resholve.mkDerivation rec {
       curl
       gnugrep
       gnused
+      gawk
       iproute2
       jq
       wireguard-tools
       openresolv
     ];
-    fix.aliases = true; # curl command in an alias
+    fake = {
+      alias = ["query"];
+    };
+
     execer = [
       "cannot:${iproute2}/bin/ip"
       "cannot:${wireguard-tools}/bin/wg-quick"
