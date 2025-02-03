@@ -61,8 +61,8 @@ in {
           "tray"
           "pulseaudio"
           "backlight"
-          "battery"
-          "battery#BAT1"
+          # "battery"
+          # "battery#BAT1"
           "cpu"
           "network"
         ];

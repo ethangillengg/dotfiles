@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <title>Server Home</title>
     <style>
+      :root {
+        --text-color: #ebdbb2;
+        --bg-color: #1d2021;
+        --alt-color: #d3869b;
+        --alt2-color: #d3869b;
+      }
+
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        /* color: #cdd6f4; */
-        color: #f9ecee;
+
+        background-color: var(--bg-color);
+        color: var(--text-color);
       }
 
       .container {
@@ -17,52 +25,101 @@
         flex-direction: column;
         align-items: center;
         height: 100vh;
-        background-color: #1e1e2e;
-        max-width: 1000px;
+        max-width: 1200px;
+        min-width: 300px;
         margin: 0 auto;
       }
 
-      .title {
-        font-size: 48px;
-        margin: 20px;
+      h1 {
+        font-size: 3rem;
+        margin: 0;
+        margin-top: 20px;
         text-align: center;
       }
 
-      .subtitle {
-        font-size: 28px;
+      h2 {
+        font-size: 2rem;
+        margin: 0;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      p {
+        font-size: 1.5rem;
         margin: 10px;
         text-align: center;
-        margin-bottom: 40px;
       }
 
       .link {
-        font-size: 32px;
+        font-size: 1.8rem;
         width: 350px;
-        margin: 20px;
+        margin: 10px;
         padding: 10px;
         border-radius: 10px;
-        background-color: #e34c8a;
-        color: #f9ecee;
+        border: solid 1px var(--alt-color);
+        color: var(--alt-color);
         text-align: center;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        transition: all 0.2s ease;
       }
 
       .link:hover {
-        background-color: #f9ecee;
-        color: #2c213b;
+        color: var(--text-color);
+        border: solid 1px var(--text-color);
+      }
+
+      .alt2 {
+        color: var(--alt2-color);
+      }
+
+      .services {
+        margin-top: 20px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        place-content: center;
+      }
+      .group {
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1 class="title">Media Server</h1>
+      <h1 class="title">NZXT Server</h1>
       <p class="subtitle">
-        Welcome to our media server, where buffering is banned and smooth
-        streaming is our only mission. Sit back, relax, and enjoy the show!
+        Welcome to our server, where buffering is banned and smooth streaming is
+        our only mission. Sit back, relax, and enjoy the show!
       </p>
-      <a href="https://media.mignet.duckdns.org" class="link">Jellyfin</a>
-      <a href="https://books.mignet.duckdns.org" class="link">Kavita</a>
+      <div class="services">
+        <div class="group">
+          <h2>Services</h2>
+          <a href="https://media.mignet.duckdns.org" class="link"
+            >Jellyfin (TV)</a
+          >
+          <a href="https://ai.mignet.duckdns.org" class="link"
+            >Open WebUI (AI)</a
+          >
+
+          <a href="https://ai.mignet.duckdns.org" class="link"
+            >Navidrome (Music)</a
+          >
+        </div>
+
+        <div class="group">
+          <h2>Managers</h2>
+          <a href="http://192.168.68.255:8989" class="link">Sonarr (TV)</a>
+          <a href="http://192.168.68.255:7878" class="link">Radarr (Movies)</a>
+          <a href="http://192.168.68.255:8686" class="link">Lidarr (Music)</a>
+        </div>
+
+        <div class="group">
+          <h2>Downloaders</h2>
+          <a href="http://192.168.68.255:6969" class="link">qbittorrent</a>
+          <a href="http://192.168.68.255:6789" class="link">NZBGet</a>
+        </div>
+      </div>
     </div>
   </body>
 </html>

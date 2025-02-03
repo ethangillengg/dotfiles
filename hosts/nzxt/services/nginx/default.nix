@@ -27,7 +27,7 @@ in {
           forceSSL = true; # redirect http to https
           root = indexDir;
           locations = {
-            "index" = {
+            "/" = {
               root = indexDir;
               index = "index.html";
               tryFiles = "$uri $uri/ =404";

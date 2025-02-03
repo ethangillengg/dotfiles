@@ -8,6 +8,7 @@
     cava
     font-manager
     qbittorrent
+    easyeffects
 
     pavucontrol
     google-chrome

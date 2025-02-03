@@ -105,7 +105,6 @@ in {
       };
       cursor = {
         inactive_timeout = 10;
-        allow_dumb_copy = true;
       };
       # Enables direct scanout. Direct scanout attempts to reduce lag when there is only one fullscreen application on a screen (e.g. game).
       # It is also recommended to set this to false if the fullscreen application shows graphical glitches.
