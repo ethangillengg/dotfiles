@@ -27,6 +27,7 @@ in {
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
       FLAKE = "$HOME/.dotfiles/";
+      EDITOR = "${pkgs.neovim}/bin/nvim";
     };
   };
 
