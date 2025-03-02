@@ -45,6 +45,8 @@
     stress # stress test cpu
     unoconv # convert .doc, .docx files
     geekbench
+    neo-cowsay
+    fortune
 
     nix-inspect # See which pkgs are in your PATH
   ];

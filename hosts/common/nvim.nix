@@ -40,5 +40,6 @@
     dotnet-aspnetcore_9
     netcoredbg
     csharpier
+    rzls
   ];
 }
