@@ -9,5 +9,6 @@
     ./obs-studio.nix
     ./sioyek.nix
     ./foot.nix
+    ./anki.nix
   ];
 }
