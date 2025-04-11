@@ -1,5 +1,5 @@
 {
-  programs. git = {
+  programs.git = {
     enable = true;
     userName = "Ethan Gill";
     userEmail = "gill.ethan123@gmail.com";
@@ -42,6 +42,21 @@
       format.pretty = "* %C(Yellow)%h %C(reset)%ad (%C(Green)%cr%C(reset)) %C(Cyan)%an %C(reset)(%aE): %C(reset)%s";
       merge.tool = "nvimdiff";
       core.editor = "nvim";
+    };
+
+    delta = {
+      enable = true;
+
+      options = {
+        line-numbers = true;
+        decorations = {
+          commit-decoration-style = "bold yellow box ul";
+          file-decoration-style = "none";
+          file-style = "bold yellow ul";
+        };
+        features = "decorations";
+        # whitespace-error-style = "22 reverse";
+      };
     };
   };
   home.shellAliases = {
