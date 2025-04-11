@@ -57,6 +57,8 @@ in {
     initExtra = ''
       # no autocorrect
       unsetopt correct
+      export KEYTIMEOUT=10
+      bindkey -M viins 'jk' vi-cmd-mode
 
       # Change cursor shape for different vi modes.
       function zle-keymap-select () {
