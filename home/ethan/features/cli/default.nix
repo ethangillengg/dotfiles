@@ -47,6 +47,7 @@
     geekbench
     neo-cowsay
     fortune
+    aider-chat
 
     nix-inspect # See which pkgs are in your PATH
   ];
