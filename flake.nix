@@ -82,6 +82,7 @@
       "ethan@thinkpad" = mkHome [./home/ethan/thinkpad.nix] nixpkgs.legacyPackages."x86_64-linux"; # Laptop
       "ethan@nzxt" = mkHome [./home/ethan/nzxt.nix] nixpkgs.legacyPackages."x86_64-linux"; # Server
       "ethan@wsl" = mkHome [./home/ethan/wsl.nix] nixpkgs.legacyPackages."x86_64-linux"; # Work
+      "ethan@AL-5CD423772T" = mkHome [./home/ethan/wsl.nix] nixpkgs.legacyPackages."x86_64-linux"; # Work
     };
   };
 }
