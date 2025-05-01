@@ -11,6 +11,7 @@
     ../common/optional/tailscale-exit-node.nix
     ../common/optional/wine.nix
     ../common/optional/qemu.nix
+    ../common/optional/qmk.nix
   ];
 
   networking = {

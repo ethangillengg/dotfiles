@@ -14,7 +14,7 @@
   services.prometheus.exporters.exportarr-bazarr = {
     enable = true;
     apiKeyFile = config.sops.secrets.bazarr-api-key.path;
-    url = "http://localhost:7878";
+    url = "http://localhost:6767";
     port = 6768;
   };
 }

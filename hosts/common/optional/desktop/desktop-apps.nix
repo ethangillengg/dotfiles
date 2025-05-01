@@ -9,6 +9,7 @@
     font-manager
     qbittorrent
     easyeffects
+    vial
 
     pavucontrol
     google-chrome
