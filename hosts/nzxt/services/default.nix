@@ -44,6 +44,14 @@
         subdomain = "music";
       };
     }
+    {
+      path = ./mealie;
+      port = 9997;
+      proxy = {
+        enable = true;
+        subdomain = "food";
+      };
+    }
     # {
     #   path = ./kavita;
     #   port = 7002;
