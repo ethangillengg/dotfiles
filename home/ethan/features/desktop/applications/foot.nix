@@ -33,7 +33,7 @@ in {
 
       colors = {
         foreground = palette.base05;
-        background = palette.base00;
+        background = "181a1c";
         regular0 = palette.base00;
         regular1 = palette.base08;
         regular2 = palette.base0B;

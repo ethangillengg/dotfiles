@@ -8,6 +8,7 @@
     ./bash.nix
     ./aliases.nix
 
+    ./zellij
     ./zoxide.nix
     ./ytfzf.nix
     ./yt-dlp.nix
