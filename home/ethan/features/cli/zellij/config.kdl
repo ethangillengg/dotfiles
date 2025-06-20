@@ -1,12 +1,13 @@
 // pane_frames false
-mouse_mode false
 theme "gruvbox-dark"
 default_mode "locked"
+show_startup_tips false
+simplified_ui true
 
 keybinds {
 				unbind "Ctrl g"
 				normal {
-								bind "Alt g" { SwitchToMode "Locked"; }
+				        bind "Ctrl f" { SwitchToMode "locked"; }
 								bind "Alt w" { CloseFocus; }
 								bind "Alt 1" { GoToTab 1; }
 								bind "Alt 2" { GoToTab 2; }
@@ -17,9 +18,13 @@ keybinds {
 								bind "Alt 7" { GoToTab 7; }
 								bind "Alt 8" { GoToTab 8; }
 								bind "Alt 9" { GoToTab 9; }
+								bind "h" { MoveFocusOrTab "Left"; }
+								bind "l" { MoveFocusOrTab "Right"; }
+								bind "k" { MoveFocus "Up"; }
+								bind "j" { MoveFocus "Down"; }
 				}
 				locked {
-				        bind "Alt g" { SwitchToMode "Normal"; }
+				        bind "Ctrl f" { SwitchToMode "normal"; }
 								bind "Alt w" { CloseFocus; }
 								bind "Alt n" { NewPane; }
 								// bind "Alt h" { MoveFocusOrTab "Left"; }
