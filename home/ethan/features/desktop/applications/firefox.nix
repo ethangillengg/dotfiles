@@ -16,7 +16,7 @@
     profiles. "${config.home.username}" = {
       isDefault = true;
 
-      extensions = with pkgs.inputs.firefox-addons; [
+      extensions.packages = with pkgs.inputs.firefox-addons; [
         # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # privacy-badger
         tridactyl

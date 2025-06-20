@@ -19,7 +19,7 @@
     marksman
     yamlfmt
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
-    nodejs_18
+    nodePackages_latest.nodejs
     bun
     # GO
     gopls

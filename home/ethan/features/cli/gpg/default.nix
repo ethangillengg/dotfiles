@@ -10,6 +10,6 @@ in {
     enable = true;
     defaultCacheTtl = minsToSecs 30;
     enableExtraSocket = true;
-    inherit pinentryPackage;
+    pinentry.package = pinentryPackage;
   };
 }

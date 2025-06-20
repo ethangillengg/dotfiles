@@ -54,7 +54,7 @@ in {
       prompt.theme = "pure";
     };
 
-    initExtra = ''
+    initContent = ''
       # no autocorrect
       unsetopt correct
       export KEYTIMEOUT=10

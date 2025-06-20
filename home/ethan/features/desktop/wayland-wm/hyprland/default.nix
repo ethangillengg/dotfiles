@@ -143,7 +143,6 @@ in {
       monitor = DP-3, 2560x1440@144, 0x0, 1
       monitor = DVI-D-1, 1920x1080, -1920x0, 1
       layerrule = noanim, launcher
-      windowrule=opacity 1.0 override 0.9 override,^(.*)(qutebrowser|firefox)(.*)$
 
       bind = SUPER, left, movefocus, l
       bind = SUPER, H, movefocus, l

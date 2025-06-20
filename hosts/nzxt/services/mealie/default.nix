@@ -7,6 +7,7 @@
 
   services = {
     mealie = {
+      enable = true;
       inherit port;
       credentialsFile = config.sops.secrets.mealie-env.path;
     };
