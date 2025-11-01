@@ -25,13 +25,13 @@ in {
       };
       cursor = {
         blink = "no";
-        color = "${palette.base00} ${palette.base07}";
       };
       scrollback = {
         lines = 100000;
       };
 
       colors = {
+        cursor = "${palette.base00} ${palette.base07}";
         foreground = palette.base05;
         background = "181a1c";
         regular0 = palette.base00;
