@@ -1,8 +1,8 @@
 {
   imports = [
-    ./thunderbird.nix
-    ./mail.nix
-    ./aerc.nix
+    # ./thunderbird.nix
+    # ./mail.nix
+    # ./aerc.nix
     ./sync-notes.nix
     # ./neomutt.nix
 

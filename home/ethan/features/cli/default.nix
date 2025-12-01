@@ -23,7 +23,6 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     tomb
     porsmo # cli pomodoro, stopwatch and timer
     nerdfix # fix nerd fonts
