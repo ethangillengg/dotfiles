@@ -3,11 +3,10 @@ theme "gruvbox-dark"
 default_mode "locked"
 show_startup_tips false
 simplified_ui true
+default_shell "zsh"
 
 keybinds {
-				unbind "Ctrl g"
 				normal {
-				        bind "Ctrl f" { SwitchToMode "locked"; }
 								bind "Alt w" { CloseFocus; }
 								bind "Alt 1" { GoToTab 1; }
 								bind "Alt 2" { GoToTab 2; }
@@ -18,19 +17,24 @@ keybinds {
 								bind "Alt 7" { GoToTab 7; }
 								bind "Alt 8" { GoToTab 8; }
 								bind "Alt 9" { GoToTab 9; }
+
+								bind "Ctrl 1" { GoToTab 1; }
+								bind "Ctrl 2" { GoToTab 2; }
+
 								bind "h" { MoveFocusOrTab "Left"; }
 								bind "l" { MoveFocusOrTab "Right"; }
 								bind "k" { MoveFocus "Up"; }
 								bind "j" { MoveFocus "Down"; }
 				}
 				locked {
-				        bind "Ctrl f" { SwitchToMode "normal"; }
-								bind "Alt w" { CloseFocus; }
 								bind "Alt n" { NewPane; }
 								// bind "Alt h" { MoveFocusOrTab "Left"; }
 								// bind "Alt l" { MoveFocusOrTab "Right"; }
 								// bind "Alt k" { MoveFocus "Up"; }
 								// bind "Alt j" { MoveFocus "Down"; }
+
+								bind "Ctrl 1" { GoToTab 1; }
+								bind "Ctrl 2" { GoToTab 2; }
 
 								bind "Alt 1" { GoToTab 1; }
 								bind "Alt 2" { GoToTab 2; }
