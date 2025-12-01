@@ -8,7 +8,6 @@
     ./bash.nix
     ./aliases.nix
 
-    ./zellij
     ./zoxide.nix
     ./ytfzf.nix
     ./yt-dlp.nix
@@ -23,9 +22,6 @@
     ./gpg
   ];
 
-  home.sessionVariables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet/";
-  };
   home.packages = with pkgs; [
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     tomb
