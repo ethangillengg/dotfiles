@@ -86,7 +86,7 @@ in {
           fi
       }
       zle     -N   fzf-gitadd-widget
-      bindkey '^g' fzf-gitadd-widget
+      bindkey '^f' fzf-gitadd-widget
       bindkey '^e' fzf-gitadd-widget
 
       # editor for edit-command-line
