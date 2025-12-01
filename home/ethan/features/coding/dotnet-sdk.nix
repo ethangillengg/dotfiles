@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   dotnet-combined = (with pkgs.dotnetCorePackages;
     combinePackages [
-      sdk_9_0_1xx-bin
+      sdk_9_0_3xx-bin
       sdk_10_0-bin
     ]).overrideAttrs (finalAttrs: previousAttrs: {
     # This is needed to install workload in $HOME
