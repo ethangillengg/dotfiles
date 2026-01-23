@@ -142,7 +142,7 @@ in {
     extraConfig = ''
       monitor = DP-3, 2560x1440@144, 0x0, 1
       monitor = DVI-D-1, 1920x1080, -1920x0, 1
-      layerrule = noanim, launcher
+      layerrule = no_anim on, match:namespace launcher
 
       bind = SUPER, left, movefocus, l
       bind = SUPER, H, movefocus, l
