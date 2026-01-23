@@ -8,5 +8,4 @@
       thunar-media-tags-plugin
     ];
   };
-  programs.file-roller.enable = true;
 }

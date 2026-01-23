@@ -2,7 +2,7 @@
   # Dependencies
   pandoc = "${pkgs.pandoc}/bin/pandoc";
   bat = "${pkgs.bat}/bin/bat";
-  pdftotext = "${pkgs.poppler_utils}/bin/pdftotext";
+  pdftotext = "${pkgs.poppler-utils}/bin/pdftotext";
 in {
   programs.aerc = {
     enable = true;

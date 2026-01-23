@@ -6,7 +6,6 @@
         # List library dependencies here
         vulkan-tools
         vulkan-loader
-        amdvlk
       ];
     })
 
@@ -34,7 +33,6 @@
     wine-staging
     vulkan-tools
     vulkan-loader
-    amdvlk
     # libvulkan
     # libvulkan_i686
     # vulkan-loader.i686
