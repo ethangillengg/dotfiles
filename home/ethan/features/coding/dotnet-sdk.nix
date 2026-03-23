@@ -21,7 +21,8 @@
   });
 in {
   home.sessionVariables = {
-    DOTNET_ROOT = "${dotnet-combined}";
+    DOTNET_ROOT = "${dotnet-combined}/share/dotnet";
+    DOTNET_PATH = "${dotnet-combined}/bin/dotnet";
   };
   home.packages = [
     dotnet-combined
