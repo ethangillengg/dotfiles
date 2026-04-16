@@ -6,6 +6,8 @@
   home.packages = with pkgs; [
     inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
     tree-sitter
+    inotify-tools # better filewatching
+    watchman
 
     # Nix
     nil

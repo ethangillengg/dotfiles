@@ -25,6 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
@@ -34,6 +39,7 @@
     self,
     nixpkgs,
     home-manager,
+    stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -49,6 +55,7 @@
           modules
           ++ [
             inputs.nixos-wsl.nixosModules.default
+            stylix.nixosModules.stylix
           ];
         specialArgs = {inherit inputs outputs;};
       };

@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     neovim
+    inotify-tools # better filewatching
     tree-sitter
 
     # Nix

@@ -44,6 +44,7 @@
     neo-cowsay
     fortune
     aider-chat
+    inotify-info
 
     nix-inspect # See which pkgs are in your PATH
   ];
