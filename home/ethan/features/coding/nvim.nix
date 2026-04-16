@@ -46,5 +46,10 @@
     # netcoredbg
     # csharpier
     # rzls
+
+    # python
+    ruff
+    basedpyright
+    python315
   ];
 }
