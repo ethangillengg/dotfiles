@@ -13,7 +13,6 @@
 
     pavucontrol
     google-chrome
-    steam
 
     vesktop # discord client
     osu-lazer-bin

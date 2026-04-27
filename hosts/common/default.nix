@@ -53,7 +53,8 @@ in {
     zip
     rar
     pciutils
-    btop
+    btop-cuda
+    python314Packages.nvidia-ml-py # GPU in btop
     ripgrep
     fd
 

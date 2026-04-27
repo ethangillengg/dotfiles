@@ -11,7 +11,7 @@
       mpvScripts.uosc # Feature-rich minimalist proximity-based UI for MPV player
       mpvScripts.mpris # Mpris support for mpv
       mpvScripts.autoload # Automatically load playlist entries before and after the currently played file
-      mpvScripts.mpv-cheatsheet # mpv script for looking up keyboard shortcuts
+      mpvScripts.mpv-cheatsheet-ng # mpv script for looking up keyboard shortcuts
     ];
 
     scriptOpts = {
@@ -34,7 +34,7 @@
       ## Performance Fixes
       # See: https://wiki.archlinux.org/title/Mpv
       gpu-context = "wayland";
-      vo = "gpu";
+      vo = "gpu-next";
       # resample audio on desync (dropped frames)
       video-sync = "display-resample";
       # makes motion appear smoother

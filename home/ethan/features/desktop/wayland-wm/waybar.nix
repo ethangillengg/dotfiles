@@ -7,7 +7,7 @@
   jq = "${pkgs.jq}/bin/jq";
   wpa-gui = "${pkgs.wpa_supplicant_gui}/bin/wpa_gui";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  btop = "${pkgs.btop}/bin/btop";
+  btop = "${pkgs.btop-cuda}/bin/btop";
   random-wallpaper = "${pkgs.random-wallpaper}/bin/random-wallpaper";
 
   terminal = "${pkgs.wezterm}/bin/wezterm";

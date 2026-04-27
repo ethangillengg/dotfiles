@@ -10,6 +10,7 @@
     ../common/optional/docker.nix
     ../common/optional/tailscale-exit-node.nix
     ../common/optional/wine.nix
+    ../common/optional/steam.nix
     ../common/optional/qemu.nix
     ../common/optional/qmk.nix
   ];

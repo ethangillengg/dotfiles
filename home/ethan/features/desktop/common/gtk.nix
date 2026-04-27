@@ -12,9 +12,14 @@ in rec {
       name = config.fontProfiles.regular.family;
       size = 12;
     };
+    # theme = {
+    #
+    # };
     theme = {
-      name = "${config.colorscheme.slug}";
-      package = gtkThemeFromScheme {scheme = config.colorscheme;};
+      # name = "${config.colorscheme.slug}";
+      # package = gtkThemeFromScheme {scheme = config.colorscheme;};
+      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
+      package = pkgs.catppuccin-gtk;
     };
     iconTheme = {
       name = "Papirus";
