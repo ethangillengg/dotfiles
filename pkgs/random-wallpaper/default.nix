@@ -1,11 +1,11 @@
 {
   lib,
   writeShellApplication,
-  swww,
+  awww,
 }:
 (writeShellApplication {
   name = "random-wallpaper";
-  runtimeInputs = [swww];
+  runtimeInputs = [awww];
   text = builtins.readFile ./random-wallpaper.sh;
 })
 // {

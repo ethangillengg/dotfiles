@@ -25,6 +25,10 @@
 
   modifications = final: prev: {
     # see: (https://github.com/NixOS/nixpkgs/issues/361550, https://github.com/NixOS/nixpkgs/issues/363965)
+
+    openldap = prev.openldap.overrideAttrs (_: {
+      doCheck = false;
+    });
     # open-webui = prev.open-webui.overrideAttrs (oldAttrs: rec {
     #   pname = "open-webui";
     #   version = "0.4.7";

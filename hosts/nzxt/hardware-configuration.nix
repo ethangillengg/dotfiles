@@ -26,7 +26,7 @@ in {
     enable32Bit = true;
   };
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     # Modesetting is required.
     modesetting.enable = true;
     powerManagement = {
@@ -67,7 +67,7 @@ in {
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.extraModulePackages = [
-    pkgs.linuxKernel.packages.linux_6_12.hid-tmff2
+    pkgs.linuxKernel.packages.linux_6_18.hid-tmff2
   ];
   boot.kernelModules = ["kvm-intel" "hid-tmff2"];
   boot.blacklistedKernelModules = ["hid-thrustmaster"];
@@ -194,6 +194,7 @@ in {
     "/export/media" = {
       device = "/mediaserver/media";
       options = ["bind"];
+      fsType = "cifs";
     };
 
     # "/" = {

@@ -1,5 +1,5 @@
-{config, ...}: {
-  services.prowlarr = {
+{...}: {
+  services.seerr = {
     enable = true;
     openFirewall = true;
   };

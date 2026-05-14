@@ -15,6 +15,7 @@ in {
   programs.foot = {
     enable = true;
     settings = {
+      csd.preferred = "none";
       main = {
         font = "${config.fontProfiles.monospace.family}:size=16";
         dpi-aware = "yes";
@@ -30,7 +31,7 @@ in {
         lines = 100000;
       };
 
-      colors = {
+      colors-dark = {
         cursor = "${palette.base00} ${palette.base07}";
         foreground = palette.base05;
         background = "181a1c";

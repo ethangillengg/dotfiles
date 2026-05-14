@@ -20,7 +20,7 @@
     # Misc.
     vscode-langservers-extracted
     prettierd
-    nodePackages_latest.bash-language-server
+    bash-language-server
     shfmt
     marksman
     yamlfmt

@@ -9,7 +9,7 @@
   tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
   pass-tofi = "${pkgs.pass-tofi}/bin/pass-tofi";
   terminal = config.home.sessionVariables.TERMINAL;
-  swww = "${pkgs.swww}/bin/swww";
+  awww = "${pkgs.awww}/bin/awww";
   thunderbird = "${pkgs.thunderbird}/bin/thunderbird";
   wallpaper = config.wallpaper;
   poweralertd = "${pkgs.poweralertd}/bin/poweralertd";
@@ -31,7 +31,7 @@ in {
 
   # expose these to the user
   home.packages = [
-    pkgs.swww
+    pkgs.awww
   ];
 
   wayland.windowManager.sway = {
@@ -231,7 +231,7 @@ in {
       menu = "exec ${tofi-drun} --drun-launch=true --prompt-text \"Launch: \"";
 
       startup = [
-        {command = "${swww} init";}
+        {command = "${awww} init";}
         {command = poweralertd;}
         {command = "${thunderbird};";}
       ];

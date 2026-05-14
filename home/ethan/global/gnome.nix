@@ -1,5 +1,23 @@
 {pkgs, ...}: {
   dconf.settings = {
+    "org/gnome/shell" = {
+      enabled-extensions = with pkgs; [
+        # Put UUIDs of extensions that you want to enable here.
+        # If the extension you want to enable is packaged in nixpkgs,
+        # you can easily get its UUID by accessing its extensionUuid
+        # field (look at the following example).
+        # pkgs.gnomeExtensions.gsconnect.extensionUuid
+
+        gnomeExtensions.blur-my-shell.extensionUuid
+        gnomeExtensions.just-perfection.extensionUuid
+        gnomeExtensions.arc-menu.extensionUuid
+        gnomeExtensions.forge.extensionUuid
+        gnomeExtensions.vicinae.extensionUuid
+        gnomeExtensions.user-themes.extensionUuid
+
+        # ...
+      ];
+    };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
@@ -34,12 +52,27 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+      ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "wezterm";
+      command = "foot";
       name = "start terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>space";
+      command = "vicinae open";
+      name = "Vicinae";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = "<Super>y";
+      command = "vicinae deeplink vicinae://launch/clipboard/history";
+      name = "Vicinae Clipboard History";
     };
   };
 }

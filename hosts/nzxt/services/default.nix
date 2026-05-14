@@ -21,14 +21,6 @@
   # Service Configurations
   mediaServiceConfigs = [
     {
-      path = ./monitoring/grafana.nix;
-      port = 9876;
-      proxy = {
-        enable = true;
-        subdomain = "grafana";
-      };
-    }
-    {
       path = ./jellyfin;
       port = 8096;
       proxy = {
@@ -109,6 +101,7 @@
     {path = ./servarr/prowlarr.nix;}
     {path = ./servarr/bazarr.nix;}
     {path = ./servarr/lidarr.nix;}
+    {path = ./servarr/seerr.nix;}
   ];
 
   nginx = import ./nginx {

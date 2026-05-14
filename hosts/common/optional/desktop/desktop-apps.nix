@@ -22,5 +22,6 @@
 
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     rose-pine-cursor
+    recyclarr
   ];
 }

@@ -15,12 +15,12 @@
     # Misc.
     vscode-langservers-extracted
     prettierd
-    nodePackages_latest.bash-language-server
+    bash-language-server
     shfmt
     marksman
     yamlfmt
     # for copilot (https://github.com/zbirenbaum/copilot.lua)
-    nodePackages_latest.nodejs
+    nodejs
     bun
     # GO
     gopls
@@ -30,7 +30,7 @@
     tailwindcss-language-server
 
     vue-language-server
-    nodePackages_latest.typescript-language-server
+    typescript-language-server
     xmlformat
     lemminx
     biome
