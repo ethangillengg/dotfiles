@@ -1,12 +1,15 @@
 {config, ...}: {
   programs.wezterm = {
-    enable = false;
+    enable = true;
     # color_scheme = "Material Darker (base16)",
     # color_scheme = "Catppuccin Mocha",
     extraConfig = ''
       return {
         font_size = 16.0,
         color_scheme = "Gruvbox dark, medium (base16)",
+        colors = {
+          background = '#181a1c',
+        },
         font = wezterm.font_with_fallback {
           "${config.fontProfiles.monospace.family}",
           "${config.fontProfiles.fallback.family}",
@@ -17,6 +20,7 @@
         audible_bell = "Disabled",
         front_end = "OpenGL",
         window_close_confirmation = "NeverPrompt",
+        window_decorations = "NONE",
         cursor_blink_rate = 0
       }
     '';

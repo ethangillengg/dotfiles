@@ -101,7 +101,14 @@
     {path = ./servarr/prowlarr.nix;}
     {path = ./servarr/bazarr.nix;}
     {path = ./servarr/lidarr.nix;}
-    {path = ./servarr/seerr.nix;}
+    {
+      path = ./servarr/seerr.nix;
+      port = 5055;
+      proxy = {
+        enable = true;
+        subdomain = "get";
+      };
+    }
   ];
 
   nginx = import ./nginx {
