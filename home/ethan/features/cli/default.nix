@@ -39,12 +39,13 @@
     wgnord-latest
     s-tui # power and other bench not in btop
     stress # stress test cpu
-    unoconv # convert .doc, .docx files
+    # unoconv # convert .doc, .docx files
     geekbench
     neo-cowsay
     fortune
-    aider-chat
     inotify-info
+    jq
+    miller
 
     nix-inspect # See which pkgs are in your PATH
   ];

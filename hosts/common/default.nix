@@ -48,6 +48,7 @@ in {
     xh
     jqp
     jq
+    miller
     fzf
     unzip
     zip
