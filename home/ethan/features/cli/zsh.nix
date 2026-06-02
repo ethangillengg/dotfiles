@@ -57,6 +57,7 @@ in {
     initContent = ''
       # no autocorrect
       unsetopt correct
+      unsetopt extended_glob
       export KEYTIMEOUT=10
       bindkey -M viins 'jk' vi-cmd-mode
 
