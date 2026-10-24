@@ -9,7 +9,7 @@
     vicinae
     xdg-desktop-portal-wlr
     rofi
-    gtk-engine-murrine
+    # gtk-engine-murrine
     sassc
     gnome-themes-extra
     gruvbox-gtk-theme

@@ -23,6 +23,8 @@
   ];
 
   home.packages = with pkgs; [
+    github-copilot-cli
+    localsend # send files over wifi
     tomb
     porsmo # cli pomodoro, stopwatch and timer
     nerdfix # fix nerd fonts

@@ -13,6 +13,8 @@
       };
     };
 
+    configPath = ".mozilla/firefox";
+
     profiles. "${config.home.username}" = {
       isDefault = true;
 

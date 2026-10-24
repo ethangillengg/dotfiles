@@ -127,6 +127,8 @@ in {
     ATTRS{idProduct}=="b67f", RUN+="/bin/sh -c 'cd %S%p; chmod 666 range gain autocenter'"
 
     LABEL="end"
+
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="08a0", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
 
   boot.initrd.luks.devices.enc = {

@@ -27,10 +27,10 @@
     go
     templ
     tailwindcss
-    tailwindcss-language-server
+    # tailwindcss-language-server
 
-    vue-language-server
-    typescript-language-server
+    # vue-language-server
+    # typescript-language-server
     xmlformat
     lemminx
     biome
