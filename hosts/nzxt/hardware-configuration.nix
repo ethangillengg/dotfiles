@@ -64,11 +64,15 @@ in {
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.supportedFilesystems = ["btrfs" "ntfs"];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "tcp_bbr"];
   boot.initrd.kernelModules = [];
   boot.extraModulePackages = [
     pkgs.linuxKernel.packages.linux_6_18.hid-tmff2
   ];
+  boot.kernel.sysctl = {
+    "net.ipv4.tcp_congestion_control" = "bbr";
+    "net.core.default_qdisc" = "fq";
+  };
   boot.kernelModules = ["kvm-intel" "hid-tmff2"];
   boot.blacklistedKernelModules = ["hid-thrustmaster"];
   services.udev.packages = with pkgs; [oversteer];
