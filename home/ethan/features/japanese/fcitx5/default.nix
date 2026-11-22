@@ -10,7 +10,8 @@
       type = "fcitx5";
       fcitx5 = {
         addons = with pkgs; [
-          fcitx5-mozc # google ime
+          # fcitx5-mozc # disabled: broken build upstream (nixpkgs#576522),
+          # https://github.com/google/mozc/issues/1594 - re-enable once fixed
           fcitx5-gtk
           libsForQt5.fcitx5-qt
         ];

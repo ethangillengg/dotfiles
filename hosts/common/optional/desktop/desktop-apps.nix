@@ -20,7 +20,7 @@
     yt-dlp
     tofi
 
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
     rose-pine-cursor
     recyclarr
   ];

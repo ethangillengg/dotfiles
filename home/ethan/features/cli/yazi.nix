@@ -13,6 +13,8 @@ in {
 
   programs.yazi = {
     enable = true;
+    # Keep the pre-26.05 default wrapper name ("yy") explicitly.
+    shellWrapperName = "yy";
     settings = {
       manager = {
         linemode = "permissions";

@@ -38,6 +38,8 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
+    # Keep the pre-26.05 default config format ("hyprlang") explicitly.
+    configType = "hyprlang";
 
     settings = {
       general = {

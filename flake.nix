@@ -16,7 +16,9 @@
 
     hyprland = {
       url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Do not follow our nixpkgs: Hyprland's binary cache is only valid for
+      # builds against its own pinned nixpkgs. Overriding this forces a full
+      # from-source C++ rebuild on every update.
     };
 
     # Secret management

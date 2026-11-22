@@ -14,10 +14,14 @@ in {
       "--cycle"
     ];
 
-    changeDirWidgetCommand = "${fd} --type d --hidden";
-    changeDirWidgetOptions = ["--preview '${tree} -C {} | head -200'" "--height 100%"];
+    changeDirWidget = {
+      command = "${fd} --type d --hidden";
+      options = ["--preview '${tree} -C {} | head -200'" "--height 100%"];
+    };
 
-    fileWidgetCommand = "${fd} --type f --hidden";
-    fileWidgetOptions = ["--preview '${ctpv} {}'" "--height 100%"];
+    fileWidget = {
+      command = "${fd} --type f --hidden";
+      options = ["--preview '${ctpv} {}'" "--height 100%"];
+    };
   };
 }

@@ -25,6 +25,8 @@ in rec {
       name = "Papirus";
       package = pkgs.papirus-icon-theme;
     };
+    # Keep the pre-26.05 default (gtk4 theme follows gtk.theme) explicitly.
+    gtk4.theme = config.gtk.theme;
   };
 
   services.xsettingsd = {
